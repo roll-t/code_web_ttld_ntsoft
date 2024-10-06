@@ -1,0 +1,92 @@
+﻿@*
+    Author: Phạm Minh Triều
+    Date: 04/01/2023
+    Sumary: Danh mục thông báo lỗi
+*@
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="page-content">
+   
+                <div class="row flex-row-reverse">
+                    <div class="col mb-2">
+                        <div class="text-end">
+                            <button type="button" class="btn btn-primary btn-nts-them" id="btnThemMoi"><i class="fa fa-plus"></i>&ensp;Thêm mới (F2)</button>
+                            <div class="btn-group">
+                                <div class="dropdown d-inline">
+                                    <button class="btn btn-primary dropdown-toggle-hide-arrow  height-button-icon btn-nts-them" type="button" id="growthReportId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="blue fa fa-ellipsis-h"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-lg-end w-auto">
+                                        <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnPrint"><i class="text-warning fa fa-print iconsize-item"></i>&ensp; In</a>
+                                        <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnExport"><i class="text-success fa fa-file-excel-o iconsize-item"></i>&ensp; Xuất Excel</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="input-icon mb-3">
+                            <input type="text" value="" class="form-control" placeholder="Nội dung tìm kiếm ..." id="timKiem" autocomplete="off">
+                            <span class="input-icon-addon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="Grid1" class="GridData"></div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="mdThemMoi" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header nts-modal">
+                <h5 class="modal-title" id="tieuDeModal"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="ThongBaoLoiID" />
+                <div class="row mb-2">
+                    <div class="col-12">
+                        <label class="form-label" for="ThongBaoLoiCode">Mã</label>
+                        <select class="form-select" id="ThongBaoLoiCode" data-dropdown-parent="#mdThemMoi" required></select>
+                    </div>                   
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-12">
+                        <label class="form-label">Nội dung</label>
+                        <textarea class="form-control input-sm" rows="5" id="NoiDung" required></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class=" text-end">
+                            <div style="float:right;text-align: right">
+                                <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                    <i class="fa fa-close"></i>&nbsp;Đóng (F4)
+                                </a>
+                                <a href="#" id="btnLuuVaDong" class="btn btn-success ms-auto">
+                                    <i class="fa fa-save"></i>&ensp;Lưu và đóng (F9)
+                                </a>
+                            </div>                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Areas/HeThong/Scripts/ThongBaoLoi.js?v=@DateTime.Now.Ticks.ToString()" defer="defer"></script>

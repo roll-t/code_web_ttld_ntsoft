@@ -1,0 +1,391 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .modal-footer {
+        display: unset !important;
+    }
+
+    @@import url(https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap);
+
+    /*    body {
+        height: 120vh;
+        margin: 30px;
+        color: #444;
+        background-color: #fff;
+        font-family: 'Lato', sans-serif;
+    }*/
+
+    .input1 {
+        width: 30px !important;
+        height: 30px !important;
+        padding: 0 10px !important;
+        border: 1px solid #ccc !important;
+        border-radius: 5px !important;
+        font-family: inherit !important;
+        font-size: inherit !important;
+        font-weight: inherit !important;
+        box-sizing: border-box !important;
+    }
+
+    .examples {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .example {
+        flex-shrink: 0;
+    }
+
+    .square .clr-field button,
+    .circle .clr-field button {
+        width: 22px;
+        height: 22px;
+        left: 5px;
+        right: auto;
+        border-radius: 5px;
+    }
+
+    .square .clr-field input,
+    .circle .clr-field input {
+        padding-left: 36px;
+    }
+
+    .circle .clr-field button {
+        border-radius: 50%;
+    }
+
+    .full .clr-field button {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+        margin-left: -6px;
+    }
+
+    .clr-picker {
+        z-index: 1055 !important
+    }
+
+    .example {
+        margin: 0 0 1rem !important;
+        height: 50px;
+        min-height: 0rem;
+        width: 300px !important;
+        overflow: hidden !important;
+    }
+</style>
+<link href="~/Content/Coloris-main/dist/coloris.min.css" rel="stylesheet" />
+<div class="row">
+    <div class="row flex-row-reverse">
+        <div class="col mb-2">
+            <div class="text-end">
+                <button type="button" class="btn btn-success btn-nts-them" id="btnLuuVaDong" onclick="btnLuuDuLieu();return false;"><i class="fa fa-save"></i>&ensp;Lưu (F9)</button>
+                <button type="button" class="btn btn-warning" id="btnMacDinh" onclick="SetMacDinhThietLap();return false;" style="display:none;"><i class="fa fa-thunderstorm" ></i>&ensp;Thiết lập mặc định</button>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12">
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="card">
+        <div class="card-header" id="user-profile-2">
+            <ul class="nav nav-tabs card-header-tabs" data-bs-toggle="tabs" role="tablist">
+                <li class="nav-item" role="presentation" style="float: left;">
+                    <a href="#Tab1_View" id="btnTab1_View" class="nav-link active" data-bs-toggle="tab" aria-selected="false" role="tab" tabindex="-1">
+                        <svg class="icon icon-tabler icon-tabler-vocabulary" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M10 19h-6a1 1 0 0 1 -1 -1v-14a1 1 0 0 1 1 -1h6a2 2 0 0 1 2 2a2 2 0 0 1 2 -2h6a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-6a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2z"></path>
+                            <path d="M12 5v16"></path>
+                            <path d="M7 7h1"></path>
+                            <path d="M7 11h1"></path>
+                            <path d="M16 7h1"></path>
+                            <path d="M16 11h1"></path>
+                            <path d="M16 15h1"></path>
+                        </svg>
+                        &nbsp; Thông tin chung
+                    </a>
+                </li>
+                <li class="nav-item" role="presentation" style="float: left;">
+                    <a href="#Tab2_View" id="btnTab2_View" class="nav-link" data-bs-toggle="tab" aria-selected="false" role="tab" tabindex="-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-color-picker" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M11 7l6 6" /><path d="M4 16l11.7 -11.7a1 1 0 0 1 1.4 0l2.6 2.6a1 1 0 0 1 0 1.4l-11.7 11.7h-4v-4z" /></svg>
+                        &nbsp; Thiết lập màu sắc
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content">
+                <div class="tab-pane fade" id="Tab1_View" role="tabpanel" aria-labelledby="btnTab1_View">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @* Thiết lập đơn vị báo cáo *@
+                            <fieldset class="KhungVien">
+                                <legend>1. Thiết lập đơn vị báo cáo</legend>
+                                <div class="widget-body rounded-10">
+                                    <div class="widget-main rounded-10">
+                                        <div class="row mb-2">
+                                            <div class="col-md-12">
+                                                <label class="form-label" for="DonViCapTren">Đơn vị cấp trên</label>
+                                                <input class="form-control input-sm" type="text" id="DonViCapTren" placeholder="Nhập tên đơn vị" />
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-md-12">
+                                                <label class="form-label" for="DonViBaoCao">Đơn vị báo cáo</label>
+                                                <input class="form-control input-sm" type="text" id="DonViBaoCao" placeholder="Nhập tên đơn vị" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="KhungVien" >
+                                <legend>2. Thiết lập quản lý đối tượng theo hộ gia đình</legend>
+                                <div class="widget-body rounded-10">
+                                    <div class="row" style=" margin-top: 10px; ">
+                                        <div class="col-md-3">
+                                            <label class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="ckKiemTraHoGiaDinh">
+                                                <span class="form-check-label">Quản lý đối tượng theo hộ gia đình</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            @*  Thiết lập ký tên báo cáo *@
+                            <fieldset class="KhungVien">
+                                <legend>3. Thiết lập ký tên báo cáo</legend>
+                                <div class="widget-body rounded-10">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="KyThay">Ký thay</label>
+                                                <input type="text" class="form-control" id="KyThay" placeholder="Ký thay">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="NguoiKT">Họ tên người ký thay</label>
+                                                <input type="text" class="form-control" id="NguoiKT" placeholder="Nhập họ tên người ký thay">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="ChucDanhNguoiKT">Chức danh người ký thay</label>
+                                                <input type="text" class="form-control" id="ChucDanhNguoiKT" placeholder="Nhập chức danh người ký thay">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="NguoiKy">Họ tên người ký</label>
+                                                <input type="text" class="form-control" id="NguoiKy" placeholder="Nhập họ tên người ký">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="ChucDanhNguoiKy">Chức danh người ký</label>
+                                                <input type="text" class="form-control" id="ChucDanhNguoiKy" placeholder="Nhập chức danh người ký">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="NguoiLap">Họ tên người lập</label>
+                                                <input type="text" class="form-control" id="NguoiLap" placeholder="Nhập họ tên người lập">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="ChucDanhNguoiLap">Chức danh người lập</label>
+                                                <input type="text" class="form-control" id="ChucDanhNguoiLap" placeholder="Nhập chức danh người lập">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            @* Thiết lập ngày báo cáo *@
+                            <fieldset class="KhungVien">
+                                <legend>4. Thiết lập ngày báo cáo</legend>
+                                <div class="widget-body rounded-10">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="DiaDanh">Địa danh</label>
+                                                <input type="text" class="form-control" id="DiaDanh" placeholder="Nhập địa danh">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="DangNgayBaoCao">Loại ngày lập báo cáo</label>
+                                                <select class="form-control" id="DangNgayBaoCao" tabindex="0">
+                                                    <option value="1" selected> Lấy ngày hiện tại</option>
+                                                    <option value="2">Lấy ngày từ thiết lập</option>
+                                                    <option value="3">Ngày... tháng... năm...</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="NgayLapBaoCao1">Ngày lập báo cáo</label>
+                                                <input type="text" class="form-control date-picker" id="NgayLapBaoCao1" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="NgayLapBaoCao2">Mẫu hiểu thị</label>
+                                                <input type="text" class="form-control input-sm cauhinh" id="NgayLapBaoCao2" placeholder="Ngày... tháng... năm..." autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                          
+                            @* Thiết lập địa bàn *@
+                            <fieldset class="KhungVien" style="margin-bottom:50px;">
+                                <legend>5. Thiết lập địa bàn hành chính</legend>
+                                <div class="widget-body rounded-10">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="">Thuộc tỉnh</label>
+                                                <select class="form-control" id="TinhID" tabindex="0">
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="">Thuộc huyện</label>
+                                                <select class="form-control" id="HuyenID" tabindex="0">
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="">Thuộc xã</label>
+                                                <select class="form-control" id="XaID" tabindex="0">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-lg-4">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="">Thuộc thôn</label>
+                                                <select class="form-control" id="ThonID" tabindex="0">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="Tab2_View" role="tabpanel" aria-labelledby="btnTab2_View">
+                    <div class="row">
+                        <fieldset class="KhungVien">
+                            <legend>1. Thiết lập màu sắc</legend>
+                            <div class="widget-body rounded-10">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="examples">
+                                            <div class="example full">
+                                                <label class="form-label" style="width: 200px">Thiết lập màu sắc cho nút Thêm mới</label> &emsp;
+                                                <input class="input-sm coloris instance2 input1" id="them_color" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="examples">
+                                            <div class="example full">
+                                                <label class="form-label" style="width: 200px">Thiết lập màu sắc cho nút Lưu thông tin</label> &emsp;
+                                                <input class="input-sm coloris instance2 input1" id="luu_color" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="examples">
+                                            <div class="example full">
+                                                <label class="form-label" style="width: 200px">Thiết lập màu sắc cho nút Đóng</label> &emsp;
+                                                <input class="input-sm coloris instance2 input1" id="dong_color" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="examples">
+                                            <div class="example full">
+                                                <label class="form-label" style="width: 200px">Thiết lập màu sắc cho nút In</label> &emsp;
+                                                <input class="input-sm coloris instance2 input1" id="in_color" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="examples">
+                                            <div class="example full">
+                                                <label class="form-label" style="width: 200px">Thiết lập màu sắc cho Header</label> &emsp;
+                                                <input class="input-sm coloris instance2 input1" id="header_color" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="examples">
+                                            <div class="example full">
+                                                <label class="form-label" style="width: 200px">Thiết lập màu sắc cho Menu</label> &emsp;
+                                                <input class="input-sm coloris instance2 input1" id="menu_color" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="examples">
+                                            <div class="example full">
+                                                <label class="form-label" style="width: 200px">Thiết lập màu sắc cho Cửa sổ thao tác</label> &emsp;
+                                                <input class="input-sm coloris instance2 input1" id="modal_color" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="examples">
+                                            <div class="example full">
+                                                <label class="form-label" style="width: 200px">Thiết lập màu sắc Khác</label> &emsp;
+                                                <input class="input-sm coloris instance2 input1" id="khac_color" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Areas/HeThong/Scripts/ThietLapCauHinhHeThong.js?v=@DateTime.Now.Ticks.ToString()" defer="defer"></script>
+<script src="~/Content/Coloris-main/dist/coloris.min.js"></script>

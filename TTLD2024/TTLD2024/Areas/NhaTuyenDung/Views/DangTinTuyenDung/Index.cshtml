@@ -1,0 +1,658 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MasterPage_CTT_QuanTri_ViecLam.cshtml";
+}
+<style type="text/css">
+    input[type=checkbox].ace.ace-switch.ace-switch-4 + .lbl::before {
+        content: "\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a";
+    }
+
+    input[type=checkbox].ace.ace-switch.ace-switch-4 + .lbl::after {
+        top: 10px;
+    }
+
+    @@media (min-width: 992px) {
+        #mdThemMoi {
+            padding-left: 0px !important;
+        }
+
+        #mdNhapExcel .modal-dialog {
+            width: 70% !important;
+        }
+    }
+
+    .form-group {
+        margin-bottom: 0px !important;
+    }
+
+    .dropdown-toggle-split::after, .dropright .dropdown-toggle-split::after, .dropup .dropdown-toggle-split::after {
+        margin-left: 0;
+        display: inline-block;
+        margin-left: .255em;
+        vertical-align: .255em;
+        content: "";
+        border-top: .3em solid;
+        border-right: .3em solid transparent;
+        border-bottom: 0;
+        border-left: .3em solid transparent;
+    }
+
+    .dropdown-item#btnKiemTraGhiDe {
+        display: block;
+        width: 100%;
+        padding: .25rem 1.5rem;
+        clear: both;
+        font-weight: 400;
+        color: #212529;
+        text-align: inherit;
+        white-space: nowrap;
+        background-color: transparent;
+        border: 0;
+        color: white;
+    }
+
+        .dropdown-item#btnKiemTraGhiDe:hover {
+            color: white !important;
+        }
+
+    .dropdown-menu#DivKiemTraGhiDe:hover {
+        background-color: #E59729 !important;
+        color: white;
+    }
+    ol, ul {
+        margin: 0 !important;
+    }
+</style>
+<script src="/ckeditor/ckeditor.js"></script>
+<script src="/ckeditor/adapters/jquery.js"></script>
+<script src="../../ckeditor/ckeditor.js"></script>
+<script src="/ckfinder/ckfinder.js"></script>
+
+
+<style type="text/css">
+    .GridData {
+        background-color: #f2f2f2;
+        border: 1px solid #dbdbe1;
+        font-size: 12px !important;
+        font-family: arial,sans-serif,Verdana;
+    }
+        /*Allow column header names to wrap lines*/
+        .GridData .tabulator-header .tabulator-col,
+        .GridData .tabulator-header .tabulator-col-row-handle {
+            white-space: normal;
+            background-color: #F3F4F5;
+            color: #000000;
+        }
+        @@media (min-width: 576px){
+            .modal-dialog {
+                max-width: 1000px;
+                margin-right: auto;
+                margin-left: auto;
+            }
+        }
+    @@media (min-width: 992px) {
+        #mdThemMoi .modal-dialog {
+            width: 70% !important;
+        }
+
+        #mdNhapExcel .modal-dialog {
+            width: 70% !important;
+        }
+
+        #modal_xemNoiDungTuChoi .modal-dialog {
+            width: 35%;
+        }
+    }
+
+    #mdChonKhachHang_us .modal-dialog,
+    #mdThemMoiCongViec .modal-dialog,
+    #mdThemMoiKhoiLuong .modal-dialog,
+    #mdGuiPheDuyet .modal-dialog,
+    #mdThemMoi_TL_us .modal-dialog,
+    #mdThemMoiChiTieuBC .modal-dialog,
+    #mdXemChiTieuBC .modal-dialog,
+    #mdXemNhatKyCongViec_us .modal-dialog {
+        margin: unset !important;
+    }
+
+    .dropdown-toggle-split::after, .dropright .dropdown-toggle-split::after, .dropup .dropdown-toggle-split::after {
+        margin-left: 0;
+        display: inline-block;
+        margin-left: .255em;
+        vertical-align: .255em;
+        content: "";
+        border-top: .3em solid;
+        border-right: .3em solid transparent;
+        border-bottom: 0;
+        border-left: .3em solid transparent;
+    }
+
+    .dropdown-item#btnKiemTraGhiDe {
+        display: block;
+        width: 100%;
+        padding: .25rem 1.5rem;
+        clear: both;
+        font-weight: 400;
+        color: #212529;
+        text-align: inherit;
+        white-space: nowrap;
+        background-color: transparent;
+        border: 0;
+        color: white;
+    }
+
+        .dropdown-item#btnKiemTraGhiDe:hover {
+            color: white !important;
+        }
+
+    .dropdown-menu#DivKiemTraGhiDe:hover {
+        background-color: #E59729 !important;
+        color: white;
+    }
+
+    #breadcrumbs {
+        background-color: #f5f5f5 !important;
+    }
+    #mdThemMoi .modal-content {
+        border-radius: 10px !important;
+    }
+    .modal-footer {
+        display: unset !important;
+    }
+    .select2-container {
+        position: relative;
+    }
+    .breadcrumbs-fixed {
+        position: static;
+    }
+
+    /*.label-timkiem{
+        font-weight:500 !important;
+    }*/
+    .breadcrumbs-fixed + .page-content {
+         padding-top: 10px; 
+    }
+    .form-check-input:checked {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+    }
+
+    .modal .modal-header {
+        background: var(--primary-color);
+        color: #fff;
+    }
+    #btnThemMoi{
+        background: var(--primary-color) !important;
+    }
+    legend {
+        float: left;
+        width: auto;
+        padding: 0;
+        margin-bottom: .5rem;
+        font-size: 13px;
+        line-height: inherit;
+    }
+    .legend-primary {
+        background: var(--primary-color);
+        color: white;
+        padding: 2px 7px;
+        border-radius: 9px;
+    }
+    @@media(max-width:767px) {
+        .btn-them-xuatexcel {
+            margin-top: 10px;
+        }
+
+        #KhungTimKiem {
+            width: 97% !important;
+        }
+    }
+
+    @@media(max-width:667px) {
+        .btn-them-xuatexcel {
+            margin-top: 10px;
+        }
+
+        #KhungTimKiem {
+            width: 96% !important;
+        }
+    }
+
+    @@media(max-width:467px) {
+        .btn-them-xuatexcel {
+            margin-top: 10px;
+        }
+
+        #KhungTimKiem {
+            width: 95% !important;
+        }
+    }
+    @@media (max-width: 991px) {
+        .page-content {
+            padding-top: 10px !important;
+        }
+    }
+</style>
+<input type="hidden" id="TenViecLam" />
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+            <h3>DANH SÁCH TIN ĐĂNG TUYỂN</h3>
+        </div>
+        <div class="page-content" style="background: white !important;">
+            <div class="row label-timkiem">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input style=" height: 32px !important;" class="form-control input-sm" type="text" id="timKiem" placeholder="Nội dung tìm kiếm" autocomplete="off" />
+                        <span class="input-group-addon" style="margin: 0; padding: 0; border: none;">
+                            <button class="btn btn-primary btn-sm" id="TimKiemNangCao" style="border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; width: 35px; height: 32px"><span class="fas fa-sliders-h" aria-hidden="true"></span></button>
+                        </span>
+                        <span class="input-icon-addon" style="margin-right: 40px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                        </span>
+                    </div>
+                    <div id="KhungTimKiem" style="width: 35%; z-index: 99; position: absolute; margin-top: 4px; background: #fff; padding: 12px 12px 8px 12px; border: 1px solid #e5e5e5; border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.20) 0px 5px 15px; display: none">
+                        <div class="row" style=" margin-bottom: 4px">
+                            <div class="col-md-6">
+                                <span style="font-size: 16px; color: var(--primary-color);"><i class="fa fa-search"></i>Tìm kiếm nâng cao</span>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class=" col-md-6">
+                                <label for="TrangThai_TimKiem_us" class="form-label label-timkiem"><b>Trạng thái</b></label>
+                                <select class="form-control input-sm" id="TrangThai_TimKiem_us">
+                                    <option value="" selected>(--Tất cả--)</option>
+                                    <option value="1">Mới tạo</option>
+                                    <option value="2">Đã gửi duyệt</option>
+                                    <option value="3">Đang đăng tuyển</option>
+                                    <option value="4">Đã từ chối</option>
+                                </select>
+                            </div>
+                            <div class=" col-md-6">
+                                <label for="ViTriCongViec_TimKiem_us" class="form-label label-timkiem"><b>Cấp bậc</b></label>
+                                <select class="form-control input-sm" id="ViTriCongViec_TimKiem_us"></select>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class=" col-md-6">
+                                <label for="MucLuong_TimKiem_us" class="form-label label-timkiem"><b>Mức lương</b></label>
+                                <select class="form-control input-sm" id="MucLuong_TimKiem_us"></select>
+                            </div>
+                            <div class=" col-md-6">
+                                <label for="KinhNghiem_TimKiem_us" class="form-label label-timkiem"><b>Kinh nghiệm</b></label>
+                                <select class="form-control input-sm" id="KinhNghiem_TimKiem_us"></select>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class=" col-md-6">
+                                <label for="HocVan_TimKiem_us" class="form-label label-timkiem"><b>Học vấn</b></label>
+                                <select class="form-control input-sm" id="HocVan_TimKiem_us"></select>
+                            </div>
+                        </div>
+                        <hr style="margin: 1rem 0;" />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" style="text-align: right">
+                                    <a href="#" class="btn btn-outline-danger" id="DongTimKiem" style="background:#FF0000 !important;color:#FFFFFF;"><i class="fa fa-close"></i> &ensp; Đóng</a>
+                                    <button type="button" id="TimKiem" class="btn btn-success" style="background: var(--primary-color) !important;"><i class="fa fa-search"></i>&ensp;Tìm kiếm</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 btn-them-xuatexcel" >
+                    <button class="btn btn-sm" id="btnXuatExcel" type="button" style="float: right; margin-left: 8px; background: #66CE9C !important"><i class="fa fa-download" aria-hidden="true"></i>&ensp;Xuất Excel</button>
+
+                    <button class="btn btn-sm btn-primary" id="btnThemMoi" type="button" style="float: right;"><i class="fa fa-plus"></i>&ensp;Thêm mới</button>
+                    @*<span class="input-icon" style="padding-bottom: 2px; padding-top: 2px; max-width: 200px !important; display: block;">
+                        <input type="text" placeholder="Nội dung tìm kiếm ..." class="nav-search-input" id="timKiem" autocomplete="off" style="width: 100%;">
+                        <i class="ace-icon fa fa-search nav-search-icon"></i>
+                    </span>*@
+
+                </div>
+            </div>
+            <div class="space-4"></div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="Grid1" class="GridData"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="mdThemMoi">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="tieuDeModal" class="modal-title text-bold">Thêm mới tin tuyển dụng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body">                
+                <div class="form-group">
+                    <div class="" style="padding: 10px; box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);border-radius:4px">
+                        <div class="row">
+                            <div style="font-size: 18px !important;font-weight: bold;">
+                                Thông tin chung
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="NgayGiao" class="validation">Ngày đăng tuyển</label>
+                                <div style="display: flex; grid-gap: 0 8px;">
+                                    <div class="input-group" style="width: 100%">
+                                        <input class="form-control input-sm date-picker" id="NgayDangTuyen" type="text" data-date-format="dd/mm/yyyy" placeholder="dd/mm/yyyy" autocomplete="off" required />
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="HanNop" class="validation">Hạn nộp hồ sơ</label>
+                                <div style="display: flex; grid-gap: 0 8px;">
+                                    <div class="input-group" style="width: 100%">
+                                        <input class="form-control input-sm date-picker" id="HanNop" type="text" data-date-format="dd/mm/yyyy" placeholder="dd/mm/yyyy" autocomplete="off" required />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="TenCongViec" class="validation">Tên công việc</label>
+                                <input type="text" class="form-control input-sm" id="TenCongViec" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="CapBac" class="validation">Cấp bậc</label>
+                                <select class="form-control input-sm" id="CapBac" required></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3" style="padding: 10px; box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);border-radius:4px">
+                        <div class="row">
+                            <div style="font-size: 18px !important;font-weight: bold;">
+                                Yêu cầu chung
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="NganhNghe" class="validation">Ngành nghề</label>
+                                <select class=" " multiple="multiple" id="NganhNghe" required tabindex="0" data-dropdown-parent="#mdThemMoi"></select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="SoLuong" class="validation">Số lượng</label>
+                                <input type="text" class="form-control input-sm format-number" id="SoLuong" style="text-align: right;" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="GioiTinh" class="validation">Yêu cầu giới tính</label>
+                                <select class="form-control input-sm" id="GioiTinh" required>
+                                    <option value="1">Không yêu cầu</option>
+                                    <option value="2">Nam</option>
+                                    <option value="3">Nữ</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="HinhThucLamViec" class="validation">Hình thức làm việc</label>
+                                <select class="form-control input-sm" id="HinhThucLamViec" required></select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="TrinhDoHocVan" class="validation">Trình độ đào tạo</label>
+                                <select class="form-control input-sm" id="TrinhDoHocVan" required></select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="DiaDiem" class="validation">Địa điểm làm việc</label>
+                                <select class="" multiple="multiple" id="DiaDiem" required data-dropdown-parent="#mdThemMoi"></select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="KinhNghiem" class="validation">Kinh nghiệm</label>
+                                <select class="form-control input-sm" id="KinhNghiem" required></select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="MucLuong" class="validation">Mức lương</label>
+                                <select class="form-control input-sm" id="MucLuong" required></select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="DoiTuongUuTien">Đối tượng ưu tiên</label>
+                                <select class="form-control input-sm" id="DoiTuongUuTien" multiple="multiple"></select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="MoTaCongViec" class="validation">Mô tả công việc</label>
+                                <textarea class="form-control input-sm" rows="3" id="MoTaCongViec"
+                                          placeholder="Mô tả chi tiết công việc để ứng viên hiểu rõ về yêu cầu của công ty với vị trí này. VD:
+- Kiểm tra các order trước khi thanh toán, trực tiếp thực hiện quá trình thanh toán.
+- Các công việc khác theo yêu cầu của quản lý." required></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="YeuCauCongViec" class="validation">Yêu cầu công việc</label>
+                                <textarea class="form-control input-sm" rows="3" id="YeuCauCongViec" required></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="CheDoPhucLoi" class="validation">Chế độ phúc lợi</label>
+                                <textarea class="form-control input-sm" rows="3" id="CheDoPhucLoi"
+                                          placeholder="- Thời gian làm việc 8 tiếng/ngày.
+- Bao gồm các gói lợi ích như bảo hiểm y tế, chương trình nghỉ phép linh hoạt và hỗ trợ đào tạo chuyên môn." required></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="YeuCauHoSo" class="validation">Yêu cầu hồ sơ</label>
+                                <textarea class="form-control input-sm" rows="3" id="YeuCauHoSo"
+                                          placeholder="- Đơn xin việc.
+- Sơ yếu lý lịch.
+- Các bằng cấp có liên quan." required></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="HinhThucNopHoSo" class="validation">Hình thức nộp hồ sơ</label>
+                                <textarea class="form-control input-sm" rows="3" id="HinhThucNopHoSo" required></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="NguoiLienHe" class="validation">Người liên hệ</label>
+                                <input type="text" class="form-control input-sm" id="NguoiLienHe" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="ChucVu" class="validation">Chức vụ</label>
+                                <input type="text" class="form-control input-sm" id="ChucVu" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="SoDienThoai" class="validation">Số điện thoại</label>
+                                <input type="text" class="form-control input-sm" id="SoDienThoai" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="Email" class="validation">Email</label>
+                                <input type="email" class="form-control input-sm" id="Email" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="DiaChi" class="validation">Địa chỉ</label>
+                                <input type="text" class="form-control input-sm" id="DiaChi" required>
+                            </div>
+                        </div>
+                    </div>
+
+                        
+                </div>
+            </div>
+                <div class="modal-footer">
+                    <div style="display: flex; align-items: center; justify-content: space-between">
+                        <div class="col-md-6" style="display: flex; align-items: center">
+                            <div class="">
+                                <input name="switch-field-1" class="form-check-input ace ace-switch ace-switch-4 btn-empty" type="checkbox" id="ckAnTinTuyenDung" value="">
+                                <label class="lbl form-check-label " for="ckAnTinTuyenDung" style="display: flex;align-items: center; gap:10px">&nbsp; Ẩn tin đăng tuyển</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div style="float:right;text-align: right">
+                                <a href="#" class="btn btn-danger" data-bs-dismiss="modal" data-bs-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i>&nbsp;Đóng</a>&nbsp;
+                                <a href="#" id="btnLuuVaDong" class="btn btn-primary" onclick="return false;"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Lưu và đóng</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+<input type="hidden" id="ViecTimNguoiID" />
+<div id="modal_xemtruockhiin_us" class="modal" data-backdrop="static">
+    <div class="modal-dialog modal-full" id="mdXuatBaoCao-modal-dialog" style="width: 80% !important;">
+        <div class="modal-content">
+            <div class="modal-header no-padding">
+                <div class="table-header">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">
+                        <span class="white">&times;</span>
+                    </button>
+                    <span id="modal_xemtruockhiin_tieude_us">Xem trước khi in</span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="row" style="padding-bottom: 2px">
+                    <div id="modal_xemtruockhiin_us_khung" class="col-xs-12" style="height: 600px;">
+                        <iframe id="divNoiDung_us" class="col-xs-12" style="height: 600px; border: solid 1px #ddd" name="divNoiDung"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-success" id="modal_taifile_us">
+                    <i class="ace-icon fa fa-download bigger-110"></i>&nbsp; Tải file gốc
+                </a>
+                <a href="#" class="btn btn-success" id="modal_in_us">
+                    <i class="ace-icon fa fa-print bigger-110"></i>&nbsp; In
+                </a>
+                <a href="#" class="btn btn-danger"
+                   data-bs-dismiss="modal">
+                    <i class="fa fa-close"></i>&nbsp;Đóng
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+@*<%-- Modal xem thong tin hồ sơ nhà tuyển dụng --%>*@
+@*<div id="modal_xemNoiDungTuChoi" class="modal" data-backdrop="static">
+    <div class="modal-dialog modal-full" id="mdXuatBaoCao-modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header no-padding">
+                <div class="table-header">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">
+                        <span class="white">&times;</span>
+                    </button>
+                    <span id="">Xem nội dung từ chối</span>
+                </div>
+            </div>
+            <div class="modal-body" style="padding-top: 2px">
+                <fieldset style="margin-bottom:4px" class="khungvien">
+                    <legend style="margin-bottom: -10px" class="legend-primary"><b>Nội dung từ chối</b></legend>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="control-label no-padding-right"><b>Ngày từ chối: </b></label>
+                            <label class="control-label no-padding-right" id="NgayTuChoi"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 container-noidung">
+                            <label class="control-label no-padding-right"><b>Nội dung từ chối: </b></label>
+                            <label class="control-label no-padding-right" id="NoiDungTuChoi"></label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-danger"
+                   data-bs-dismiss="modal">
+                    <i class="fa fa-close"></i>&nbsp;Đóng
+                </a>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+@*  *@
+
+<div class="modal" id="modal_xemNoiDungTuChoi">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style=" border-radius: 0px;">
+                <h5 id="tieuDeModal" class="modal-title text-bold">Xem nội dung từ chối</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body">
+                <fieldset style="margin-bottom:4px" class="khungvien">
+                    <legend style="margin-bottom: -10px" class="legend-primary"><b>Nội dung từ chối</b></legend>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="control-label no-padding-right"><b>Ngày từ chối: </b></label>
+                            <label class="control-label no-padding-right" id="NgayTuChoi"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 container-noidung">
+                            <label class="control-label no-padding-right"><b>Nội dung từ chối: </b></label>
+                            <label class="control-label no-padding-right" id="NoiDungTuChoi"></label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="modal-footer">
+                &nbsp;
+                <a href="#" class="btn btn-danger"
+                   data-bs-dismiss="modal">
+                    <i class="fa fa-close"></i>&nbsp;Đóng
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function SetChieuCao() {
+        var chieucao = window.innerHeight - 170;
+        $('#modal_xemtruockhiin_us_khung').css('height', chieucao + 'px');
+        $('#divNoiDung_us').css('height', chieucao + 'px');
+    }
+    function SetChieuCao2(height) {
+        var chieucao = height;
+        $('#modal_xemtruockhiin_us_khung').css('height', chieucao + 'px');
+        $('#divNoiDung_us').css('height', chieucao + 'px');
+    }
+    SetChieuCao();
+
+</script>
+
+<script src="~/Areas/NhaTuyenDung/Scripts/DangTinTuyenDung.js?v=@DateTime.Now.Ticks.ToString()"></script>
+
+<script type="text/javascript">
+    google_ad_client = "ca-pub-2783044520727903";
+    /* jQuery_demo */
+    google_ad_slot = "2780937993";
+    google_ad_width = 728;
+    google_ad_height = 90;
+
+</script>
+<script>
+    $(document).ready(function () {
+        $(".basic-usage").stringToSlug();
+    });</script>
+<script>
+
+    var _stringToSlug_API = function (e, t) { "use strict"; var r, s = { setEvents: "keyup keydown blur", getPut: "#DinhDanh", space: "-", prefix: "", suffix: "", replace: "", AND: "and", options: {}, callback: !1 }; jQuery.extend(s, t), s.options.hasOwnProperty("separator") || (s.options.separator = s.space), s.options.hasOwnProperty("custom") || (s.options.custom = { "&": s.AND }), e = e.replace(s.replace, ""); try { e = getSlug(e, s.options) } catch (n) { console.warn("Make sure you insert speakingurl.min.js before jquery.stringtoslug.min.js") } return r = s.prefix + e + s.suffix }; jQuery.fn.stringToSlug = function (e) { "use strict"; var t = { setEvents: "keyup keydown blur", getPut: "#DinhDanh", space: "-", prefix: "", suffix: "", replace: "", AND: "and", callback: !1 }; return jQuery.extend(t, e), jQuery(this).bind(t.setEvents, function () { var r = jQuery(this).val(), s = _stringToSlug_API(r, e); return jQuery(t.getPut).val(s), jQuery(t.getPut).html(s), !1 !== t.callback && t.callback(s), this }), this };
+</script>

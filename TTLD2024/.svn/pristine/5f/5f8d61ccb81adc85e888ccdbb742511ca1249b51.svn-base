@@ -1,0 +1,177 @@
+﻿
+@{
+    Layout = null;
+}
+
+<style type="text/css">
+    @@media (min-width: 992px) {
+        #mdXemDSDinhKem_us .modal-dialog {
+            width: 40% !important;
+        }
+
+        #modal_xemtruockhiin_us .modal-dialog {
+            min-width: 80% !important;
+        }
+    }
+
+    #list-file-usDinhKem {
+        display: flex;
+        flex-direction: column;
+        grid-gap: 10px 0;
+    }
+
+        #list-file-usDinhKem .list-file-item {
+            display: flex;
+            grid-gap: 0 5px;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            border: 1px dashed #AAA;
+            border-radius: 4px;
+            padding: 7px;
+            cursor: pointer;
+            position: relative;
+            padding-right: 15px;
+        }
+
+            #list-file-usDinhKem .list-file-item .list-file-icon {
+                background: #EFAD62;
+                display: flex;
+                min-width: 26px;
+                width: 26px;
+                height: 26px;
+                text-align: center;
+                color: #FFF;
+                transition: all .1s;
+                justify-content: center;
+                align-items: center;
+            }
+
+                #list-file-usDinhKem .list-file-item .list-file-icon i {
+                    font-size: 14px;
+                }
+
+            #list-file-usDinhKem .list-file-item .icon-delete {
+                position: absolute;
+                right: -10px;
+                width: 26px;
+                display: flex;
+                justify-content: center;
+                top: -10px;
+                border-radius: 100%;
+                border: 1px solid #9E9E9E;
+                color: red;
+                background: white;
+                padding: 5px;
+                align-items: center;
+            }
+
+            #list-file-usDinhKem .list-file-item .list-file-text {
+                font-size: 13px;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                word-break: break-word;
+            }
+
+    #modal_xemtruockhiin_us .modal-footer {
+        position: fixed;
+        display: unset !important;
+        bottom: 0%;
+        width: 100%;
+        background-color: white;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        border-bottom-right-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+
+    #modal_xemtruockhiin_us {
+        padding-right: 0px !important;
+        overflow: hidden;
+    }
+
+    #divNoiDung_us html body table {
+        margin: auto !important;
+    }
+</style>
+
+<div id="modal_xemtruockhiin_us" class="modal" data-backdrop="static">
+    <div class="modal-dialog" role="document" style="min-width: 100% !important; margin-top: 0px !important; margin-left: 0px !important; ">
+        <div class="modal-content no-border" style="border: none !important; min-height: 100vh !important;">
+            <div class="modal-body" style="padding: 0rem !important">
+                <div class="row" style="padding-bottom: 2px">
+                    <div id="modal_xemtruockhiin_us_khung" class="col-md-12" style="height: 600px;">
+                        <iframe id="divNoiDung_us" class="col-md-12" style="height: 92vh !important; border: none !important;padding:unset" name="divNoiDung"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-8">
+
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="right" style="float:right">
+                            <button type="button" id="modal_taifile_us" class="btn btn-success" data-dismiss="modal"><i class="fa fa-download"></i>&ensp;Tải file gốc</button>
+                            <button type="button" id="modal_in_us" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-print"></i>&ensp;In</button>
+                            <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Đóng</a>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    function SetChieuCao() {
+        var chieucao = window.innerHeight - 210;
+        $('#modal_xemtruockhiin_us_khung').css('height', chieucao + 'px');
+        $('#divNoiDung_us').css('height', '92vh');
+    }
+    function SetChieuCao2(height) {
+        var chieucao = height;
+        $('#modal_xemtruockhiin_us_khung').css('height', chieucao + 'px');
+        $('#divNoiDung_us').css('height', '92vh');
+    }
+    SetChieuCao();
+    $('#modal_in_us').on('click', function () {
+        var frm = document.getElementById("divNoiDung_us").contentWindow;
+        frm.focus();
+        frm.print();
+        return false;
+    });
+    $('#modal_taifile_us').on('click', function () {
+        debugger
+        if (document.getElementById("divNoiDung_us").src == "")
+            return false;
+        var file = document.getElementById("divNoiDung_us").src;
+        var extFile = ".xlsx";
+        if (file.lastIndexOf("xuatword") != -1)
+            extFile = ".docx"
+        else if (file.lastIndexOf("xuatexcel") != -1)
+            extFile = ".xlsx"
+        else if (file.lastIndexOf("LuuBaoCao") != -1)
+            extFile = ".pdf"
+        else if (file.substr((file.lastIndexOf('.') + 1)) == 'docx' || file.substr((file.lastIndexOf('.') + 1)) == '.docx'
+            || file.substr((file.lastIndexOf('.') + 1)) == '.pdf' || file.substr((file.lastIndexOf('.') + 1)) == 'pdf'
+        )
+            extFile = ".docx"
+        else if (file.substr((file.lastIndexOf('.') + 1)).toUpperCase() == 'HTML')
+            extFile = ".xlsx"
+        else if (file.substr((file.lastIndexOf('.') + 1)).toUpperCase() == 'PNG' || file.substr((file.lastIndexOf('.') + 1)).toUpperCase() == 'JPGE' || file.substr((file.lastIndexOf('.') + 1)).toUpperCase() == 'JPG')
+            extFile = "." + file.substr((file.lastIndexOf('.') + 1));
+
+        //if (file.substr((file.lastIndexOf('.') + 1)) == 'pdf')
+        //    extFile = ".docx"
+
+        window.location.assign(document.getElementById("divNoiDung_us").src.replace("." + file.substr((file.lastIndexOf('.') + 1)), extFile));
+        return false;
+    });
+</script>
+

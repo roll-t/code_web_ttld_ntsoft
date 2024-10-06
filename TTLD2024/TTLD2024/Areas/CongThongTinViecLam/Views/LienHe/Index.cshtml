@@ -1,0 +1,138 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/CongThongtinViecLam.cshtml";
+}
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        #card-lienhe{
+            background:#FFF;
+            box-shadow: 1px 3px 1px rgba(0,0,0,0.3);
+            border:solid 1px #D9D9D9;
+            width:100%;
+            padding: 20px 30px;
+            border-radius:16px;
+
+        }
+        #card-lienhe h1{
+            font-size:24px;
+            padding-bottom:6px;
+            font-weight:bold;
+            text-transform:uppercase;
+            line-height:30px;
+        }
+        .img-contact{
+            position:relative;
+            margin-left:20px;
+            z-index:10;
+        }
+        .icon-circle{
+            width:300px;
+            height:300px;
+            border-radius:50%;
+            background:linear-gradient(109.6deg, rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1%);
+            position:absolute;
+            top: 40px;
+            margin-left: 140px;
+        }
+        #iframe iframe{
+            width:100%;
+            height:400px;
+        }
+        .card-body p{
+            margin: 6px 0;
+            font-weight:bold;
+        }
+        .card-body p span {
+            font-weight: normal;
+        }
+        .card-mobile{
+            padding:30px 40px 20px 40px;
+        }
+        @@media(max-width:1024){
+            .icon-circle{
+                 width:250px;
+                 height:250px;
+                 top:84px;
+            }
+            #card-lienhe{
+                width:100%;
+            }
+             .card-mobile{
+                 padding:30px 0px;
+             }
+        }
+        @@media (max-width:992){
+            .icon-circle{
+                 width:230px;
+                 height:230px;
+                 top:60px;
+            }
+            .img-contact{
+                margin-left:0;
+            }
+            .card-mobile{
+                 padding:30px 0px;
+             }
+       }
+        @@media (max-width:768) {
+             .img-contact{
+                margin-left:-30px;
+                width:"50%";
+                height:"50%";
+            }
+        }
+        @@media(max-width:1024px){
+            #card-lienhe{
+                width:70%;
+            }
+        }
+        .minhhoa {
+            
+        }
+        @@media(min-width:992px) and (max-width:1023px) {
+            .container-lienhe {
+                margin-top: 10px;
+            }
+        }
+        @@media(max-width:1023px) {
+            .minhhoa{
+                display:none;
+            }
+            #card-lienhe {
+                width: 100%;
+            }
+        }
+        @@media(max-width:991px) {
+            .container-lienhe{
+                margin-top:20px;
+            }
+
+            .footer-1 {
+                padding: 14px !important;
+            }
+        }
+        
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="container-fluid container-lienhe">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 card-mobile">
+                <div class="card" id="card-lienhe">
+
+                </div>
+            </div>
+            <div class="col-xs-0 col-sm-0 col-md-4 minhhoa">
+                <img src="~/Images/CongThongTinViecLam/Contact us-amico 1.png" alt="" class="img-responsive img-contact" width="350px" height="350px" />
+                <div class="icon-circle"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="iframe"></div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Areas/CongThongTinViecLam/Scripts/LienHe.js?v=@DateTime.Now.Ticks.ToString()"></script>
+</asp:Content>

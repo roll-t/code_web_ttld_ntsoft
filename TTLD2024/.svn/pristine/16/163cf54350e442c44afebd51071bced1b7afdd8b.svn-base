@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HỆ THỐNG QUẢN LÝ NGÂN SÁCH DỰ ÁN ĐẦU TƯ</title>
+    <link href="/Content/AdminLTE/fontawesome/css/all.min.css" rel="stylesheet" />
+    <link href="/Content/AdminLTE/toastr/toastr.min.css" rel="stylesheet" />
+    <link href="/Content/AdminLTE/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="/Content/AdminLTE/css/icheck-bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/AdminLTE/css/adminlte.min.css" rel="stylesheet" />
+    <script src="/Content/AdminLTE/jquery/jquery-3.2.1.min.js"></script>
+    <script src="/Scripts/DungChung/NTSPlugin.js"></script>
+    <script src="/Scripts/DungChung/NTSLibrary.js"></script>
+    <link href="/Content/AdminLTE/css/login-custom.css" rel="stylesheet" />
+    <link href="/Content/AdminLTE/css/ionicons.min.css" rel="stylesheet" />
+    <style type="text/css">
+        .mb-3, .my-3 {
+            margin-bottom: 0.5rem !important;
+        }
+
+        @@keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #loginbox {
+            animation: slideIn 0.5s ease-in-out; /* Thay đổi thời gian và hiệu ứng theo ý muốn */
+        }
+        /* Để căn giữa theo chiều ngang */
+        .text-center1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Đảm bảo các phần tử con nằm dọc */
+        }
+
+        /* Để căn giữa theo chiều ngang cho marquee */
+        marquee {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .message-loading-overlay {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background-color: rgba(255, 255, 255, .5);
+            text-align: center;
+            z-index: 9999;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+            .message-loading-overlay > .ace-icon {
+                position: absolute;
+                top: 40%;
+                left: 49%;
+                right: 0;
+                text-align: center;
+            }
+    </style>
+</head>
+
+<body class="hold-transition login-page">
+    <div id="Loadding_" style="display: none">
+        <div class="message-loading-overlay">
+            <img class="ace-icon" src="/Images/loading.gif" width="48" height="48" alt="Vui lòng chờ..." />
+        </div>
+    </div>
+    <!--<input id="gritter-light" checked="" type="checkbox" class="ace ace-switch ace-switch-5" />-->
+    <div class="login-box hidden-element" id="loginbox" style="box-shadow: 0px 4px 5px 5px rgb(74 74 74 / 60%); border-radius: 16px;">
+        <div class="card card-outline card-primary" style=" border-radius: 16px;">
+            <div class="divDatMatKhauThanhCong" style="display: none; padding-top: 10px;">
+                <div class="text-center">
+                    <span><i class="fa fa-check-circle text-success" style="font-size: 100px"></i></span>
+                </div>
+                <div class="card-header text-center">
+                    <p class="login-box-msg">Anh/Chị đã đổi mật khẩu thành công!<br />Hệ thống sẽ tự động chuyển sang trang đăng nhập trong vài giây tới!</p>
+                </div>
+                <div class="social-auth-links text-center mt-2 mb-3">
+                    <div class="row">
+                        <div class="col-12" style="padding: 0 25px">
+                            <button type="button" class="btn btn-block btn-primary" id="btnGuiMa"><i class="fa fa-key"></i> Đăng nhập ngay</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="divDatMatKhau">
+                <div class="card-header text-center">
+                    <h3 class="login-box-msg text-primary">XÁC NHẬN ĐỔI MẬT KHẨU</h3>
+                    <p class="login-box-msg">Nhập mật khẩu mới của Anh/Chị để hoàn tất quá trình đổi mật khẩu!</p>
+                </div>
+                <div class="card-body">
+                    <div class="input-group mb-3">
+                        <input type="password" id="txtPass1" class="form-control" placeholder="Mật khẩu mới">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" id="txtPass2" class="form-control" placeholder="Xác nhận mật khẩu mới">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-auth-links text-center mt-2 mb-3">
+                        <div class="row">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-block btn-success" id="btnDangNhap"><i class="fa fa-check"></i> Xác nhận đổi mật khẩu</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <a id="btnTrangChu" href="#">
+                                    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                                    <span class="bigger-110">Quay lại trang chủ</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="social-login left" style="color: #478FCA !important; padding: 0 15px;">
+                <p style="margin: 0">
+                    <i class="ace-icon fa fa-phone-square"></i>
+                    Điện thoại: (0270) 3 843 058
+                </p>
+                <p style="margin: 0;">
+                    <i class="ace-icon fa fa-envelope"></i>
+                    Email: ntsoft@nhattamsoft.vn
+                </p>
+                <p style="margin: 0;">
+                    <i class="ace-icon fa fa-edge"></i>Website: <a href="https://nhattamsoft.vn" target="_blank">NTSOFT</a>
+                </p>
+            </div>
+            <div class="social-login center" style="color: red; font-style: italic; padding: 0 15px; padding-bottom: 6px;">
+                Hỗ trợ khách hàng: Sáng từ 7h30 đến 11h, chiều từ 13h30 đến 17h00 các ngày trong tuần từ Thứ Hai đến Thứ Bảy
+            </div>
+        </div>
+    </div>
+    <script src="/Content/AdminLTE/js/adminlte.min.js"></script>
+    <script src="/Content/AdminLTE/toastr/toastr.min.js"></script>
+    <script src="/Content/AdminLTE/jquery/jquery.min.js"></script>
+    <script src="/Content/AdminLTE/js/moment.min.js"></script>
+    <script src="/Content/AdminLTE/jquery/jquery-ui.min.js"></script>
+    <script src="/Content/AdminLTE/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        var AuthID = "";
+        $(window).on('load', function () {
+            if (location.href.search('=') != -1) {
+                AuthID = location.href.split('=')[1];
+            }
+        });
+        var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+        function validatePassword(p) {
+            if (p.length < 8) {
+                NTS.canhbao('Mật khẩu phải lớn hơn 8 ký tự');
+                return false;
+            }
+            if (p.search(/[0-9]/) < 0) {
+                NTS.canhbao('Mật khẩu phải chứa ít nhất 1 chữ số');
+                return false;
+            }
+            if (p.search(/[a-z]/) < 0) {
+                NTS.canhbao('Mật khẩu phải chứa ít nhất 1 ký tự chữ thường');
+                return false;
+            }
+            if (p.search(/[A-Z]/) < 0) {
+                NTS.canhbao('Mật khẩu phải chứa ít nhất 1 ký tự chữ hoa');
+                return false;
+            }
+
+            if (p.search(/[!@#\$%\^&\*_]/) < 0) {
+                NTS.canhbao('Mật khẩu phải chứa ít nhất 1 ký tự đặc biệt');
+                return false;
+            }
+            return true;
+        }
+        $(document).on('click', '#btnDangNhap', async function () {
+            if (validatePassword($('#txtPass1').val()) == false) {
+                return false;
+            }
+            if ($('#txtPass1').val().trim() == $('#txtPass2').val().trim()) {
+                var data = JSON.parse((await NTS.getAjaxAsync('/Services/AuthPassword.asmx/resetPassword', { password: $('#txtPass1').value(), authid: AuthID })).d);
+                if (data.split('_')[0] == "1") {
+                    //NTS.thanhcong(data.split('_')[1]);
+                    $('.divDatMatKhauThanhCong').show();
+                    $('.divDatMatKhau').hide();
+                    setTimeout(function () {
+                        window.location = location.origin + '/hethong/login';
+                    }, 8000);
+                }
+                else
+                    if (data.split('_')[0] == "0") {
+                        NTS.canhbao(data.split('_')[1]);
+                    }
+                    else
+                        if (data.split('_')[0] == "-1") {
+                            NTS.canhbao(data.split('_')[1]);
+                        }
+                        else
+                            if (data.split('_')[0] == "-2") {
+                                NTS.dongthongbao();
+                                NTS.canhbao(data.split('_')[1]);
+                                setTimeout(function () {
+                                    window.location = "/ResetPassword/ForgotPassword.html";
+                                }, 3000);
+                            }
+            } else {
+                NTS.canhbao('Mật khẩu mới không trùng khớp với mật khẩu xác nhận! Vui lòng kiểm tra lại!');
+            }
+            return false;
+        });
+    </script>
+</body>
+</html>

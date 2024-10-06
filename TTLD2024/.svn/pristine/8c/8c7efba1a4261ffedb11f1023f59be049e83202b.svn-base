@@ -1,0 +1,8 @@
+﻿<footer class="footer footer-transparent d-print-none" style="margin-left: 190px; position: fixed; bottom: 0; width: calc(100% - 200px);padding:1rem 0rem;background-color:white">
+    <div class="container-xl" style="display: flex; justify-content: space-between;">
+        <strong>&copy; 2023 <a href="https://nhattamsoft.vn">Bản quyền thuộc về Công ty TNHH Phát triển phần mềm Nhất Tâm - NTSoft</a></strong>
+        <div class="float-right d-none d-sm-inline" style="margin-right:18px">
+            Phần mềm của nhà quản lý
+        </div>
+    </div>
+</footer>

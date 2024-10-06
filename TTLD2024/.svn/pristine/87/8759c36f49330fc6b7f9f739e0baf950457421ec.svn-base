@@ -1,0 +1,1 @@
+var MISA=MISA||{};MISA.ExceptionManager={handledException:function(ex){console.log(ex);},handledServiceResult:function(result){console.log(result.ErrorCode||result.ErrorMessage);}}

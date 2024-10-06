@@ -1,0 +1,60 @@
+﻿@using System.Data;
+@{
+    DataTable dataTable = new TTLD2024.Controllers.LeftBarController().LoadMainMenu_CTT_UngVien();
+    string absolutePath = Request.Url.AbsolutePath.ToString();
+}
+
+<style>
+    .no-skin .sidebar {
+        background: #fff;
+    }
+
+    .nav-leftbar {
+        margin: 10px !important;
+        display: flex;
+        gap: 5px;
+        flex-direction: column;
+    }
+
+        .nav-leftbar .nav-item {
+            list-style: none;
+            width: 100%;
+        }
+
+        .nav-leftbar .nav-link {
+            font-size: 15px;
+            text-decoration: none;
+            color: #333;
+            background: #fff;
+            display: inline-flex;
+            gap: 0 7px;
+            align-items: center;
+            width: 100%;
+            padding: 7px 10px;
+            border-radius: 6px;
+        }
+
+            .nav-leftbar .nav-link:hover {
+                background: #d3e6f6;
+            }
+
+        .nav-leftbar .nav-item.active .nav-link {
+            background: #bcf1ed;
+            color: #000;
+        }
+</style>
+<div id="sidebar-custom" class="sidebar responsive ace-save-state" style="position: absolute; z-index: 1000; height: calc(100vh - 60px);" data-sidebar="true" data-sidebar-scroll="true" data-sidebar-hover="true">
+    <ul class="nav-leftbar">
+        @foreach (DataRow item in dataTable.Rows)
+        {
+            <li class="nav-item @(item["DuongDan"].ToString() == absolutePath ? "active" : new TTLD2024.Controllers.LeftBarController().CheckOpen(absolutePath, item["MenuCTTID"].ToString()).ToString())">
+                <a class="nav-link @(item["DuongDan"].ToString() == "" ? "dropdown-toggle" : "")" href="@item["DuongDan"].ToString()"
+                   @(item["MenuButton"].ToString() == "True" ? "onclick=\"OnClickMenu('" + item["DuongDan"].ToString() + "')\"" : "")>
+                    <i class='menu-icon @item["Icon"].ToString()' style=""></i>
+                    <span class="menu-text">@item["TenMenuCTT"].ToString()</span>                    
+                </a>
+                
+            </li>
+        }
+    </ul>
+</div>

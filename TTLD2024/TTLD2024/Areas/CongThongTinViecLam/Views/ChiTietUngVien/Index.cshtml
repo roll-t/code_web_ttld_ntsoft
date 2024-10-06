@@ -1,0 +1,1307 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/CongThongtinViecLam.cshtml";
+}
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .box-white {
+            background: white;
+            width: 100px;
+            height: 50px;
+            object-fit: cover;
+            padding: 2px;
+            border-radius: 10px;
+        }
+
+        .list-group-vieclam-new h2 {
+            font-weight: bolder;
+            color: black;
+        }
+
+        .list-group-vieclam-new p {
+            font-size: 10px;
+            color: #999;
+            margin: 3px 0;
+        }
+
+        .card-title {
+            background: #FFF;
+            color: #000000;
+            border-radius: 8px 8px 0 0;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .card li:hover {
+            background: #EEEEEE;
+        }
+
+        .badge_mucluong {
+            color: #ff6a00;
+            padding: 2px 6px;
+            font-size: 10px;
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+            border: solid 1px #D9D9D9;
+            font-weight: 600;
+        }
+
+        .badge_thoigian {
+            color: #3E9EF7;
+            padding: 2px 6px;
+            font-size: 10px;
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+            border: solid 1px #D9D9D9;
+            font-weight: 600;
+        }
+
+        .list-group-vieclam-new h2 {
+            font-weight: bolder;
+            color: black;
+            font-size: 1rem;
+        }
+    </style>
+    <style>
+                #cvContent.cv1 {
+                    background: #fff;
+                    width: 100%;
+                    margin-bottom: 20px;
+                }
+
+                    #cvContent.cv1 .fa, #cvContent.cv1 .fab, #cvContent.cv1 .fad, #cvContent.cv1 .fal, #cvContent.cv1 .far, #cvContent.cv1 .fas {
+                        font-family: "Font Awesome 5 Pro" !important;
+                    }
+
+                    #cvContent.cv1 section {
+                        padding: 5px 15px;
+                    }
+
+                        #cvContent.cv1 section.divInfo {
+                            display: -webkit-box;
+                            display: -ms-flexbox;
+                            display: flex;
+                            -webkit-box-orient: horizontal;
+                            -webkit-box-direction: normal;
+                            -ms-flex-direction: row;
+                            flex-direction: row;
+                            position: relative;
+                            overflow: hidden;
+                            line-height: 25px;
+                            padding-top: 15px;
+                        }
+
+                    #cvContent.cv1 .divInfo > .divPicture {
+                        position: relative;
+                        z-index: 9;
+                        width: 100%;
+                    }
+
+                    #cvContent.cv1 .dlTable {
+                        display: table;
+                    }
+
+                    #cvContent.cv1 .infoPicture {
+                        display: table-cell;
+                        width: 145px;
+                        position: relative;
+                        margin-top: 5px;
+                        margin-right: 10px;
+                    }
+
+                        #cvContent.cv1 .infoPicture > div {
+                            background-color: #fff;
+                            float: left;
+                            width: 145px;
+                            height: 145px;
+                            display: -webkit-box;
+                            display: -ms-flexbox;
+                            display: flex;
+                            -webkit-box-align: center;
+                            -ms-flex-align: center;
+                            align-items: center;
+                            -webkit-box-pack: center;
+                            -ms-flex-pack: center;
+                            justify-content: center;
+                            border: 3px solid #fff;
+                            border-radius: 50%;
+                            overflow: hidden;
+                            cursor: pointer;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            background-size: cover;
+                        }
+
+                    #cvContent.cv1 .divInfoHalf {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 90px;
+                        width: 100%;
+                        background-color: var(--cvtheme-color);
+                        z-index: 1;
+                    }
+
+                    #cvContent.cv1 .infoBasic {
+                        width: 100%;
+                        display: table-cell;
+                        vertical-align: top;
+                        padding-left: 13px;
+                    }
+
+                        #cvContent.cv1 .infoBasic .divTen {
+                            font-size: 22px;
+                            font-weight: 500;
+                            text-transform: capitalize;
+                            color: #fff;
+                            padding-top: 13px;
+                        }
+
+                        #cvContent.cv1 .infoBasic .cvTitle {
+                            font-size: 17px;
+                            font-weight: 300;
+                            color: #f5f5f5;
+                            margin: auto;
+                            padding: 0 0 5px 0;
+                            text-transform: capitalize;
+                        }
+
+                        #cvContent.cv1 .infoBasic i {
+                            width: 24px;
+                            height: 24px;
+                            margin-right: 0;
+                            display: inline-block;
+                            color: var(--cvtheme-color);
+                            /*text-align: center;*/
+                            padding-left: 1px;
+                            border-radius: 50%;
+                            line-height: 26px;
+                            font-size: 14px;
+                        }
+
+                        #cvContent.cv1 .infoBasic p {
+                            margin-bottom: 0;
+                        }
+
+                        #cvContent.cv1 .infoBasic .badge-info {
+                            background: var(--cvtheme-color);
+                        }
+
+                    #cvContent.cv1 section .title-section {
+                        margin-top: 0;
+                        position: relative;
+                        font-weight: 600;
+                        -webkit-font-smoothing: antialiased;
+                        margin-bottom: 10px;
+                    }
+
+                    #cvContent.cv1 section i.fas.fa-check-circle {
+                        color: var(--cvtheme-color) !important;
+                        width: 15px;
+                        height: 14px;
+                        border-radius: 50%;
+                        position: relative;
+                        text-align: center;
+                        line-height: 16px;
+                        top: -1px;
+                    }
+
+                    #cvContent.cv1 section .title-section span {
+                        background: #fff;
+                        padding-right: 10px;
+                        z-index: 2;
+                        position: relative;
+                        font-size: 17px;
+                        display: inline-block;
+                    }
+
+                    #cvContent.cv1 section .title-section i {
+                        width: 34px;
+                        height: 34px;
+                        background: var(--cvtheme-color);
+                        color: #fff;
+                        display: inline-block;
+                        line-height: 34px;
+                        text-align: center;
+                        border-radius: 50%;
+                        margin-right: 10px;
+                        padding-left: 1px;
+                        font-size: 16px;
+                    }
+
+                    #cvContent.cv1 section b {
+                        font-weight: 600;
+                        -webkit-font-smoothing: antialiased;
+                    }
+
+                    #cvContent.cv1 section .title-section:before {
+                        content: "";
+                        position: absolute;
+                        top: 17px;
+                        left: 0;
+                        height: 4px;
+                        background-color: #f1f1f1;
+                        width: 100%;
+                    }
+
+                    #cvContent.cv1 section .skill {
+                        clear: both;
+                        margin-bottom: 10px;
+                        position: relative;
+                    }
+
+                        #cvContent.cv1 section .skill span {
+                            background: #fff;
+                            padding-right: 10px;
+                            display: inline-block;
+                            position: relative;
+                        }
+
+                        #cvContent.cv1 section .skill div {
+                            background: #fff;
+                            padding-left: 10px;
+                            display: inline-block;
+                            position: relative;
+                        }
+
+                        #cvContent.cv1 section .skill:before {
+                            content: "";
+                            height: 1px;
+                            left: 0;
+                            position: absolute;
+                            top: 12px;
+                            width: 100%;
+                            border-top: 1px dashed #b8b8b8;
+                        }
+
+                    #cvContent.cv1 .rating {
+                        display: inline-block;
+                        float: right;
+                    }
+
+                        #cvContent.cv1 .rating > span {
+                            display: inline-block;
+                            position: relative;
+                            font-size: 13px;
+                            width: 18px;
+                            cursor: pointer;
+                        }
+
+                            #cvContent.cv1 .rating > span.fas {
+                                color: #f79834;
+                            }
+
+                    #cvContent.cv1 table.table-noBorder td,
+                    #cvContent.cv1 table.table-noBorder th {
+                        border: 0 !important;
+                    }
+
+                table.table-center td,
+                table.table-center th {
+                    text-align: center;
+                    vertical-align: middle !important;
+                }
+
+                #cvContent.cv1 section .timeline {
+                    border-left: 3px solid #f1f1f1;
+                    padding-left: 14px;
+                    position: relative;
+                    margin-left: 15px;
+                    padding-top: 20px;
+                }
+
+                    #cvContent.cv1 section .timeline .item {
+                        display: table;
+                        width: 100%;
+                    }
+
+                        #cvContent.cv1 section .timeline .item .itemTime {
+                            color: var(--cvtheme-color);
+                            /*line-height: 18px;*/
+                            position: relative;
+                            top: 0;
+                            width: 13%;
+                            display: table-cell;
+                        }
+
+                            #cvContent.cv1 section .timeline .item .itemTime:before {
+                                content: "";
+                                position: absolute;
+                                top: 8px;
+                                left: -21px;
+                                background-color: var(--cvtheme-color);
+                                width: 10px;
+                                height: 10px;
+                                border-radius: 50%;
+                            }
+
+                        #cvContent.cv1 section .timeline .item .itemInfo {
+                            width: 87%;
+                            padding-left: 10px;
+                            line-height: 7mm;
+                            display: table-cell;
+                            position: relative;
+                            top: 0;
+                            overflow: hidden;
+                        }
+
+                        #cvContent.cv1 section .timeline .item .itemInfo2 {
+                            line-height: 18px;
+                            position: relative;
+                            top: 0;
+                            width: 100%;
+                            display: table-cell;
+                        }
+
+                            #cvContent.cv1 section .timeline .item .itemInfo2:before {
+                                content: "";
+                                position: absolute;
+                                top: 4px;
+                                left: -21px;
+                                background-color: var(--cvtheme-color);
+                                width: 10px;
+                                height: 10px;
+                                border-radius: 50%;
+                            }
+
+                        #cvContent.cv1 section .timeline .item .itemInfo p {
+                            margin-bottom: 0;
+                            -webkit-font-smoothing: antialiased;
+                        }
+
+                #cvContent.cv1 section p {
+                    margin-bottom: 0.5rem;
+                }
+
+                /*#cvContent.cv1 .divProfile .infoHoSo .badge {
+            background: transparent;
+            color: var(--cvtheme-color);
+            font-size: 14px;
+            font-weight: 400;
+            display: inline;
+            padding: 0;
+            border-radius: 0;
+        }*/
+                .infoHoSo span.badge {
+                    margin: 0 1px;
+                }
+                /*#cvContent.cv1 .divProfile .infoHoSo .badge:not(:last-child):after {
+            content: ",";
+            margin-right: 3px;
+        }*/
+
+                #cvContent.cv1 section p.subtitle ~ p.subtitle {
+                    margin-top: 20px;
+                }
+
+                #cvContent.cv1 section .cv-image {
+                    position: relative;
+                    width: 100%;
+                    background-position: center;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    border: 4px solid #E9E9ED;
+                }
+
+                    #cvContent.cv1 section .cv-image:before {
+                        content: "";
+                        display: block;
+                        padding-top: 100%;
+                    }
+
+                .size-095rem {
+                    font-size: .95rem !important;
+                }
+
+                p.subtitle {
+                    font-size: .95rem !important;
+                }
+
+                .fw-500 {
+                    font-weight: 600 !important;
+                }
+
+                img#vanban-empty {
+                    width: 250px;
+                }
+    </style>
+    <style>
+        .icon-action i {
+            cursor: pointer;
+        }
+
+        #list-file {
+            margin-top: 10px;
+            width: 100%;
+            max-height: 300px;
+            overflow: auto;
+            display: flex;
+            flex-direction: column-reverse;
+            float: none;
+        }
+
+            #list-file::-webkit-scrollbar {
+                width: 10px; /* Độ rộng của thanh cuộn */
+            }
+
+            #list-file::-webkit-scrollbar-track {
+                background: #f1f1f1; /* Màu nền của vùng chứa thanh cuộn */
+                border-radius: 8px;
+            }
+
+            #list-file::-webkit-scrollbar-thumb {
+                background: #D9D9D9; /* Màu nền của thanh cuộn */
+                border-radius: 8px;
+            }
+
+                #list-file::-webkit-scrollbar-thumb:hover {
+                    background: rgba(0,0,0,0.3); /* Màu nền của thanh cuộn khi hover */
+                    cursor: pointer;
+                }
+
+        .list-file_revert #list-file {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        .title_company-name {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 1;
+        }
+
+        .box-file-attached {
+            padding: 10px 5px;
+            border: 2px #a7a7a7;
+            border-style: dashed;
+            border-radius: 6px;
+        }
+
+        .align-center {
+            align-items: center;
+        }
+
+        .space-between {
+            justify-content: space-between;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .mt-10 {
+            margin-top: 10px;
+        }
+    </style>
+    <style>
+        #cvContent.cv1 .infoBasic .divTen {
+            font-size: 22px !important;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #fff;
+            padding-top: 13px;
+        }
+       /* #cvContent.cv1 .infoBasic .cvTitle {
+            font-size: 17px !important;
+        }*/
+        .info-ungvien-vieclam {
+            margin-top: 20px !important;
+        }
+       /* .info-ungvien-vieclam > div > p{
+            font-size:15px !important;
+        }*/
+        .breadcrumb-container {
+            margin-top: 10px;
+        }
+        .box-thongtincongty-3 {
+            padding: 0;
+            box-shadow: 0 1px 0.235rem rgba(0, 0, 0, 0.3);
+        }
+
+        .box-thongtincongty-3-header {
+            border-bottom: 1px solid #dcdcdc;
+        }
+
+        .box-thongtincongty-3-header-text {
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 15px 0;
+        }
+        .box-thongtincongty-3-header {
+            border-bottom: 1px solid #dcdcdc;
+        }
+
+        .box-thongtincongty-3-header-text {
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 15px 0;
+        }
+        .section-noidung-thongtincongty {
+            margin: auto;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .box-thongtincongty-3-header-text {
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 15px 0;
+        }
+        .goiycty-tenvitri-name {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 2px 0;
+            width: 100%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+        }
+
+        .goiycty-tenvitri-tencty {
+            font-size: 13px;
+            font-weight: 600;
+            color: #999;
+            margin: 2.5px 0;
+            width: 100%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+        }
+        .goiycty-diachi-mucluong {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #000000;
+        }
+
+        .goiycty-tenvitri-tencty:hover {
+            color: var(--primary-color);
+        }
+
+        .goiycty-diachi-mucluong-mucluong,
+        .goiycty-diachi-mucluong-diadiemlv {
+            width: 50%;
+        }
+
+        li.container-thongtincongty-list {
+            padding: 3px 5px;
+            border-bottom: 1px solid #dcdcdc;
+        }
+
+        span.goiycty-diachi-mucluong-diadiemlv-name,
+        span.goiycty-diachi-mucluong-mucluong-name {
+            width: 100%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+        }
+        .employ-avatar {
+            width: 66px;
+            height: 66px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .employ-box-avatar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @@media(min-width:992px) and (max-width:1200px) {
+            .box-thongtincongty-3-header-text {
+                font-size: 15px;
+                padding: 12px 0;
+            }
+
+            .contact-desc {
+                font-size: 12px;
+            }
+
+            .box-thongtincongty-3-header-text {
+                font-size: 12px;
+                padding: 12px 0;
+            }
+            .box-thongtincongty-3-header-text {
+                font-size: 15px;
+                padding: 12px 0;
+            }
+
+            .contact-desc {
+                font-size: 12px;
+            }
+
+            .box-thongtincongty-3-header-text {
+                font-size: 12px;
+                padding: 12px 0;
+            }
+            .box-thongtincongty-3-header-text {
+                font-size: 15px;
+                padding: 12px 0;
+            }
+
+            .contact-desc {
+                font-size: 12px;
+            }
+
+            .box-thongtincongty-3-header-text {
+                font-size: 12px;
+                padding: 12px 0;
+            }
+            .goiycty-tenvitri-name {
+                font-size: 11px;
+            }
+
+            .goiycty-tenvitri-tencty {
+                font-size: 13px;
+            }
+            .goiycty-diachi-mucluong-diadiemlv-name {
+                font-size: 11px;
+            }
+        }
+        @@media(min-width:786px) and (max-width:991px) {
+            .box-thongtincongty-3-header-text {
+                font-size: 12px;
+                padding: 10px 0;
+            }
+
+            .contact-desc {
+                font-size: 10px;
+            }
+
+            .box-thongtincongty-3-header-text {
+                font-size: 10px;
+                padding: 10px 0;
+            }
+            .box-thongtincongty-3-header-text {
+                font-size: 12px;
+                padding: 10px 0;
+            }
+
+            .contact-desc {
+                font-size: 10px;
+            }
+
+            .box-thongtincongty-3-header-text {
+                font-size: 10px;
+                padding: 10px 0;
+            }
+            .box-thongtincongty-3-header-text {
+                font-size: 12px;
+                padding: 10px 0;
+            }
+
+            .contact-desc {
+                font-size: 10px;
+            }
+
+            .box-thongtincongty-3-header-text {
+                font-size: 10px;
+                padding: 10px 0;
+            }
+            .goiycty-tenvitri-name {
+                font-size: 10px;
+            }
+
+            .goiycty-tenvitri-tencty {
+                font-size: 10px;
+            }
+            .goiycty-diachi-mucluong-diadiemlv-name {
+                font-size: 9px;
+            }
+        }
+        @@media(min-width:448px) and (max-width:785px) {
+            .box-thongtincongty-3-header-text {
+                font-size: 12px;
+                padding: 10px 0;
+            }
+
+            .contact-desc {
+                font-size: 10px;
+            }
+
+            .box-thongtincongty-3-header-text {
+                font-size: 10px;
+                padding: 10px 0;
+            }
+            .box-thongtincongty-3-header-text {
+                font-size: 12px;
+                padding: 10px 0;
+            }
+
+            .contact-desc {
+                font-size: 10px;
+            }
+
+            .box-thongtincongty-3-header-text {
+                font-size: 10px;
+                padding: 10px 0;
+            }
+            .box-thongtincongty-3-header-text {
+                font-size: 12px;
+                padding: 10px 0;
+            }
+
+            .contact-desc {
+                font-size: 10px;
+            }
+
+            .box-thongtincongty-3-header-text {
+                font-size: 10px;
+                padding: 10px 0;
+            }
+            .goiycty-tenvitri-name {
+                font-size: 10px;
+            }
+
+            .goiycty-tenvitri-tencty {
+                font-size: 10px;
+            }
+            .goiycty-diachi-mucluong-diadiemlv-name {
+                font-size: 9px;
+            }
+        }
+        @@media(min-width:448px) and (max-width:687px) {
+            .box-thongtincongty-3-header-text {
+                font-size: 12px;
+                padding: 10px 0;
+            }
+
+            .contact-desc {
+                font-size: 10px;
+            }
+
+            .box-thongtincongty-3-header-text {
+                font-size: 10px;
+                padding: 10px 0;
+            }
+            .box-thongtincongty-3-header-text {
+                font-size: 12px;
+                padding: 10px 0;
+            }
+
+            .contact-desc {
+                font-size: 10px;
+            }
+
+            .box-thongtincongty-3-header-text {
+                font-size: 10px;
+                padding: 10px 0;
+            }
+            .box-thongtincongty-3-header-text {
+                font-size: 12px;
+                padding: 10px 0;
+            }
+
+            .contact-desc {
+                font-size: 10px;
+            }
+
+            .box-thongtincongty-3-header-text {
+                font-size: 10px;
+                padding: 10px 0;
+            }
+            .goiycty-tenvitri-name {
+                font-size: 10px;
+            }
+
+            .goiycty-tenvitri-tencty {
+                font-size: 10px;
+            }
+            .goiycty-diachi-mucluong-diadiemlv-name {
+                font-size: 9px;
+            }
+
+        }
+        @@media(max-width:447px) {
+            .box-thongtincongty-3-header-text {
+                font-size: 12px;
+                padding: 10px 0;
+            }
+
+            .contact-desc {
+                font-size: 10px;
+            }
+
+            .box-thongtincongty-3-header-text {
+                font-size: 10px;
+                padding: 10px 0;
+            }
+            .box-thongtincongty-3-header-text {
+                font-size: 12px;
+                padding: 10px 0;
+            }
+
+            .contact-desc {
+                font-size: 10px;
+            }
+
+            .box-thongtincongty-3-header-text {
+                font-size: 10px;
+                padding: 10px 0;
+            }
+            .box-thongtincongty-3-header-text {
+                font-size: 12px;
+                padding: 10px 0;
+            }
+
+            .contact-desc {
+                font-size: 10px;
+            }
+
+            .box-thongtincongty-3-header-text {
+                font-size: 10px;
+                padding: 10px 0;
+            }
+            .goiycty-tenvitri-name {
+                font-size: 10px;
+            }
+
+            .goiycty-tenvitri-tencty {
+                font-size: 10px;
+            }
+            .goiycty-diachi-mucluong-diadiemlv-name {
+                font-size: 9px;
+            }
+
+        }
+        .goiycty-diachi-mucluong-diadiemlv,
+        .goiycty-diachi-mucluong-mucluong {
+            font-size: 11px;
+        }
+        span.goiycty-diachi-mucluong-diadiemlv-name, span.goiycty-diachi-mucluong-mucluong-name {
+            width: 95%;
+        }
+        .badge {
+            border-radius: 4px;
+        }
+        li.list-group-item.list-group-vieclam-new {
+            border: 1px solid #f7f7f7;
+            padding: 6px;
+        }
+        .box-white {
+            width: 40px;
+            height: 40px;
+        }
+        .card-title {
+            /* margin: 17px !important; */
+            padding: 18px 0 10px 0;
+            margin-left: 10px;
+            position: relative;
+            padding-left: 0 !important;
+        }
+            .card-title::after {
+                position: absolute;
+                content: "";
+                left: 0;
+                width: 100%;
+                height: 2.5px;
+                background: var(--primary-color);
+                bottom: -1.25px;
+                max-width: 25%;
+            }
+        li.list-group-item.list-group-vieclam-new {
+            margin: 12px 0;
+            border: 1px solid #f7f7f7;
+            padding: 10px 6px;
+            box-shadow: 0 0.1px 0.1rem rgba(0,0,0,0.1);
+        }
+        .text-overflow-line2 {
+            color: #000000 !important;
+            font-size: 12px !important;
+            font-weight: 600;
+        }
+        .text-overflow-line2 {
+            -webkit-line-clamp: 1;
+        }
+        .list-group-item list-group-vieclam-new .img-congty .col-md-3 {
+            width: 20% !important;
+        }
+        .box-white {
+            margin-left: 8px;
+        }
+        span.badge.badge-pill.badge-light.badge_thoigian {
+            margin-right: 4px;
+        }
+        .container {
+            height: auto !important;
+            margin-top: 10px;
+        }
+        @@media(min-width:992px) and (max-width:1200px) {
+            .breadcrumb-container {
+                margin-top: 22px;
+                padding-left: 10px;
+            }
+            .container-content {
+                height: auto !important;
+                padding: 20px;
+            }
+            .footer-1 {
+                padding: 22px !important;
+            }
+            .badge_thoigian,
+            .badge_mucluong {
+                font-size: 8px;
+            }
+            .badge, .label {
+                font-size: 10px;
+            }
+            #logo-ctt-header {
+                margin-top: 12px !important;
+                border-radius: 5px;
+            }
+          
+        }
+        @@media(min-width:786px) and (max-width:991px) {
+            .breadcrumb-container {
+                margin-top: 27px;
+                padding-left: 14px;
+            }
+            .footer-1 {
+                padding: 22px !important;
+            }
+            .badge_thoigian,
+            .badge_mucluong {
+                font-size: 7px;
+            }
+            .badge, .label {
+                font-size: 10px;
+            }
+            .badge_mucluong {
+                width: 75px;
+            }
+            .container {
+                margin-top: 0px;
+            }
+            .box-white {
+                margin-left: 4px;
+            }
+            .badge_mucluong {
+                width: 56px;
+            }
+            .container-content {
+                margin: 0px;
+            }
+            #logo-ctt-header {
+                margin-top: 12px !important;
+                border-radius: 5px;
+            }
+        }
+        @@media(min-width:448px) and (max-width:785px) {
+            .breadcrumb-container {
+                margin-top: 34px;
+                padding-left: 15px;
+            }
+            .footer-1 {
+                padding: 22px !important;
+            }
+            .badge, .label {
+                font-size: 10px;
+            }
+            .badge_thoigian,
+            .badge_mucluong {
+                font-size: 8px;
+            }
+            .container-content {
+                 margin: 0px; 
+            }
+            #logo-ctt-header {
+                margin-top: 12px !important;
+                border-radius: 5px;
+            }
+            .box-white {
+                margin-left: 26px;
+            }
+        }
+        @@media(max-width:447px) {
+            .breadcrumb-container {
+                margin-top: 34px;
+                padding-left: 15px;
+            }
+
+            .badge_thoigian,
+            .badge_mucluong {
+                font-size: 8px;
+            }
+
+            .footer-1 {
+                padding: 22px !important;
+            }
+
+            .container-content {
+                margin: 0px;
+            }
+
+            .box-white {
+                margin-left: 26px;
+            }
+            #cvContent.cv1 .infoBasic .divTen {
+                font-size: 18px !important;
+            }
+            .main-content {
+                font-size: 13px;
+            }
+            #cvContent.cv1 .infoPicture > div {
+                background-color: #fff;
+                float: left;
+                width: 100px;
+                height: 100px;
+            }
+            .container-content {
+                 padding: 0px; 
+            }
+            .text-overflow-line1 {
+                padding: 2px 0;
+            }
+        }
+        .breadcrumb-chitietungvien {
+            margin-top: 6px;
+        }
+        .icon-like {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            z-index: 999;
+            color: white;
+            margin-top: 4%;
+            margin-right: 3%;
+        }
+        .itemTime .container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .itemTime p {
+            margin: 0;
+            flex-shrink: 0;
+            margin-right: 5px;
+        }
+
+        .itemTime .line {
+            flex-grow: 1;
+            border-bottom: 1px dashed #000;
+            height: 1px;
+        }
+        .rating {
+            display: flex;
+            margin-left: 10px;
+
+        }
+        .fa-star {
+            font-size: 18px;
+        }
+        .fa-solid.fa-star{
+            color: #ffc300;
+        }
+
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="breadcrumb-container">
+        <div class="container">
+            <nav class="breadcrumb is-small breadcrumb-chitietungvien" aria-label="breadcrumbs">
+                <ul>
+                    <li><a href="/trang-chu.html">Trang chủ</a></li>
+                    <li><a href="/tra-cuu-ung-vien.html" aria-current="page">Tra cứu ứng viên</a></li>
+                    <li class="is-active"><a href="#" id="tieudetrang" aria-current="page"></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="container" style="">
+        <div class="row container-content" style="height: auto !important;">
+            <div class="col-sm-9" style="height: auto !important;">
+                <div id="cvContent" class="cv1" style="--cvtheme-color: var(--primary-color)">
+                    <section class="divInfo">
+                        <div class="divPicture">
+                            <div class="dlTable">
+                                <div class="infoPicture">
+                                    <div class="pictureBackground" title="" data-fancybox="avatar" id="AnhUngVien"></div>
+                                </div>
+                                <div class="infoBasic">
+                                    <div class="divTen" id="TenNhanVien">
+                                    </div>
+                                    <div class="cvTitle" id="CongViecMongMuon">
+                                    </div>
+                                    <div class="row mt-2 info-ungvien-vieclam">
+                                        <div class="col-sm-4 mb-1">
+                                            <p class="mb-0" id="NgaySinh">
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-4 mb-1">
+                                            <p class="mb-0" id="GioiTinh">
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-4 mb-1">
+                                            <p class="mb-0" id="TinhTrangHonNhan">
+                                            </p>
+                                        </div>
+
+                                        <div class="col-sm-4 mb-1">
+                                            <p class="mb-0" id="SoDienThoai">
+                                                <i class="fa-solid fa-phone"></i>
+                                                <a class="badge badge-info alert-xs xuatfilepdf viewInfo phoneNum" type="button" data-filename="Nguyễn Trí Khải" data-iduv="113060" onclick="LoadSDTUngVien()">
+                                                    Click để xem SDT
+                                                </a>
+                                            </p>
+                                        </div>
+
+                                        <div class="col-sm-8 mb-1">
+                                            <p class="mb-0" id="Email">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <p class="mb-0" id="DiaChi">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divInfoHalf">
+                        </div>
+                    </section>
+                    <section class="divProfile size-095rem">
+                        <div class="title-section">
+                            <span>
+                                <i class="fa-solid fa-pencil"></i>Thông tin hồ sơ
+                            </span>
+                        </div>
+                        <div class="row infoHoSo">
+                            <div class="col-sm-7">
+                                <p id="MucLuongMongMuon">
+                                </p>
+                                <p id="SoNamKinhNghiem">
+                                </p>
+                                <p id="TenNganhNghe">
+                                </p>
+                            </div>
+                            <div class="col-sm-5">
+                                <p id="CapBac">
+                                </p>
+                                <p id="HinhThucLamViec">
+                                </p>
+                                <p id="NgayCapNhat">
+                                </p>
+                                <p id="DiaDiemLamViec">
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="divIntro size-095rem">
+                        <div class="title-section">
+                            <span>
+                                <i class="fa-solid fa-trophy"></i>Giới thiệu chung
+                            </span>
+                        </div>
+                        <p class="subtitle"><i class="fa-regular fa-circle-check"></i> Giới thiệu bản thân</p>
+                        <p class="desc-padding" id="GioiThieuBanThan"></p>
+                        <p class="subtitle"><i class="fa-regular fa-circle-check"></i> Mục tiêu nghề nghiệp</p>
+                        <p class="childtitle" id="MucTieuNgheNghiep"></p>
+                    </section>
+
+                    <section class="divTimeLine size-095rem" id="ListHocVan">
+                        <div class="title-section mb-0">
+                            <span>
+                                <i class="fa-solid fa-graduation-cap"></i>Học vấn / bằng cấp
+                            </span>
+                        </div>
+
+
+                    </section>
+                    <section class="divTimeLine size-095rem" id="ListKinhNghiem">
+                        <div class="title-section mb-0">
+                            <span>
+                                <i class="fa-solid fa-briefcase"></i>Kinh nghiệm làm việc
+                            </span>
+                        </div>
+
+                    </section>
+                    <section class="divTimeLine size-095rem" id="ListKyNang">
+                        <div class="title-section mb-0">
+                            <span>
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>Kỹ năng
+                            </span>
+                        </div>
+
+                    </section>
+                    <section class="divTimeLine size-095rem" id="ListTinHoc">
+                        <div class="title-section mb-0">
+                            <span>
+                                <i class="fa-solid fa-desktop"></i>Trình độ tin học
+                            </span>
+                        </div>
+
+                    </section>
+                    <section class="divTimeLine size-095rem" id="ListNgoaiNgu">
+                        <div class="title-section mb-0">
+                            <span>
+                                <i class="fa-solid fa-book"></i>Trình độ ngoại ngữ
+                            </span>
+                        </div>                                
+                    </section>
+                    <section class="divTimeLine size-095rem" id="ListNguoiThamKhao">
+                        <div class="title-section mb-0">
+                            <span>
+                                <i class="fa-solid fa-user"></i>Người tham khảo
+                            </span>
+                        </div>                                
+                    </section>
+                    <section class="divIntro size-095rem" id="ListHoSo">
+                        <div class="title-section mb-0">
+                            <span>
+                                <i class="fa-solid fa-paperclip"></i>Hồ sơ kèm theo
+                            </span>
+                            <div class="col-md-12" id="list-file">
+
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="col-sm-3 pl-0">
+            <div class="card">
+                <div class="card-title">
+                    HỒ SƠ LIÊN QUAN
+                </div>
+                <ul class="list-group list-group-flush" id="list-tintuyendunglienquan">
+                    @*<li class="list-group-item list-group-vieclam-new">
+                        <a href="/xem-chi-tiet-viec-lam.html?p=${encodedURL}">
+                            <div class="row">
+                                <div class="col-md-2 col-sm-3 col-xs-2">
+                                    <img src="~/Images/CongThongTinViecLam/daxacthuc.png" alt="" class="img-img-responsive box-white" />
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-10" style=" padding-left: 0;">
+                                    <h2 class="text-overflow-line1">${checkNullString(data.ViTriTuyenDung)}</h2>
+                                    <p class="text-overflow-line1">${checkNullString(data.DiaDiemLamViec)}</p>
+                                    <p class="text-overflow-line1 text-overflow-line2 textdiachi_goiy"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>&ensp;An Giang</p>
+                                    <p class="text-overflow-line1 text-overflow-line2 textmucluong_goiy"><i class="fa-solid fa-dollar-sign"></i>&ensp;25 - 50 triệu</p>
+                                    <p class="text-overflow-line1 text-overflow-line2 textkinhnghiem_goiy"><i class="fa-solid fa-briefcase"></i>&ensp;1 năm</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>*@
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-title p-4">
+                    VIỆC LÀM LƯƠNG CAO
+                </div>
+                <ul class="list-group list-group-flush" id="listViecLamLuongCao">
+                </ul>
+            </div>
+        </div>
+        </div>
+    </div>
+    <script src="~/Areas/CongThongTinViecLam/Scripts/ChiTietUngVien.js?v=@DateTime.Now.Ticks.ToString()"></script>
+</asp:Content>
+
+

@@ -1,0 +1,163 @@
+.tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-col-title {
+    white-space: normal !important;
+    text-overflow: clip !important;
+}
+
+.tabulator {
+    position: relative;
+    border: 1px solid #DBDBE1 !important;
+    background-color: #ffffff !important;
+    /*font-size: 12px !important;*/
+    text-align: left;
+    overflow: hidden;
+}
+
+.tabulator-row {
+    position: relative;
+    box-sizing: border-box;
+    border-bottom: 1px solid #DBDBE1 !important;
+    background-color: #fff;
+    min-height:35px;
+}
+
+   
+
+    .tabulator-row.tabulator-row-even {
+        background-color: transparent !important;
+        color: #333;
+    }
+
+.tabulator .tabulator-header {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    border-bottom: 1px solid #dbdbe1 !important;
+    background-color: #f3f4f5 !important;
+    color: #000000 !important;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+    .tabulator .tabulator-header .tabulator-col {
+        display: inline-block;
+        position: relative;
+        box-sizing: border-box;
+        border-right: 1px solid #dbdbe1 !important;
+        background: #F3F4F5 !important;
+        text-align: left;
+        vertical-align: bottom;
+        overflow: hidden;
+    }
+
+.tabulator .tabulator-footer {
+    padding: 5px 10px;
+    border-top: 1px solid #dbdbe1 !important;
+    background-color: #F3F4F5 !important;
+    text-align: right;
+    color: #555;
+    font-weight: 700;
+    white-space: nowrap;
+    -ms-user-select: none;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+.tabulator-row.tabulator-selected {
+    background-color: #0092DD !important;
+    color: #fff !important;
+}
+
+.tabulator-row.tabulator-selectable:hover {
+    background-color: #0092DD !important;
+    color: black !important;
+    cursor: pointer;
+}
+/*.tabulator-row.tabulator-selected:hover {
+    background-color: #0092dd !important;
+    cursor: pointer;
+}*/
+
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable[aria-sort=none] .tabulator-col-content .tabulator-col-sorter .tabulator-arrow {
+    border-top: none;
+    border-bottom: 6px solid #6d6d6d !important;
+}
+
+/*phan trang*/
+.tabulator .tabulator-footer .tabulator-page-size {
+    display: inline-block;
+    margin: 0px 5px !important;
+    padding: 0 !important;
+    border: 1px solid #dbdbe1 !important;
+    border-radius: 0;
+    height: 27px !important;
+}
+
+.tabulator .tabulator-footer .tabulator-page {
+    display: inline-block;
+    margin: 0 -1px !important;
+    padding: 4px 6px;
+    border: 1px solid #c1c1c1 !important;
+    border-radius: 0px;
+    background: #fff !important;
+    font-weight: 100 !important;
+    color: #389ae6 !important;
+}
+
+.tabulator .tabulator-footer .tabulator-pages {
+    margin: 0 1px !important;
+}
+
+.tabulator .tabulator-footer .tabulator-page.active {
+    color: #fff !important;
+    background: #389ae6 !important;
+}
+
+.tabulator .tabulator-footer .tabulator-page {
+    display: inline-block;
+    margin: 0 -1px !important;
+    padding: 4px 10px;
+    border: 1px solid #c1c1c1 !important;
+    border-radius: 0px;
+    background: #fff !important;
+    font-weight: 100;
+}
+
+.celledit {
+    border: 1px solid #d5d5d5 !important;
+    background: #fff !important;
+    vertical-align: middle !important;
+}
+
+    .celledit:focus {
+        color: #696969 !important;
+        border-color: #f59942 !important;
+        background: #fff !important;
+        vertical-align: middle !important;
+    }
+.tabulator-row .tabulator-cell {
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-right: 1px solid #DBDBE1 !important;
+    padding: 2px 2px 2px 2px !important;
+    vertical-align: middle !important;
+}
+/*.tabulator-row.tabulator-selectable.tabulator-row-odd.tabulator-row-editing{
+    height: 38px !important;
+}*/
+.tabulator-cell {
+    min-height: 35px !important;
+    overflow-wrap: anywhere;
+}

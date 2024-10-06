@@ -1,0 +1,165 @@
+﻿@{
+    Layout = null;
+}
+<style>
+    .option-kyten {
+        background: #E9EEF6;
+        padding: 4px 0;
+        border-radius: 4px;
+        margin: 0 20px;
+    }
+    #mdThemMoi_ChuKy_us .modal-dialog {
+        width: 422px;
+    }
+    .box-option {
+        cursor: pointer ;
+        padding: 5px 5px;
+    }
+    .box-option.active {
+        background: blue;
+        color: white;
+        border-radius: 4px;        
+    }
+    div#color-palette .color-btn {
+        height: 18px;
+        border: unset;
+        width: 18px;
+    }
+    .color-btn {
+        border: none;
+        width: 30px;
+        height: 30px;
+        margin: 2px;
+        cursor: pointer;
+        border-radius: 2px;
+        position: relative;
+    }
+
+    .check-mark {
+        color: white;
+        font-size: 11px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .color-btn.active .check-mark {
+        display: block;
+    }
+    div#color-palette {
+        margin: 0 20px;
+    }
+</style>
+@* Modal ky ten *@
+<div class="modal modal-blur fade" id="mdThemMoi_ChuKy_us" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="justify-content: center; color: black; background: white;">
+                <h5 class="modal-title" id="tieuDeModal_KyTen_us">Thêm mẫu ký tên</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style=" color: black !important;">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row option-kyten mb-2">
+                            <div class="col-md-4" style="text-align: center;">
+                                <div class="box-option">&nbsp; </div>
+                            </div>
+                            <div class="col-md-4" style="text-align: center;">
+                                <div class="box-option active"><i class="fa-solid fa-pen-clip"></i> &nbsp; VẼ </div>
+                            </div>
+                            <div class="col-md-4" style="text-align: center;">
+                                <div class="box-option">&nbsp; </div>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-12">
+                        <canvas id="signature-pad" height="100" width="360" style="border: 1px dashed rgb(0, 0, 0); margin: 0 20px; border-radius: 4px; " ></canvas>
+                    </div>
+                    <div class="col-md-12 mb-2">
+                        <div id="color-palette" style="">
+                            <!-- Các màu cơ bản -->
+                            <button class="color-btn" style="background-color: black;" attr-color="black"><span class="check-mark">&#10003;</span></button>
+                            <button class="color-btn" style="background-color: red;" attr-color="red"></button>
+                            <button class="color-btn" style="background-color: green;" attr-color="green"></button>
+                            <button class="color-btn" style="background-color: blue;" attr-color="blue"></button>
+                            <button class="color-btn" style="background-color: yellow;" attr-color="yellow"></button>
+                            <button class="color-btn" style="background-color: orange;" attr-color="orange"></button>
+                            <button class="color-btn" style="background-color: purple;" attr-color="purple"></button>
+                            <button class="color-btn" style="background-color: pink;" attr-color="pink"></button>
+                            <button class="color-btn" style="background-color: brown;" attr-color="brown"></button>
+                            <button class="color-btn" style="background-color: gray;" attr-color="gray"></button>
+                            <button class="color-btn" style="background-color: cyan;" attr-color="cyan"></button>
+                            <button class="color-btn" style="background-color: magenta;" attr-color="magenta"></button>
+                            <button class="color-btn" style="background-color: lime;" attr-color="lime"></button>
+                            <button class="color-btn" style="background-color: navy;" attr-color="navy"></button>
+                            <button class="color-btn" style="background-color: gold;" attr-color="gold"></button>
+                            <button class="color-btn" style="background-color: silver;" attr-color="silver"></button>
+                            <button class="color-btn" style="background-color: olive;" attr-color="olive"></button>
+                            <button class="color-btn" style="background-color: teal;" attr-color="teal"></button>
+                            <button class="color-btn" style="background-color: maroon;" attr-color="maroon"></button>
+                            <button class="color-btn" style="background-color: violet;" attr-color="violet"></button>
+                            <button class="color-btn" style="background-color: indigo;" attr-color="indigo"></button>
+                            <button class="color-btn" style="background-color: wheat;" attr-color="wheat"></button>
+                            <button class="color-btn" style="background-color: beige;" attr-color="beige"></button>
+                        </div>
+                        <a href="#" class="btn btn-light text-primary" id="clear_KyTen" style="margin: 0 20px; background: #dedede;">
+                            Xóa
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div style="display: flex; align-items: center; justify-content: space-between">
+                    <div class="col-12">
+                        <div class=" text-end">
+                            @* Code moi *@                            
+                            <a href="#" class="btn btn-light text-warning" data-bs-dismiss="modal" style="background: white;border: 1px solid #f3f3f3;">
+                                <i class="fa fa-close"></i>&nbsp;Hủy
+                            </a>
+                            <a href="#" id="save-png_KyTen" class="btn btn-warning ms-auto" onclick="return false;">
+                                &ensp;Thêm chữ ký
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const canvas = document.getElementById('signature-pad');
+    const signaturePad = new SignaturePad(canvas);
+
+    document.getElementById('save-png_KyTen').addEventListener('click', function () {
+        if (signaturePad.isEmpty()) {
+            alert("Please provide a signature first.");
+        } else {
+            const dataURL = signaturePad.toDataURL('image/png');
+            const link = document.createElement('a');
+            link.href = dataURL;
+            link.download = 'signature.png';
+            link.click();
+        }
+    });
+
+    document.getElementById('clear_KyTen').addEventListener('click', function () {
+        signaturePad.clear();
+    });
+    //--------------------Thay đổi màu sắc bút vẽ--------------------//
+    
+    $(document).on('click', '#color-palette .color-btn', function () {
+        let ele = $(this);
+        signaturePad.penColor = $(ele).attr("attr-color");
+        $('#color-palette .color-btn').html('');
+        $(ele).html(`<span class="check-mark">&#10003;</span>`);
+    });
+    function showModalKyTen_us() {
+        $('#mdThemMoi_ChuKy_us').modal('show');
+    }
+</script>

@@ -1,0 +1,1249 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MasterPage_CTT_QuanTri_ViecLam.cshtml";
+}
+
+<style>
+    .label_name {
+        font-weight: 550;
+    }
+
+    label.label_imghocvan {
+        margin-bottom: 8px;
+    }
+
+    .icon_header {
+        background: #FFF;
+        border-radius: 50%;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px;
+    }
+
+    .form {
+        background: #FFF;
+        border-radius: 8px;
+        padding: 0 20px 20px 20px;
+    }
+
+    .form_title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #999;
+        margin-bottom: 20px;
+        padding: 10px 0;
+    }
+
+    .btn_xacthuc {
+        display: flex;
+        align-items: center;
+        padding: 4px 10px;
+        color: var( --success-color);
+        font-size: 14px;
+        background: transparent;
+        border: 1px solid var( --success-color);
+        border-radius: 8px;
+    }
+
+        .btn_xacthuc:hover {
+            background: var(--success-color);
+            color: #FFF;
+        }
+
+        .btn_xacthuc p,
+        .btn_xacthuc_hover p,
+        .btn_luu p {
+            margin-bottom: 0;
+        }
+
+    .btn_xacthuc_hover {
+        border: none;
+        display: flex;
+        align-items: center;
+        padding: 4px 10px;
+        color: var( --success-color);
+        font-size: 14px;
+        background: transparent;
+    }
+
+    button.btn_luu.nextBtn.save-and-continue-btn,
+    button.btn_luu.save-and-continue-btn.btn_finish {
+        background: #fff;
+    }
+
+        button.btn_luu.nextBtn.save-and-continue-btn:hover {
+            background: var(--primary-color);
+        }
+
+        button.btn_luu.save-and-continue-btn.btn_finish:hover {
+            background: var(--primary-color);
+        }
+
+    .icon-sent {
+        margin-right: 4px;
+    }
+
+    .btn_luu {
+        display: flex;
+        align-items: center;
+        padding: 10px 14px;
+        border: 1px solid var( --primary-color);
+        border-radius: 8px;
+        color: var( --primary-color);
+        font-size: 16px;
+        background: transparent;
+    }
+
+    .icon-luu {
+        font-size: 18px;
+        margin-right: 6px;
+    }
+
+    .btn_luu:hover {
+        background: var(--primary-color);
+        color: #FFF;
+    }
+
+    .btn_row {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    input[type="radio"]:focus,
+    input[type="text"]:focus {
+        outline-color: var(--primary-color);
+    }
+    /*Học vấn bằng cấp*/
+    .title_hocvan {
+        padding: 10px 10px
+    }
+
+        .title_hocvan u {
+            font-size: 16px;
+            font-weight: 550;
+            color: 575757;
+        }
+
+    .btn_themhocvan {
+        display: flex;
+        align-items: center;
+    }
+
+        .btn_themhocvan > span > i {
+            font-size: 22px;
+            color: var(--primary-color);
+            margin-right: 8px;
+        }
+
+        .btn_themhocvan > span > p {
+            font-size: 16px;
+            color: var(--primary-color);
+            margin-bottom: 0;
+        }
+
+    .list_hocvan {
+        margin: 20px 0;
+        max-height: 500px;
+        overflow: auto;
+        padding: 0 20px;
+    }
+
+    .list_items {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 14px;
+        border: 2px dashed #D9D9D9;
+        border-radius: 14px;
+        margin-bottom: 10px;
+    }
+
+    .sonam_hocvan {
+        font-size: 12px;
+        background: #E9E1E1;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 12px;
+        margin-right: 20px;
+        padding: 5px 47px;
+    }
+
+        .sonam_hocvan > span:first-child {
+            color: var(--danger-color);
+            font-size: 14px;
+            font-weight: 550;
+        }
+
+    .ten_hocvan {
+        color: #000;
+    }
+
+        .ten_hocvan > h3 {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-size: 16px;
+        }
+
+        .ten_hocvan > p {
+            margin-bottom: 0;
+            font-size: 12px;
+        }
+
+    .hocvan_icon {
+        display: flex;
+    }
+
+    .hocvan_icon-item {
+        font-size: 18px;
+        margin: 0 10px;
+    }
+
+    .icon_pen {
+        color: var(--success-color);
+    }
+
+    .icon_strash {
+        color: var(--danger-color);
+    }
+
+    #btn_ThemMoiHocVan:hover,
+    #ModalThemKinhNghiem:hover {
+        cursor: pointer;
+    }
+
+        #btn_ThemMoiHocVan:hover > span > p,
+        #btn_ThemMoiHocVan:hover > span > i,
+        #ModalThemKinhNghiem:hover > span > p,
+        #ModalThemKinhNghiem:hover > span > i {
+            color: 4A80F5;
+        }
+
+    .modal_hocvan {
+        padding: 10px 20px;
+        border-radius: 12px;
+    }
+
+    .modal-footer_hocvan {
+        background: transparent;
+        border-top-color: transparent;
+    }
+
+    .btn_luu_hocvan {
+        background: var(--primary-color);
+        color: #FFF;
+    }
+
+        .btn_luu_hocvan:hover {
+            background: #0D83F0;
+        }
+
+    .btn_hocvan {
+        padding: 8px 12px;
+        font-size: 15px;
+        outline: none;
+        border: none;
+        border-radius: 6px;
+    }
+
+    .btn_dong_hocvan:hover {
+        background: rgba(0,0,0,0.3);
+    }
+
+    .form-group {
+        margin-bottom: 0;
+    }
+
+    .modal_content {
+        margin-bottom: 0;
+    }
+
+    .list_hocvan::-webkit-scrollbar {
+        width: 10px; /* Độ rộng của thanh cuộn */
+    }
+
+    .list_hocvan::-webkit-scrollbar-track {
+        background: #f1f1f1; /* Màu nền của vùng chứa thanh cuộn */
+        border-radius: 8px;
+    }
+
+    .list_hocvan::-webkit-scrollbar-thumb {
+        background: #D9D9D9; /* Màu nền của thanh cuộn */
+        border-radius: 8px;
+    }
+
+        .list_hocvan::-webkit-scrollbar-thumb:hover {
+            background: rgba(0,0,0,0.3); /* Màu nền của thanh cuộn khi hover */
+            cursor: pointer;
+        }
+
+    .form_img {
+        margin-top: 20px;
+    }
+
+    .form_content {
+        display: flex;
+        flex-direction: column;
+        padding: 30px 0;
+        text-align: center;
+    }
+
+    .icon_img {
+        font-size: 64px;
+        color: var(--mauchude);
+    }
+
+    .form_content > span > p {
+        margin-top: 20px;
+        font-size: 18px;
+        margin-bottom: 0;
+    }
+
+    .btn_luu {
+        margin-top: 20px;
+    }
+
+    #ModalThemMoiHocVan .modal-dialog, #ModalThemKinhNghiem .modal-dialog, #ModalThemKyNang .modal-dialog, #ModalThemTinHocNgoaiNgu .modal-dialog {
+        width: 80%;
+    }
+    #ModalThemMoiHocVan .modal-content, #ModalThemKinhNghiem .modal-content, #ModalThemKyNang .modal-content, #ModalThemTinHocNgoaiNgu .modal-content {
+        border-radius: 10px !important;
+    }
+    @@media (min-width: 576px) {
+        #ModalThemMoiHocVan .modal-dialog {
+            max-width: 800px;
+        }
+        #ModalThemKinhNghiem .modal-dialog {
+            max-width: 800px;
+        }
+        #ModalThemKyNang .modal-dialog {
+            max-width: 800px;
+        }
+        #ModalThemTinHocNgoaiNgu .modal-dialog {
+            max-width: 800px;
+        }
+    }
+    @@media (max-width: 576px) {
+        #ModalThemMoiHocVan .modal-dialog, #ModalThemKinhNghiem .modal-dialog, #ModalThemKyNang .modal-dialog, #ModalThemTinHocNgoaiNgu .modal-dialog {
+            width: 100%;
+        }
+    }
+    #CVHientai {
+        margin-top: 29px;
+    }
+    /*Kỹ năng, chuyên môn*/
+    .ten_kynang {
+        padding: 10px 0 0 10px;
+    }
+
+        .ten_kynang > h3 {
+            font-size: 20px;
+        }
+
+        .ten_kynang > p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+    .stepwizard-row {
+        display: flex;
+        align-items: center;
+    }
+
+    .icon_item {
+        color: var(--primary-color);
+        font-size: 26px;
+    }
+
+    .step_link {
+        display: flex;
+        align-items: center;
+        padding: 10px 12px;
+        border-radius: 16px;
+        background: white;
+    }
+
+        .step_link > span {
+            color: #000;
+            font-size: 12px;
+            font-weight: 550;
+        }
+
+    .stepwizard-step > a.active {
+        background: var(--primary-color);
+    }
+
+        .stepwizard-step > a.active > span {
+            color: #FFF;
+        }
+
+    .stepwizard-step > a {
+        text-decoration: none;
+    }
+
+    .step_link:hover {
+        background: var(--primary-color);
+    }
+
+    a.disabled:hover {
+        cursor: not-allowed;
+    }
+
+    a.disabled {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    .btn_themhocvan:hover {
+        cursor: pointer;
+    }
+
+    @@media(min-width:992px) and (max-width:1024px) {
+        .step_link > span {
+            font-size: 10px;
+        }
+
+        .step_link {
+            padding: 7px 8px;
+        }
+
+        .icon_item {
+            font-size: 15px
+        }
+
+        .icon_header {
+            padding: 8px;
+            margin-right: 6px;
+        }
+
+        .btn_luu {
+            font-size: 10px;
+            padding: 6px 6px;
+        }
+
+        .icon-luu {
+            font-size: 15px;
+        }
+    }
+
+    @@media(min-width:768px) and (max-width:992px) {
+        .step_link > span {
+            font-size: 8px;
+        }
+
+        .step_link {
+            padding: 5px 6px;
+        }
+
+        .icon_item {
+            font-size: 13px
+        }
+
+        .icon_header {
+            padding: 6px;
+            margin-right: 5px;
+        }
+
+        .form_title > h3 {
+            font-size: 16px;
+        }
+
+        .check_raido {
+            display: flex;
+        }
+
+            .check_raido > input {
+                margin-right: 10px;
+            }
+
+        .btn_luu {
+            font-size: 10px;
+            padding: 6px 6px;
+        }
+
+        .icon-luu {
+            font-size: 15px;
+        }
+    }
+
+    @@media(max-width:768px) {
+        .btn_luu {
+            font-size: 8px;
+            padding: 3px 5px;
+        }
+
+        .icon-luu {
+            font-size: 14px;
+        }
+    }
+
+    .alert {
+        padding: 10px 12px;
+        font-size: 15px;
+    }
+
+    .alert-danger,
+    .alert-success {
+        border-radius: 16px;
+    }
+    ol, ul{
+        margin: 0 !important;
+    }
+    .modal-footer {
+        display: unset !important;
+        padding: 5px 10px;
+    }
+    @@media (max-width: 1439px){
+        .icon_header ~ span{
+            display:none
+        }
+        .icon_header {
+            margin-right: 0px;
+        }
+    }
+    @@media (max-width: 989px) {
+        .icon_header ~ span {
+            display: none
+        }
+        .icon_header i {
+            font-size: 25px;
+        }
+        .setup-panel {
+            justify-content: center !important;
+            gap: 10px !important;
+        }
+        
+    }
+    @@media (max-width: 570px) {        
+        .icon_header i {
+            font-size: 15px;
+        }
+        .step_link{
+            padding: 5px;
+        }
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row" style="padding:20px 20px;">
+        <div class="stepwizard col-md-12">
+            <div class="stepwizard-row  setup-panel" style="display:flex;justify-content:space-between;margin-bottom:20px;">
+                <div class="stepwizard-step">
+                    <a href="#step-1" type="button" class="step-1 step_link active btn-circle">
+                        <span class="icon_header">
+                            <i class="icon_item fa-regular fa-circle-user"></i>
+                        </span>
+                        <span>
+                            Thông tin cá nhân
+                        </span>
+                    </a>
+                </div>
+                <div class="stepwizard-step">
+                    <a href="#step-2" type="button" class=" step-2 step_link step-default btn-circle disabled">
+                        <span class="icon_header">
+                            <i class="icon_item fa-solid fa-circle-info"></i>
+                        </span>
+                        <span>
+                            Thông tin hồ sơ
+                        </span>
+                    </a>
+
+                </div>
+                <div class="stepwizard-step">
+                    <a href="#step-3" type="button" class="step_link step-default btn-circle disabled">
+                        <span class="icon_header">
+                            <i class="icon_item fa-solid fa-graduation-cap"></i>
+                        </span>
+                        <span>
+                            Học vấn bằng cấp
+                        </span>
+                    </a>
+                </div>
+                <div class="stepwizard-step">
+                    <a href="#step-4" type="button" class="step_link step-default btn-circle disabled">
+                        <span class="icon_header">
+                            <i class="icon_item fa-solid fa-calendar-days"></i>
+                        </span>
+                        <span>
+                            Kinh nghiệm làm việc
+                        </span>
+                    </a>
+                </div>
+                <div class="stepwizard-step">
+                    <a href="#step-5" type="button" class="step_link step-default btn-circle disabled">
+                        <span class="icon_header">
+                            <i class="icon_item fa-solid fa-bolt"></i>
+                        </span>
+                        <span>
+                            Kỹ năng
+                        </span>
+                    </a>
+                </div>
+                <div class="stepwizard-step">
+                    <a href="#step-6" type="button" class="step_link step-default btn-circle disabled">
+                        <span class="icon_header">
+                            <i class="icon_item fa-solid fa-computer"></i>
+                        </span>
+                        <span>
+                            Tin học - Ngoại ngữ
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <form role="form" action="" method="post">
+                <div class="row">
+                    <div class="col-md-12" id="alertTuChoi">
+                        
+                    </div>
+                </div>
+                <div class="row setup-content" id="step-1">
+                    <div class="col-md-12">
+                        <div class="form">
+                            <div class="form_title">
+                                <h3>Thông tin cá nhân</h3>
+                                <div id="XacThuc">
+                                   
+                                </div>
+                            </div>
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="HoTen" class="label_name validation">Họ và tên</label>
+                                            <input type="text" class="form-control input-sm" id="HoTen" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="NgayCapDT_us">Ngày sinh</label>
+                                        <input type="text" class="form-control date-picker" id="NgaySinh" autocomplete="off" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label class="label_name">Giới tính</label>
+                                            <div class="row check_raido" style="margin-left:6px;">
+                                                <div class="form-check col-md-3" style="display: flex;gap: 10px;align-items: center;">
+                                                    <input class="form-check-input  gender" type="checkbox" name="GioiTinh" id="Gender_Nam" value="option1">
+                                                    <label class="form-check-label" for="Gender_Nam" style="margin-top: 4px;">Nam</label>
+                                                </div>
+                                                <div class="form-check col-md-3" style="display: flex;gap: 10px;align-items: center;">
+                                                    <input class="form-check-input gender" type="checkbox" name="GioiTinh" id="Gender_Nu" value="option2">
+                                                    <label class="form-check-label" for="Gender_Nu" style="margin-top: 4px;">Nữ</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label class="label_name">Tình trạng hôn nhân</label>
+                                            <div class="row check_raido" style="margin-left:6px;">
+                                                <div class="form-check col-md-3" style="display: flex;gap: 10px;align-items: center;">
+                                                    <input class="form-check-input gender" type="checkbox" name="HonNhan" id="DocThan" value="option1">
+                                                    <label class="form-check-label" for="DocThan" style="margin-top: 4px;">Độc thân</label>
+                                                </div>
+                                                <div class="form-check col-md-3" style="display: flex;gap: 10px;align-items: center;">
+                                                    <input class="form-check-input gender" type="checkbox" name="HonNhan" id="KetHon" value="option2">
+                                                    <label class="form-check-label" for="KetHon" style="margin-top: 4px;">Đã lập gia đình</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="SoDienThoai" class="label_name validation">Số điện thoại</label>
+                                            <input type="text" class="form-control input-sm" id="SoDienThoai">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="Email" class="label_name validation">Email</label>
+                                            <input type="email" class="form-control input-sm" id="Email">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="TinhID" class="label_name ">Tỉnh/Thành phố</label>
+                                            <select class="form-control input-sm" id="TinhID"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="DiaChi" class="label_name ">Địa chỉ</label>
+                                            <input type="text" class="form-control input-sm" id="DiaChi">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top:4px">
+                                    <div class="col-md-12">
+                                        <label class="label_name" id="lblDinhKemVB_us">Ảnh đại diện</label>
+                                        <div style="display: flex; grid-gap: 0 8px; padding-bottom: 7px;">
+                                            <div id="divButtonUpload_us">
+                                                <button id="btnChonTepVB_tailieu" type="button" style="background: transparent !important; border: 1px dotted #888888; height: 65px; width: 65px;" class="btn btn-sm">
+                                                    <i class="fa fa-upload" style="color: #448fdc;font-size:30px"></i>
+                                                </button>
+                                            </div>
+                                            <div id="list-file-tai-lieu"></div>
+                                            <input type="file" id="fileVB_tailieu" class="d-none" accept=".jpg,.jpeg,.png" style="display: none" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col-md-12 btn_row">
+                                        <button type="button" id="btn_luuthongtincanhan" class="btn_luu nextBtn save-and-continue-btn"><i class="icon-luu fa-regular fa-floppy-disk"></i> &nbsp;<p>Lưu và tiếp tục</p></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row setup-content" id="step-2">
+                    <div class="col-md-12" id="alertTuChoiDuyet">
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form">
+                            <div class="form_title">
+                                <h3>Thông tin hồ sơ</h3>
+                                <div id="XetDuyet">
+                                </div>
+                            </div>
+
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="CongViecMongMuon" class="label_name validation">Công việc mong muốn</label>
+                                            <input type="text" class="form-control input-sm" id="CongViecMongMuon" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="MucLuongMongMuonID" class="label_name validation">Mức lương mong muốn</label>
+                                            <select class="form-control input-sm" id="MucLuongMongMuonID" required></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="CapBacID" class="label_name validation">Cấp bậc</label>
+                                            <select class="form-control input-sm" id="CapBacID" required></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="NganhNgheID" class="label_name validation">Ngành nghề</label>
+                                            <select class="form-control input-sm" id="NganhNgheID" multiple="multiple" required></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="DiaDiemLamViecID" class="label_name validation">Địa điểm làm việc</label>
+                                            <select class="form-control input-sm" id="DiaDiemLamViecID" multiple="multiple" required></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="KinhNghiemLamViecID " class="label_name validation">Kinh nghiệm làm việc</label>
+                                            <select class="form-control input-sm" id="KinhNghiemLamViecID" required></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="TrinhDoHocVanID " class="label_name validation">Trình độ học vấn</label>
+                                            <select class="form-control input-sm" id="TrinhDoHocVanID" required></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="HinhThucLamViecID" class="label_name ">Hình thức làm việc</label>
+                                            <select class="form-control input-sm" id="HinhThucLamViecID" required></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="GioiThieuBanThan" class="label_name control-label no-padding-right">Giới thiệu bản thân</label>
+                                            <textarea class="form-control input-sm" id="GioiThieuBanThan" rows="5" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="MucTieuCongViec" class="label_name control-label no-padding-right validation">Mục tiêu công việc</label>
+                                            <textarea class="form-control input-sm" id="MucTieuCongViec" rows="5" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col-md-12 btn_row">
+                                        <button type="button" id="btnLuuHSViecLam" class="btn_luu nextBtn save-and-continue-btn"><i class="icon-luu fa-regular fa-floppy-disk"></i> &nbsp;<p>Lưu và tiếp tục</p></button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row setup-content" id="step-3">
+                    <div class="col-md-12">
+                        <div class="form">
+                            <div class="row title_hocvan">
+                                <u>Học vấn bằng cấp</u>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 btn_themhocvan" id="btn_ThemMoiHocVan" data-toggle="modal" data-target="#ModalThemMoiHocVan">
+                                    <span>
+                                        <i class="icon_plus fa-solid fa-circle-plus"></i>
+                                    </span>
+                                    <span><p>Thêm học vấn, bằng cấp</p></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <ul class="list_hocvan" id="HocVanBangCap_items">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form form_img">
+                            <div class="row" style="margin-top:4px">
+                                <div class="col-md-12">
+                                    <label class="label_imghocvan">Upload ảnh cá nhân hoặc bằng cấp nếu có</label>
+                                    <div style="display: flex; grid-gap: 0 8px; padding-bottom: 7px;">
+                                        <div>
+                                            <button id="btnChonTepHinhAnh" type="button" style="background: transparent !important; border: 1px dotted #888888; height: 65px; width: 65px;" class="btn btn-sm">
+                                                <i class="fa fa-upload" style="color: #448fdc;font-size:30px"></i>
+                                            </button>
+                                        </div>
+                                        <div id="list-file-hinh-anh"></div>
+                                        <input type="file" id="file_hinhanh" class="d-none" accept=".docx,.doc,.pdf,.jpg,.jpeg,.png" style="display: none" multiple="multiple" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-12 btn_row">
+                                <button type="button" class="btn_luu nextBtn save-and-continue-btn"><i class="icon_luu fa-solid fa-angles-right"></i> &nbsp;<p> Tiếp tục</p></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row setup-content" id="step-4">
+                    <div class="col-md-12">
+                        <div class="form">
+                            <div class="row title_hocvan">
+                                <u>Kinh nghiệm làm việc</u>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 btn_themhocvan" id="btn_ThemKinhNghiem" data-toggle="modal" data-target="#ModalThemKinhNghiem">
+                                    <span>
+                                        <i class="icon_plus fa-solid fa-circle-plus"></i>
+                                    </span>
+                                    <span><p>Thêm kinh nghiệm làm việc</p></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <ul class="list_hocvan" id="KinhNghiem_items">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-12 btn_row">
+                                <button type="button" class="btn_luu nextBtn save-and-continue-btn"><i class="icon_luu fa-solid fa-angles-right"></i> &nbsp;<p> Tiếp tục</p></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row setup-content" id="step-5">
+                    <div class="col-md-12">
+                        <div class="form">
+                            <div class="row title_hocvan">
+                                <u>Kỹ năng, chuyên môn</u>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 btn_themhocvan" id="btn_ThemKyNangChuyenMon" data-toggle="modal" data-target="#ModalThemKyNangChuyenMon">
+                                    <span>
+                                        <i class="icon_plus fa-solid fa-circle-plus"></i>
+                                    </span>
+                                    <span><p>Thêm mới kỹ năng, chuyên môn</p></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <ul class="list_hocvan" id="KyNang_items">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-12 btn_row">
+                                <button type="button" class="btn_luu nextBtn save-and-continue-btn"><i class="icon_luu fa-solid fa-angles-right"></i> &nbsp;<p> Tiếp tục</p></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row setup-content" id="step-6">
+                    <div class="col-md-12">
+                        <div class="form">
+                            <div class="row title_hocvan">
+                                <u>Tin học - Ngoại ngữ</u>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 btn_themhocvan" id="btn_ThemTinHocNgoaiNgu" data-toggle="modal" data-target="#ModalThemTinHocNgoaiNgu">
+                                    <span>
+                                        <i class="icon_plus fa-solid fa-circle-plus"></i>
+                                    </span>
+                                    <span><p>Thêm mới Tin học - Ngoại ngữ</p></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <ul class="list_hocvan" id="TinHocNgoaiNgu_items">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-12 btn_row">
+                                <button type="button" id="btnLuuStep" class="btn_luu save-and-continue-btn btn_finish"><i class="icon-luu fa-regular fa-floppy-disk"></i> &nbsp;<p> Lưu</p></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="ModalThemMoiHocVan" class="modal" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header nts-modal" style="background: var(--primary-color) !important;">
+                <h5 id="lblTieuDeThemMoi" class="modal-title text-bold">Thêm mới học vấn, bằng cấp</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="ChuyenNganh" class="validation label_name ">Chuyên ngành</label>
+                            <input type="text" class="form-control input-sm" id="ChuyenNganh" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="Truong" class="validation label_name ">Trường</label>
+                            <input type="text" class="form-control input-sm" id="Truong" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="BangCapID" class="validation label_name ">Bằng cấp</label>
+                            <select class="form-control input-sm" id="BangCapID" required></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="TuNgay" class="label_name validation">Từ ngày</label>
+                            <div class='input-group date' id='datetimepicker1'>
+                                <input type='text' class="form-control input-sm date-picker" id="TuNgay" data-date-format="dd/mm/yyyy" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="DenNgay" class="label_name validation">Đến ngày</label>
+                            <div class='input-group date' id='datetimepicker1'>
+                                <input type='text' class="form-control input-sm date-picker" id="DenNgay" data-date-format="dd/mm/yyyy" required />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="ThanhTuu" class=" label_name ">Thành tựu</label>
+                            <input type="text" class="form-control" id="ThanhTuu">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div style="display: flex; align-items: center; justify-content: space-between">
+                    <div class="col-md-6" style="display: flex; align-items: center">
+                        
+                    </div>
+                    <div class="col-md-6">
+                        <div style="float:right;text-align: right">
+                            <a href="#" id="btn_luuhocvan_bangcap" class="btn btn-success ms-auto" style="background: var(--primary-color) !important;">
+                                <i class="fa fa-save"></i>&ensp;Lưu và đóng
+                            </a>
+                            <a href="#" class="btn btn-danger" data-bs-dismiss="modal">
+                                <i class="fa fa-close"></i>&nbsp;Đóng
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+<!-- The end modal -->
+
+<div id="ModalThemKinhNghiem" class="modal" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header nts-modal" style="background: var(--primary-color) !important;">
+                <h5 id="tieudemodalKinhNghiem" class="modal-title text-bold">Thêm mới học vấn, bằng cấp</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>               
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="ChucDanh" class="validation label_name ">Chức danh</label>
+                            <input type="text" class="form-control input-sm" id="ChucDanh" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="TenCongTy" class="validation label_name ">Tên công ty</label>
+                            <input type="text" class="form-control input-sm" id="TenCongTy" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="BangCapID2" class="validation label_name ">Bằng cấp</label>
+                            <select class="form-control input-sm" id="BangCapID2" required></select>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row" style="display:flex;align-items:center;">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="TuThang" class="label_name validation">Từ tháng</label>
+                            <input type='text' class="form-control input-sm date-picker" id="TuThang" data-date-format="dd/mm/yyyy" required/>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="DenThang" class="label_name validation">Đến tháng</label>
+                            <input type='text' class="form-control input-sm date-picker" id="DenThang" data-date-format="dd/mm/yyyy" required/>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="CVHientai" class="middle" style="line-height:0px;float:left">
+                                <input class="ace" type="checkbox" id="CVHientai" />
+                                <span class="lbl check_cv" style="margin-top:12%;"> &nbsp;Công việc hiện tại</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="MoTaKinhNghiemLV" class=" label_name vadilation">Mô tả</label>
+                            <input type="text" class="form-control " id="MoTaKinhNghiemLV">
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <div style="display: flex; align-items: center; justify-content: space-between">
+                    <div class="col-md-6" style="display: flex; align-items: center">
+
+                    </div>
+                    <div class="col-md-6">
+                        <div style="float:right;text-align: right">
+                            <a href="#" id="btn_luukinhnghiem" class="btn btn-success" style="background: var(--primary-color) !important;">
+                                <i class="fa fa-save"></i>&ensp;Lưu và đóng
+                            </a>
+                            <a href="#" class="btn btn-danger" data-bs-dismiss="modal">
+                                <i class="fa fa-close"></i>&nbsp;Đóng
+                            </a>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- The end modal -->
+    
+<div id="ModalThemKyNang" class="modal" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header nts-modal" style="background: var(--primary-color) !important;">
+                <h5 id="tieudemodalKyNang" class="modal-title text-bold">Thêm mới học vấn, bằng cấp</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>                
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="TenKyNang" class="validation label_name ">Tên kỹ năng, chuyên môn</label>
+                            <input type="text" class="form-control input-sm" id="TenKyNang" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="MoTaKyNangCM" class=" label_name vadilation">Mô tả</label>
+                            <input type="text" class="form-control " id="MoTaKyNangCM">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div style="display: flex; align-items: center; justify-content: space-between">
+                    <div class="col-md-6" style="display: flex; align-items: center">
+
+                    </div>
+                    <div class="col-md-6">
+                        <div style="float:right;text-align: right">
+                            <a href="#" id="btn_luukynang" class="btn btn-success" style="background: var(--primary-color) !important;">
+                                <i class="fa fa-save"></i>&ensp;Lưu và đóng
+                            </a>
+                            <a href="#" class="btn btn-danger" data-bs-dismiss="modal">
+                                <i class="fa fa-close"></i>&nbsp;Đóng
+                            </a>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+   
+<div id="ModalThemTinHocNgoaiNgu" class="modal" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background: var(--primary-color) !important;">
+                <h5 id="tieudemodalTinHocNgoaiNgu" class="modal-title text-bold"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="TenTinHoc_NgoaiNgu" class="validation label_name ">Tên Tin học - Ngoại ngữ</label>
+                            <input type="text" class="form-control input-sm" id="TenTinHoc_NgoaiNgu" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="MoTaTinHocNgoaiNgu" class=" label_name vadilation">Mô tả</label>
+                            <input type="text" class="form-control " id="MoTaTinHocNgoaiNgu">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div style="display: flex; align-items: center; justify-content: space-between">
+                    <div class="col-md-6" style="display: flex; align-items: center">
+
+                    </div>
+                    <div class="col-md-6">
+                        <div style="float:right;text-align: right">
+                            <a href="#" id="btn_luutinhoc" class="btn btn-success" style="background: var(--primary-color) !important;">
+                                <i class="fa fa-save"></i>&ensp;Lưu và đóng
+                            </a>
+                            <a href="#" class="btn btn-danger" data-bs-dismiss="modal">
+                                <i class="fa fa-close"></i>&nbsp;Đóng
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>           
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="NguoiTimViecID" />
+<input type="hidden" id="HocVanBangCapUngVienID" />
+<input type="hidden" id="KinhNghiemLVUngVienID" />
+<input type="hidden" id="KyNangUngVienID" />
+<input type="hidden" id="TinHocNgoaiNguUngVienID" />
+<script src="~/Areas/UngVien/Scripts/HoSoUngVien.js?v=@DateTime.Now.Ticks.ToString()"></script>
+<script src="/ckeditor/ckeditor.js"></script>
+<script src="/ckeditor/adapters/jquery.js"></script>
+<script src="../../ckeditor/ckeditor.js"></script>
+<script src="/ckfinder/ckfinder.js"></script>
+<script type="text/javascript">
+          var editor1 = CKEDITOR.replace('ThanhTuu', {
+              filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+              filebrowserWindowWidth: '1000',
+              filebrowserWindowHeight: '1500',
+              height: '200px'
+          });
+          var editor2 = CKEDITOR.replace('MoTaKinhNghiemLV', {
+              filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+              filebrowserWindowWidth: '1000',
+              filebrowserWindowHeight: '1500',
+              height: '200px'
+          });
+          var editor3 = CKEDITOR.replace('MoTaKyNangCM', {
+              filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+              filebrowserWindowWidth: '1000',
+              filebrowserWindowHeight: '1500',
+              height: '200px'
+          });
+          var editor4 = CKEDITOR.replace('MoTaTinHocNgoaiNgu', {
+              filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+              filebrowserWindowWidth: '1000',
+              filebrowserWindowHeight: '1500',
+              height: '200px'
+          });
+          editor1.config.height = 1000;
+          editor2.config.height = 1000;
+          editor3.config.height = 1000;
+          editor4.config.height = 1000;
+</script>

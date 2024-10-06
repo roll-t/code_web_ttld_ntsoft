@@ -1,0 +1,435 @@
+﻿@{
+    var data = new TTLD2024.Controllers.HeaderController().Index();
+}
+
+<style>
+    .dropdown-menu-end[data-bs-popper] {
+        left: auto;
+        right: unset !important;
+    }
+    .custom-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .custom-center img.center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    .lblTenDonViSD_drop {
+        text-wrap: wrap;
+    }
+    header.navbar {
+        background: var(--tblr-color-header);
+    }
+</style>
+<script>
+    var nienDo = '@data.ViewBag.lblNam';
+</script>
+<input type="hidden" id="hdfHeader_kyBaoCao" value="@data.ViewBag.hdfHeader_kyBaoCao" />
+<header class="navbar navbar-expand-md d-none d-lg-flex d-print-none  btn-nts-header">
+    <div class="container-xl">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        @* Cập nhật kỳ báo cáo *@
+        <div class="navbar-nav flex-row order-md-last">
+            <div class="d-none d-md-flex">
+
+            </div>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
+                    <img style=" height: 35px; border-radius: 5px; width: 35px;" id="avt_layout" src="~/Images/avatar-1.png" height="15" width="45" />
+                    <div class="d-none d-xl-block ps-2">
+                        <div id="hovaten_layout" style="color:#fff !important;"></div>
+                        <div class="mt-1 small text-secondary" id="tendonvi_layout_1" style="color:#fff !important;">@data.ViewBag.lblDonVi</div>
+                    </div>
+                </a>
+                <style>
+                    .css_dropdow {
+                        width: 370px !important;
+                    }
+
+                    .name_layout {
+                        font-size: 15px !important;
+                        text-align: center;
+                        font-weight: bold;
+                    }
+
+                    @@media (min-width: 992px) {
+                        #mdThayDoiDonVi_header .modal-dialog {
+                            min-width: 60% !important;
+                        }
+                    }
+                </style>
+                <div class="dropdown-menu dropdown-menu-start dropdown-menu-arrow css_dropdow">
+                    <a class="nav-link" style=" margin: 10px;" data-bs-toggle="dropdown" aria-label="Open user menu">
+                        <img style=" width: 60px; height: 60px; border-radius: 5px;" id="avt_layout_1" src="~/Images/avatar-1.png" height="15" width="45" />
+                    </a>
+                    <a class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
+                        <div class="ps-2">
+                            <div id="hovaten_layout_1" class="name_layout"></div>
+                            <div class="mt-1 small text-secondary" style="text-align: center;">@data.ViewBag.lblUser_us</div>
+                        </div>
+                    </a>
+                    <div class="" style="height: 0; overflow: hidden; border-top: 1px solid var(--tblr-dropdown-divider-bg); opacity: 1; margin: 4px;"></div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <a class="dropdown-item" href="#" style="display: flex; align-items: center;">
+                            <i class="fa fa-building-o text-primary" aria-hidden="true"></i> &nbsp;
+                            <span class="lblTenDonViSD_drop">@data.ViewBag.lblDonVi</span>
+                            @*<i class="fa fa-angle-right" aria-hidden="true" style="margin-left: auto;"></i>*@
+                        </a>
+                    </div>
+                    <div class="" style="height: 0; overflow: hidden; border-top: 1px solid var(--tblr-dropdown-divider-bg); opacity: 1; margin: 4px;"></div>
+                    <a class="dropdown-item" href="/hethong/donvi">
+                        <i class=" fa fa-address-card-o text-info" style=" font-size: 10px; padding-left: 3px;"></i>&nbsp;
+                        <span class="align-middle">Thông tin đơn vị</span>
+                    </a>
+                    <a class="dropdown-item" href="/hethong/profile">
+                        <i class=" fa fa-user-o text-success" style=" font-size: 10px; padding-left: 3px;"></i>&nbsp;
+                        <span class="align-middle">Thông tin cá nhân</span>
+                    </a>
+                    <a class="dropdown-item" href="/hethong/thietlapcauhinhhethong">
+                        <i class="fa fa-pencil-square-o text-primary" aria-hidden="true"></i>&nbsp;
+                        <span class="align-middle">Thiết lập hệ thống</span>
+                    </a>
+                    <a class="dropdown-item" href="/hethong/doimatkhau">
+                        <i class='bx bx-lock-alt text-warning'></i>&nbsp;
+                        <span class="align-middle">Đổi mật khẩu</span>
+                    </a>
+                    <div class="" style="height: 0; overflow: hidden; border-top: 1px solid var(--tblr-dropdown-divider-bg); opacity: 1;"></div>
+                    <a class="dropdown-item" href="/hethong/logout">
+                        <i class="bx bx-power-off text-danger"></i>&nbsp;
+                        <span class="align-middle" style="text-align:center">Đăng xuất</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <style>
+            #ThongBaoToanHeThong .nav-link {
+                border-radius: unset !important;
+            }
+            #XemTatCaThongBaoChung:hover {
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        </style>
+
+        <div class="navbar-nav flex-row order-md-last" style="width:65px;padding-left:10px" id="ThongBaoToanHeThong">
+            <a href="#" class="nav-link px-0 batCanhBao active" style="text-align:center">
+                <i class="fa fa-clock-o bigger-110" style="font-size: 16px;; color: #fff;"></i>
+                <span class="badge bg-red" id="lblCanhBaoMoi" style="display:none"></span>
+            </a>
+            <a href="#" class="nav-link px-0" data-bs-toggle="dropdown" tabindex="-1" aria-label="Show notifications" data-bs-auto-close="outside" aria-expanded="false" style="text-align:center">
+                <i class="fa fa-bell-o bigger-110" style=" font-size: 16px;; color: #fff;"></i>
+                <span class="badge bg-red  text-red-fg badge-notification badge-pill" id="ThongBaoMoi" style="transform: translate(50%, 0%); font-size: 8px; "></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end py-0" style="width: 450px !important; right: 10px !important" id="DivThongBaoChung">
+                <div class="card">
+                    <div class="card-header" style="display: block; padding: 4px 4px 0px 10px">
+                        <i class="fa fa-bullhorn" style="color: #0054a6; font-size: 16px; float: left; line-height: 34px;"></i> &nbsp;<span class="card-title" style="color: #0054a6; float: left;line-height: 34px;margin-left:4px">Thông báo</span>
+
+                        <label class="form-selectgroup-item" style="float: right; " title="Đánh dấu tất cả là đã xem" id="DanhDauDaXem">
+                            <input type="checkbox" name="name" value="sun" class="form-selectgroup-input" checked="">
+                            <span class="form-selectgroup-label">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/sun -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M8 9h8" /><path d="M8 13h6" /><path d="M10.99 19.206l-2.99 1.794v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v6" /><path d="M15 19l2 2l4 -4" /></svg>
+                            </span>
+                        </label>
+                        <select class="form-select" id="cbDaXem" style="width: 100px; color: #0054a6; float: right; margin-right: 4px; background-color: #ecf1f8;font-weight:600 !important">
+                            <option value="0">Tất cả</option>
+                            <option value="1">Chưa xem</option>
+                            <option value="2">Đã xem</option>
+                        </select>
+                    </div>
+                    <div class="card" style="overflow: hidden;">
+                        <div class="card-header" id="user-profile-2">
+                            <ul class="nav nav-tabs card-header-tabs" data-bs-toggle="tabs" role="tablist" style="display: flex;align-items: center;justify-content: center; ">
+                                <li class="nav-item" role="presentation">
+                                    <a href="#Tab1_ViewThongBao" id="btnTab1_ViewThongBao" class="nav-link active" data-bs-toggle="tab" aria-selected="true" role="tab" tabindex="-1">
+                                        Tất cả (<span id="SoLuongTBTatCa">0</span>)
+                                    </a>
+
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a href="#Tab2_ViewThongBao" class="nav-link" data-bs-toggle="tab" aria-selected="false" role="tab" tabindex="-1">
+                                        Hoạt động (<span id="SoLuongTBHD">0</span>)
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a href="#Tab3_ViewThongBao" class="nav-link" data-bs-toggle="tab" aria-selected="false" role="tab" tabindex="-1">
+                                        Thông báo (<span id="SoLuongTBTB">0</span>)
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a href="#Tab4_ViewThongBao" class="nav-link" data-bs-toggle="tab" aria-selected="false" role="tab" tabindex="-1">
+                                        Hệ thống (<span id="SoLuongTBHT">0</span>)
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body" style="height: 400px; overflow-y: auto; overflow-x:hidden">
+                            <div class="tab-content">
+                                <div class="tab-pane fade active show" id="Tab1_ViewThongBao" role="tabpanel" aria-labelledby="btnTab1_View">
+                                    <div id="Tab1_ThongBaoChung" style="text-align:center">
+                                        <img src="~/Images/Hinh_ThongBaoRong.jpg" />
+                                        <span style="font-weight:600;font-size:16px">Chưa có thông báo nào</span>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="Tab2_ViewThongBao" role="tabpanel" aria-labelledby="btnTab2_View">
+                                    <div id="Tab2_ThongBaoChung" style="text-align:center">
+                                        <img src="~/Images/Hinh_ThongBaoRong.jpg" />
+                                        <span style="font-weight:600;font-size:16px">Chưa có thông báo nào</span>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="Tab3_ViewThongBao" role="tabpanel" aria-labelledby="btnTab3_View">
+                                    <div id="Tab3_ThongBaoChung" style="text-align:center">
+                                        <img src="~/Images/Hinh_ThongBaoRong.jpg" />
+                                        <span style="font-weight:600;font-size:16px">Chưa có thông báo nào</span>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="Tab4_ViewThongBao" role="tabpanel" aria-labelledby="btnTab4_View">
+                                    <div id="Tab4_ThongBaoChung" style="text-align:center">
+                                        <img src="~/Images/Hinh_ThongBaoRong.jpg" />
+                                        <span style="font-weight:600;font-size:16px">Chưa có thông báo nào</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer" style="padding:8px;border:unset">
+                        <a style="float: right; color: #0054a6; font-weight: 600; margin-right: 12px;" id="XemTatCaThongBaoChung"><i class="fa fa-chevron-circle-right" style="color: #0054a6;"></i> Xem tất cả</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="navbar-nav flex-row order-md-last" style="background-color: #ecf1f8; margin-left: 5px; margin-right: 5px;border-radius:4px;">
+            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" style="color: #0054a6">
+                <i class="fa-solid fa-calendar-days"></i><div id="texthdNamNS" style="margin-left:3px">@data.ViewBag.lblNam</div><i class="fa fa-chevron-down" aria-hidden="true" style="font-size:6px;margin-left:4px;"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end py-0" style="width: 275px !important; right: 10px !important">
+                <div class="dropdown-menu-header border-bottom" style="background-color: #ecf2f7">
+                    <div class="dropdown-header d-flex align-items-center py-2">
+                        <h3 class="text-body mb-0 me-auto"><b>Cập nhật kỳ báo cáo</b></h3>
+                    </div>
+                </div>
+                <div class="dropdown-shortcuts-list scrollable-container ps">
+                    <div class="row row-bordered overflow-visible g-0" style="margin-top:2%">
+                        <div class="row" style="padding-bottom: 4px;">
+                            <div class="col-md-5" style="padding-top:5px">
+                                <label class="form-label">Kỳ báo cáo</label>
+                            </div>
+                            <div class="col-md-7">
+                                <select id="selKyBaoCao_head" name="selKyBaoCao_head" class="form-control input-sm">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-bottom: 4px;">
+                            <div class="col-md-5" style="padding-top:5px">
+                                <label class="form-label">Năm báo cáo</label>
+                            </div>
+                            <div class="col-md-7">
+                                <select id="NamBaoCao_Head" class="form-control input-sm"></select>
+                            </div>
+                        </div>
+                        <hr style="margin: unset !important; margin-bottom: 5px !important; " />
+                        <div class="row" style="margin-bottom: 5px !important; ">
+                            <div class="col-md-12" style="text-align: center;">
+                                <a href="#" id="btnLuuVaDongKyBaoCao" class="btn btn-success btn-sm" onclick="capNhatKyBaoCao();return false;">
+                                    <i class="ace-icon fa fa-floppy-o bigger-110"></i>&nbsp;Cập nhật
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="modal modal-blur" id="mdXemTatCaThongBao" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+            <div class="modal-dialog  modal-dialog-centered" role="document" style="width:80%;max-width:80% !important">
+                <div class="modal-content">
+                    <div class="modal-header nts-modal">
+                        <h5 class="modal-title text-bold">Xem tất cả thông báo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Danh sách tất cả thông báo</h3>
+                                    </div>
+                                    <div class="list-group list-group-flush overflow-auto" style="max-height: 35rem" id="ListTatCaThongBao">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="modal-footer">
+                        <div style="display: flex; align-items: center; justify-content: space-between">
+                            <div class="col-md-6" style="display: flex; align-items: center">
+                            </div>
+                            <div class="col-md-6">
+                                <div style="float:right;text-align: right">
+                                    <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                        <i class="fa fa-close"></i>&nbsp;Đóng
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-menu">
+            <div style="font-weight: bold; font-size: 16px !important; color: #fff;" id="TieuDeTrang">
+                @data.ViewBag.TieuDeTrang
+            </div>
+        </div>
+        <style>
+            .modalCustom .modal-footer {
+                padding: unset !important;
+                border-top: unset !important;
+            }
+
+            .modalCustom .modal-header {
+                height: 15px !important;
+                min-height: 15px !important;
+                background-color: red;
+            }
+
+            @@media (min-width: 991px) {
+                .modalCustom .modal-dialog {
+                    width: 40%;
+                    max-width: 50% !important;
+                }
+            }
+            #Grid_ChonDonVi_ThayDoiDonVi .tabulator-header{
+                display:none !important;
+            }
+            #Grid_ChonDonVi_ThayDoiDonVi .tabulator-footer {
+                background: transparent !important;
+            }
+            #Grid_ChonDonVi_ThayDoiDonVi .tabulator-tableholder .tabulator-table .tabulator-row.tabulator-group {
+                border-top: unset !important;
+            }
+            #Grid_ChonDonVi_ThayDoiDonVi .tabulator-tableholder .tabulator-table .tabulator-row.tabulator-group {
+                border-top: unset !important;
+                background: #efefef !important;
+            }
+        </style>
+        <div class="modal fade modalCustom" id="mdThayDoiDonVi_header" data-backdrop="static">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-4 custom-center">
+                                <img src="/Images/Hinh_3.jpg" />
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row mb-2">
+                                    <div class="col-md-12">
+                                        <b>
+                                            <svg class="icon icon-tabler icon-tabler-vocabulary" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M10 19h-6a1 1 0 0 1 -1 -1v-14a1 1 0 0 1 1 -1h6a2 2 0 0 1 2 2a2 2 0 0 1 2 -2h6a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-6a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2z"></path>
+                                                <path d="M12 5v16"></path>
+                                                <path d="M7 7h1"></path>
+                                                <path d="M7 11h1"></path>
+                                                <path d="M16 7h1"></path>
+                                                <path d="M16 11h1"></path>
+                                                <path d="M16 15h1"></path>
+                                            </svg> &nbsp;<span style="font-size: 15px; padding-top: 2px;">Đơn vị đang làm việc</span>
+                                        </b>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-12">
+                                        <span class="text-success" style="font-size:15px"><span class="lblTenDonViSD_md">@data.ViewBag.lblDonVi</span></span>
+                                    </div>
+                                </div>
+                                <div class="" style="height: 0; overflow: hidden; border-top: 1px solid var(--tblr-dropdown-divider-bg); opacity: 1; margin: 4px;"></div>
+
+                                <div class="row mb-2">
+                                    <div class="col-md-12">
+                                                         
+                                                            <span class="input-icon" style="width: 100% !important">
+                                            <input type="text" class="form-control input-sm" onkeyup="$(this).search1();" id="txtDonViID_header" for="DonViID_header" placeholder="Nhập nội dung tìm kiếm...">
+
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-12">
+                                        <div id="Grid_ChonDonVi_ThayDoiDonVi"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="padding-bottom: 4px !important; padding-right: 4px !important;">
+                        <div style="float:right;text-align: right">
+                            <a href="#" id="btnXacNhan_header" class="btn btn-success" onclick="return false;">
+                                <i class="fa fa-check" aria-hidden="true"></i>&nbsp;Xác nhận
+                            </a>
+                            <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                <i class="fa fa-close"></i>&nbsp;Đóng
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</header>
+<style>
+    #Grid_ChonDonVi_ThayDoiDonVi .tabulator-tableholder .tabulator-table .tabulator-row.tabulator-group {
+        background: unset !important;
+    }
+ 
+        #Grid_ChonDonVi_ThayDoiDonVi .tabulator-tableholder .tabulator-table .tabulator-selectable {
+            padding-left: 20px;
+        }
+        #Grid_ChonDonVi_ThayDoiDonVi .tabulator-tableholder .tabulator-table .tabulator-selected {
+            background-color: unset !important;
+            color: #333 !important;
+        }
+        #Grid_ChonDonVi_ThayDoiDonVi .tabulator-tableholder .tabulator-table .tabulator-row .tabulator-cell {
+            border: unset !important;
+        }
+        #Grid_ChonDonVi_ThayDoiDonVi .tabulator-tableholder .tabulator-table .tabulator-row {
+            border: unset !important;
+        }
+        #Grid_ChonDonVi_ThayDoiDonVi .tabulator-footer .tabulator-footer-contents{
+            display:none;
+        }
+        #Grid_ChonDonVi_ThayDoiDonVi .tabulator-tableholder {
+            overflow-x: hidden !important;
+        }
+        #Grid_ChonDonVi_ThayDoiDonVi .tabulator-footer {
+            border-top: unset !important;
+        }
+        #Grid_ChonDonVi_ThayDoiDonVi .tabulator-tableholder .tabulator-table .tabulator-group {
+            color: #16a085 !important;
+            font-size: 13.5px !important;
+        }
+        #Grid_ChonDonVi_ThayDoiDonVi .tabulator-tableholder .tabulator-table .tabulator-row .tabulator-cell input{
+            height: 15px;
+            width: 20px;
+        }
+    .btn:hover {
+        color: var(--tblr-btn-hover-color);
+        text-decoration: none;
+        background-color: var(--tblr-btn-hover-bg);
+        border-color: var(--tblr-btn-hover-border-color);
+    }
+</style>

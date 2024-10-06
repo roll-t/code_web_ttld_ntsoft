@@ -1,0 +1,172 @@
+﻿/*CSS table*/
+.nts-table {
+    border-collapse: collapse;
+    color: #DBDBE1;
+    font-family: Calibri;
+    font-size: 12px;
+    font-weight: 400;
+    font-style: none;
+    text-align: left;
+    vertical-align: bottom;
+    min-width: 100%;
+    margin: 0 auto;
+    /*    height:300px !important;
+*/
+}
+
+thead {
+    position: sticky !important;
+    top: -1px !important; /* Don't forget this, required for the stickiness */
+    z-index: 10;
+}
+/*CSS tiêu đề table*/
+.nts-table-tile {
+    border-top: thin solid #DBDBE1;
+    border-bottom: thin solid #DBDBE1;
+    border-left: thin solid #DBDBE1;
+    border-right: thin solid #DBDBE1;
+    font-family: var(--tblr-font-sans-serif);
+    font-weight: 700;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 14px;
+}
+.nts-table-tile-font-size {
+    font-size: 12px;
+    margin-bottom: -1px;
+    
+}
+
+/*CSS tr table*/
+.nts-table-tr {
+    height: 35px;
+}
+
+/*CSS td table*/
+.nts-table-td {
+    border-top: thin solid #DBDBE1;
+    border-bottom: thin solid #DBDBE1;
+    border-left: thin solid #DBDBE1;
+    border-right: thin solid #DBDBE1;
+    font-family: var(--tblr-font-sans-serif);
+    vertical-align: middle;
+    position: relative;
+}
+
+
+/*CSS input table*/
+.nts-td-input {
+    font-size: 12px;
+    color: #000000;
+    width: 100%;
+    border: #ffff;
+}
+
+.nts-td-input-center {
+    text-align: center;
+}
+
+.nts-td-input-left {
+    text-align: left;
+}
+
+.nts-td-input-right {
+    text-align: right;
+}
+
+
+/*CSS color table*/
+.nts-color-NTS-16a085 {
+   color: #16a085
+}
+
+.label-class-td {
+    position: absolute;
+    background-color: #d7d9ff;
+    font-size: 9px;
+    left: 0;
+    top: 0;
+    border-radius: 16%;
+    display: none;
+}
+
+.bold-table-nts > .nts-table-td > .formatter-nts {
+    font-weight: bold !important;
+}
+
+
+.italic-table-nts > .nts-table-td > .formatter-nts {
+    font-style: italic !important;
+}
+
+.uppercase-table-nts > .nts-table-td > .formatter-nts {
+    text-transform: uppercase !important;
+}
+.decoration-table-nts {
+    text-decoration: underline !important;
+}
+
+.footer-table-nts {
+   
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-left: -0.01%;
+}
+
+.footer-text-nts {
+    margin-left: 10px;
+    left: 0;
+    font-size: 12px;
+}
+
+.footer-div-button-nts {
+    margin-right: 10px;
+    float: right;
+    font-size: 12px;
+}
+
+.nts-header-tr {
+    background: #f0f5f1;
+}
+
+.no-input {
+    pointer-events: none;
+}
+.select2-selection__rendered {
+    text-align: left;
+}
+textarea {
+    resize: none !important;
+}
+.nts-table > input,textarea{
+    box-shadow:none !important;
+}
+.formatter-nts {
+    box-shadow: none !important;
+}
+.nts-table > tbody > tr > td > .select2.select2-container {
+    overflow: hidden !important;
+}
+
+.nts-table > tbody > tr > td > .select2.select2-container > .selection {
+overflow: hidden !important;
+}
+
+.nts-table > tbody > tr > td > .select2.select2-container > .selection > .select2-selection.select2-selection--single {
+overflow: hidden !important;
+}
+
+.nts-table > tbody > tr > td > .select2.select2-container > .selection > .select2-selection.select2-selection--single > .select2-selection__rendered {
+    position: absolute !important;
+}
+.marginleft {
+    margin-left: 6px
+}
+.marginright {
+    margin-right: 6px
+}
+

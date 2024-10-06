@@ -1,0 +1,305 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MasterPage_CTT_QuanTri_ViecLam.cshtml";
+}
+<link href="~/Content/CongThongTin/style/TongQuan_UngVien.css?v=@DateTime.Now.Ticks.ToString()" rel="stylesheet" />
+<style>    
+    div#GioiThieuCongTy {
+        font-size: 14px;
+    }
+
+    .icon-hd {
+        width: 20px;
+        height: 20px;
+    }
+
+    .name-user {
+        color: #FF6B00;
+    }
+
+    .text-hd {
+        color: var(--primary-color);
+    }
+
+    .box-hi-user {
+        background: #F1F8FF;
+        padding: 27px 10px;
+        border-radius: 10px;
+        background-image: url('../../Images/hi-user.png');
+        background-repeat: no-repeat;
+        background-position: right bottom;
+        background-size: 200px;
+        font-size: 14px;
+        height: 100%;
+    }
+
+    .title-job {
+        background: white;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    .box-data-status {
+        background: #EAEAEA;
+        padding: 10px 20px;
+        border-radius: 10px;
+        flex: 1 0 30%; /* Đặt kích thước mỗi mục, 30% để tối đa 3 mục trên mỗi hàng */
+        max-width: calc(100% / 3 - 20px); /* Đặt kích thước tối đa cho mỗi mục */
+    }
+
+    .text-grey {
+        color: #9a9a9a;
+    }
+
+    .text-purple {
+        color: #F820AF;
+    }
+
+    .flex-wrap {
+        flex-wrap: wrap;
+    }
+
+    .gap-1 {
+        gap: 1rem;
+    }
+
+    .gap-3 {
+        gap: 3rem;
+    }
+
+    .text-yellow {
+        color: #F89D20;
+    }
+
+    .box-data-status label {
+        font-size: 20px;
+    }
+
+    .img-default-company {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .bg-company {
+        background: url('../../Images/CongThongTin_BacLieu/banner-defaut-company.jpg');
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .btn-update-banner {
+        float: right;
+        margin: 10px;
+    }
+
+    img.logo-company {
+        width: 100px;
+        height: 95px;
+        padding: 3px 3px 5px 3px;
+        border-radius: 10px;
+        object-fit: contain;
+    }
+
+    .box-title-company {
+        background: white;
+        padding: 10px 10px 20px 10px;
+        border-radius: 0 0 10px 10px;
+    }
+
+    .box-logo-company {
+        position: absolute;
+        top: -30px;
+        background: white;
+        border-radius: 10px;
+    }
+
+    .icon-update-logo {
+        color: var(--primary-color);
+        position: absolute;
+        bottom: 2px;
+        right: 5px;
+        background: #ffffff00;
+        cursor: pointer;
+    }
+
+    .load-info-company {
+        background: rgba(237, 87, 87, 0.24);
+        color: #F61D1D;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .box-post-news {
+        background: white;
+        padding: 10px;
+        border-radius: 10px;
+        min-height: 100px;
+    }
+
+    .box-info-company {
+        background: white;
+        padding: 20px 10px;
+        border-radius: 10px;
+        font-size: 15px;
+    }
+
+    .general-infor {
+        color: var(--primary-color);
+        font-weight: bold;
+    }
+
+    .box-info-company i {
+        color: var(--primary-color);
+    }
+
+    .box-info-company span {
+        text-align: left !important;
+    }
+
+    .bold.company-name:hover i {
+        display: inline-block;
+        color: var(--primary-color);
+        cursor: pointer;
+    }
+
+    .company-name i {
+        display: none;
+    }
+    .mt-5 {
+        margin-top: 5px !important;
+    }
+    .mb-5 {
+        margin-bottom: 5px !important;
+    }
+    .mt-10 {
+        margin-top: 10px;
+    }
+    @@media (max-width: 765px){
+        .box-user {
+            margin-bottom: 10px;
+        }
+        .col-md-3.mt-10.box-thong-tin-chung {
+            width: 100%;
+        }
+    }
+    @@media (max-width: 557px) {
+        .box-data-status {
+            padding: 5px;
+        }
+        .box-data-status div{
+            font-size: 11px !important;
+        }
+    }
+</style>
+
+<div class="container-fluid main-tongquan">
+    <div class="row">
+        <div class="col-md-12 mb-10" id="LostData">
+
+        </div>
+        <div class="col-md-4 box-user">
+            <div class="box-hi-user box-shadow-3">
+                <div class="bold">
+                    Xin chào,
+                </div>
+                <div class="bold name-user mt-5">
+
+                </div>
+                <div class="bold mt-10" style="visibility:hidden">
+                    Đây là một số thông tin để bạn có thể bắt đầu sử dụng:
+                </div>
+                <div class="text-hd mt-5" style="visibility:hidden">
+                    <img src="../../Images/CongThongTin_BacLieu/question.png" class="icon-hd" /> FAQ/Hướng dẫn sử dụng
+                </div>
+                <div class="text-hd mt-5" style="visibility:hidden">
+                    <img src="../../Images/CongThongTin_BacLieu/discover.png" class="icon-hd" />  Khám phá sản phẩm
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 box-user">
+            <div class="title-job box-shadow-3" id="box-TrangThaiTinDang">
+                <div>Trạng thái tin đăng</div>
+                <div class="flex space-between flex-wrap gap-1 box-status-news">
+                    <div class="box-data-status">
+                        <label class="no-padding text-success bold">0</label>
+                        <div>Đang tuyển dụng</div>
+                    </div>
+                    <div class="box-data-status">
+                        <label class="no-padding text-grey bold">0</label>
+                        <div>Đang ẩn</div>
+                    </div>
+                    <div class="box-data-status">
+                        <label class="no-padding text-primary bold">0</label>
+                        <div>Hồ sơ ứng tuyển</div>
+                    </div>
+
+                    <div class="box-data-status">
+                        <label class="no-padding text-danger bold">0</label>
+                        <div>Hết hạn</div>
+                    </div>
+                    <div class="box-data-status">
+                        <label class="no-padding text-yellow bold">0</label>
+                        <div>Hết hạn trong 7 ngày</div>
+                    </div>
+                    <div class="box-data-status">
+                        <label class="no-padding text-purple bold">0</label>
+                        <div>Hồ sơ lưu trữ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-10">
+        <div class="col-md-9 mt-10">
+            <div class="">
+                <div class="bg-company box-shadow-3">
+                    <button class="btn btn-primary btn-update-banner" id="btnChonTepBanner" onclick="return false;">Cập nhật ảnh banner</button>
+                </div>
+                <div class="row" style="margin-top:4px; display: none">
+                    <div class="col-md-12">
+                        <div style="display: flex; grid-gap: 0 8px; padding-bottom: 7px;">
+                            <div id="list-file-banner"></div>
+                            <input type="file" id="file_banner" class="d-none" accept=".jpg,.jpeg,.png" style="display: none" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:4px; display: none">
+                    <div class="col-md-12">
+                        <div style="display: flex; grid-gap: 0 8px; padding-bottom: 7px;">
+                            <div id="list-logo-company"></div>
+                            <input type="file" id="file_logo_company" class="d-none" accept=".jpg,.jpeg,.png" style="display: none" />
+                        </div>
+                    </div>
+                </div>
+                <div class="flex box-title-company box-shadow-3 space-between" style="position: relative" id="logo-company">
+
+                </div>
+
+            </div>
+            <div class="mt-10 box-post-news box-shadow-3">
+                <div class="GioiThieuChung bold">
+                    Giới thiệu chung
+                </div>
+                <div class="mt-5" id="GioiThieuCongTy">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mt-10 box-thong-tin-chung">
+            <div class="box-info-company box-shadow-3" id="info-company">
+
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+<input type="hidden" name="name" id="NhaTuyenDungID" value="" />
+<script src="~/Areas/NhaTuyenDung/Scripts/TongQuan.js?v=@DateTime.Now.Ticks.ToString()"></script>

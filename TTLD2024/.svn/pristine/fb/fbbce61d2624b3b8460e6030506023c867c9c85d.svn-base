@@ -1,0 +1,339 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/CongThongtinViecLam.cshtml";
+}
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+         .has-search .form-control-feedback {
+             right: initial;
+             left: 0;
+             color: #ccc;
+         }
+
+         .has-search .form-control {
+             padding-right: 12px;
+             padding-left: 34px;
+         }
+
+       #container-big{
+           background:B2B0B0;
+       }
+       #header-breadcrumb{
+           border-radius:12px;
+           box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+           border: solid 1px #ECECEC;
+           margin-top: 10px;
+           padding-left: 18px;
+       }
+       #content_text{
+           border: solid 1px #ECECEC;
+           box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+           border-radius:6px;
+       }
+        .card-title {
+            background: #FFF;
+            color: #000000;
+            border-radius: 8px 8px 0 0;
+            font-size: 16px;
+            font-weight: 700;
+            position: relative;
+        }
+
+            .card-title::after {
+                position: absolute;
+                content: "";
+                left: 0;
+                width: 100%;
+                height: 2.5px;
+                background: var(--primary-color);
+                bottom: -1.25px;
+                max-width: 25%;
+            }
+       .badge{
+           background:#3E9EF7;
+           font-size:18px;
+           font-weight:bold;
+           border-radius:8px 8px 0 0;
+           padding:8px 14px;
+       }
+       .content_vanban{
+           padding:16px 70px 150px 70px;
+       }
+       .badge_mucluong{
+           color:#ff6a00;
+           padding:2px 6px;
+           font-size:10px;
+           box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+           border:solid 1px #D9D9D9;
+           font-weight:600;
+       }
+       .badge_thoigian{
+           color:#3E9EF7;
+           padding:2px 6px;
+           font-size:10px;
+           box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+           border:solid 1px #D9D9D9;
+           font-weight:600;
+       }
+       .list-group-vieclam-new h2{
+           font-weight:bolder;
+           color:black;
+       }
+       .list-group-vieclam-new p{
+           font-size:10px;
+           color:#999;
+           margin:3px 0;
+       }
+       .card li:hover{
+           background:#EEEEEE;
+       }
+       .media{
+           border:1px solid #EEEEEE;
+           padding:10px 20px;
+           border-radius:8px;
+           box-shadow: 1px 2px 3px rgba(0,0,0,0.3);
+           margin: 10px 0;
+       }
+       .media h5{
+           font-size:16px;
+           color:#3E9EF7;
+           text-transform:uppercase;
+           font-weight:bold;
+       }
+       .media p{
+           color:black;
+       }
+       .media:hover{
+           background:#EEEEEE;
+       }
+       .img-vanban{
+           width:188px;
+           height:125px;
+           object-position:center;
+           object-fit:contain;
+       }
+       #vanban-empty{
+           width:"400px";
+           height:"450px";
+            object-position:center;
+           object-fit:contain;
+       }
+       #sel_SapXep{
+           padding:10px;
+       }
+       .vanban_text{
+           padding-bottom:14px;
+           color:#98A2AB;
+       }
+       .indam{
+           font-weight:bold;
+           color:#000;
+       }
+       #vanban_lienquan a:hover{
+           cursor:pointer;
+           text-decoration:underline;
+       }
+       .file-item{
+           padding:10px;
+           border:1px dashed #3E9EF7;
+           border-radius:8px;
+           color:#3E9EF7 ;
+       }
+       .file-item:hover{
+           color: #999;
+       }
+       .file-item-parent{
+           margin:24px 0;
+       }
+       #DinhKem div:first-child {
+           margin-top: 0;
+       }
+       .icon_dollar{
+           font-size:9px;
+       }
+       .icon-file{
+           font-size:20px;
+           color:#6478F5;
+       }
+       #tieude_content{
+           font-size:20px;
+           color:#000;
+           font-weight:550;
+            display:flex;
+           flex-wrap:wrap;
+       }
+
+       @@media(max-width:768px){
+           .card img{
+               margin-bottom:4px;
+               width:100%;
+           }
+           #content_GioiThieu{
+               font-size:20px;
+           }
+           .list-group-item p{
+               font-size:20px;
+           }
+           .list-group-item h2{
+               font-size:22px;
+           }
+           .badge_mucluong,
+           .badge_thoigian{
+               padding: 1px 5px;
+               font-size: 9px;
+           }
+
+           .icon_dollar{
+               font-size: 8px;
+           }
+            .list-group-item h2 {
+               font-size: 15px;
+           }
+
+           .list-group-item p {
+               font-size: 12px;
+           }
+            .media h5 {
+               font-size: 12px;
+           }
+
+           .media p {
+               font-size: 8px;
+           }
+            .media {
+               padding:7px;
+           }
+           .img-vanban {
+               height:51px;
+           }
+           #content{
+               font-size:10px;
+           }
+           .content_vanban {
+                padding: 12px 42px 104px 42px;
+            }
+           .content_vanban{
+               font-size:8px;
+           }
+           .badge {
+                font-size: 12px;
+                padding: 4px 10px;
+            }
+           .icon-file,
+           .VBlienquan{
+                font-size:14px;
+            }
+       }
+
+       @@media(min-width:992px) and (max-width:1024px){
+           .card-title{
+               font-size:16px;
+           }
+           .badge_mucluong,
+           .badge_thoigian{
+               font-size:8px;
+               padding: 1px 4px;
+           }
+           .badge fa-dollar-sign{
+                font-size:8px;
+           }
+           .list-group-item .row{
+               display:flex;
+               align-items:center;
+           }
+
+       }
+       @@media(min-width:768px) and (max-width:992px) {
+           .media h5 {
+               font-size: 14px;
+           }
+
+           .media p {
+               font-size: 12px;
+           }
+           .content_vanban{
+               font-size:12px;
+               padding: 16px 56px 150px 56px;
+           }
+           .badge {
+               padding:6px 10px;
+               font-size:14px;
+           }
+       }
+        .breadcrumb-container {
+            background: #f5f5f5;
+            margin-top: 14px;
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="breadcrumb-container">
+        <div class="container">
+            <nav class="breadcrumb is-small" aria-label="breadcrumbs">
+                <ul>
+                    <li><a href="/trang-chu.html">Trang chủ</a></li>
+                    <li><a href="/tra-cuu-tin-tuc.html">Tin tức</a></li>
+                    <li class="is-active"><a href="#" id="tieude_tintuc" aria-current="page"></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-9 col-ms-7 col-xs-12" id="content">
+                <div class="container mb-4 p-3 " id="content_text">
+                    <div class="row m-4">
+                        <h3 id="tieude_content">
+                        </h3>
+                    </div>
+                    <div class="row m-4">
+                        <p id="thoigian">
+                        </p>
+                    </div>
+                    <div class="row m-4">
+                        <p id="noidung_tintuc"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-ms-5 col-xs-12">
+                <div class="card">
+                    <div class="card-title p-3 ">
+                        TIN TỨC NỔI BẬT
+                    </div>
+                    <ul class="list-group list-group-flush" id="list-vanbannew">
+                        @*<%--
+                        <li class="list-group-item">
+                            <a href="">
+                                <div class="row ">
+                                    <div class="col-md-4 col-sm-3 col-xs-4">
+                                        <img src="https://images2.thanhnien.vn/zoom/448_280/528068263637045248/2024/3/13/anh-1-1710337724534933796632-107-0-1707-2560-crop-1710338111636173354975.jpg"
+                                             alt="" class="img-responsive" />
+                                    </div>
+                                    <div class="col-md-8 col-sm-9 col-xs-8">
+                                        <p style="font-size:11px; color:#999" class="vanban-text">Trung tâm Dịch vụ việc làm Nam Định là đơn vị sự nghiệp công lập trực thuộc Sở Lao động – Thương binh </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>--%>*@
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-title p-3">
+                        VIỆC LÀM MỚI NHẤT
+                    </div>
+                    <ul class="list-group list-group-flush" id="listCongViecMoiNhat">
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-title p-3">
+                        VIỆC LÀM LƯƠNG CAO
+                    </div>
+                    <ul class="list-group list-group-flush" id="listViecLamLuongCao">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Areas/CongThongTinViecLam/Scripts/ChiTietTinTuc.js?v=@DateTime.Now.Ticks.ToString()"></script>
+</asp:Content>

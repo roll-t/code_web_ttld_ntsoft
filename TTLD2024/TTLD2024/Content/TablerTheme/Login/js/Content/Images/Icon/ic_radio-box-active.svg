@@ -1,0 +1,4 @@
+<svg id="Component_5_62" data-name="Component 5 – 62" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <path id="ic_radio_button_unchecked_24px" d="M10,2a8,8,0,1,0,8,8A8,8,0,0,0,10,2Zm0,14.4A6.4,6.4,0,1,1,16.4,10,6.4,6.4,0,0,1,10,16.4Z" transform="translate(-2 -2)" fill="#ddd"/>
+  <path id="ic_radio_button_checked_24px" d="M10,6a4,4,0,1,0,4,4A4,4,0,0,0,10,6Zm0-4a8,8,0,1,0,8,8A8,8,0,0,0,10,2Zm0,14.4A6.4,6.4,0,1,1,16.4,10,6.4,6.4,0,0,1,10,16.4Z" transform="translate(-2 -2)" fill="#318cff"/>
+</svg>

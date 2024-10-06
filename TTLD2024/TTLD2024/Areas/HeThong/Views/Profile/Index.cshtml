@@ -1,0 +1,109 @@
+﻿
+
+@{
+    ViewBag.Title = "DoiTuongKT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #avatar:hover {
+        cursor: pointer;
+        opacity: 0.8;
+    }
+
+    #select2-selMenuCha-container {
+        text-align: left !important;
+    }
+    .btn-check:checked + .btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check) + .btn:active {
+        border-color: #f6f8fb;
+        background-color: unset;
+    }
+    .btn-link:focus-visible, .btn-link:hover{
+        text-decoration: unset;
+    }
+    .btn:hover {
+        background-color: unset;
+    }
+</style>
+<input type="hidden" id="UserID" />
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="page-content">
+            <fieldset class="khungvien">
+                <div class="row">
+                    <div class="col-md-3" style=" margin-top: 10px; padding-left: 20px;">
+                        <span class="profile-picture">
+                            <img id="avatar" class="img-thumbnail mx-auto" src="../../Images/avatar-1.png" style="object-fit: cover; height: 73%; " />
+                            <input type="file" id="fileVB_us" style="display: none !important" accept=".jpg,.jpeg,.png" multiple="multiple" />
+                        </span>
+                        <div class="profile-contact-info">
+                            <div class="profile-contact-links align-left">
+                                <span class="btn btn-link">
+                                    <i class="ace-icon fa fa-user bigger-120 green"></i>&nbsp
+                                    Tên đăng nhập: &nbsp<span id="lbl_TenDangNhap"></span>
+                                </span>
+
+                                <span class="btn btn-link">
+                                    <i class="ace-icon fa fa-users bigger-120 pink"></i>&nbsp
+                                    Nhóm người dùng: &nbsp<span id="lbl_NhomNguoiDung"></span>
+                                </span>
+
+                                <span class="btn btn-link">
+                                    <i class="ace-icon fa fa-address-card bigger-125 blue"></i>&nbsp
+                                    Đơn vị: &nbsp<span id="lbl_TenDonVi"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9" style="padding-left:5px">
+                        <fieldset class="KhungVien" style="padding:15px">
+                            <legend><span>Thông tin cá nhân</span></legend>
+                            <div class="row mb-2">
+                                <div class="col-12">
+                                    <label class="form-label" for="HoVaTen"> Họ và tên</label>
+                                    <input type="text" class="form-control input-sm" id="HoVaTen" />
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="NgaySinh">Ngày sinh</label>
+                                    <input class="form-control input-sm date-picker" id="NgaySinh" type="text" data-date-format="dd/mm/yyyy" placeholder="dd/mm/yyyy" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" for="GioiTinh">Giới tính</label>
+                                    <select class="form-control input-sm" id="GioiTinh">
+                                        <option value="Nam">Nam</option>
+                                        <option value="Nữ">Nữ</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="CCCD">CMND/CCCD</label>
+                                    <input class="form-control input-sm" type="text" id="CCCD">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" for="SoDienThoai"> Số điện thoại</label>
+                                    <input class="form-control input-sm" type="text" id="SoDienThoai">
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-md-12">
+                                    <label class="form-label" for="DiaChi"> Địa chỉ</label>
+                                    <input class="form-control input-sm" type="text" id="DiaChi">
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-md-12">
+                                    <label class="form-label" for="Email">Email</label>
+                                    <input class="form-control input-sm" type="text" id="Email">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>
+<script src="~/Areas/HeThong/Scripts/Profile.js"></script>

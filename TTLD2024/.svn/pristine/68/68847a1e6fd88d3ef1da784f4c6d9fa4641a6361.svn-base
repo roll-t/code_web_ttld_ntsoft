@@ -1,0 +1,1098 @@
+html {
+    background: #1d2024;
+}
+
+body {
+}
+
+/** {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}*/
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+    a:hover {
+        text-decoration: none;
+        color: #1c90ff !important;
+    }
+
+    a:focus {
+        text-decoration: none;
+        color: #1c90ff !important;
+    }
+
+.m-button-login {
+    width: 100%;
+}
+
+.m-button {
+    background-color: #1a73e8;
+    background-image: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    padding: 13px;
+    border: none;
+}
+
+    .btn-login-hover.m-button.x-btn-focus,
+    .m-button.x-btn-pressed.x-btn-default-small,
+    .m-button.x-btn-over {
+        background-image: none;
+        border: none;
+    }
+
+.login-body .m-button .x-btn-inner-default-small {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.btn-login-hover:hover:before {
+    transform: scaleX(1);
+}
+
+.btn-login-hover {
+    overflow: hidden;
+    z-index: 0;
+    border: none;
+}
+
+.btn-login-hover {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    position: relative;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+    .btn-login-hover:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #2098d1;
+        transform: scaleX(0);
+        transform-origin: 50%;
+        transition-property: transform;
+        transition-duration: 0.3s;
+        transition-timing-function: ease-out;
+    }
+
+    .btn-login-hover.x-btn-focus.x-btn-default-small .x-btn-wrap,
+    .m-button-twofactor.x-btn-focus.x-btn-default-small .x-btn-wrap {
+        outline: none;
+    }
+
+    .btn-login-hover:hover {
+        color: #fff !important;
+    }
+
+.m-button.x-btn .x-btn-wrap {
+    outline: none;
+}
+
+.right {
+    display: flex;
+    justify-content: center;
+}
+
+.clear {
+    clear: both;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    background-color: #0077c7;
+}
+
+    .header .logo {
+        display: inline-block;
+        background: transparent url(Content/Images/Background/logo-name.png) no-repeat left 5px center;
+        width: 866px;
+        height: 100%;
+        vertical-align: middle;
+    }
+
+.main-content {
+    top: 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+.main-content-bound {
+    overflow: hidden;
+    height: 100%;
+    background: url(../img/background.jpg) no-repeat center;
+    background-size: cover;
+}
+
+    .main-content-bound .inner-login-form {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 45%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    .main-content-bound .title-login-with-misaid {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+.title-confirm-step2 {
+    overflow: hidden;
+    width: 498px;
+    height: 506px;
+    margin: 0 auto;
+    position: relative;
+    background-color: #fff;
+    padding: 40px;
+}
+
+.confirm-step2-row1 {
+    font-size: 20px;
+    text-align: center;
+    font-weight: 700;
+    padding: 15px;
+}
+
+
+
+.support-list {
+    padding: 20px 0 20px 0;
+    text-align: center;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+}
+
+    .support-list .support-item {
+        margin: 0 21px 0 15px;
+        text-align: center;
+    }
+
+        .support-list .support-item .customicon:after {
+            background-repeat: no-repeat;
+            margin-left: -25px;
+            height: 21px;
+            width: 21px;
+            content: "";
+            display: inline;
+            position: absolute;
+            background-position: center;
+        }
+
+        .support-list .support-item .customicon-misasupport:after {
+            background-image: url(Content/Images/Icon/ic_support.svg);
+            top: 16px;
+        }
+
+        .support-list .support-item .customicon-nhantin:after {
+            background-image: url(Content/Images/Icon/ic_messenger.svg);
+            top: 16px;
+        }
+
+        .support-list .support-item .customicon-huongdan:after {
+            background-image: url(Content/Images/Icon/ic_help.svg);
+            top: 16px;
+        }
+
+        .support-list .support-item .customicon-zoom:after {
+            background-image: url(Content/Images/Icon/Icon-Zoom.svg);
+            top: 16px;
+            background-size: 21px;
+        }
+
+.slider-bg-container {
+    background: #9b9b9b;
+    border: none;
+    width: 560px;
+    height: 100%;
+    float: left;
+    display: block;
+    border-radius: 8px 0 0 8px;
+    overflow: hidden;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=6, Direction=63, Color=#E0E0E0)";
+}
+
+.login-form {
+    background: #fff;
+    height: 100%;
+    display: flex;
+}
+
+.half-ctn {
+    width: 60%;
+    background: url(../img/banner2.jpg) no-repeat center;
+    background-size: 762px 657px;
+}
+
+.half-ctn1 {
+    width: 40%;
+}
+
+.main-ctn {
+    padding: 30px;
+}
+
+.logo-text {
+    text-align: center;
+    font-size: 15px;
+    padding: 15px 15px 0;
+}
+
+.text-tieude {
+    font-size: 20px;
+    color: #0077c7;
+}
+
+.text-dangnhap {
+    font-size: 15px;
+}
+
+.hide {
+    display: none !important;
+}
+
+.user-image {
+    background-size: contain;
+}
+
+.custom-user-logo {
+    height: 60px;
+    width: 60px;
+    margin: 16px;
+}
+
+.fullName {
+    text-align: left;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.6;
+}
+
+.custom-text-form-quick {
+    text-align: center !important;
+    font-size: 16px !important;
+    white-space: break-spaces !important;
+}
+
+.organizationName {
+    text-align: left;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #7b7b7c;
+    line-height: 1.6;
+    padding-bottom: 12px;
+}
+
+.custom-text-form-quick {
+    text-align: center !important;
+    font-size: 16px !important;
+    white-space: break-spaces !important;
+}
+
+.ctn-quick-login {
+    margin-top: 20px;
+}
+
+#snackbar.show {
+    visibility: visible;
+}
+
+#snackbar-otp.show-otp {
+    visibility: visible;
+}
+
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -150px;
+    background-color: #f65335;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 6px 20px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: -40px;
+    position: fixed;
+    font-size: 14px;
+}
+
+.back-to-login {
+    text-align: center;
+    font-size: 14px;
+}
+
+label#lblPhoneNumerStep2 {
+    font-size: 14px;
+}
+
+#snackbar-otp {
+    visibility: hidden;
+    background-color: #f65335;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 6px 20px;
+    min-width: 260px;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -40px;
+    font-size: 14px;
+}
+
+.ctn-login-recently {
+    margin-bottom: 16px;
+    height: 60px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 1px 9px 4px rgb(0 0 0/16%);
+    display: flex;
+    position: relative;
+    cursor: pointer;
+}
+
+.ctn-img-user {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    padding: 7px;
+}
+
+.user-image {
+    background-size: contain;
+    background-image: url(Content/Images/Icon/ic-avatar-empty.svg);
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+}
+
+.img-login {
+    background: url(Content/Images/Icon/img-Login.png) no-repeat center;
+    background-size: cover;
+}
+
+.main-user-info {
+    width: calc(100% - 80px);
+    padding-right: 20px;
+    align-self: center;
+    margin-top: 15px;
+}
+
+.ic-delete-login {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    right: 10px;
+    top: 21px;
+    background-image: url(Content/Images/Icon/ic-delete-login.svg);
+}
+
+.login-form input:-webkit-autofill {
+    -webkit-box-shadow: inset 0 0 0 1000px #fff !important;
+}
+
+.login-body .login-panel-bottom {
+    padding: 2px 0;
+}
+
+.btn-space {
+    text-align: center;
+}
+
+.login-body .login-title-text {
+    text-transform: uppercase;
+    font-weight: 400;
+    margin: 0 0 10px;
+    font-size: 18px;
+    text-align: center;
+    color: #0077c7;
+    display: none;
+}
+
+.image-logo-misa {
+    background: url(Content/Images/Icon/logoMISA.svg) no-repeat center center;
+    height: 50px;
+    width: 100%;
+    background-size: contain;
+}
+
+svg#logo-svg {
+    display: block;
+    margin: auto;
+}
+
+    svg#logo-svg tspan {
+        font-size: 12px;
+        font-family: roboto Condensed !important;
+        font-weight: 700;
+    }
+
+.login-body .confirm-step2-row1 {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-body .confirm-step2-row2 {
+    margin: 10px 0;
+}
+
+.login-body .title-login-with-misaid {
+    text-align: center;
+}
+
+.login-body .padding-bottom4 {
+    padding-bottom: 6px;
+}
+
+.login-body .login-account-misaid {
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.login-body .link {
+    color: #0077c7;
+}
+
+.login-body .link-qlcb {
+    font-size: 16px;
+}
+
+.login-body .login-title-text-notCompany {
+    text-transform: uppercase;
+    font-weight: 400;
+    margin: 0 0 10px;
+    font-size: 18px;
+    text-align: center;
+    color: red;
+}
+
+.login-body .forgot-password {
+    line-height: 15px;
+    font-size: 14px;
+    display: block;
+    color: #35a5ff;
+    font-weight: 400;
+}
+
+.login-body .divrefresh-captcha {
+    z-index: 100 !important;
+    width: 148px;
+    display: inline-block;
+    position: relative;
+}
+
+.login-body .refresh-captcha {
+    line-height: 15px;
+    font-size: 15px;
+    font-style: italic;
+    display: inline-block;
+    color: #0077c7;
+    font-weight: 400;
+    position: relative;
+}
+
+    .login-body .refresh-captcha .misaIcon.ic-sync {
+        position: absolute;
+        top: -1px;
+        left: 5px;
+    }
+
+    .login-body .refresh-captcha .new-captchar {
+        position: absolute;
+        top: 1px;
+        left: 25px;
+        width: 125px;
+    }
+
+.login-body .m-checkbox .x-form-checkbox {
+    background: 0 0;
+    width: 22px;
+    height: 22px;
+    margin: 0;
+}
+
+    .login-body .m-checkbox .x-form-checkbox:hover:before,
+    .m-checkbox .x-form-checkbox-focus::before {
+        color: #3276c3 !important;
+    }
+
+.login-body .x-form-cb-label.x-form-cb-label-after {
+    padding-left: 12px;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.login-body .x-toolbar .m-checkbox .x-form-cb-label {
+    margin-top: 0;
+}
+
+.login-body .m-checkbox .x-form-cb-label {
+    position: absolute;
+    margin-top: 4px;
+    left: 12px;
+    font-family: Roboto, Segoe UI, Arial, tahoma, verdana, sans-serif !important;
+    font-size: 13px;
+    color: #000;
+}
+
+.main-content-bound .cboOrganization,
+.main-content-bound .username,
+.main-content-bound .codeconfirm,
+.main-content-bound .passwordNew,
+.main-content-bound .confirmPassword,
+.main-content-bound .m-capthcha-input,
+.main-content-bound .password {
+    width: 100%;
+    height: 44px;
+}
+
+    .main-content-bound .cboOrganization.m-combobox .x-form-text-wrap-default {
+    }
+
+.login-form .x-form-field {
+    font-size: 14px !important;
+    border-radius: 3px;
+    color: #152c5b;
+}
+
+.group-control {
+    position: relative;
+}
+
+.field-icon {
+    background-image: url(Content/Images/Background/lg-icon.png);
+    background-repeat: no-repeat;
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    z-index: 1000;
+}
+
+.icon-home {
+    background-position: top 6px left 6px !important;
+}
+
+.icon-user {
+    background-position: top -29px left 6px;
+}
+
+.icon-pass {
+    background-position: top -67px left 6px;
+}
+
+.login-form .cboOrganization .x-form-invalid .x-form-trigger-default {
+    border-color: #ff2121 !important;
+}
+
+.login-form .m-capthcha-input.x-field-focus .x-form-text-wrap-default {
+    border-color: #1c90ff !important;
+}
+
+.login-form .m-capthcha-input {
+    background-color: #fff;
+    border-radius: 3.5px;
+    width: 150px;
+    height: 35px;
+    overflow: hidden;
+}
+
+.login-form .username.x-field-focus .x-form-text-wrap-default,
+.login-form .password.x-field-focus .x-form-text-wrap-default {
+    border-bottom-color: #1c90ff !important;
+}
+
+.main-content-bound .cboOrganization .x-form-arrow-trigger::before {
+   /* font-family: MISAIconFont !important;*/
+    speak: none;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px !important;
+    color: #6c8093 !important;
+    background: 0 0 !important;
+    line-height: 16px;
+    text-transform: none;
+    letter-spacing: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "liga";
+    border: none;
+    content: "\E065";
+    position: relative;
+    right: 2px;
+    top: 13px;
+}
+
+.main-content-bound #rowWarningLoginByMISAID {
+    display: none;
+    line-height: 1.5;
+    margin-top: 8px;
+}
+
+.main-content-bound .mess-codeotp {
+    margin-top: 8px;
+}
+
+.main-content-bound .m-row {
+    margin-bottom: 12px;
+}
+
+.main-content-bound .m-row-password {
+    margin-bottom: 12px;
+}
+
+.main-content-bound .cboOrganization input,
+.main-content-bound .username input,
+.main-content-bound .m-capthcha-input input,
+.main-content-bound .password input {
+    padding-left: 12px;
+    padding: 0 0 0 10px;
+    border: none;
+    background: 0 0 !important;
+}
+
+.main-content-bound .codeotp input {
+    padding-left: 10px !important;
+    padding-bottom: 1px;
+}
+
+.footer {
+    position: fixed;
+    bottom: -30px;
+    width: 100%;
+    color: #afafaf;
+    text-align: center;
+}
+
+    .footer p {
+        margin: 0;
+    }
+
+.m-fail-mess {
+    color: #ff2121;
+    font-size: 13px;
+}
+
+.m-captcha-image {
+    width: 132px;
+    padding-top: 4px;
+}
+
+.m-captcha-button {
+    padding-top: 4px;
+    margin-left: 120px;
+}
+
+.m-display-none {
+    display: none;
+}
+
+.main-content-bound .m-checkbox {
+    position: relative;
+    top: 7px;
+}
+
+.m-row.info {
+    background: #faf2af;
+    border: 1px solid #ccc;
+    height: 34px;
+    line-height: 34px;
+    position: relative;
+    padding-left: 28px;
+    font-style: italic;
+}
+
+    .m-row.info .text-info {
+        font-size: 11.5px;
+    }
+
+    .m-row.info .misaIcon.ic-info {
+        position: absolute;
+        top: 5px;
+        left: 2px;
+    }
+
+.recoverpassword_wrapper .password input {
+    padding-left: 3px !important;
+    background-image: none !important;
+}
+
+.login-panel-body .recover-password {
+    height: 55px !important;
+    line-height: 25px !important;
+    padding-top: 3px !important;
+    padding-left: 36px !important;
+}
+
+.login-panel-body .recover-password-icon {
+    left: 8px !important;
+}
+
+.login-panel-body {
+    padding-top: 13px;
+}
+
+.main-content-bound .login-misaID-row {
+    height: 20px;
+    text-align: center;
+}
+
+.main-content-bound .LoginMisaIDRow1 {
+    font-size: 18px;
+    color: #1c90ff;
+}
+
+.main-content-bound .LoginMisaIDRow2 {
+}
+
+.main-content-bound .info-login-account-space {
+    min-height: 15px;
+}
+
+.main-content-bound .register {
+    color: #0077c7;
+}
+
+.main-content-bound .row-slider {
+    position: relative;
+    height: 40px;
+    display: flex;
+    left: 25%;
+}
+
+.main-content-bound .logo-small {
+    margin-left: 15px;
+    float: left;
+    width: 35px;
+    height: 35px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.login-body .logo-mimosa {
+    background-image: url(Content/Images/Icon/logo-mimosa.png);
+}
+
+.login-body .logo-qlts {
+    background-image: url(Content/Images/Icon/logo-qlts.png);
+}
+
+.start-using-form-container {
+    overflow: hidden;
+    width: 450px;
+    height: 400px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.26);
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+    .start-using-form-container .image-close {
+        background-image: url(Content/Images/Icon/image-close.png);
+        height: 20px;
+        width: 20px;
+        position: absolute;
+        right: 15px;
+        cursor: pointer;
+    }
+
+    .start-using-form-container .loading {
+        height: 100px;
+        margin: 20px;
+    }
+
+    .start-using-form-container .image-loading {
+        background-image: url(Content/Images/Icon/image-loading.gif);
+        height: 40px;
+        width: 40px;
+        margin: auto;
+    }
+
+    .start-using-form-container .row-close {
+        position: sticky;
+        top: 12px;
+        height: 8px;
+    }
+
+    .start-using-form-container .image-logo-misa {
+        background-image: url(Content/Images/Icon/image-logo-misa.png);
+        height: 45px;
+        width: 100px;
+        margin: auto;
+    }
+
+    .start-using-form-container .row-image {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .start-using-form-container .image {
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .start-using-form-container .row-image .text {
+        text-align: justify;
+    }
+
+        .start-using-form-container .row-image .text .text-row {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: 400;
+        }
+
+    .start-using-form-container .font-size14 {
+        font-size: 14px;
+    }
+
+    .start-using-form-container .font-size16 {
+        font-size: 16px;
+    }
+
+.start-using-form-container-login {
+    padding: 0 35px;
+}
+
+    .start-using-form-container-login .m-group-content {
+        padding: 12px 0;
+    }
+
+    .start-using-form-container-login .row-btn-login-misaid {
+        margin-top: 20px;
+    }
+
+.main-content-bound .hide {
+    display: none;
+}
+
+.main-content-bound .send-code-confirm {
+    display: flex;
+    padding: 5px 15px 5px 0;
+    color: #1c90ff;
+}
+
+.main-content-bound .title-body {
+    margin-bottom: 15px;
+    line-height: 20px;
+}
+
+.code-confirm .x-form-text-default {
+    padding: 1px 2px 2px 8px;
+}
+
+.password-new .x-form-text-default {
+    padding: 1px 2px 2px 8px;
+}
+
+.main-content-bound .info-login-account-MISA {
+    display: none;
+}
+
+.btn-staff-area .m-row {
+    display: -webkit-flex;
+    display: flex;
+    padding-top: 6px;
+}
+
+.btn-staff-area {
+    position: absolute;
+    bottom: 15px;
+}
+
+    .btn-staff-area .staff-title {
+        text-align: center;
+        color: #d59357;
+    }
+
+.flex,
+.flex1 {
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+.btn-staff-area .btn-staff {
+    height: 36px;
+    width: 160px;
+    background: #ee9230;
+    color: #fff;
+}
+
+    .btn-staff-area .btn-staff .x-btn-inner-default-small {
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+.login-form-container .cls-black {
+    color: #000;
+}
+
+.login-form-container .eye-noun {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #c5c5c5;
+}
+
+.login-form-container .ic-show {
+    background-image: url(Content/Images/Icon/ic_show.svg);
+    background-repeat: no-repeat;
+    top: 15px;
+    width: 20px;
+    height: 20px;
+}
+
+.login-form-container .ic-hide {
+    background-image: url(Content/Images/Icon/ic_hide.svg);
+    background-repeat: no-repeat;
+    top: 13px;
+    width: 22px;
+    height: 22px;
+}
+
+.login-form-container .paddingTop6 {
+    padding-top: 6px;
+}
+
+.main-content-bound .x-form-trigger-wrap {
+    display: table;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+    .main-content-bound .x-pickerfield-open .x-form-trigger-wrap,
+    .main-content-bound .x-form-trigger-wrap.x-form-trigger-wrap-focus {
+        border-color: #1c90ff;
+    }
+
+        .main-content-bound
+        .x-pickerfield-open
+        .x-form-trigger-wrap
+        .x-form-arrow-trigger:before,
+        .main-content-bound
+        .x-form-trigger-wrap.x-form-trigger-wrap-focus
+        .x-form-arrow-trigger:before {
+            color: #1c90ff !important;
+        }
+
+    .main-content-bound .x-form-trigger-wrap.x-form-trigger-wrap-invalid {
+        border-color: #ff2121;
+    }
+
+#LoginUser_txtCaptchaInput-triggerWrap {
+    display: table;
+    width: 100%;
+    height: 100%;
+    border: none !important;
+}
+
+.main-content-bound .m-combobox .x-form-text-wrap-default {
+    border: none !important;
+    height: 30px;
+    border-radius: unset;
+}
+
+.main-content-bound .cboOrganization .x-form-trigger-default {
+    border: none;
+    background: #fff !important;
+    background-image: none !important;
+    margin-left: 18px;
+    border-radius: 4px;
+}
+
+.login-form .username .x-form-text-wrap-default,
+.login-form .password .x-form-text-wrap-default {
+    border: none !important;
+    border-radius: 4px;
+}
+
+.m-capthcha-input .x-form-text-wrap-default {
+    border: 1px solid #e0e0e0;
+}
+
+.m-row.m-captcha.c-captcha {
+    margin-top: 3px;
+}
+
+a.support-item {
+    color: #35a5ff;
+}
+
+.username .x-form-text-default,
+.password .x-form-text-default,
+.m-captcha .x-form-text-default {
+    background: 0 0;
+}
+
+.m-boundlist-searchcontainer {
+    background: #fff;
+}
+
+.x-boundlist {
+    box-shadow: unset;
+    border: none;
+}
+
+@media (min-width: 1000px) {
+    .login-form-container {
+        overflow: hidden;
+        width: 120%;
+        height: 100%;
+        border-radius: 10px;
+        box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.26);
+        margin: 0 auto;
+        position: relative;
+    }
+}
+@media (max-width: 1000px) {
+    .main-content-bound {
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+        background: url(../img/background_web.jpg) no-repeat center;
+        background-size: cover;
+        background-color: #1d2024;
+    }
+    .login-form-container {
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+    }
+    
+}

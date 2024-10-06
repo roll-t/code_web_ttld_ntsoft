@@ -1,0 +1,1 @@
+Ext.define('MISA.Control.MISAComboBoxDataGroup',{mixins:['MISA.Mixin.ControlBinding',],xtype:'misacomboboxdatagroup',extend:'MISA.Control.MISAComboboxData',alias:'widget.misacomboboxdatagroup',misacls:'m-comboboxgroup groupcontrol',labelCls:'m-comboboxgroup-label qlcb-control-label',width:'100%',height:52,labelAlign:'top'});

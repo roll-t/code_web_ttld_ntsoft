@@ -1,0 +1,1413 @@
+﻿<script src="~/Content/AceAdmin/ace.min.js"></script>
+<script src="~/Content/AceAdmin/ace-elements.min.js"></script>
+<link href="~/Content/AceAdmin/ace.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
+<style>
+    .text-info {
+        color: var(--tblr-color-header) !important;
+    }
+
+    .text-line-modal:after {
+        content: "";
+        width: 100%;
+        display: block;
+        height: 1px;
+        border-bottom: 1px solid var(--tblr-color-header);
+    }
+
+    .text-line-modal {
+        display: flex;
+        align-items: center;
+        gap: 10px
+    }
+
+    .text-line {
+        width: 175px;
+        color: var(--tblr-color-header);
+        font-weight: bold;
+        font-size: 14px !important;
+    }
+
+    .line-modal {
+        padding-bottom: 1px;
+    }
+
+    .display-flex {
+        display: flex;
+    }
+
+    .align-items-center {
+        align-items: center;
+    }
+
+    .justify-content-center {
+        justify-content: center;
+    }
+
+    .modal-footer {
+        display: unset !important;
+    }
+
+    label.middle {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    span.lbl {
+        padding-left: 10px;
+    }
+
+    li.step-item {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+        li.step-item img {
+            text-align: center;
+            margin: 0 auto;
+        }
+
+    #mdThemMoiThuThapNguoiNNLVVN_us .modal-content {
+        height: 100vh;
+    }
+
+    .step-item.active ~ .step-item {
+        color: #000000;
+    }
+
+    .active .h4.m-0 {
+        color: var(--tbl-btn-luuvadong);
+        font-weight: bold;
+        font-size: 15px !important;
+    }
+
+    .active .text-dark {
+        font-weight: 400 !important;
+        color: var(--tbl-btn-luuvadong) !important;
+    }
+
+    .box-border-cauld {
+        border: 1px var(--tblr-color-header) solid;
+        padding: 10px 5px;
+        border-radius: 6px;
+        border-left: 10px var(--tblr-color-header) solid;
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .ace-file-multiple .ace-file-container:before {
+        margin: 5px;
+    }
+
+    .ace-file-multiple .ace-file-container .ace-file-name .ace-icon {
+        line-height: 50px;
+        width: auto;
+        font-size: 40px;
+    }
+
+    .box-img-kyten {
+        height: 150px;
+        background: #d2d2d2;
+        border-radius: 4px;
+    }
+
+    .box-input {
+        position: absolute;
+        bottom: 0;
+    }
+</style>
+<style>
+    .vodiapickerDT{
+        display: none;
+    }
+
+    #ListDataDoiTuongNN{
+        padding-left: 0px;
+    }
+
+        #ListDataDoiTuongNN img, .btn-select img {
+            width: 20px;
+        }
+
+        #ListDataDoiTuongNN li {
+            list-style: none;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+        }
+
+            #ListDataDoiTuongNN li:hover {
+                background-color: #F4F3F3;
+                cursor: pointer;
+            }
+
+        #ListDataDoiTuongNN li img {
+            margin: 5px;
+        }
+
+    /* item list */
+
+    .OptionDoiTuongNN{
+        display: none;
+        width: 100%;
+        max-width: calc(73% - 28px);
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: 5px;
+        position: absolute;
+        z-index: 1;
+        display: block;
+        background: white;
+    }
+
+    @@media (max-width: 1200px) and (min-width: 901px) {
+        .OptionDoiTuongNN{
+            max-width: calc(50% - 28px) !important;
+        }
+    }
+
+    @@media (max-width: 900px) and (min-width: 701px) {
+        .OptionDoiTuongNN {
+            max-width: calc(50% - 28px) !important;
+        }
+    }
+
+    @@media (max-width: 700px) {
+        .OptionDoiTuongNN{
+            max-width: calc(100% - 40px) !important;
+        }
+    }
+
+    .open {
+        display: show !important;
+    }
+
+    .btn-select {
+        width: 100%;
+        height: auto;
+        min-height: 30px;
+        border-radius: 4px 0 0 4px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        text-align: left;
+    }
+
+        .btn-select li {
+            list-style: none;
+            float: left;
+            padding-bottom: 0px;
+            width: 100%;
+        }
+
+        .btn-select:hover li {
+            margin-left: 0px;
+        }
+
+        .btn-select:hover {
+            background-color: #F4F3F3;
+            border: 1px solid transparent;
+            box-shadow: inset 0 0px 0px 1px #ccc;
+        }
+
+        .btn-select:focus {
+            outline: none;
+        }
+
+    .opImg {
+        display: inline-block;
+        height: 50px;
+        width: 50px;
+        background-color: aquamarine;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 50%;
+        color: white;
+        font-weight: bold;
+        font-size: 25px !important;
+        min-width: 50px;
+    }
+
+    .opInfo {
+        padding-left: 10px;
+    }
+
+    .listOption {
+        background-color: white;
+        height: 300px;
+        overflow-y: scroll;
+    }
+
+    .text-diachi {
+        width: 100%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+    }
+
+    .lang-select {
+        display: flex;
+    }
+
+    .opInfo.Chon {
+        text-align: center;
+        width: 100%;
+    }
+</style>
+<style>
+    .ace-file-multiple .ace-file-container.selected .ace-file-name .ace-icon {
+        margin-right: 12px !important;
+    }
+
+    .ace-file-name:not(.large) {
+        width: 100% !important;
+    }
+
+    .btn-del-item {
+        float: right;
+        background-color: red !important;
+        z-index: 1;
+        border-radius: 50%;
+    }
+
+    .ace-file-multiple .ace-file-container .ace-file-name.large:after {
+        background-color: #fff;
+        color: #000;
+    }
+
+    .ace-file-multiple .ace-file-container .ace-file-name.large {
+        border-bottom: 1px solid #ffffff;
+        border: 1px dashed #d2d0d0;
+    }
+
+    .ace-file-multiple .ace-file-container:before {
+        font-size: 14px;
+    }
+
+    .ace-file-multiple .ace-file-container .ace-file-name.large {
+        width: 24%;
+        float: left;
+        height: 180px;
+    }
+
+        .ace-file-multiple .ace-file-container .ace-file-name.large img {
+            width: 100% !important;
+            height: 148px !important;
+            background-size: contain;
+        }
+
+    #XemDinhKemChuKy_CauLD {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        display: none;
+    }
+
+    #imgHienThiKyTen:hover #XemDinhKemChuKy_CauLD {
+        display: block;
+        color: var(--tblr-btn-hover-bg);
+        cursor: pointer;
+    }
+
+        #imgHienThiKyTen:hover #XemDinhKemChuKy_CauLD > i {
+            color: var(--tblr-primary) !important;
+        }
+
+    .MoTa_CT {
+        width: 720px;
+        height: 380px;
+        background-size: contain; /* Đảm bảo hình ảnh được thu nhỏ hoặc phóng to để vừa khít */
+        background-repeat: no-repeat; /* Tránh lặp lại hình ảnh */
+        background-position: center; /* Đặt hình ảnh vào giữa */
+    }
+</style>
+<style>
+    .vodiapickerToChuc {
+        display: none;
+    }
+
+    #ListDataToChuc {
+        padding-left: 0px;
+    }
+
+        #ListDataToChuc img, .btn-select img {
+            width: 20px;
+        }
+
+        #ListDataToChuc li {
+            list-style: none;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+        }
+
+            #ListDataToChuc li:hover {
+                background-color: #F4F3F3;
+                cursor: pointer;
+            }
+
+            #ListDataToChuc li img {
+                margin: 5px;
+            }
+
+    /* item list */
+
+    .OptionToChuc {
+        display: none;
+        width: 100%;
+        max-width: calc(50% - 28px);
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: 5px;
+        position: absolute;
+        z-index: 1;
+        display: block;
+        background: white;
+    }
+
+    @@media (max-width: 1200px) and (min-width: 901px) {
+        .OptionToChuc {
+            max-width: calc(50% - 28px) !important;
+        }
+    }
+
+    @@media (max-width: 900px) and (min-width: 701px) {
+        .OptionToChuc {
+            max-width: calc(50% - 28px) !important;
+        }
+    }
+
+    @@media (max-width: 700px) {
+        .OptionToChuc {
+            max-width: calc(100% - 40px) !important;
+        }
+    }
+
+    .open {
+        display: show !important;
+    }
+
+    .btn-select-tochuc {
+        width: 100%;
+        height: auto;
+        min-height: 30px;
+        border-radius: 4px 0 0 4px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        text-align: left;
+    }
+
+        .btn-select-tochuc li {
+            list-style: none;
+            float: left;
+            padding-bottom: 0px;
+            width: 100%;
+        }
+
+        .btn-select-tochuc:hover li {
+            margin-left: 0px;
+        }
+
+        .btn-select-tochuc:hover {
+            background-color: #F4F3F3;
+            border: 1px solid transparent;
+            box-shadow: inset 0 0px 0px 1px #ccc;
+        }
+
+        .btn-select-tochuc:focus {
+            outline: none;
+        }
+
+</style>
+@* Modal thêm mới *@
+<div id="mdThemMoiThuThapNguoiNNLVVN_us" class="modal modal-blur fade" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document" style="margin: 0; max-width:100%;">
+        <div class="modal-content" style="border-radius: unset;">
+            <div class="modal-header nts-modal" style="background: unset;color: #000;border-bottom: unset;">
+                <h5 id="lblTieuDeThemMoi1_us" class="modal-title text-bold" style="font-weight:bold;">Thu thập thông tin người lao động nước ngoài làm việc tại Việt Nam</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: #000 !important;font-weight: bold;"> &times;</button>
+            </div>
+            <div class="modal-body" style="background: white;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box-shadow-primary" style="padding: 10px; border-radius: 4px; height: 100%;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line">Thông tin chung</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            @* Row 1 *@
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="NgayThuThapDoiTuongNN_usTT">Ngày thu thập</label>
+                                        <input type="text" class="form-control date-picker" id="NgayThuThapDoiTuongNN_usTT" autocomplete="off" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div id="n"></div>
+                                    <label class="form-label" for="DoiTuongNNID_ChuHo" id="lbDoiTuongNNID_ChuHo">
+                                        Họ và tên
+                                        <i style="color: blue;cursor:pointer; display:none" class="fa fa-info-circle" aria-hidden="true" id="LichSuDangKy"></i>
+                                    </label>
+                                    <select class="vodiapickerDT" id="DoiTuongNNID_ChuHo" required>
+                                    </select>
+                                    <div class="lang-select">
+                                        <button class="btn-select btn-select-DoiTuongNN" value="" id="SelectDoiTuongNN_US"></button>
+                                        <span class="input-group-text cursor-pointer" style="border-radius: 0 4px 4px 0px;" id="HienThiTatCaDoiTuongNN"><i class="fa-solid fa-ellipsis" style="color:var(--tbl-btn-luuvadong)"></i></span>
+                                        <div class="OptionDoiTuongNN" style=" z-index: 10070; margin-top: 30px;">
+                                            <ul id="ListDataDoiTuongNN" class="listOption" style=" background-color: white;margin-bottom: 4px;"></ul>
+                                            <span id="btnThemNhanhDoiTuongNN" style="display: none; width: fit-content; margin: auto; margin-bottom: 4px; cursor: pointer;" class="badge bg-green"> <i class="fa fa-plus"></i>&nbsp;Thêm mới</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @* Row 2 *@
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="">Loại hộ chiếu</label>
+                                        <div class="input-group">
+                                            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style=" font-weight: normal; border-radius: 4px 0 0 4px !important;" id="drop_MaSo_usTT" data-value="0">
+                                                -Chọn- &nbsp; <i class="fa-solid fa-caret-down"></i>
+                                            </button>
+                                            <div class="dropdown-menu" style="z-index: 100000">
+                                                <a class="dropdown-item dropInput_MaSo_usTT" href="#" data-value="0" data-name="-Chon-">
+                                                    -Chọn-
+                                                </a>
+                                                <a class="dropdown-item dropInput_MaSo_usTT" href="#" data-value="1" data-name="P">
+                                                    P
+                                                </a>
+                                                <a class="dropdown-item dropInput_MaSo_usTT" href="#" data-value="2" data-name="O">
+                                                    O
+                                                </a>
+                                                <a class="dropdown-item dropInput_MaSo_usTT" href="#" data-value="3" data-name="D">
+                                                    D
+                                                </a>
+                                            </div>
+                                            <input type="text" class="form-control" id="MaSoDoiTuongNNTT_us" maxlength="500" placeholder="Mã số">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="SoHoChieuDoiTuongNNTT_us">Số hộ chiếu</label>
+                                        <input type="text" class="form-control" id="SoHoChieuDoiTuongNNTT_us" maxlength="20" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="NgayCapDoiTuongNNTT_us">Ngày cấp</label>
+                                        <input type="text" class="form-control date-picker" id="NgayCapDoiTuongNNTT_us" autocomplete="off" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="CoGiaTriDoiTuongNNTT_us">Có giá trị</label>
+                                        <input type="text" class="form-control date-picker" id="CoGiaTriDoiTuongNNTT_us" autocomplete="off" required>
+                                    </div>
+                                </div>
+                            </div>
+                            @* Row 3 *@
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="NoiCapDoiTuongNNTT_us" class="form-label">Nơi cấp</label>
+                                        <select class="form-control input-sm" id="NoiCapDoiTuongNNTT_us" tabindex="0" data-dropdown-parent="#mdThemMoiThuThapNguoiNNLVVN_us" required></select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="TrinhDoCMKTDoiTuongNNTT_us">Trình độ đào tạo</label>
+                                        <select class="form-control" id="TrinhDoCMKTDoiTuongNNTT_us" tabindex="0" data-dropdown-parent="#mdThemMoiThuThapNguoiNNLVVN_us">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="ChuyenNganhDaoTaoDoiTuongNNTT_us">Chuyên môn đào tạo</label>
+                                        <select class="form-control" id="ChuyenNganhDaoTaoDoiTuongNNTT_us" tabindex="0" data-dropdown-parent="#mdThemMoiThuThapNguoiNNLVVN_us">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            @* Row 4 *@
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="SoDienThoaiDoiTuongNN_us">Số điện thoại</label>
+                                        <input type="text" class="form-control" id="SoDienThoaiDoiTuongNN_us" maxlength="20">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="EmailDoiTuongNNTT_us">Email</label>
+                                        <input type="email" class="form-control" id="EmailDoiTuongNNTT_us" maxlength="50">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="NoiDungThuThapDoiTuongNNTT_us">Nội dung thu thập</label>
+                                        <input type="text" class="form-control" id="NoiDungThuThapDoiTuongNNTT_us" maxlength="500">
+                                    </div>
+                                </div>
+                            </div>
+                            @* ----------------------------------------------------------------------------------------- *@
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line">Thông tin việc làm</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            @* Row 1 *@
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="SoGPLDDoiTuongNNTT_us">Số GPLĐ/Xác nhận thuộc diện không cấp GPLĐ</label>
+                                        <select class="form-control" id="SoGPLDDoiTuongNNTT_us" tabindex="0" data-dropdown-parent="#mdThemMoiThuThapNguoiNNLVVN_us">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div id="n"></div>
+                                    <label class="form-label" for="ToChucID_ChuHo" id="lbToChucID_ChuHo">
+                                        Tổ chức
+                                        <i style="color: blue;cursor:pointer; display:none" class="fa fa-info-circle" aria-hidden="true" id="LichSuDangKyTC"></i>
+                                    </label>
+                                    <select class="vodiapickerToChuc" id="ToChucID_ChuHo" required>
+                                    </select>
+                                    <div class="lang-select">
+                                        <button class="btn-select btn-select-tochuc" value="" id="SelectToChuc_US"></button>
+                                        <span class="input-group-text cursor-pointer" style="border-radius: 0 4px 4px 0px;" id="HienThiTatCaToChuc"><i class="fa-solid fa-ellipsis" style="color:var(--tbl-btn-luuvadong)"></i></span>
+                                        <div class="OptionToChuc" style=" z-index: 10060; margin-top: 30px;">
+                                            <ul id="ListDataToChuc" class="listOption" style=" background-color: white;margin-bottom: 4px;"></ul>
+                                            <span id="btnThemNhanhToChuc" style="display: none; width: fit-content; margin: auto; margin-bottom: 4px; cursor: pointer;" class="badge bg-green"> <i class="fa fa-plus"></i>&nbsp;Thêm mới</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="MaSoThueDoiTuongNNTT_us">Số ĐKKD/Mã số thuế</label>
+                                        <input type="text" class="form-control" id="MaSoThueDoiTuongNNTT_us" maxlength="50" required>
+                                    </div>
+                                </div>
+                            </div>
+                            @* Row 2 *@
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="mb-3">
+                                    <label class="form-label" for="HinhTucLamViecIDDoiTuongNNTT_us">Hình thức làm việc</label>
+                                    <select class="form-control" id="HinhTucLamViecIDDoiTuongNNTT_us" tabindex="0" data-dropdown-parent="#mdThemMoiThuThapNguoiNNLVVN_us">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="DiaChiDoiTuongNNTT_us">Địa điểm làm việc</label>
+                                    <input type="text" class="form-control" id="DiaChiDoiTuongNNTT_us" maxlength="500">
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="mb-3">
+                                    <label class="form-label" for="LoaiHinhDNIDDoiTuongNNTT_us">Loại hình doanh nghiệp, tổ chức</label>
+                                    <select class="form-control" id="LoaiHinhDNIDDoiTuongNNTT_us" tabindex="0" data-dropdown-parent="#mdThemMoiThuThapNguoiNNLVVN_us">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                            @* Row 3 *@
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="ViTriCongViecDoiTuongNNTT_us">Vị trí công việc</label>
+                                        <select class="form-control" id="ViTriCongViecDoiTuongNNTT_us" tabindex="0" data-dropdown-parent="#mdThemMoiThuThapNguoiNNLVVN_us">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="mb-3" style="z-index:88;">
+                                        <label class="form-label" for="NgheCongViecDoiTuongNNTT_us">Nghề công việc</label>
+                                        <select class="form-control" id="NgheCongViecDoiTuongNNTT_us" tabindex="0" data-dropdown-parent="#mdThemMoiThuThapNguoiNNLVVN_us">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="ThoiGianLVTuNgayDoiTuongNNTT_us">Thời gian làm việc từ ngày</label>
+                                        <input type="text" class="form-control date-picker" id="ThoiGianLVTuNgayDoiTuongNNTT_us" autocomplete="off" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="ThoiGianLVDenNgayDoiTuongNNTT_us">Thời gian làm việc đến ngày </label>
+                                        <input type="text" class="form-control date-picker" id="ThoiGianLVDenNgayDoiTuongNNTT_us" autocomplete="off" required>
+                                    </div>
+                                </div>
+                            </div>
+                            @* ---------------------------------Đính kèm----------------------------------- *@
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line" style="width: 382px;">Đính kèm (*.DOC, *.PDF, *.PNG, *.JPG, *.JPEG)</div></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="file" id="DinhKem_DoiTuongNNTT_us" multiple accept=".pdf, .png, .jpg, .jpeg">
+                                </div>
+                            </div>
+                            @* ---------------------------------Ký tên----------------------------------- *@
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line" style="width: 55px;">Ký tên</div></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-1" style="position: relative;">
+                                            <div class="box-input">
+                                                <button class="btn btn-warning mb-2" style="width: 80px" id="VeChuKy_us">
+                                                    <img src="~/Images/butve.svg" alt="Ký tên" /> &nbsp; Vẽ
+                                                </button>
+                                                <button class="btn btn-primary mb-2" style="width: 80px;" id="TaiChuKy">
+                                                    <img src="~/Images/tailen.svg" alt="Tải ảnh lên" />&nbsp; Tải lên
+                                                </button>
+                                                <button class="btn btn-primary mb-2" style="width: 80px; display: none;" id="XoaChuKy">
+                                                    <img src="~/Images/tailen.svg" alt="Tải ảnh lên" />&nbsp; Xóa
+                                                </button>
+                                                <div class="col-md-12" style="visibility:hidden">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="box-img-kyten mb-2" id="imgHienThiKyTen" style="position:relative; background-size: contain; background-repeat: no-repeat; background-position: center;">
+                                                        <div id="XemDinhKemChuKy_CauLD" title="Xem đính kèm chữ ký">
+                                                            <i class="fa-solid fa-eye" style="font-size:20px;display:none;" id="icon_XemDinhKemChuKy_CauLD"></i>
+                                                        </div>
+                                                        <input type="hidden" id="txtDuongDanFileChuKy" value="" />
+                                                        <input type="file" id="fileVB_ChuKy_CauLD" class="d-none" accept=".jpg,.jpeg,.png" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <input type="text" class="form-control" id="KyTen_us" style="text-transform:uppercase;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div style="display: flex; align-items: center; justify-content: space-between">
+                    <div class="col-md-6" style="display: flex; align-items: center">
+                        <label style="margin-bottom: unset" class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="TrangThaiDoiTuongNN_us">
+                            <label class="form-check-label" for="TrangThaiDoiTuongNN_us">Ngưng sử dụng</label>
+                        </label>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="float:right;text-align: right">
+                            <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal" id="btnDongMdDoiTuongNN_US">
+                                <i class="fa fa-close"></i>&nbsp;Đóng (F4)
+                            </a>
+                            <a href="#" id="btnLuuVaDongThemPhieuTTNguoiNNLVVN_us" class="btn btn-success btn-luuvadong ms-auto">
+                                <i class="fa fa-save"></i>&ensp;Lưu và đóng (F9)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@Html.Partial("KyTen")
+@* Modal xem chi tiet ghi chu *@
+<div id="mdXemDinhKemChuKy" class="modal modal-blur fade" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-top" role="document" style="max-width: 740px !important;">
+        <div class="modal-content">
+            <div class="modal-header nts-modal">
+                <h5 id="tieuDeModaXemChuKyCLD" class="modal-title text-bold">Đính kèm chữ ký</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group">
+
+                        <div class="col-md-12" id="DinhKemChuLy_CLD">
+                            <p class="MoTa_CT"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var textDiaChi_defaut = "";
+    $(function () {
+        setTimeout(() => {
+            LoadDataComBoNguoiNNLVVN();
+        }, 300);
+        $('.dropInput_MaSo_usTT').click(function (event) {
+            event.preventDefault();
+            var value = $(this).attr('data-value');
+            var text = $(this).data('name');
+            $('#drop_MaSo_usTT').attr('data-value', value).html(text + ' &nbsp; <i class="fa-solid fa-caret-down"></i>');
+        });
+    });
+    $(document).ready(function () {
+        $('#SoDienThoai_us_CLD').on('input', function () {
+            formatPhoneNumberNhap(this);
+        });
+
+        // Restrict input to numbers only
+        $('#SoDienThoai_us_CLD').on('keydown', function (event) {
+            // Allow control keys (backspace, delete, tab, etc.)
+            if (event.ctrlKey || event.metaKey || [8, 46, 37, 38, 39, 40, 9, 27, 13].includes(event.keyCode)) {
+                return;
+            }
+            // Allow only numeric input
+            if (event.key.match(/[\d]/)) {
+                return;
+            }
+            // Prevent default action if not allowed
+            event.preventDefault();
+        });
+    });
+    function LoadDataComBoNguoiNNLVVN() {
+        NTS.loadDataCombo({
+            name: '#TrinhDoCMKTDoiTuongNNTT_us',
+            ajaxUrl: '/DanhMuc/DungChung/GetComBo_TrinhDoCMKT_NguoiNNLVVN',
+            columns: 1,
+            indexValue: 0,
+            indexText: 1,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0,
+        });
+        NTS.loadDataCombo({
+            name: '#HinhTucLamViecIDDoiTuongNNTT_us',
+            ajaxUrl: '/DanhMuc/DungChung/GetComBo_HinhThucLV',
+            columns: 1,
+            indexValue: 0,
+            indexText: 1,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0,
+        });
+        NTS.loadDataCombo({
+            name: '#NoiCapDoiTuongNNTT_us',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCTinh_Combo',
+            columns: 2,
+            indexValue: 0,
+            indexText: 1,
+            indexText1: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0,
+        });
+        NTS.loadDataCombo({
+            name: '#ChuyenNganhDaoTaoDoiTuongNNTT_us',
+            ajaxUrl: '/DanhMuc/DungChung/GetComBo_ChuyenNganhDaoTao',
+            columns: 1,
+            indexValue: 0,
+            indexText: 1,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0,
+        });
+        NTS.loadDataCombo({
+            name: '#ViTriCongViecDoiTuongNNTT_us',
+            ajaxUrl: '/DanhMuc/DungChung/GetComBo_ViTriViecLam_NguoiNNLVVN',
+            columns: 1,
+            indexValue: 0,
+            indexText: 1,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0,
+        });
+        NTS.loadDataCombo({
+            name: '#NgheCongViecDoiTuongNNTT_us',
+            ajaxUrl: '/DanhMuc/DungChung/GetComBo_NgheCongViec',
+            columns: 1,
+            indexValue: 0,
+            indexText: 1,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0,
+        });
+        NTS.loadDataCombo({
+            name: '#LoaiHinhDNIDDoiTuongNNTT_us',
+            ajaxUrl: '/DanhMuc/DungChung/GetComBo_LoaiHinhNoiLV',
+            columns: 1,
+            indexValue: 0,
+            indexText: 1,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0,
+        });
+        NTS.loadDataCombo({
+            name: '#SoGPLDDoiTuongNNTT_us',
+            ajaxUrl: '/DanhMuc/DungChung/GetComBo_GiayPhepLD',
+            columns: 1,
+            indexValue: 0,
+            indexText: 1,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0,
+        });
+    }
+
+
+    async function loadMacDinhDiaBanHC_TheoDV() {
+        try {
+            var DonVi = await NTS.getAjaxAsync('/DanhMuc/DungChung/GetThongTinDonViThaoTac', {});
+            DonVi = DonVi.Result;
+            if (DonVi != undefined && !$.isEmptyObject(DonVi) && DonVi != '' && DonVi != null) {
+                $('#TinhID_us_TC').value(DonVi[0].DiaBanHCID_Tinh);
+                $('#HuyenID_us_TC').value(DonVi[0].DiaBanHCID_Huyen);
+                $('#XaID_us_TC').value(DonVi[0].DiaBanHCID_Xa);
+            }
+        } catch (e) {
+
+        }
+    }
+
+    //function showModalThemMoiThuThapCauLaoDong() {
+    //    $('#mdThemMoiThuThapNguoiNNLVVN_us').modal('show');
+    //    $('#SelectDoiTuongNN_US').html('<li action="chon"><div class="opInfo Chon"><div style="display: flex;justify-content: space-between;align-items: center;">-Chọn đối tượng- <i class="fa-solid fa-caret-down" style="float: right;"></i></div></li>');
+    //    $('#SelectDoiTuongNN_US').attr('value', "");
+    //    $('#DoiTuongNNID_ChuHo').html("");
+    //    $('#MaToChucUS_CLD').value('');
+    //    resetForm("#mdThemMoiThuThapNguoiNNLVVN_us");
+    //    NTS.hienNgayHienTaiLenTextbox("NgayThuThap_us");
+    //    $('#TinhTrangHDKTID_us_CLD option:eq(1)').prop('selected', true);
+    //    $('#TinhTrangHDKTID_us_CLD').trigger('change');
+    //    PhanQuyenComBoDiaBan('TinhID_us_CLD', 'HuyenID_us_CLD', 'XaID_us_CLD', 'ThonID_us_CLD');
+    //    loadMacDinhDiaBanHC_TheoDV();
+    //}
+
+
+    // Kiểm tra và thay thế giá trị null hoặc "00000000-0000-0000-0000-000000000000" bằng ""
+    function replaceNullAndEmptyString(value) {
+        if (value === null || value === "00000000-0000-0000-0000-000000000000") {
+            return "";
+        }
+        return value;
+    }
+    ///-------------------Xu ly luu file dinh kem------------///
+    function uploadfileEvent(options) {
+
+        var result;
+        var defaults = {
+            name: '',
+            loaiVB: '',
+            type: '',
+            thongBaoThanhCong: 'Tải file thành công!',
+            hienThongBao: true
+        };
+        var settings = $.extend(defaults, options);
+        if (settings.loaiVB == '' || settings.loaiVB == 'undefined') {
+            result = "";
+            NTS.canhbao("Bạn chưa cài đặt loại văn bản, vui lòng kiểm ra lại");
+            return result;
+        }
+        else if (settings.name == '' || settings.name == 'undefined' || $(settings.name).length == 0) {
+            NTS.canhbao('Không tồn tại control ' + settings.name + ' cho hàm upload');
+            return result;
+        }
+        var fileUpload = $(settings.name).get(0);
+        var files = $(fileUpload).data('ace_input_files');
+        if (files == undefined) {
+            return "";
+        }
+
+        var test = new FormData();
+        for (var i = 0; i < files.length; i++) {
+            if (positionRemoveItiem.includes(i) == false) {
+                test.append(files[i].name, files[i]);
+            }
+        }
+        positionRemoveItiem = [];
+        var bar = $('.progress-bar');
+        var percent = $('.percent');
+        var status = $('#status');
+        $.ajax({
+            url: "/UploadFiles/UploadFiles?loaiVB=" + settings.loaiVB + '&type=' + settings.type,
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: test,
+            async: false,
+            beforeSend: function () {
+                NTS.loadding();
+            },
+            success: function (data) {
+                NTS.unloadding();
+                if (data != "") {
+                    //$('#FileBrowse').find("*").prop("disabled", true);
+                    //LoadProgressBar(data); //calling LoadProgressBar function to load the progress bar.
+                }
+                data = data.replaceAll("\"", "");
+                data = data.split('|');
+                if (data[0] == "1") {
+                    result = data[1];
+                    //if (settings.hienThongBao) {
+                    //    NTS.thanhcong(settings.thongBaoThanhCong);
+                    //}
+                }
+                else if (data[0] == "0") {
+                    result = "";
+                    NTS.loi(data[1]);
+                }
+                else if (data[0] == "-1") {
+                    result = "";
+                    NTS.loi(data[1]);
+                    //setTimeout(function () { window.location.href = "/view/shared/main.aspx" }, 500);
+                }
+            },
+            error: function (err) {
+                result = "";
+                NTS.loi("Tải file thất bại! Bạn vui lòng kiểm tra lại");
+                NTS.unloadding();
+            }
+            , complete: function (err) {
+                NTS.unloadding();
+            }
+        });
+        //reset cac file  vua dua len để tránh trường hợp cập nhật lấy lại các file vừa mới đưa lên
+        // Tạo một FileList rỗng
+        var emptyFileList = new DataTransfer().files;
+
+        // Gán FileList rỗng vào dữ liệu jQuery
+        $($('#DinhKem_DoiTuongNNTT_us').get(0)).data('ace_input_files', emptyFileList);
+        return result;
+    }
+
+    //----------------------------Đính kèm thu thập cau lao động-----------------------------------//
+    $('#DinhKem_DoiTuongNNTT_us').on('change', function () {
+        var selectedFiles = this.files;
+
+        // Kiểm tra và xử lý tệp đã chọn ở đây
+        for (var i = 0; i < selectedFiles.length; i++) {
+            var fileName = selectedFiles[i].name;
+            var fileType = fileName.split('.').pop().toLowerCase();
+
+            // Kiểm tra loại tệp
+            if (fileType === 'docx' || fileType === 'pdf' || fileType === 'png' || fileType === 'jpg' || fileType === 'jpeg') {
+                // Xử lý tệp ở đây nếu đúng định dạng
+                console.log('Đã chọn tệp: ' + fileName);
+            } else {
+                alert('Vui lòng chọn tệp DOC, PDF, PNG, JPG hoặc JPEG.');
+                // Xoá tệp không hợp lệ khỏi input (nếu cần)
+                ResetDinhKemFile();
+            }
+        }
+    });
+    var old_ItemFile = "";
+    $('#DinhKem_DoiTuongNNTT_us').ace_file_input({
+        style: 'well',
+        btn_choose: 'Nhấn để chọn tệp hoặc kéo thả vào đây (Cho phép đính kèm các file có định dạng DOC, PDF, PNG, JPG, JPEG)',
+        btn_change: null,
+        no_icon: 'ace-icon fa fa-cloud-upload',
+        droppable: true,
+        thumbnail: 'large',
+        allowExt: ["jpeg", "jpg", "png", "gif", "pdf", "docx"]
+        , alter_change: function ChangeItem() {
+            return false;
+        }
+        , before_change: function (files, dropped) {
+            return true;
+        },
+        preview_error: function (filename, error_code) {
+        }
+        , before_remove: function RemoveALl() {
+            RemoveAllFileInputAce();
+        }
+    }).on('change', function () {
+
+        //Trước khi load các file đã tồn tại trước đó cần gắn dấu X trước
+        $('.ace-file-name').each(function () {
+            // Sử dụng find() để kiểm tra xem có thẻ '<i class="ace-icon fa fa-times XoaFileDinhKem btn-del-item" onclick="return false"></i>' hay không
+            var hasIcon = $(this).find('i.ace-icon.fa.fa-times.XoaFileDinhKem.btn-del-item').length > 0;
+
+            // Kiểm tra kết quả và thực hiện các hành động cần thiết
+            if (hasIcon) {
+                // da ton tai dau X
+            } else {
+                // khong ton tai dau x
+                $('.ace-file-name').append('<i class=" ace-icon fa fa-times  XoaFileDinhKemDT XoaFileDinhKem btn-del-item" onclick="return false"></i>');
+            }
+        });
+        //Load các file đã upload vào db
+        if ($(old_ItemFile[0]).attr("data-title") != 'No File ...') {
+            $('.ace-file-container').append(old_ItemFile);
+        }
+        //Gắn thêm dấu x xóa từng file
+        //các file trước đó đã có trong csdl
+        if ($('.ace-file-name').children().hasClass('XoaFileDinhKem')) {
+            // Có class "XoaFileDinhKem"
+        } else {
+            // Không "XoaFileDinhKem"
+            $('.ace-file-name').append('<i class=" ace-icon fa fa-times XoaFileDinhKemDT XoaFileDinhKem btn-del-item" onclick="return false"></i>');
+            //File thêm mới
+            $('.ace-file-name.large').append('<i class=" ace-icon fa fa-times XoaFileDinhKemDT XoaFileDinhKem btn-del-item " onclick="return false"></i>');
+
+        }
+
+        return false;
+    });
+    var file_input = $('#DinhKem_DoiTuongNNTT_us');
+    file_input.ace_file_input('reset_input');
+    file_input
+        .off('file.error.ace')
+        .on('file.error.ace', function (e, info) {
+        });
+
+    function RemoveAllFileInputAce() {
+        var bang = "CauLaoDong";
+        var cot = "CauLaoDongID";
+
+        CanhBaoXoa(() => {
+            var result = NTS.getAjax('/DanhMuc/DungChung/XoaDinhKemCungLaoDong', { ID: $('#CauLaoDongID').val(), duongDan: '', bangDk: bang, cotDk: cot, loai: 'all' });
+            if (!result.Err) {
+                NTS.thanhcong(result.Msg);
+                $('#txtDinhKem_NguoiNNLVVN_US').value("");
+                ResetDinhKemFile();
+                old_ItemFile = "";
+                //$('#txtDinhKem_VanBan_US').value($('#txtDinhKem_VanBan_US').value().replaceAll(ListFile[i], '').replaceAll('**', '*'));
+            }
+            else result.CanhBao ? NTS.canhbao(result.Msg) : NTS.loi(result.Msg);
+        });
+    }
+    var positionRemoveItiem = new Array();
+    $(document).on('click', '.XoaFileDinhKem', function () {
+        debugger
+        var NguoiNNLVVNID = $('#NguoiNNLVVNID').value();
+        var TenFile = $(this).parent().attr('data-title');
+        var ListFile = $('#txtDinhKem_NguoiNNLVVN_US').value().split('*');
+        //Kiểm tra xem file xóa có phải là file vừa mới upload hay không - nếu là file vừa mới upload thì cho vào list xóa để không upload vào server
+        if (!$(this).hasClass('img-db')) {
+            var indexRemove = $('.XoaFileDinhKem').index(this);
+            positionRemoveItiem.push(indexRemove);
+        }
+        //
+        CanhBaoXoa(() => {
+            for (var i = 0; i < ListFile.length; i++) {
+                if (ListFile[i].includes(TenFile)) {
+                    var bang = "NguoiNNLVVN";
+                    var cot = "NguoiNNLVVNID";
+                    var result = NTS.getAjax('/DanhMuc/DungChung/XoaDinhKemCungLaoDong', { ID: NguoiNNLVVNID, duongDan: ListFile[i], bangDk: bang, cotDk: cot, loai: '' });
+
+                    if (!result.Err) {
+                        NTS.thanhcong(result.Msg);
+                        $('#txtDinhKem_NguoiNNLVVN_US').value($('#txtDinhKem_NguoiNNLVVN_US').value().replaceAll(ListFile[i], '').replaceAll('**', '*'))
+                    }
+                    else {
+                        NTS.loi(result.Msg);
+                    }
+                }
+            }
+            //$(this).parent().css('display', 'none');
+            //if ($('#DinhKem_DoiTuongNNTT_us').parent().find('.ace-file-name').length == 1 && $('#DinhKem_DoiTuongNNTT_us').parent().find('.ace-file-name').css('display') == "none") {
+            //    ResetDinhKemFile();
+            //}
+            $(this).parent().remove();
+            if ($('#DinhKem_DoiTuongNNTT_us').parent().find('.ace-file-name').length == 0) {
+                ResetDinhKemFile();
+            }
+        });
+        //
+    });
+    $(document).on('click', '.XemDinhKemHinhAnh_USDangKy', function () {
+        var linkImg = $(this).attr("ace-img-url");
+        linkImg = linkImg.replace("~", "");
+        window.open(linkImg);
+        return false;
+    });
+
+    function ResetDinhKemFile() {
+        $('#DinhKem_DoiTuongNNTT_us').ace_file_input('reset_input');
+        $('.ace-file-container').html(`<span class="ace-file-name" data-title="No File ..."><i class=" ace-icon ace-icon fa fa-cloud-upload"></i></span>`);
+    }
+
+    function ResetThongTinToChuc() {
+        $('#ToChucID').value('');
+        $('#TenKCN_CLD_CLD').value('');
+        $('#MaSoThue_us_CLD').value('');
+        $('#NamTrongKCN_us_CLD').value('');
+        $('#TenNguoiSDLD_us_CLD').value('');
+        $('#SoCCCD_us_CLD').value('');
+        $('#LoaiHinhDNID_us_CLD').value('');
+        $('#TinhTrangHDKTID_us_CLD').value('');
+        $('#NgayHoatDong_us_CLD').value('');
+        $('#NganhNgheChinh_us_CLD').value('');
+        $('#SoDienThoai_us_CLD').value('');
+        $('#Email_us_CLD').value('');
+        $('#TinhID_us_CLD').value('');
+        $('#HuyenID_us_CLD').value('');
+        $('#XaID_us_CLD').value('');
+        $('#ThonID_us_CLD').value('');
+        $('#SoNha_us_CLD').value('');
+        $('#DiaChi_us_CLD').text('');
+        $('#TinhTrangHDKTID_us_CLD option:eq(1)').prop('selected', true);
+        $('#TinhTrangHDKTID_us_CLD').trigger('change');
+        PhanQuyenComBoDiaBan('TinhID_us_CLD', 'HuyenID_us_CLD', 'XaID_us_CLD', 'ThonID_us_CLD');
+        loadMacDinhDiaBanHC_TheoDV();
+    }
+
+    // Định dạng nhạp số diện thoại
+    function formatPhoneNumberNhap(input) {
+        // Get the input value and remove all non-numeric characters
+        let value = $(input).val();
+        let cleanedValue = value.replace(/\D/g, '');
+
+        // Format the cleaned value
+        let formattedValue = cleanedValue.replace(/(\d{4})(\d{0,3})(\d{0,3})/, '$1.$2.$3');
+
+        // Update the input field with the formatted value
+        $(input).val(formattedValue);
+    }
+
+    // Xử lý Combo đối tượng
+    var langArray = [];
+    langArray.push(`<li action="false" style="position: sticky;top: 0;background-color: white;">
+                        <div class="row" style="width: 100%">
+                        <div class="form-col-12">
+                            <input type="text" class="form-control" id="ckTimKiemDoiTuongNNID" >
+                        </div>
+                        </div>
+                    </li>`);
+    langArray.push(`<li action="chon"><div class="opInfo Chon"><div style="display: flex;justify-content: space-between;align-items: center;">-Chọn đối tượng- <i class="fa-solid fa-caret-down" style="float: right;"></i></div></li>`);
+
+    const Color = [
+        "#0066cc",
+        "#cc3300",
+        "#993399",
+        "#009966",
+        "#ff9900",
+        "#669900",
+        "#cc6600",
+        "#663366",
+        "#009999",
+        "#ff6600",
+        "#996633",
+        "#336699",
+        "#cc6633",
+        "#666699",
+        "#339966",
+        "#ff3366",
+        "#663300",
+        "#336600",
+        "#993300",
+        "#003366"
+    ];
+
+    $('.vodiapickerDT option').each(function () {
+        var name_cv = $(this).attr("data-name-cv");
+        var name = $(this).attr("data-name");
+        var code = $(this).attr("data-code");
+        var genner = $(this).attr("data-genner");
+        var cmnd = $(this).attr("data-cmnd");
+        var tinh = $(this).attr("data-tinh");
+        var huyen = $(this).attr("data-huyen");
+        var xa = $(this).attr("data-xa");
+        var thon = $(this).attr("data-thon");
+        var doiTuongID = $(this).attr("value");
+        var NoiThuongTru = $(this).attr("data-NoiThuongTru");
+        const mauNgauNhien = getRandomColors(Color, 1);
+        var item = "";
+        item = `<li class="itemDoiTuongNN" action="true" style="display:none" data-name="${name}" data-code="${code}" data-cmnd="${cmnd}" data-NoiThuongTru="${NoiThuongTru}" value="${doiTuongID}"><div class="opImg" style="background-color:${mauNgauNhien}">${name_cv}</div><div class="opInfo"><div><b>${name}</b> (${code}), Giới tính: <b>${genner}</b>, CMND/CCCD: <b>${cmnd}</b></div><div class="text-diachi" title="${(thon == "" ? "" : thon + ", ")} ${xa}, ${huyen}, ${tinh}">Nơi thường trú: <b>${NoiThuongTru}</b></div></div></li>`;
+        langArray.push(item);
+    });
+
+    //langArray.push(`<li action="false" id="LoadMoreDoiTuongDK" onclick="LoadMoreDoiTuong()" style="justify-content: center;"> Xem thêm &nbsp<i class="fa fa-arrow-down" style="color: #0054a6" aria-hidden="true"></i></li>`);
+    $('#ListDataDoiTuongNN').html(langArray);
+
+    //Set the button value to the first el of the array
+    $('.btn-select-DoiTuongNN').html(langArray[1]);
+    $('.btn-select-DoiTuongNN').attr('value', 'en');
+
+    $(".btn-select-DoiTuongNN").click(function () {
+        $(".OptionDoiTuongNN").toggle();
+    });
+    $(document).ready(function () {
+        // Bắt sự kiện click trên toàn bộ trang
+        $(document).on('click', function (event) {
+            // Kiểm tra xem sự kiện click diễn ra bên ngoài thẻ có class A hay không
+            if (!$(event.target).closest('.lang-select').length) {
+
+                $(".OptionDoiTuongNN").css('display', 'none');
+            }
+        });
+    });
+    //check local storage for the lang
+    var sessionLang = localStorage.getItem('lang');
+    if (sessionLang) {
+        //find an item with value of sessionLang
+        var langIndex = langArray.indexOf(sessionLang);
+        $('.btn-select-DoiTuongNN').html(langArray[langIndex]);
+        $('.btn-select-DoiTuongNN').attr('value', sessionLang);
+    } else {
+        var langIndex = langArray.indexOf('ch');
+        $('.btn-select-DoiTuongNN').html(langArray[langIndex]);
+        //$('.btn-select').attr('value', 'en');
+    }
+
+    function FillterDoiTuongNN() {
+        var input, filter, ul, li, a, i;
+        input = $("#ckTimKiemDoiTuongNN");
+        filter = input.value().toUpperCase();
+        div = $("#ListDataDoiTuongNN");
+        a = $("#ListDataDoiTuongNN li");
+        for (i = 0; i < a.length; i++) {
+            var txtValue = a[i].textContent || a[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                a[i].style.display = "";
+            } else {
+                if (i != 0) { // khong an thanh tim kiem
+                    a[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    function NumbervisibleLiCountDoiTuong() {
+        var visibleLiCount = $('#ListDataDoiTuongNN li').filter(function () {
+            return $(this).css('display') === 'flex';
+        }).length;
+        return visibleLiCount;
+    }
+
+    var soLuongHienThi_DoiTuongNN = 20;
+
+    function LoadMoreDoiTuongNN() {
+        // Số phần tử đang hiển thị
+        var visibleLiCount = NumbervisibleLiCountDoiTuong();
+        // Hiển thị thêm 20 phần tử nữa
+        $("#ListDataDoiTuongNN li").slice(visibleLiCount, visibleLiCount + soLuongHienThi_DoiTuongNN).css("display", "flex");
+
+        // Kiểm tra nếu đã hiển thị hết tất cả các phần tử thì ẩn nút "Xem thêm"
+        if (visibleLiCount + soLuongHienThi_DoiTuongNN >= $('#ListDataDoiTuongNN li').length - 1) {
+            $("#loadMoreDoiTuongNNDK").css("display", "none");
+        }
+    }
+
+   
+    //--------------------- Xử lý combo tỗ chức --------------------
+    // Xử lý Combo đối tượng
+    var langArrayToChuc = [];
+    langArrayToChuc.push(`<li action="false" style="position: sticky;top: 0;background-color: white;">
+                        <div class="row" style="width: 100%">
+                        <div class="form-col-12">
+                            <input type="text" class="form-control" id="ckTimKiemToChuc" >
+                        </div>
+                        </div>
+                    </li>`);
+    langArrayToChuc.push(`<li action="chon"><div class="opInfo Chon"><div style="display: flex;justify-content: space-between;align-items: center;">-Chọn tổ chức- <i class="fa-solid fa-caret-down" style="float: right;"></i></div></li>`);
+
+    $('.vodiapickerToChuc option').each(function () {
+
+        var name_cv = $(this).attr("data-name-cv");
+        var name = $(this).attr("data-name");
+        var code = $(this).attr("data-code");
+        var genner = $(this).attr("data-genner");
+        var cmnd = $(this).attr("data-cmnd");
+        var tinh = $(this).attr("data-tinh");
+        var huyen = $(this).attr("data-huyen");
+        var xa = $(this).attr("data-xa");
+        var thon = $(this).attr("data-thon");
+        var doiTuongID = $(this).attr("value");
+        var NoiThuongTru = $(this).attr("data-NoiThuongTru");
+        const mauNgauNhien = getRandomColors(Color, 1);
+        var item = "";
+        item = `<li class="itemToChuc" action="true" style="display:none" data-name="${name}" data-code="${code}" data-cmnd="${cmnd}" data-NoiThuongTru="${NoiThuongTru}" value="${doiTuongID}"><div class="opImg" style="background-color:${mauNgauNhien}">${name_cv}</div><div class="opInfo"><div><b>${name}</b> (${code}), Giới tính: <b>${genner}</b>, CMND/CCCD: <b>${cmnd}</b></div><div class="text-diachi" title="${(thon == "" ? "" : thon + ", ")} ${xa}, ${huyen}, ${tinh}">Nơi thường trú: <b>${NoiThuongTru}</b></div></div></li>`;
+
+        langArrayToChuc.push(item);
+
+    });
+
+    //langArray.push(`<li action="false" id="LoadMoreDoiTuongDK" onclick="LoadMoreDoiTuong()" style="justify-content: center;"> Xem thêm &nbsp<i class="fa fa-arrow-down" style="color: #0054a6" aria-hidden="true"></i></li>`);
+    $('#ListDataToChuc').html(langArrayToChuc);
+
+    //Set the button value to the first el of the array
+    $('.btn-select-tochuc').html(langArrayToChuc[1]);
+    $('.btn-select-tochuc').attr('value', 'en');
+
+    $(".btn-select-tochuc").click(function () {
+        $(".OptionToChuc").toggle();
+    });
+    $(document).ready(function () {
+        // Bắt sự kiện click trên toàn bộ trang
+        $(document).on('click', function (event) {
+            // Kiểm tra xem sự kiện click diễn ra bên ngoài thẻ có class A hay không
+            if (!$(event.target).closest('.lang-select').length) {
+
+                $(".OptionToChuc").css('display', 'none');
+            }
+        });
+    });
+    function FillterToChuc() {
+        var input, filter, ul, li, a, i;
+        input = $("#ckTimKiemToChuc");
+        filter = input.value().toUpperCase();
+        div = $("#ListDataToChuc");
+        a = $("#ListDataToChuc li");
+        for (i = 0; i < a.length; i++) {
+            var txtValue = a[i].textContent || a[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                a[i].style.display = "";
+            } else {
+                if (i != 0) { // khong an thanh tim kiem
+                    a[i].style.display = "none";
+                }
+            }
+        }
+    }
+    //check local storage for the lang
+    var sessionLangTC = localStorage.getItem('lang');
+    if (sessionLangTC) {
+        //find an item with value of sessionLang
+        var langIndex = langArrayToChuc.indexOf(sessionLangTC);
+        $('.btn-select-tochuc').html(langArrayToChuc[langIndex]);
+        $('.btn-select-tochuc').attr('value', sessionLangTC);
+    } else {
+        var langIndex = langArrayToChuc.indexOf('ch');
+        $('.btn-select-tochuc').html(langArrayToChuc[langIndex]);
+        //$('.btn-select').attr('value', 'en');
+    }
+
+    function NumbervisibleLiCountTC() {
+        var visibleLiCount = $('#ListDataToChuc li').filter(function () {
+            return $(this).css('display') === 'flex';
+        }).length;
+        return visibleLiCount;
+    }
+
+    var soLuongHienThi_ToChuc = 20;
+
+    function LoadMoreToChuc() {
+        // Số phần tử đang hiển thị
+        var visibleLiCount = NumbervisibleLiCountTC();
+        // Hiển thị thêm 20 phần tử nữa
+        $("#ListDataToChuc li").slice(visibleLiCount, visibleLiCount + soLuongHienThi_ToChuc).css("display", "flex");
+
+        // Kiểm tra nếu đã hiển thị hết tất cả các phần tử thì ẩn nút "Xem thêm"
+        if (visibleLiCount + soLuongHienThi_ToChuc >= $('#ListDataToChuc li').length - 1) {
+            $("#loadMoreToChucDK").css("display", "none");
+        }
+    }
+
+</script>

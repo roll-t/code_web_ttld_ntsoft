@@ -1,0 +1,573 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MasterPage_CTT_QuanTri_ViecLam.cshtml";
+}
+
+<style type="text/css">
+    .alert {
+        padding: 7px 13px;
+    }
+
+    @@media (min-width: 992px) {
+        #mdThemMoi .modal-dialog {
+            width: 75% !important;
+        }
+        #mdThatDoiMatKhau .modal-dialog {
+            max-width: 30%;
+        }
+
+    .dropdown-toggle-split::after, .dropright .dropdown-toggle-split::after, .dropup .dropdown-toggle-split::after {
+        margin-left: 0;
+        display: inline-block;
+        margin-left: .255em;
+        vertical-align: .255em;
+        content: "";
+        border-top: .3em solid;
+        border-right: .3em solid transparent;
+        border-bottom: 0;
+        border-left: .3em solid transparent;
+    }
+
+    .dropdown-item#btnKiemTraGhiDe {
+        display: block;
+        width: 100%;
+        padding: .25rem 1.5rem;
+        clear: both;
+        font-weight: 400;
+        color: #212529;
+        text-align: inherit;
+        white-space: nowrap;
+        background-color: transparent;
+        border: 0;
+        color: white;
+    }
+
+        .dropdown-item#btnKiemTraGhiDe:hover {
+            color: white !important;
+        }
+
+    .dropdown-menu#DivKiemTraGhiDe:hover {
+        background-color: #E59729 !important;
+        color: white;
+    }
+</style>
+<script src="/ckeditor/ckeditor.js"></script>
+<script src="/ckeditor/adapters/jquery.js"></script>
+<script src="../../ckeditor/ckeditor.js"></script>
+<script src="/ckfinder/ckfinder.js"></script>
+<style type="text/css">
+        .GridData {
+            background-color: #f2f2f2;
+            border: 1px solid #dbdbe1;
+            font-size: 12px !important;
+            font-family: arial,sans-serif,Verdana;
+        }
+        /*Allow column header names to wrap lines*/
+        .GridData .tabulator-header .tabulator-col,
+        .GridData .tabulator-header .tabulator-col-row-handle {
+            white-space: normal;
+            background-color: #F3F4F5;
+            color: #000000;
+        }
+        @@media (min-width: 992px) {
+            #mdThemMoi .modal-dialog {
+                width: 60% !important;
+            }
+
+            #mdNhapExcel .modal-dialog {
+                width: 70% !important;
+            }
+        }
+
+        .dropdown-toggle-split::after, .dropright .dropdown-toggle-split::after, .dropup .dropdown-toggle-split::after {
+            margin-left: 0;
+            display: inline-block;
+            margin-left: .255em;
+            vertical-align: .255em;
+            content: "";
+            border-top: .3em solid;
+            border-right: .3em solid transparent;
+            border-bottom: 0;
+            border-left: .3em solid transparent;
+        }
+
+        .dropdown-item#btnKiemTraGhiDe {
+            display: block;
+            width: 100%;
+            padding: .25rem 1.5rem;
+            clear: both;
+            font-weight: 400;
+            color: #212529;
+            text-align: inherit;
+            white-space: nowrap;
+            background-color: transparent;
+            border: 0;
+            color: white;
+        }
+
+        .dropdown-item#btnKiemTraGhiDe:hover {
+            color: white !important;
+        }
+
+        .dropdown-menu#DivKiemTraGhiDe:hover {
+            background-color: #E59729 !important;
+            color: white;
+        }
+        .label_XetDuyet{
+            font-size: 15px;
+            margin-top: 6px;
+            color: var(--success-color);
+        }
+    ol, ul {
+        margin: 0 !important;
+    }
+    #list-file-hinh-anh, #list-file-banner {
+        width: 100%;
+        display: flex;
+        flex-direction: row; /* Đặt các phần tử trong 1 hàng */
+        justify-content: space-between; /* Căn đều khoảng cách giữa các phần tử */
+        align-items: center; /* Căn giữa các phần tử theo chiều dọc */
+        flex-wrap: wrap;
+    }
+        #list-file-hinh-anh .frame-file {
+            text-align: center;
+            height: 200px;
+            flex: 45%;
+            margin: 0 10px 10px 0;
+        }
+        #list-file-hinh-anh .frame-image {
+            width: 100%;
+            height: 200px;
+        }
+
+        #list-file-banner .frame-file {
+            text-align: center;
+            height: 200px;
+            flex: 45%;
+            margin: 0 10px 10px 0;
+        }
+
+        #list-file-banner .frame-image {
+            width: 100%;
+            height: 200px;
+        }
+</style>
+<style>
+    .card-header > ul {
+        display: flex;
+        align-items: center;
+    }
+    .card-header-tabs .nav-link.active {
+        color: var(--primary-color) !important;
+        border-bottom: 2px solid var(--primary-color) !important;
+        font-weight: bold;
+    }
+    .TabThongTinCongTy,
+    .TabThongTinTaiKhoan {
+        font-size: 16px !important;
+    }
+    .tab-content {
+        border: none;
+        padding:0;
+    }
+    .TabThongTinTaiKhoan-row {
+        margin-top: 20px;
+    }
+    .lbltaikhoan {
+        font-size: 14px;
+    }
+    button#btncapnhatmk {
+        outline: none;
+        border: none;
+        background: none;
+        color: var(--primary-color);
+    }
+    .tabtaikhoan_btncapnhat {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+    }
+    .frame-file {
+        width: 110px;
+        height: 110px;
+        border: 1px solid #d5d5d5;
+        border-radius: 4px;
+        float: left;
+        position: relative;
+        margin-right: 4px;
+    }
+    .frame-image {
+        width: 110px;
+        height: 110px;
+        float: left;
+        background-position: center;
+        background-size: cover;
+        border-radius: 4px;
+        position: relative;
+    }
+    button#btnChonTepVB_tailieu {
+        background: var(--primary-color) !important;
+    }
+
+    #mdMKHeader {
+        padding: 10px 10px 16px 10px!important;
+        border-bottom:none;
+    }
+    .form-label-matkhau {
+        font-size: 14px;
+        font-weight:500;
+    }
+    #btn_xacnha-thaydoimk {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 14px;
+        margin-top: 10px;
+        background: var(--primary-color);
+    }
+    #NhapLaiMatKhauMoi,
+    #MatKhauHT,
+    #MatKhauMoi {
+        height: 38px;
+    }
+    #mdMKHeader > i {
+        font-size: 20px;
+    }
+    #mdMKHeader > h5 {
+        font-size: 20px;
+    }
+    .modal-content-mdThayDoiMk{
+        padding:20px;
+    }
+    #btnicon_fa-xmark:hover{
+        cursor:pointer;
+    }
+    button#btncapnhatmk {
+        outline: none;
+        border: none;
+        font-weight: 600;
+        background: none;
+        color: var(--primary-color);
+    }
+    .frame-file .fa-arrow-down {
+        right: 15px;
+    }
+    /* Thêm CSS để canh giữa modal */
+    #mdThatDoiMatKhau .modal-dialog {
+        display: flex;
+        align-items: center;
+        min-height: 100vh; /* Đảm bảo modal chiếm chiều cao tối thiểu của màn hình */
+    }
+
+    #mdThatDoiMatKhau .modal-content {
+        margin: auto; /* Căn giữa theo chiều dọc */
+    }
+    .card-header > ul > li > a{
+        background:#FFF !important;
+    }
+    /*.formtabTaiKhoanNTD {
+        height: 50vh !important;
+    }*/
+    .page-content{
+        min-height:100vh;
+    }
+</style>
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs " id="breadcrumbs">
+            <h3>THÔNG TIN CÔNG TY</h3>
+            <div class="toolbar">
+            </div>
+        </div>
+        <input type="hidden" name="name" id="NhaTuyenDungID" value="" />
+
+        <div class="page-content">
+            <div class="row" id="thongbao">
+
+            </div>
+            
+            <div class="container-content formtabTaiKhoanNTD" id="formThemThongTin" style="min-height:0;">
+                <div class="form-group">
+                    <div class="row mb-3" style="margin-top: 10px">
+                        <div class="btnGui_ThanhCong" style="float: left; margin-left:6px;">
+
+                        </div>
+                        <div class="button-action" style="width: 100%; display: flex; flex-wrap: nowrap; justify-content: space-between;">
+
+                            <div class="btnLuu" style="float: right;">
+                                <a href="#" id="btnLuuVaDong" class="btn btn-success" onclick="return false;" style="background: #0275d8 !important;">
+                                    <i class="ace-icon fa fa-floppy-o bigger-110"></i>&nbsp;Lưu thông tin
+                                </a>
+                            </div>
+                            <div class="btnGui" style="float: right; margin-left:6px;">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row mb-3" id="thongbaochopheduyet">
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card-header">
+                                <ul class="nav nav-tabs card-header-tabs list_tab" data-bs-toggle="tabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <a href="#TabThongTinCongTy" class="nav-link active" data-bs-toggle="tab" aria-selected="true" role="tab">
+                                            <div class="row">
+                                                <div class="col-md-12 TabThongTinCongTy">
+                                                    Thông tin công ty
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a href="#TabThongTinTaiKhoan" class="nav-link " data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">
+                                            <div class="row">
+                                                <div class="col-md-12 TabThongTinTaiKhoan">
+                                                   Thông tin tài khoản
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade active show" id="TabThongTinCongTy" role="tabpanel">
+                                        <div class="mt-3" style="padding: 10px; box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);border-radius:4px">
+                                            <div class="row">
+                                                <div style="font-size: 18px !important;font-weight: bold;">
+                                                    Thông tin cơ bản
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label class="validation">Tên công ty</label>
+                                                    <input class="form-control input-sm" type="text" id="TenCongTy" required />
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top:4px">
+                                                <div class="col-md-6">
+                                                    <label class="validation">Mã số thuế</label>
+                                                    <input class="form-control input-sm" type="text" id="MaSoThue" required />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="validation">Khu vực</label>
+                                                    <select class="form-control input-sm" type="text" id="TinhID_KhuVuc" required></select>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top:4px">
+                                                <div class="col-md-12">
+                                                    <label class="validation">Địa chỉ</label>
+                                                    <input class="form-control input-sm" type="text" id="DiaChi" required />
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top:4px">
+                                                <div class="col-md-6">
+                                                    <label class="validation">Số điện thoại</label>
+                                                    <input class="form-control input-sm" type="text" id="SoDienThoai" required />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="validation">Email</label>
+                                                    <input class="form-control input-sm" type="email" id="Email" required />
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top:4px">
+                                                <div class="col-md-6">
+                                                    <label class="validation">Ngành nghề kinh doanh</label>
+                                                    <select class="form-control input-sm" type="text" id="NganhNgheID" multiple required></select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="validation">Loại hình doanh nghiệp</label>
+                                                    <select class="form-control input-sm" type="text" id="LoaiHinhDNID" required></select>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top:4px">
+                                                <div class="col-md-6">
+                                                    <label class="validation">Quy mô công ty</label>
+                                                    <select class="form-control input-sm" type="text" id="QuyMoLaoDongID" required></select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="">Website</label>
+                                                    <input class="form-control input-sm" type="text" id="Website" />
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="mt-3" style="padding: 10px; box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);border-radius:4px">
+                                            <div class="row">
+                                                <div style="font-size: 18px !important;font-weight: bold;">
+                                                    Thông tin doanh nghiệp
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top:4px">
+                                                <div class="col-md-12">
+                                                    <label class="">Giới thiệu về công ty</label>
+                                                    <textarea class="form-control input-sm" id="GioiThieu" rows="6"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top:4px">
+                                                <div class="col-md-12">
+                                                    <label class="">Vị trí công ty (Nhúng link google map )</label>
+                                                    <input class="form-control input-sm" type="text" id="UrlBanDo" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-3" style="padding: 10px; box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);border-radius:4px">
+                                            <div class="row">
+                                                <div style="font-size: 18px !important;font-weight: bold;">
+                                                  Ảnh bìa trang công ty
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top:4px">
+                                                <div class="col-md-12">
+                                                    @*<label class="" id="lblDinhKemVB_us">Logo công ty</label>
+                                                    <div style="display: flex; grid-gap: 0 8px; padding-bottom: 7px;">
+                                                        <div id="divButtonUpload_us">
+                                                            <button id="btnChonTepVB_tailieu" type="button" style="background: transparent !important; border: 1px dotted #888888; height: 65px; width: 65px;" class="btn btn-sm">
+                                                                <i class="fa fa-upload" style="color: #448fdc;font-size:30px"></i>
+                                                            </button>
+                                                        </div>
+                                                        <div id="list-file-tai-lieu"></div>
+                                                        <input type="file" id="fileVB_tailieu" class="d-none" accept=".jpg,.jpeg,.png" style="display: none" />
+                                                    </div>*@
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top:4px">
+                                                <div class="col-md-12">
+                                                    <label class="">Hình ảnh công ty</label>
+                                                    <div style="display: flex; grid-gap: 0 8px; padding-bottom: 7px;">
+                                                        <div>
+                                                            <button id="btnChonTepHinhAnh" type="button" style="background: transparent !important; border: 1px dotted #888888; height: 65px; width: 65px;" class="btn btn-sm">
+                                                                <i class="fa fa-upload" style="color: #448fdc;font-size:30px"></i>
+                                                            </button>
+                                                        </div>
+                                                        <div id="list-file-hinh-anh"></div>
+                                                        <input type="file" id="file_hinhanh" class="d-none" accept=".jpg,.jpeg,.png" style="display: none" multiple="multiple" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top:4px">
+                                                <div class="col-md-12">
+                                                    <label class="">Banner</label>
+                                                    <div style="display: flex; grid-gap: 0 8px; padding-bottom: 7px;">
+                                                        <div>
+                                                            <button id="btnChonTepBanner" type="button" style="background: transparent !important; border: 1px dotted #888888; height: 65px; width: 65px;" class="btn btn-sm">
+                                                                <i class="fa fa-upload" style="color: #448fdc;font-size:30px"></i>
+                                                            </button>
+                                                        </div>
+                                                        <div id="list-file-banner"></div>
+                                                        <input type="file" id="file_banner" class="d-none" accept=".jpg,.jpeg,.png" style="display: none" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade " id="TabThongTinTaiKhoan" role="tabpanel" aria-labelledby="">
+                                        <div class="row TabThongTinTaiKhoan-row" >
+                                            <div class="col-md-6">
+                                                <div class="mt-3" style="padding: 10px; box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);border-radius:4px;min-height:0;">
+                                                    <form>
+                                                        <div class="row mb-3">
+                                                            <label for="inputEmail3" class="col-sm-3 col-form-label lbltaikhoan">Tên đăng nhập</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="email" class="form-control" id="EmailDangNhap" disabled>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="inputPassword3" class="col-sm-3 col-form-label lbltaikhoan">Mật khẩu</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="password" class="form-control" id="inputPassword" disabled>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="" class="col-sm-3 col-form-label lbltaikhoan"></label>
+                                                            <div class="col-sm-9">
+                                                                <button id="btncapnhatmk">Thay đổi mật khẩu</button>
+                                                            </div>
+                                                        </div>
+                                                        @*<div class="row">
+                                                            <div class="col-md-12 tabtaikhoan_btncapnhat">
+                                                                <button id="btncapnhatmk">Cập nhật mật khẩu</button>
+                                                            </div>
+                                                        </div>*@
+                                                    </form>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="lbltaikhoan" id="lblDinhKemVB_us" style="font-weight:500;">Ảnh đại diện công ty</label>
+                                                <div style="display: flex; grid-gap: 0 8px; padding-bottom: 7px;">
+                                                    <div id="list-file-tai-lieu"></div>
+                                                    <input type="file" id="fileVB_tailieu" class="d-none" accept=".jpg,.jpeg,.png" style="display: none" />
+                                                    <div id="divButtonUpload_us">
+                                                        @*<button id="btnChonTepVB_tailieu" title="Thay đổi ảnh đại diện" type="button" style="background: transparent !important; border: 1px dotted #888888; height: 65px; width: 65px;" class="btn btn-sm">
+                                                            <i class="fa fa-upload" style="color: #448fdc;font-size:30px"></i>
+                                                            Thay đổi ảnh
+                                                        </button>*@
+                                                        <button id="btnChonTepVB_tailieu" title="Thay đổi ảnh đại diện" type="button" class="btn btn-sm">
+                                                            Thay đổi ảnh
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* modal *@
+<div class="modal" tabindex="-1" id="mdThatDoiMatKhau">
+    <div class="modal-dialog">
+        <div class="modal-content modal-content-mdThayDoiMk" style=" border-radius: 6px;">
+            <div class="modal-header" style=" background: white; color: #000000;" id="mdMKHeader">
+                <h5 class="modal-title">Thay đổi mật khẩu</h5>
+                @*<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color:#000000 !important; background:#fff !important;"></button>*@
+                <i class="fa-solid fa-xmark" id="btnicon_fa-xmark"style="color:#000000;"></i>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="MatKhauHT" class="form-label form-label-matkhau validation">Mật khẩu hiện tại</label>
+                        <input type="password" class="form-control" id="MatKhauHT" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="MatKhauMoi" class="form-label form-label-matkhau validation">Mật khẩu mới</label>
+                        <input type="password" class="form-control" id="MatKhauMoi" placeholder="Mật khẩu ít nhất 6 ký tự">
+                    </div>
+                    <div class="mb-3">
+                        <label for="NhapLaiMatKhauMoi" class="form-label form-label-matkhau validation">Nhập lại mật khẩu mới</label>
+                        <input type="password" class="form-control" id="NhapLaiMatKhauMoi">
+                    </div>
+                    <button  class="btn btn-primary" id="btn_xacnha-thaydoimk">Xác nhận</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Areas/NhaTuyenDung/Scripts/ThongTinCongTy.js?v=@DateTime.Now.Ticks.ToString()"></script>
+
+<script>
+    $(document).ready(function () {
+        $(".basic-usage").stringToSlug();
+    });</script>
+<script>
+
+    var _stringToSlug_API = function (e, t) { "use strict"; var r, s = { setEvents: "keyup keydown blur", getPut: "#DinhDanh", space: "-", prefix: "", suffix: "", replace: "", AND: "and", options: {}, callback: !1 }; jQuery.extend(s, t), s.options.hasOwnProperty("separator") || (s.options.separator = s.space), s.options.hasOwnProperty("custom") || (s.options.custom = { "&": s.AND }), e = e.replace(s.replace, ""); try { e = getSlug(e, s.options) } catch (n) { console.warn("Make sure you insert speakingurl.min.js before jquery.stringtoslug.min.js") } return r = s.prefix + e + s.suffix }; jQuery.fn.stringToSlug = function (e) { "use strict"; var t = { setEvents: "keyup keydown blur", getPut: "#DinhDanh", space: "-", prefix: "", suffix: "", replace: "", AND: "and", callback: !1 }; return jQuery.extend(t, e), jQuery(this).bind(t.setEvents, function () { var r = jQuery(this).val(), s = _stringToSlug_API(r, e); return jQuery(t.getPut).val(s), jQuery(t.getPut).html(s), !1 !== t.callback && t.callback(s), this }), this };
+</script>

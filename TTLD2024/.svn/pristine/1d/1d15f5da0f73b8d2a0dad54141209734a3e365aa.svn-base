@@ -1,0 +1,328 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/CongThongtinViecLam.cshtml";
+}
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        #header-breadcrumb{
+           border-radius:12px;
+           box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+           border: solid 1px #ECECEC;
+           margin-top: 10px;
+           padding-left: 18px;
+       }
+         .has-search .form-control-feedback {
+             right: initial;
+             left: 0;
+             color: #ccc;
+         }
+
+         .has-search .form-control {
+             padding-right: 12px;
+             padding-left: 34px;
+         }
+
+       #container-big{
+           background:B2B0B0;
+       }
+       #content{
+           padding:6px;
+           /*border:1px solid #D9D9D9;*/
+           border-radius:6px;
+           margin-bottom:10px;
+           padding:8px;
+       }
+       .content_text{
+           box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+           border-radius:6px;
+       }
+        .card-title {
+            background: #FFF;
+            color: #000000;
+            border-radius: 8px 8px 0 0;
+            font-size: 16px;
+            font-weight: 700;
+            position: relative;
+        }
+            .card-title::after {
+                position: absolute;
+                content: "";
+                left: 0;
+                width: 100%;
+                height: 2.5px;
+                background: var(--primary-color);
+                bottom: -1.25px;
+                max-width: 25%;
+            }
+       .badge_mucluong{
+           color:#ff6a00;
+           padding:2px 6px;
+           font-size:10px;
+           box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+           border:solid 1px #D9D9D9;
+           font-weight:600;
+       }
+       .badge_thoigian{
+           color:#3E9EF7;
+           padding:2px 6px;
+           font-size:10px;
+           box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+           border:solid 1px #D9D9D9;
+           font-weight:600;
+       }
+       .list-group-vieclam-new h2{
+           font-weight:bolder;
+           color:black;
+       }
+       .list-group-vieclam-new p{
+           font-size:10px;
+           color:#999;
+           margin:3px 0;
+       }
+       .card li:hover{
+           background:#EEEEEE;
+       }
+       .media{
+           border:1px solid #EEEEEE;
+           padding:10px 20px;
+           border-radius:8px;
+           box-shadow: 1px 2px 3px rgba(0,0,0,0.3);
+           margin: 10px 0;
+       }
+       .media h5{
+           font-size:16px;
+           color:#000;
+           text-transform:uppercase;
+           font-weight:bold;
+       }
+       .media p{
+           color:black;
+       }
+       .media:hover{
+           background:#EEEEEE;
+       }
+       .img-vanban{
+           width:188px;
+           height:125px;
+           object-position:center;
+           object-fit:contain;
+       }
+       #vanban-empty{
+           width:"400px";
+           height:"450px";
+           object-position:center;
+           object-fit:contain;
+       }
+       #sel_SapXep,
+       #sel_LoaiTinTuc
+       {
+           font-size:14px;
+           font-weight:400;
+           color:#000;
+       }
+       .option_sel{
+           font-size:14px;
+           padding: 10px 0;
+       }
+       .icon_dollar{
+           font-size:9px;
+       }
+       .img_noibat{
+           width: 74px;
+           height: 50px;
+           object-fit: contain;
+       }
+       .form-group.has-feedback.has-search input[type="text"]:focus {
+         border-color: #3E9EF7;
+         box-shadow: none;
+       }
+       @@media(max-width:768px){
+           .card img{
+               margin-bottom:4px;
+               width:100%;
+           }
+           #content_GioiThieu{
+               font-size:20px;
+           }
+           .list-group-item p{
+               font-size:20px;
+           }
+           .list-group-item h2{
+               font-size:22px;
+           }
+           .badge_mucluong,
+           .badge_thoigian{
+               padding: 1px 5px;
+               font-size: 9px;
+           }
+
+           .icon_dollar{
+               font-size: 8px;
+           }
+            .list-group-item h2 {
+               font-size: 15px;
+           }
+
+           .list-group-item p {
+               font-size: 12px;
+           }
+            .media h5 {
+               font-size: 12px;
+           }
+
+           .media p {
+               font-size: 8px;
+           }
+            .media {
+               padding:7px;
+           }
+           .img-vanban {
+               height:51px;
+           }
+              .pagination>li>a{
+               padding:2px 4px;
+               font-size:10px;
+           }
+        
+       }
+       @@media(min-width:992px) and (max-width:1024px){
+           .card-title{
+               font-size:16px;
+           }
+           .badge_mucluong,
+           .badge_thoigian{
+               font-size:8px;
+               padding: 1px 4px;
+           }
+           .badge fa-dollar-sign{
+                font-size:8px;
+           }
+           .list-group-item .row{
+               display:flex;
+               align-items:center;
+           }
+
+       }
+       @@media(min-width:768px) and (max-width:992px) {
+           .media h5 {
+               font-size: 14px;
+           }
+
+           .media p {
+               font-size: 12px;
+           }
+       }
+       @@media(max-width:922px){
+           #sel_SapXep{
+               margin-top:10px;
+
+           }
+        .breadcrumb-container {
+            margin-top: 10px;
+        }
+        .container-listtintuc {
+            padding: 14px !important;
+        }
+        .pagination > li > a {
+            padding: 5px 8px;
+            font-size: 14px;
+        }
+       }
+        .pagination li.page-item.active a{
+           color: #fff;
+       }
+        .breadcrumb-tintuc{
+            margin-top:15px;
+        }
+        .footer-1 {
+            padding: 10px 20px !important;
+        }
+        .container-headertintuc {
+            padding-left:10px !important;
+        }
+        @@media (max-width:448px){
+            #LoaiTinTuc + .select2-container--default{
+                margin-bottom:4px;
+            }
+            .breadcrumb-container {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="breadcrumb-container">
+        <div class="container container-headertintuc">
+            <nav class="breadcrumb is-small breadcrumb-tintuc" aria-label="breadcrumbs">
+                <ul>
+                    <li><a href="/trang-chu.html">Trang chủ</a></li>
+                    <li class="is-active"><a href="/tra-cuu-nha-tuyen-dung.html" aria-current="page">Tin tức</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container mt-3 container-listtintuc">
+        <div class="row">
+            <div class="col-md-9 col-sm-8 col-xs-12">
+                <div class="row">
+                    <div class="col-md-5 pl-3">
+                        <div class="form-group has-feedback has-search">
+                            @*<span class="form-control-feedback"><i class="fa-solid fa-magnifying-glass" style=" background: #3e9ef7;"></i></span>*@
+                            <input type="text" class="" placeholder="Tìm kiếm" id="TimKiemVB" style="width: 100%; ">
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-4 ">
+                        <select class="form-select form-control form-select-lg mb-3" aria-label="Large select example" id="LoaiTinTuc">
+                        </select>
+
+                    </div>
+                    <div class="col-md-2 pr-3">
+                        <select class="form-select form-control form-select-lg mb-3" aria-label="Large select example" id="sel_SapXep">
+                            <option class="option_sel" selected value="0">Sắp xếp</option>
+                            <option class="option_sel" value="1">Mới nhất</option>
+                            <option class="option_sel" value="2">Cũ nhất</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="container row" id="content">
+
+                </div>
+                <div id="content_pagination"></div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-12">
+                <div class="card">
+                    <div class="card-title p-4">
+                        TIN TỨC NỔI BẬT
+                    </div>
+                    <ul class="list-group list-group-flush" id="list-vanbannew">
+                        @*<%--
+                        <li class="list-group-item">
+                            <a href="">
+                                <div class="row ">
+                                    <div class="col-md-4 col-sm-3 col-xs-4">
+                                        <img src="https://images2.thanhnien.vn/zoom/448_280/528068263637045248/2024/3/13/anh-1-1710337724534933796632-107-0-1707-2560-crop-1710338111636173354975.jpg"
+                                             alt="" class="img-responsive" />
+                                    </div>
+                                    <div class="col-md-8 col-sm-9 col-xs-8">
+                                        <p style="font-size:11px; color:#999" class="vanban-text">Trung tâm Dịch vụ việc làm Nam Định là đơn vị sự nghiệp công lập trực thuộc Sở Lao động – Thương binh </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>--%>*@
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-title p-4">
+                        VIỆC LÀM LƯƠNG CAO
+                    </div>
+                    <ul class="list-group list-group-flush" id="listViecLamLuongCao">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Areas/CongThongTinViecLam/Scripts/TinTuc.js?v=@DateTime.Now.Ticks.ToString()"></script>
+</asp:Content>

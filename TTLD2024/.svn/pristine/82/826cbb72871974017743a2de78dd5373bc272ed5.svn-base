@@ -1,0 +1,487 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MasterPage_CTT_QuanTri_ViecLam.cshtml";
+}
+<style>
+
+    .main-tongquan {
+        padding: 10px;
+    }
+
+    .title-waiting {
+        background: #CBE7F2;
+        padding: 5px;
+        border-radius: 4px;
+        color: #3E9EF7;
+    }
+
+    .title-wait-for-completion {
+        background: #ed575757;
+        padding: 5px;
+        border-radius: 4px;
+        color: #F61D1D;
+    }
+
+    .box-fl-info {
+        display: flex;
+        column-gap: 10px;
+        align-items: center;
+        background: white;
+        padding: 5px 10px;
+        border-radius: 9px;
+    }
+
+    .box-icon-info-red {
+        padding: 4px 12px;
+        border-radius: 50%;
+        background: red;
+        color: white;
+        font-size: 30px !important;
+    }
+
+    .box-icon-info-yellow {
+        padding: 4px 12px;
+        border-radius: 50%;
+        background: #FFB755;
+        color: white;
+        font-size: 30px !important;
+    }
+
+    .box-icon-info-green {
+        padding: 4px 12px;
+        border-radius: 50%;
+        background: #55FF5C;
+        color: white;
+        font-size: 30px !important;
+    }
+
+    .box-icon-info-blue {
+        padding: 4px 12px;
+        border-radius: 50%;
+        background: #3ECCEB;
+        color: white;
+        font-size: 30px !important;
+    }
+
+    .number-fl-info {
+        font-weight: bold;
+    }
+
+    .mt-10 {
+        margin-top: 10px;
+    }
+
+    .mt-5 {
+        margin-top: 5px;
+    }
+
+    .mb-5 {
+        margin-bottom: 5px;
+    }
+
+    .mb-10 {
+        margin-bottom: 10px;
+    }
+
+    .box-file {
+        background: white;
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 5px;
+        padding: 10px 5px 20px 5px;
+    }
+
+    .flex {
+        display: flex
+    }
+
+    .space-between {
+        justify-content: space-between;
+    }
+
+    .align-center {
+        align-items: center;
+    }
+
+    .title-file {
+        color: #3E9EF7;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .box-file-attached {
+        padding: 10px 5px;
+        border: 2px #a7a7a7;
+        border-style: dashed;
+        border-radius: 6px;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+
+    .initial {
+        font-style: initial;
+    }
+
+    .icon-action {
+        column-gap: 10px;
+        font-size: 17px;
+        cursor: pointer;
+    }
+
+    .grid {
+        display: grid;
+    }
+
+    .grid-company {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(32%, 1fr)); /* Tối đa 3 phần tử trên mỗi hàng */
+        justify-content: center; /* Canh giữa các phần tử */
+        gap: 20px; /* Khoảng cách giữa các phần tử */
+    }
+
+    .box-company {
+        padding: 10px 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+
+        .box-company div {
+            margin-bottom: 3px;
+            color: #979797;
+            position: relative;
+        }
+
+        .box-company:hover {
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+        }
+
+            .box-company:hover .btn-unlike-company {
+                display: block;
+            }
+
+    .box-img-company img {
+        max-width: 75px;
+        position: absolute;
+        top: -27px;
+        z-index: 10;
+        background: white;
+        border-radius: 50%;
+        padding: 1px;
+        height: 75px;
+        border: 2px solid #f3f3f3;
+    }
+
+    .company-name {
+        text-align: left;
+        margin-bottom: 0;
+        font-size: 16px;
+        color: black;
+        width: 100%;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        margin-left: 10px;
+    }
+
+    .company-place {
+        color: #949494;
+        text-align: left;
+        width: 200px;
+    }
+
+    .icon-save-company {
+        font-size: 16px;
+    }
+
+    .text-in-line-1 {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 1;
+    }
+
+    .text-in-line-2 {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2;
+    }
+
+    .text-in-line-3 {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 3;
+    }
+
+    .btn-unlike-company {
+        position: absolute !important;
+        top: -13px;
+        right: -7px;
+        display: none;
+        cursor: pointer;
+    }
+
+        .btn-unlike-company i {
+            color: red;
+            font-size: 25px;
+        }
+
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+        border-bottom: 2px solid var(--primary-color) !important;
+        box-shadow: unset;
+        border: unset;
+        color: var(--primary-color);
+        padding: 0;
+        font-weight: bold
+    }
+
+    .nav-tabs > li > a, .nav-tabs > li > a:focus {
+        border: unset;
+        background: unset;
+        padding: 0;
+        font-size: 14px;
+    }
+
+    .nav-tabs {
+        border: unset;
+    }
+
+        .nav-tabs > li {
+            padding-left: 15px;
+        }
+
+    #list-company-like .icon-save-company {
+        visibility: hidden;
+    }
+
+    .no-padding {
+        padding: 0 !important;
+    }
+
+    .box-shadow-3 {
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    }
+
+    .box-shadow-5 {
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    }
+
+    .box-shadow-7 {
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.7);
+    }
+    .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+        background: unset !important
+    }
+</style>
+
+<style>
+    #content_pagination {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #vanban-empty {
+        width: 200px;
+        height: 150px;
+    }
+
+    .box-company-null:hover {
+        box-shadow: none !important;
+    }
+
+    .box-company-null {
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    .box-company {
+        margin-bottom: 26px !important;
+    }
+
+    .btn-DaLuuTin {
+        color: var(--primary-color);
+    }
+
+    #list-file {
+        margin-top: 10px;
+        width: 100%;
+        max-height: 300px;
+        overflow: auto;
+    }
+
+        #list-file::-webkit-scrollbar {
+            width: 10px; /* Độ rộng của thanh cuộn */
+        }
+
+        #list-file::-webkit-scrollbar-track {
+            background: #f1f1f1; /* Màu nền của vùng chứa thanh cuộn */
+            border-radius: 8px;
+        }
+
+        #list-file::-webkit-scrollbar-thumb {
+            background: #D9D9D9; /* Màu nền của thanh cuộn */
+            border-radius: 8px;
+        }
+
+            #list-file::-webkit-scrollbar-thumb:hover {
+                background: rgba(0,0,0,0.3); /* Màu nền của thanh cuộn khi hover */
+                cursor: pointer;
+            }
+
+    .list-file_revert #list-file {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .title_company-name {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 1;
+    }
+    #myTab .nav-item.action a {
+        color: #3E9EF7;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+</style>
+<div class="container-fluid main-tongquan">
+    <div class="row" id="thongbao">
+
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="box-fl-info">
+                <div class="box-icon-info-red">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <div>
+                    <div class="number-fl-info VieclamPhuhop">
+
+                    </div>
+                    <div class="text-fl-info">
+                        Việc làm phù hợp
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="box-fl-info">
+                <div class="box-icon-info-yellow">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <div>
+                    <div class="number-fl-info vieclamdanop">
+
+                    </div>
+                    <div class="text-fl-info">
+                        Việc làm đã nộp
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="box-fl-info">
+                <div class="box-icon-info-green">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <div>
+                    <div class="number-fl-info vieclamdaluu">
+
+                    </div>
+                    <div class="text-fl-info">
+                        Việc làm đã lưu
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="box-fl-info">
+                <div class="box-icon-info-blue">
+                    <i class="fa-solid fa-eye"></i>
+                </div>
+                <div>
+                    <div class="number-fl-info nhatuyendungdaluu">
+
+                    </div>
+                    <div class="text-fl-info">
+                        Nhà tuyển dụng đang theo dõi
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-10 box-file">
+        <div class="col-md-12">
+            <span class="title-file">Hồ sơ đính kèm:</span>
+        </div>
+        <div class="col-md-12">
+            <div class="flex space-between align-center">
+                <span>Tổng số hồ sơ: <span style="color: red" id="TongHoso">0</span></span>
+                <button type="button" class="btn btn-primary" id="btnChonTepHinhAnh"><i class="fa-solid fa-plus"></i> Thêm mới</button>
+                
+                <div id="list-file-hinh-anh" style="display: none"></div>
+                <input type="file" id="file_hinhanh" class="d-none" accept=".jpg,.jpeg,.png,.docx,.pdf" style="display: none" multiple="multiple" />
+
+            </div>
+        </div>
+        <div class="list-file_revert">
+            <div class="col-md-12" id="list-file">
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="row mt-10 box-file">
+        <div class="col-md-12">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item action">
+                    <a class="nav-link " id="bussinis-like-tab" data-toggle="tab" href="#bussinis-like" role="tab" aria-controls="bussinis-like" aria-selected="true" aria-expanded="true">
+                        Công ty bạn sẽ thích
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="list-company-like-tab" data-toggle="tab" href="#list-company-like" role="tab" aria-controls="list-company-like" aria-selected="false">
+                        Công ty đang theo dõi
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent" style="margin-top: 30px;border: unset;">
+                <div class="tab-pane fade" id="bussinis-like" role="tabpanel" aria-labelledby="bussinis-like-tab">
+                    <div class="grid " style="width: 100%; grid-template-columns: none;">
+                        <div class="row" id="list-company-new">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="list-company-like" role="tabpanel" aria-labelledby="list-company-like-tab">
+                    <div class="grid" style="width: 100%; grid-template-columns: none;">
+                        <div class="row" id="list_company">
+                           
+
+                        </div>
+                    </div>
+                    <div id="content_pagination">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="~/Areas/UngVien/Scripts/TongQuan.js?v=@DateTime.Now.Ticks.ToString()"></script>

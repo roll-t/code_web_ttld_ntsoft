@@ -1,0 +1,85 @@
+﻿<style>
+    .TaiLieuDinhKem {
+        text-align: left;
+        font-weight: 550;
+        padding-bottom: 10px;
+        padding-left: 10px;
+    }
+</style>
+
+@* Modal xem đính kèm *@
+<div class="modal fade" id="mdXemDinhKem_usTL" data-bs-backdrop="static">
+    <div class="modal-dialog w-px-500">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tieuDeModal_XDK">Danh sách đính kèm</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <fieldset class="KhungVien">
+                            <legend><b id="legendDinhKem">Đính kèm</b></legend>
+                            <div class="row">
+                                <div class="col-12 TaiLieuDinhKem" id="list-file-xem-dinh-kem"></div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function XemDinhKem_USHoGiaDinh(ID) {
+        $('#mdXemDinhKem_usTL').modal('show');
+        const result = NTS.getAjax('/DanhMuc/HoGiaDinh/LayDuLieuSua_TL', { id: ID });
+        if (!result.Err && result.Result != null) {
+            let data = result.Result[0];
+            $('#list-file-xem-dinh-kem').html('');
+            if (data.DinhKem != null && data.DinhKem.length > 0) {
+                let linkVB = data.DinhKem;
+                let arrFile = linkVB.split('*');
+                for (let p = 0; p < arrFile.length - 1; p++) {
+                    if (arrFile[p].lastIndexOf('.') != -1) {
+                        // file có đuôi .*
+                        if (arrFile[p].substring(arrFile[p].lastIndexOf('.'), arrFile[p].length).toLocaleLowerCase() == ".png" ||
+                            arrFile[p].substring(arrFile[p].lastIndexOf('.'), arrFile[p].length).toLocaleLowerCase() == ".jpeg" ||
+                            arrFile[p].substring(arrFile[p].lastIndexOf('.'), arrFile[p].length).toLocaleLowerCase() == ".jpg" ||
+                            arrFile[p].substring(arrFile[p].lastIndexOf('.'), arrFile[p].length).toLocaleLowerCase() == ".docx" ||
+                            arrFile[p].substring(arrFile[p].lastIndexOf('.'), arrFile[p].length).toLocaleLowerCase() == ".PDF"
+                        ) {
+                            $('#list-file-xem-dinh-kem').append(`<div class="frame-file me-2">
+                                                    <div class="frame-top">
+                                                        <div class="frame-image" title="${arrFile[p].substring(arrFile[p].lastIndexOf('/') + 1, arrFile[p].length)}" style="background-image:url('${arrFile[p].replace('~', '')}')"></div>
+                                                    </div>
+                                                    <i class="fa fa-arrow-down download-file-attachments" data-url-file="${arrFile[p].replace('~', '')}"></i>
+                                                </div>`);
+                        } else {
+                            $('#list-file-xem-dinh-kem').append(`<div class="frame-file me-2">
+                                                    <div class="frame-top">
+                                                        <div class="frame-image" title="${arrFile[p].substring(arrFile[p].lastIndexOf('/') + 1, arrFile[p].length)}" style="background-image:url('/Images/file.png')"></div>
+                                                    </div>
+                                                    <i class="fa fa-arrow-down download-file-attachments" data-url-file="${arrFile[p].replace('~', '')}"></i>
+                                                </div>`);
+                        }
+                    } else {
+                        // file không đuôi
+                        $('#list-file-xem-dinh-kem').append(`<div class="frame-file me-2">
+                                                    <div class="frame-top">
+                                                        <div class="frame-image" title="${arrFile[p].substring(arrFile[p].lastIndexOf('/') + 1, arrFile[p].length)}" style="background-image:url('/Images/file.png')"></div>
+                                                    </div>
+                                                    <i class="fa fa-arrow-down download-file-attachments" data-url-file="${arrFile[p].replace('~', '')}"></i>
+                                                </div>`);
+                    }
+                }
+            } else {
+                $('#list-file-xem-dinh-kem').html('Không có đính kèm');
+            }
+        }
+        else result.CanhBao ? NTS.canhbao(result.Msg) : NTS.loi(result.Msg);
+    }
+</script>

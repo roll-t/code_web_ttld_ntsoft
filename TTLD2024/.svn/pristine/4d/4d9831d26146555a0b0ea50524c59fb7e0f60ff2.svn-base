@@ -1,0 +1,213 @@
+﻿.primary-color {
+    color: #3E9EF7 !important;
+}
+
+.bg-primary {
+    background: #3E9EF7 !important;
+    background-color: #3E9EF7 !important;
+}
+
+    .bg-primary:hover {
+        background-position: 0% 0%;
+        background-color: #1f70ba #1f70ba;
+        background-image: none !important;
+        background-repeat: repeat !important;
+        background-attachment: scroll !important;
+    }
+
+.info-color {
+    color: #3ECCEB !important;
+}
+
+.bg-info {
+    background: #3ECCEB !important;
+    background-color: #3ECCEB !important;
+}
+
+
+.warning-color {
+    color: #FFB755 !important;
+}
+
+.bg-warning {
+    background: #FFB755 !important;
+    background-color: #FFB755 !important;
+}
+
+.danger-color {
+    color: #FF0000 !important;
+}
+
+.bg-danger {
+    background: #FF0000 !important;
+}
+
+
+.success-color {
+    color: #66CE9C !important;
+}
+
+.bg-success {
+    background: #66CE9C !important;
+    background-color: #66CE9C !important;
+}
+.main-container:before {
+    background: #f0f0f0 !important;
+}
+.main-container {
+    background: #f0f0f0 !important;
+}
+.main-content, .page-content {
+    background: #d6dee1 !important;
+}
+
+.container-content {
+    background: #fff;
+    padding: 5px 20px;
+    border-radius: 4px;
+    margin: 10px;
+}
+#breadcrumbs {
+    background: #fff;
+}
+
+input[type=color]:focus, input[type=date]:focus, input[type=datetime-local]:focus, input[type=datetime]:focus, input[type=email]:focus, input[type=month]:focus, input[type=number]:focus, input[type=password]:focus, input[type=search]:focus, input[type=tel]:focus, input[type=text]:focus, input[type=time]:focus, input[type=url]:focus, input[type=week]:focus, textarea:focus {
+    border-color: var(--primary-color) !important;
+}
+
+.frame-file {
+    width: 65px;
+    height: 65px;
+    border: 1px solid #d5d5d5;
+    border-radius: 4px;
+    float: left;
+    position: relative;
+    margin-right:4px;
+}
+
+.frame-image {
+    width: 60px;
+    height: 60px;
+    float: left;
+    background-position: center;
+    background-size: cover;
+    border-radius: 4px;
+    position: relative;
+}
+
+.frame-file .fa-arrow-down {
+    position: absolute;
+    top: -8px;
+    right: 8px;
+    font-size: 15px;
+    color: #fff;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: none;
+    padding-top: 2px;
+    text-align: center;
+    z-index: 99;
+}
+
+.frame-file .fa-trash-o {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 15px;
+    color: #fff;
+    background-color: red;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: none;
+    padding-top: 2px;
+    text-align: center;
+    z-index: 99;
+}
+
+.frame-top {
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+
+.frame-file:hover > .fa-trash-o, .frame-file:hover > .fa-arrow-down {
+    display: block;
+}
+
+.frame-file .fa-arrow-down:hover {
+    font-size: 10px;
+    transition: 0.2s;
+    padding-top: 5px;
+}
+
+.frame-file .fa-eye:hover {
+    font-size: 10px;
+    transition: 0.2s;
+    padding-top: 5px;
+}
+
+.frame-top {
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+
+.frame-image {
+    width: 60px;
+    height: 60px;
+    float: left;
+    background-position: center;
+    background-size: cover;
+    border-radius: 4px;
+    position: relative;
+}
+
+
+.frame-file:hover > .fa-trash-o, .frame-file:hover > .fa-arrow-down {
+    display: block;
+}
+
+.frame-file .fa-trash-o:hover {
+    font-size: 13px;
+    transition: 0.2s;
+    padding-top: 3px;
+}
+
+#btnXoaHetTepVB_us i {
+    display: none !important;
+}
+
+.frame-file .fa-trash-o {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 15px;
+    color: #fff;
+    background-color: red;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: none;
+    padding-top: 2px;
+    text-align: center;
+    z-index: 99;
+}
+
+.frame-file:hover > .fa-trash-o, .frame-file:hover > .fa-arrow-down {
+    display: block;
+}
+
+.frame-file .fa-trash-o:hover {
+    font-size: 13px;
+    transition: 0.2s;
+    padding-top: 3px;
+}
+.legend-primary {    
+    background: var(--primary-color);
+    color: white;
+    padding: 2px 10px;
+    border-radius: 16px;
+}

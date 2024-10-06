@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    @@media (min-width: 992px) {
+        #mdThemMoi .modal-dialog {
+            width: 50% !important;
+        }
+    }
+
+    @@media (max-width: 993px) {
+        #mdThemMoi .modal-dialog {
+            width: 100% !important;
+        }
+    }
+
+    .modal-footer {
+        display: unset !important;
+    }
+</style>
+<input type="hidden" id="NhomLoaiHinhNoiLVID" />
+<div class="row">
+    <div class="col-md-4">
+        <div class="input-icon mb-3">
+            <input type="text" value="" class="form-control" placeholder="Nội dung tìm kiếm ..." id="timKiem" autocomplete="off">
+            <span class="input-icon-addon">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+            </span>
+        </div>
+    </div>
+    <div class="col mb-2">
+        <div class="text-end">
+            <button type="button" class="btn btn-primary btn-nts-them" id="btnThemMoi"><i class="fa fa-plus"></i>&ensp;Thêm mới (F2)</button>
+            <div class="btn-group" style="">
+                <div class="dropdown d-inline">
+                    <button class="btn btn-primary dropdown-toggle-hide-arrow  height-button-icon  btn-nts-them" type="button" id="growthReportId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="blue fa fa-ellipsis-h"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-lg-end w-auto">
+                        <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnPrint"><i class="text-warning fa fa-print iconsize-item"></i>&ensp; In</a>
+                        <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnExport"><i class="text-success fa fa-file-excel-o iconsize-item"></i>&ensp; Xuất Excel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="space-4"></div>
+<div class="row">
+    <div class="col-md-12">
+        <div id="Grid1"></div>
+    </div>
+</div>
+<div id="mdThemMoi" class="modal modal-blur fade" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header nts-modal">
+                <h5 id="lblTieuDeThemMoi" class="modal-title text-bold">Thêm mới</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label" for="MaNhomLoaiHinhNoiLV">Mã</label>
+                            <input type="text" class="form-control" id="MaNhomLoaiHinhNoiLV" required maxlength="5">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="TenNhomLoaiHinhNoiLV">Tên nhóm loại hình nơi làm việc</label>
+                            <input type="text" class="form-control" id="TenNhomLoaiHinhNoiLV" required maxlength="250">
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="">Diễn giải</label>
+                            <textarea class="form-control" id="DienGiai" rows="3" maxlength="500"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div style="display: flex; align-items: center; justify-content: space-between">
+                    <div class="col-md-6" style="display: flex; align-items: center">
+                        <label style="margin-bottom: unset" class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="TrangThai">
+                            <label class="form-check-label" for="TrangThai">Ngưng sử dụng</label>
+                        </label>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="float:right;text-align: right">
+                            <a href="#" id="btnLuuVaDong" class="btn btn-success ms-auto">
+                                <i class="fa fa-save"></i>&ensp;Lưu và đóng (F9)
+                            </a>
+                            <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                <i class="fa fa-close"></i>&nbsp;Đóng (F4)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/Areas/DanhMuc/Scripts/NhomLoaiHinhNoiLV.js?v=@DateTime.Now.Ticks.ToString()"></script>
+
+
+

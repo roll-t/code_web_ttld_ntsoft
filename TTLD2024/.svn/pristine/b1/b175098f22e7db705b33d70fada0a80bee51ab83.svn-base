@@ -1,0 +1,662 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Đăng ký nhà tuyển dụng</title>
+    <link href="~/Content/TablerTheme/libs/fontawesome6.1/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            margin-bottom: 15px;
+            margin-top: 8px;
+            background: #77b;
+        }
+
+        body, td {
+            font: 14px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        #subTitle {
+            background: #000;
+            color: #fff;
+            padding: 4px;
+            font-weight: bold;
+        }
+
+        #siteNavigation a, #siteNavigation .current {
+            font-weight: bold;
+            color: #448;
+        }
+
+            #siteNavigation a:link {
+                text-decoration: none;
+            }
+
+            #siteNavigation a:visited {
+                text-decoration: none;
+            }
+
+        #siteNavigation .current {
+            background-color: #ccd;
+        }
+
+        #siteNavigation a:hover {
+            text-decoration: none;
+            background-color: #fff;
+            color: #000;
+        }
+
+        #siteNavigation a:active {
+            text-decoration: none;
+            background-color: #ccc;
+        }
+
+
+        a:link {
+            text-decoration: underline;
+            color: #00f;
+        }
+
+        a:visited {
+            text-decoration: underline;
+            color: #000;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #c00;
+        }
+
+        a:active {
+            text-decoration: underline;
+        }
+
+        #pageContent {
+            clear: both;
+            border-bottom: 6px solid #000;
+            padding: 10px;
+            padding-top: 20px;
+            line-height: 1.65em;
+            background-image: url(backblue.gif);
+            background-repeat: no-repeat;
+            background-position: top right;
+        }
+
+        #pageContent, #siteNavigation {
+            background-color: #ccd;
+        }
+
+
+        .imgLeft {
+            float: left;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .imgRight {
+            float: right;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+
+        hr {
+            height: 1px;
+            color: #000;
+            background-color: #000;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            margin: 0;
+            font-weight: bold;
+            font-size: 2em;
+        }
+
+        h2 {
+            margin: 0;
+            font-weight: bold;
+            font-size: 1.6em;
+        }
+
+        h3 {
+            margin: 0;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        h4 {
+            margin: 0;
+            font-weight: bold;
+            font-size: 1.18em;
+        }
+
+        .blak {
+            background-color: #000;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .tableWidth {
+            min-width: 400px;
+        }
+
+        .tblRegular {
+            border-collapse: collapse;
+        }
+
+            .tblRegular td {
+                padding: 6px;
+                background-image: url(fade.gif);
+                border: 2px solid #99c;
+            }
+
+        .tblHeaderColor, .tblHeaderColor td {
+            background: #99c;
+        }
+
+        .tblNoBorder td {
+            border: 0;
+        }
+
+        .form-control.is-invalid:focus,
+        .form-control.is-invalid:hover {
+            border-color: #ff4a53 !important;
+        }
+
+        .term-and-policy-wrapper {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            column-gap: 12px;
+            align-items: start;
+        }
+
+        .form-group.term-and-policy-wrapper > .checkbox {
+            margin-top: 5px;
+        }
+
+        .form-group.term-and-policy-wrapper > .accept-text {
+            font-weight: 400;
+        }
+
+        .form__field.form-group > .button-register:disabled, .validate-button-register:disabled {
+            display: none;
+        }
+
+        .form-group.column {
+            flex-direction: column;
+        }
+
+            .form-group.column > .validate-button-register {
+                border-radius: 6px;
+                font-weight: 700;
+                margin: 0;
+                width: 100%;
+            }
+
+        .error-msg {
+            color: #FF4A53;
+            font-size: 14px;
+            margin-bottom: 0;
+            display: none;
+            font-weight: 700;
+        }
+
+            .error-msg.show {
+                display: block;
+            }
+
+        .invalid-feedback.hide {
+            display: none;
+        }
+        /* The container */
+        .form-group.term-and-policy-wrapper > .checkbox-container {
+            display: block;
+            position: relative;
+            padding-left: 18px;
+            margin-top: 2px;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+            /* Hide the browser's default checkbox */
+            .form-group.term-and-policy-wrapper > .checkbox-container input {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                height: 0;
+                width: 0;
+            }
+
+        /* Create a custom checkbox */
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 18px;
+            width: 18px;
+            border-radius: 4px;
+            border: 1px solid #333333;
+            transition: all 0.25s ease-in-out;
+        }
+
+        /* When the checkbox is checked, add a blue background */
+        .form-group.term-and-policy-wrapper > .checkbox-container input:checked ~ .checkmark {
+            background-color: #005AFF;
+            border-color: #005AFF;
+        }
+
+        /* Create the checkmark/indicator (hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the checkmark when checked */
+        .form-group.term-and-policy-wrapper > .checkbox-container input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        /* Style the checkmark/indicator */
+        .form-group.term-and-policy-wrapper > .checkbox-container .checkmark:after {
+            left: 5px;
+            top: 1px;
+            width: 7px;
+            height: 11px;
+            border: solid white;
+            border-width: 0 1px 1px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        .password-box {
+            position: relative;
+        }
+
+            .password-box .eye-icon {
+                position: absolute;
+                top: 0;
+                right: 0;
+                margin-top: 8px;
+                margin-right: 8px;
+            }
+
+                .password-box .eye-icon:hover {
+                    cursor: pointer;
+                }
+
+        .input-group-text.cursor-pointer {
+            display: none !important;
+        }
+
+        #sso-register__form .form-control:focus {
+            outline: solid 1px #005AFF !important;
+        }
+
+        .vnw-title .title {
+            font-size: 32px !important;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px; /* Đặt icon ở phía bên phải khung */
+            top: 50%; /* Đặt icon ở giữa chiều cao khung */
+            transform: translateY(-50%); /* Căn chỉnh icon theo chiều dọc */
+            cursor: pointer;
+            font-size: 18px; /* Kích thước icon */
+        }
+
+            .toggle-password.visible::before {
+                content: '\128065'; /* Biểu tượng con mắt mở */
+            }
+
+            .toggle-password::before {
+                content: '\128068'; /* Biểu tượng con mắt có đường gạch chéo */
+            }
+
+        .title {
+            font-weight: bold;
+        }
+
+        @@media(max-width:768px) {
+            .dangky-repassword,
+            .dangky-password,
+            .dangky-tencongty,
+            .dangky-sdt,
+            .dangky-masothue,
+            .dangky-diachi {
+                font-size: 12px !important;
+                height: 33px !important;
+            }
+
+            .vnw-title .title {
+                font-size: 20px !important;
+            }
+
+            label {
+                font-size: 10px;
+            }
+
+            .dangnhap-cauhoi {
+                font-size: 9px;
+            }
+
+            .dangnhap-linkdangky {
+                font-size: 9px;
+            }
+
+            #btnHuy {
+                padding: 4px 10px;
+                font-size: 10px;
+                height: 26px;
+            }
+
+            #btnDangNhap {
+                padding: 4px 10px;
+                font-size: 10px;
+                height: 26px;
+            }
+
+            .dangnha-quenmatkhau {
+                font-size: 10px;
+            }
+
+            .dangnhap-labeldangnhap {
+                font-size: 10px;
+            }
+
+            .dangnhap-labelmatkhau {
+                font-size: 10px;
+            }
+
+            #togglePassword,
+            #toggleRepassword {
+                font-size: 10px;
+            }
+        }
+
+        @@media(min-width:768px) and (max-width:992px) {
+            .dangky-repassword,
+            .dangky-password,
+            .dangky-tencongty,
+            .dangky-sdt,
+            .dangky-masothue,
+            .dangky-diachi {
+                font-size: 12px !important;
+                height: 33px !important;
+            }
+
+
+            label {
+                font-size: 12px;
+            }
+
+            .dangnhap-cauhoi {
+                font-size: 12px;
+            }
+
+            .dangnhap-linkdangky {
+                font-size: 12px;
+            }
+
+            #btnHuy {
+                padding: 6px 12px;
+                font-size: 12px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+            }
+
+            #btnDangNhap {
+                padding: 6px 12px;
+                font-size: 12px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+            }
+
+            .dangnha-quenmatkhau {
+                font-size: 12px;
+            }
+
+            .dangnhap-labeldangnhap {
+                font-size: 12px;
+            }
+
+            .dangnhap-labelmatkhau {
+                font-size: 12px;
+            }
+
+            #togglePassword,
+            #toggleRepassword {
+                font-size: 12px;
+            }
+        }
+        .vnw-login__top-header {
+            width: 100vw !important;
+            min-height: 100px !important;
+            /*background: unset !important;*/
+        }
+        .register-box.grid.main {
+            padding: 24px 64px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 10;
+            margin-top: -55px;
+        }
+        @@media (max-width: 2024px) {
+            .footer-1 {
+                position: unset !important;
+            }
+
+            .footer {
+                position: unset !important;
+            }
+
+            .register-box.grid.main {
+                margin-bottom: 10px !important;
+            }
+        }
+        .d-flex {
+            display: flex;
+        }
+
+        .align-items-center {
+            align-items: center;
+        }
+
+        .ml-2 {
+            margin-left: 8px;
+            margin-bottom: 0 !important;
+        }
+        input[type="checkbox"] {
+            outline: 0;
+        }
+
+        input[type="checkbox"].error {
+            outline: 2px solid red;
+        }
+        .logo-banner-main {
+            width: 100px !important;
+            height: 100px;
+            padding: 10px;
+        }
+        section.footer-1 {
+            position: fixed;
+            bottom: 39px;
+        }
+
+        footer.footer {
+            position: fixed;
+            bottom: 40px !important;
+            height: 0px;
+        }
+    </style>
+    <link href="~/Content/TablerTheme/libs/css/system.css?v=@DateTime.Now.Ticks.ToString()" rel="stylesheet" />
+    <link rel="shortcut icon" href="" type="image/x-icon" />
+    <meta name="description" content="HỆ THỐNG QUẢN LÝ LAO ĐỘNG - NTSOFT" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/Content/TablerTheme/Login/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/TablerTheme/Login/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/TablerTheme/Login/css/fonts.googleapis.com.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/TablerTheme/material-preloader/css/materialPreloader.css" />
+    <link rel="stylesheet" href="~/Content/TablerTheme/Login/css/select2.min.css" />
+    <link rel="stylesheet" href="~/Content/TablerTheme/Login/css/jquery-ui.custom.min.css" />
+    <link rel="stylesheet" href="~/Content/TablerTheme/Login/css/jquery.gritter.min.css" />
+    <link rel="stylesheet" href="~/Content/TablerTheme/Login/css/ace.min.css" />
+    <link rel="stylesheet" href="~/Content/TablerTheme/Login/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" href="~/Content/TablerTheme/Login/css/bootstrap-timepicker.min.css" />
+    <link rel="stylesheet" href="~/Content/TablerTheme/Login/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="~/Content/TablerTheme/Login/css/style.css" />
+    <link href="~/Content/TablerTheme/libs/css/style.css" rel="stylesheet" />
+    <link href="~/Content/TablerTheme/libs/css/style_CTT.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/TablerTheme/Login/css/chosen.min.css" />
+    <script src="~/Content/TablerTheme/js/Login/jquery-2.1.4.min.js"></script>
+    <script src="~/Content/TablerTheme/libs/js/jquery-2.1.4.min.js"></script>
+    <script src="/Scripts/custom.js?v=@DateTime.Now.Ticks.ToString()"></script>
+    <script src="~/Scripts/DungChung/NTSPlugin.js?v=@DateTime.Now.Ticks.ToString()"></script>
+    <link href="~/Content/TablerTheme/libs/css/tabulator.min.css" rel="stylesheet" />
+    <script src="~/Content/TablerTheme/libs/js/tabulator.min.js"></script>
+    <script src="~/Content/TablerTheme/libs/tabulator/dist/js/tabulator.min.js"></script>
+    <link href="~/Content/TablerTheme/libs/toastr/toastr.min.css" rel="stylesheet" />
+    <link href="~/Content/TablerTheme/css/style-custom.css" rel="stylesheet" />
+    <script src="~/Scripts/Header.js"></script>
+</head>
+
+<body style="background: url(/Images/anhnen4.jpg) no-repeat; background-size: cover;min-height:800px;position:relative; ">
+    <input type="hidden" id="MaNhaTuyenDung" />
+    <input type="hidden" id="TenDinhDanh" />
+    <form id="form1" runat="server">
+        <div>
+        </div>
+    </form>
+    <div class="vnw-login__top-header">
+        <div>
+            <a href="/trang-chu.html">
+                <img src="~/Images/CongThongTinViecLam/logottldtv.png" class="logo-banner-main" id="logo-goto-trangchu" />
+            </a>
+        </div>
+    </div>
+    <style>
+    </style>
+    <div id="ntsSecurity" runat="server"></div>
+    <div class="grid main register-box">
+        <div class="form login">
+            <div class="grid-logo-vnw">
+                <div class="vnw-title">
+                    <div class="title">ĐĂNG KÝ NHÀ TUYỂN DỤNG</div>
+                </div>
+            </div>
+
+            <form id="sso-register__form">
+                <div class="form-group row">
+                    <label for="firstname" class="col-12 validation"><i class="fa fa-envelope-o icon-system" aria-hidden="true"></i> Email đăng nhập</label>
+                    <div class="col-12">
+                        <div class="input-box">
+                            <input id="email" type="email" class="form-control" value="" autofocus="autofocus" required="required" placeholder="Vui lòng nhập Email" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="password" class="col-6 validation"><i class="fa fa-lock icon-system" aria-hidden="true"></i> Mật khẩu</label>
+                    <label for="repassword" class="col-6 validation"> <i class="fa fa-lock icon-system" aria-hidden="true"></i> Nhập lại mật khẩu</label>
+                    <div class="col-6">
+                        <div class="password-box">
+                            <input id="password" type="password" class="form-control dangky-password" value="" required="required" placeholder="Vui lòng nhập mật khẩu" />
+                            <i class="toggle-password fa-regular fa-eye" id="togglePassword"></i>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="password-box">
+                            <input id="repassword" type="password" class="form-control dangky-repassword" value="" required="required" placeholder="Vui lòng nhập lại mật khẩu" />
+                            <i class="toggle-password fa-regular fa-eye" id="toggleRepassword"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row ">
+                    <label for="company" class="col-12 validation"><i class="fa-solid fa-city icon-system"></i> Tên công ty</label>
+                    <div class="col-12">
+                        <div class="input-box">
+                            <input id="company" type="text" class="form-control dangky-tencongty" value="" required="required" placeholder="Vui lòng nhập tên công ty" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="tax" class="col-6"><i class="fa-solid fa-address-card icon-system"></i> Mã số thuế</label>
+                    <label for="tele" class="col-6"><i class="fa fa-phone icon-system" aria-hidden="true"></i> Số điện thoại</label>
+                    <div class="col-6">
+                        <input id="tax" type="text" class="form-control dangky-masothue" value="" placeholder="Vui lòng nhập mã số thuế của công ty" />
+                    </div>
+                    <div class="col-6">
+                        <input id="tele" type="text" class="form-control dangky-sdt" value="" placeholder="Vui lòng nhập số điện thoại công ty" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="Address" class="col-12"><i class="fa fa-map-marker icon-system" aria-hidden="true"></i> Địa chỉ</label>
+                    <div class="col-12">
+                        <input id="Address" type="text" class="form-control dangky-diachi" value="" placeholder="Vui lòng nhập địa chỉ công ty" />
+                    </div>
+                </div>
+                <div class="form-group row" style="display:none;">
+                    <label for="" class="col-12"><i class="fa fa-lock icon-system" aria-hidden="true"></i></label>
+                    <div class="col-12">
+                        <select class="form-control input-sm" id="selDiaBan"></select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-12 d-flex align-items-center">
+                        <input type="checkbox" id="agree" style="margin-top: 0 !important;" />
+                        <label for="agree" class="ml-2">
+                            Tôi đã đọc và đồng ý với <a href="/dieu-khoan-dich-vu.html">Điều khoản dịch vụ</a> và
+                            <a href="/chinh-sach-bao-mat.html">Chính sách bảo mật</a>
+                        </label>
+                    </div>
+                </div>
+                <div class="form__field form-group column">
+                    <input type="button" id="validate-button-register" class="validate-button-register" value="Đăng ký" />
+                </div>
+            </form>
+
+            <p class="text-center m-b-none register">
+                Bạn đã có tài khoản ? <a href="/dang-nhap-nha-tuyen-dung.html"><strong>Đăng nhập</strong></a>
+            </p>
+           
+        </div>
+
+    </div>
+    <input id="gritter-light" checked="" type="checkbox" class="ace ace-switch ace-switch-5" />
+    <script src="~/Content/TablerTheme/libs/toastr/toastr.min.js"></script>
+    <script src="~/Content/TablerTheme/js/Login/ace-extra.min.js"></script>
+    <script src="~/Content/TablerTheme/js/Login/bootstrap.min.js"></script>
+    <script src="~/Content/TablerTheme/js/Login/jquery.dataTables.min.js"></script>
+    <script src="~/Content/TablerTheme/js/Login/jquery.dataTables.bootstrap.min.js"></script>
+    <script src="~/Content/TablerTheme/material-preloader/js/materialPreloader.js"></script>
+    <script src="~/Content/TablerTheme/js/Login/jquery.gritter.min.js"></script>
+    <script src="~/Content/TablerTheme/js/Login/bootbox.js"></script>
+    <script src="~/Content/TablerTheme/js/Login/select2.full.js"></script>
+    <script src="~/Content/TablerTheme/js/Login/ace-elements.min.js"></script>
+    <script src="~/Content/TablerTheme/js/Login/ace.min.js"></script>
+    <script src="~/Content/TablerTheme/js/Login/dataTables.select.min.js"></script>
+    <script src="~/Content/TablerTheme/js/Login/jquery-ui.min.js"></script>
+    <script src="~/Content/TablerTheme/js/Login/jquery.mask.min.js" defer="defer"></script>
+    <script src="~/Content/TablerTheme/js/Login/bootstrap-datepicker.min.js"></script>
+    <script src="~/Content/TablerTheme/js/Login/bootstrap-timepicker.min.js"></script>
+    <script src="~/Content/TablerTheme/js/Login/moment.min.js"></script>
+    <script src="~/Content/TablerTheme/js/Login/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Content/TablerTheme/js/Login/bootstrap-tag.min.js" defer="defer"></script>
+    <script src="~/Scripts/DungChung/NTSLibrary.js?v=@DateTime.Now.Ticks.ToString()"></script>
+    <script src="~/Scripts/DungChung/permission.js?v=@DateTime.Now.Ticks.ToString()"></script>
+    <script src="~/Scripts/DungChung/NTSValidate.js?v=@DateTime.Now.Ticks.ToString()"></script>
+    <script src="~/Areas/CongThongTinViecLam/Scripts/DangKyNTD.js"></script>
+    <script src="~/Scripts/DungChung/NTSPlugin.js?v=@DateTime.Now.Ticks.ToString()"></script>
+@Html.Partial("FooterLogin")
+</body>
+</html>

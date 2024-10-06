@@ -1,0 +1,1474 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/CongThongtinViecLam.cshtml";
+}
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        :root {
+            --blue-color: #02528E;
+        }
+
+        .has-search .form-control-feedback {
+            right: initial;
+            left: 0;
+            color: #ccc;
+        }
+
+        .has-search .form-control {
+            padding-right: 12px;
+            padding-left: 34px;
+        }
+
+        #container-big {
+            background: B2B0B0;
+        }
+
+        #header-breadcrumb {
+            border-radius: 12px;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+            border: solid 1px #ECECEC;
+            margin-top: 10px;
+            padding-left: 18px;
+        }
+
+        #content_text {
+            border: solid 1px #ECECEC;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 6px;
+        }
+
+        .badge {
+            background: #3E9EF7;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px 8px 0 0;
+            padding: 8px 14px;
+        }
+
+        .content_vanban {
+            padding: 16px 70px 150px 70px;
+        }
+
+        .badge_mucluong {
+            color: #ff6a00;
+            padding: 2px 6px;
+            font-size: 10px;
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+            border: solid 1px #D9D9D9;
+            font-weight: 600;
+        }
+
+        .badge_thoigian {
+            color: #3E9EF7;
+            padding: 2px 6px;
+            font-size: 10px;
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+            border: solid 1px #D9D9D9;
+            font-weight: 600;
+        }
+
+        .list-group-vieclam-new h2 {
+            font-weight: bolder;
+            color: black;
+        }
+
+        .list-group-vieclam-new p {
+            font-size: 10px;
+            color: #999;
+            margin: 3px 0;
+        }
+
+        .card li:hover {
+            background: #EEEEEE;
+        }
+
+        .media {
+            border: 1px solid #EEEEEE;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 1px 2px 3px rgba(0,0,0,0.3);
+            margin: 10px 0;
+        }
+
+            .media h5 {
+                font-size: 16px;
+                color: #3E9EF7;
+                text-transform: uppercase;
+                font-weight: bold;
+            }
+
+            .media p {
+                color: black;
+            }
+
+            .media:hover {
+                background: #EEEEEE;
+            }
+
+        .img-vanban {
+            width: 188px;
+            height: 125px;
+            object-position: center;
+            object-fit: contain;
+        }
+
+        #sel_SapXep {
+            padding: 10px;
+        }
+
+        .vanban_text {
+            padding-bottom: 14px;
+            color: #98A2AB;
+        }
+
+        .indam {
+            font-weight: bold;
+            color: #000;
+        }
+
+        #vanban_lienquan a:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .file-item {
+            padding: 10px;
+            border: 1px dashed #3E9EF7;
+            border-radius: 8px;
+            color: #3E9EF7;
+        }
+
+            .file-item:hover {
+                color: #999;
+            }
+
+        .file-item-parent {
+            margin: 24px 0;
+        }
+
+        #DinhKem div:first-child {
+            margin-top: 0;
+        }
+
+        .icon_dollar {
+            font-size: 9px;
+        }
+
+        .icon-file {
+            font-size: 20px;
+            color: #6478F5;
+        }
+
+        #tieude_content {
+            font-size: 20px;
+            color: #000;
+            font-weight: 550;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        @@media (max-width: 1000px) {
+            input[type=text].form-control {
+                font-size: 11px;
+                height: 30px;
+                color: #000;
+                /* font-weight: bold; */
+            }
+
+            .btn_share {
+                gap: 8px !important;
+            }
+        }
+        /*._6a._6b {
+            display: none;
+        }*/
+        @@media(max-width:768px) {
+            .card img {
+                margin-bottom: 4px;
+                width: 100%;
+            }
+
+            #content_GioiThieu {
+                font-size: 20px;
+            }
+
+            .list-group-item p {
+                font-size: 20px;
+            }
+
+            .list-group-item h2 {
+                font-size: 22px;
+            }
+
+            .badge_mucluong,
+            .badge_thoigian {
+                padding: 1px 5px;
+                font-size: 9px;
+            }
+
+            .icon_dollar {
+                font-size: 8px;
+            }
+
+            .list-group-item h2 {
+                font-size: 15px;
+            }
+
+            .list-group-item p {
+                font-size: 12px;
+            }
+
+            .media h5 {
+                font-size: 12px;
+            }
+
+            .media p {
+                font-size: 8px;
+            }
+
+            .media {
+                padding: 7px;
+            }
+
+            .img-vanban {
+                height: 51px;
+            }
+
+            #content {
+                font-size: 10px;
+            }
+
+            .content_vanban {
+                padding: 12px 42px 104px 42px;
+            }
+
+            .content_vanban {
+                font-size: 8px;
+            }
+
+            .badge {
+                font-size: 12px;
+                padding: 4px 10px;
+            }
+
+            .icon-file,
+            .VBlienquan {
+                font-size: 14px;
+            }
+        }
+
+        @@media(min-width:992px) and (max-width:1024px) {
+            .card-title {
+                font-size: 16px;
+            }
+
+            .badge_mucluong,
+            .badge_thoigian {
+                font-size: 8px;
+                padding: 1px 4px;
+            }
+
+            .badge fa-dollar-sign {
+                font-size: 8px;
+            }
+
+            .list-group-item .row {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        @@media(min-width:768px) and (max-width:992px) {
+            .media h5 {
+                font-size: 14px;
+            }
+
+            .media p {
+                font-size: 12px;
+            }
+
+            .content_vanban {
+                font-size: 12px;
+                padding: 16px 56px 150px 56px;
+            }
+
+            .badge {
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+        }
+
+        .container-bg-img {
+            height: 318px;
+            border-radius: 8px;
+        }
+
+            .container-bg-img #bg-img {
+                width: 100%;
+                height: 100%;
+                border-radius: inherit;
+                object-fit: cover;
+            }
+
+        .header-detail {
+            display: flex;
+            gap: 0 30px;
+            padding: 20px 40px;
+            background: #fff;
+            color: #fff;
+            position: relative;
+            width: 100%;
+            margin: auto;
+            margin-top: -70px;
+            box-shadow: 0 1px 0.235rem rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .header-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -40px;
+        }
+
+            .header-logo img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                border-radius: 100%;
+            }
+
+        .header-content h5 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 10px;
+        }
+
+        .header-content a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .header-content p {
+            color: #000000;
+        }
+
+        .section-noidung {
+            padding: 20px;
+            border-radius: 8px;
+            /*border-top: 6px solid var(--primary-color);*/
+            margin-bottom: 20px;
+            background: #fff;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            margin-top: 20px;
+        }
+
+            .section-noidung h5 {
+                font-size: 20px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+        #list-congviec {
+            display: flex;
+            flex-direction: column;
+            gap: 10px 0;
+        }
+
+        .congviec-item {
+            display: flex;
+            gap: 0 20px;
+            padding: 20px;
+            border-radius: 4px;
+            background: #f7fbff;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        }
+
+        .congviec-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2px;
+            align-items: center;
+        }
+
+        .congviec-content {
+            width: 100%;
+        }
+
+        .congviec-header a:hover {
+            color: var(--primary-color);
+        }
+
+        .congviec-header .congviec-title {
+            font-size: 17px;
+            transition: 0.2s linear;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        .congviec-info-label {
+            width: 100%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+            padding: 5px 0px;
+            border-radius: 4px;
+            line-height: 21px;
+        }
+
+        .TenCongTy {
+            color: #84899c;
+        }
+
+        .congviec-info {
+            display: flex;
+            justify-content: space-between;
+            gap: 0 10px;
+            align-items: center;
+        }
+
+        .congviec-item .avatar {
+            width: 120px;
+            height: 100px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        }
+
+            .congviec-item .avatar img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        .contact-item {
+            display: flex;
+            align-items: self-start;
+            gap: 0 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #efebeb;
+        }
+
+        .XemBanDo {
+            padding: 10px 0;
+        }
+
+        .contact-item > i {
+            padding-top: 5px;
+        }
+
+        .contact-desc {
+            color: #a1a1a1;
+            font-size: 14px;
+        }
+
+        .btn-like {
+            cursor: pointer;
+        }
+
+        .contanier-iframe {
+            width: 100%;
+            height: 200px;
+        }
+
+        .container-iframe iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        #vanban-empty {
+            width: 200px;
+            height: 150px;
+        }
+
+        .btn-ungtuyen {
+            min-width: 125px !important;
+        }
+
+        .nganhnghe_box {
+            max-width: 400px;
+        }
+
+        .breadcrumb-chitietnhatuyendung {
+            margin-top: 24px;
+        }
+
+        #header-website {
+            color: #000000;
+        }
+
+        .thongtin-congty-header {
+            margin-left: 135px;
+        }
+
+        #btn_theodoicongty {
+            font-size: 15px;
+            color: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: none;
+            outline: none;
+            margin-top: 10px;
+            border: 1px solid var(--primary-color);
+            background: #f1f1f1;
+        }
+
+            #btn_theodoicongty:hover {
+                color: #6a5d5d;
+                cursor: pointer;
+            }
+
+        .header-content h5 {
+            width: 100%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+        }
+
+        .nganhnghe_box {
+            max-width: 100%;
+            width: 100%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+        }
+
+        .header-content > p {
+            font-size: 13px;
+            padding: 3px 0;
+            color: #626161;
+        }
+
+            .header-content > p > i,
+            .section-noidung > div > i {
+                color: #71889b;
+            }
+
+        #logo-img_xacthuc {
+            position: absolute;
+            top: 31px;
+            opacity: 0.4;
+            right: 30px;
+            width: 140px;
+            z-index: 1;
+            display: none;
+            transform: rotate(-30deg);
+        }
+
+        #GioiThieu {
+            font-size: 16px;
+        }
+
+        #header-soluongtintuyendung {
+            color: var(--primary-color);
+        }
+
+        .item-hannop-mucluong {
+            display: flex;
+            align-items: center;
+        }
+
+        .item-hannop-mucluong-hannop,
+        .item-hannop-mucluong-mucluong {
+            font-size: 14px;
+            color: #71889b;
+        }
+
+        .item-hannop-mucluong-hannop {
+            margin-left: 30px;
+        }
+
+        .box-content-itemvieclam {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .congviec-title {
+            width: 100%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+        }
+
+        @@media(min-width:992px) and (max-width:1200px) {
+            .container-content {
+                padding: 20px;
+            }
+
+            .section-noidung {
+                margin-top: 0;
+            }
+
+            .container-bg-img {
+                height: 286px;
+            }
+
+            .header-detail {
+                padding: 9px 25px;
+            }
+
+            .header-logo {
+                width: 110px;
+                height: 110px;
+                border-radius: 50%;
+                position: absolute;
+                bottom: -62px;
+            }
+
+            #logo-img_xacthuc {
+                top: 18px;
+                right: 23px;
+                width: 120px;
+            }
+
+            .header-content h5 {
+                font-size: 20px;
+                margin-bottom: 4px;
+                padding-top: 2px;
+            }
+
+            #btn_theodoicongty {
+                font-size: 13px;
+            }
+
+            .section-noidung h5 {
+                font-size: 18px;
+            }
+
+            .contact-desc {
+                font-size: 13px;
+            }
+
+            .XemBanDo > p {
+                font-size: 12px;
+            }
+
+            #btnTraCuu {
+                padding: 6px 10px !important;
+                font-size: 12px;
+            }
+
+            #TenCongTy_loc {
+                width: 350px;
+                height: 32px;
+                font-size: 10px;
+            }
+
+            .congviec-item .avatar {
+                width: 102px;
+                height: 84px;
+            }
+
+            .congviec-item {
+                padding: 16px;
+                display: flex;
+                align-items: center;
+            }
+
+            .btn-ungtuyen {
+                min-width: 117px !important;
+                font-size: 12px;
+            }
+        }
+
+        @@media(min-width:786px) and (max-width:991px) {
+            .breadcrumb-chitietnhatuyendung {
+                margin-top: 28px;
+                padding-left: 10px;
+            }
+
+            .container-bg-img {
+                height: 250px;
+            }
+
+            .header-detail {
+                padding: 10px 24px;
+            }
+
+            .header-logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .header-content h5 {
+                font-size: 20px;
+                margin-bottom: 0px;
+                padding: 2px 0;
+            }
+
+            #btn_theodoicongty {
+                font-size: 13px;
+                margin-top: 6px
+            }
+
+            #logo-img_xacthuc {
+                top: 0px;
+                right: 24px;
+                width: 120px;
+            }
+
+            .section-noidung h5 {
+                font-size: 18px;
+            }
+
+            #GioiThieu {
+                font-size: 15px;
+            }
+
+            .footer-1 {
+                padding: 25px !important;
+            }
+
+            #logo-ctt-header {
+                margin-top: 12px !important;
+            }
+        }
+
+        @@media(min-width:448px) and (max-width:785px) {
+            .breadcrumb-chitietnhatuyendung {
+                margin-top: 30px;
+                padding-left: 10px;
+            }
+
+            .container-bg-img {
+                height: 250px;
+            }
+
+            .header-detail {
+                padding: 10px 24px;
+            }
+
+            .header-logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .header-content h5 {
+                font-size: 20px;
+                margin-bottom: 0px;
+                padding: 2px 0;
+            }
+
+            #btn_theodoicongty {
+                font-size: 13px;
+                margin-top: 6px
+            }
+
+            #logo-img_xacthuc {
+                top: 0px;
+                right: 24px;
+                width: 120px;
+            }
+
+            .section-noidung h5 {
+                font-size: 18px;
+            }
+
+            #GioiThieu {
+                font-size: 15px;
+            }
+
+            .footer-1 {
+                padding: 25px !important;
+            }
+
+            .container-login-mobile #logo-ctt-header {
+                margin-top: 12px !important;
+            }
+
+            #TenCongTy_loc {
+                width: 100% !important;
+                height: 40px;
+                font-size: 14px;
+            }
+
+            .congviec-item .avatar {
+                width: 110px;
+                height: 89px;
+            }
+
+            .congviec-item {
+                padding: 10px;
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        @@media(min-width:448px) and (max-width:687px) {
+            .container-bg-img {
+                height: 220px;
+            }
+
+            .header-detail {
+                padding: 10px 15px;
+            }
+
+            .header-logo {
+                width: 96px;
+                height: 96px;
+                left: 22px;
+            }
+
+            .header-content h5 {
+                font-size: 16px;
+                margin-bottom: 0px;
+                padding: 1px 0;
+            }
+
+            #btn_theodoicongty {
+                margin-top: 2px;
+            }
+
+            .thongtin-congty-header {
+                margin-left: 127px;
+            }
+
+            #TenCongTy_loc {
+                width: 430px;
+                height: 40px;
+                font-size: 14px;
+            }
+
+            .btn-ungtuyen {
+                min-width: 115px !important;
+                font-size: 12px;
+            }
+
+            .section-noidung {
+                padding: 15px;
+            }
+
+            img.logo-cty-nts {
+                width: 166px;
+                height: 166px;
+            }
+
+            .ft-box-logo {
+                margin-top: 20px;
+            }
+
+            .breadcrumb-chitietnhatuyendung {
+                margin-top: 35px;
+                padding-left: 10px;
+            }
+
+            .container-content {
+                padding: 4px;
+            }
+
+            button#btnTraCuu {
+                display: none !important;
+            }
+
+            #TenCongTy_loc {
+                width: 100%;
+            }
+
+            .breadcrumb-chitietnhatuyendung {
+                margin-top: 40px;
+                padding-left: 10px;
+            }
+
+            .congviec-item {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        @@media(max-width:447px) {
+            #logo-img_xacthuc {
+                top: 28px;
+                opacity: 0.4;
+                right: 24px;
+                width: 80px;
+            }
+
+            .header-detail {
+                padding: 10px 0px;
+            }
+
+            .header-content h5 {
+                font-size: 14px;
+            }
+
+            .header-content > p {
+                font-size: 12px;
+            }
+
+            #btn_theodoicongty, .btn_share {
+                font-size: 10px;
+            }
+
+            #TenCongTy_loc {
+                width: 100% !important;
+                height: 36px;
+                font-size: 12px;
+            }
+
+            button#btnTraCuu {
+                display: none !important;
+            }
+
+            .header-logo {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                position: absolute;
+                bottom: -40px;
+                left: 33px;
+            }
+
+            .container-content {
+                padding: 0px;
+            }
+
+            .header-content h5 {
+                margin-bottom: 0px;
+            }
+
+            #logo-img_xacthuc {
+                top: 0px;
+                right: 11px;
+            }
+
+            #btn_theodoicongty {
+                margin-top: 4px;
+            }
+
+            .nganhnghe_box {
+                max-width: 100%;
+                width: 100%;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+                overflow: hidden;
+            }
+
+            .section-noidung {
+                padding: 7px;
+            }
+
+            .congviec-item .avatar {
+                width: 95px;
+                height: 70px;
+            }
+
+            .congviec-item {
+                padding: 4px;
+                display: flex;
+                align-items: center;
+            }
+
+            .congviec-info-label {
+                width: 100%;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+                overflow: hidden;
+                padding: 0px 0px;
+                border-radius: 4px;
+                line-height: 21px;
+            }
+
+            .item-hannop-mucluong-hannop,
+            .item-hannop-mucluong-mucluong {
+                font-size: 11px;
+            }
+
+            .btn-ungtuyen {
+                min-width: 102px !important;
+                font-size: 10px;
+            }
+
+            .section-noidung-GioiThieu {
+                padding: 14px;
+            }
+
+            .breadcrumb-chitietnhatuyendung {
+                margin-top: 45px;
+                padding-left: 10px;
+            }
+
+            .container-bg-img {
+                height: 207px;
+                border-radius: 8px;
+            }
+
+            .thongtin-congty-header {
+                margin-left: 120px;
+            }
+
+            .section-noidung-tuyendung {
+                padding: 11px;
+            }
+
+            .congviec-item {
+                justify-content: center;
+                padding: 4px;
+                display: flex;
+                align-items: center;
+            }
+
+            .congviec-item {
+                gap: 0 7px;
+            }
+
+            .congviec-item {
+                padding: 4px 12px !important;
+            }
+
+            img.logo-cty-nts {
+                width: 140px !important;
+                height: 140px !important;
+                margin: 0 auto;
+            }
+
+            .ft-box-logo {
+                margin-top: 20px;
+            }
+
+            .footer-1 {
+                padding: 35px !important;
+            }
+
+            #logo-ctt-header {
+                margin-top: 12px !important;
+                border-radius: 5px;
+            }
+
+            .header-content > p {
+                padding: 1px 0;
+            }
+        }
+
+        .section-noidung-GioiThieu {
+            margin-top: 0;
+        }
+
+        .breadcrumb-chitietnhatuyendung {
+            margin-top: 12px;
+        }
+    </style>
+    <style>
+        .infoCompany-card + .infoCompany-card, .infoCompany-card + .tab-content, .page-ntd {
+            margin-top: 25px;
+        }
+
+        .infoCompany-card {
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .overflow-hidden {
+            overflow: hidden !important;
+        }
+
+        .card {
+            position: relative;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+            border: 1px solid rgba(0,0,0,.125);
+            border-radius: .25rem;
+        }
+
+        .infoCompany-card .card-header {
+            padding: 15px;
+            border-radius: 8px 8px 0 0 !important;
+            overflow: hidden;
+        }
+
+        .card-header:first-child {
+            border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+        }
+
+        .border-bottom-0 {
+            border-bottom: 0 !important;
+        }
+
+        .bg-transparent {
+            background-color: transparent !important;
+        }
+
+        .card-header {
+            padding: .75rem 1.25rem;
+            margin-bottom: 0;
+            background-color: rgba(0,0,0,.03);
+            border-bottom: 1px solid rgba(0,0,0,.125);
+        }
+
+        .infoCompany-card .card-title {
+            font-size: 1.3em;
+            font-weight: 500;
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        .infoCompany-card_posts .card-body, .infoCompany-card_tab .card-body {
+            padding-top: 0;
+        }
+
+        .infoCompany-card .card-body {
+            padding: 15px;
+        }
+
+        .card-body {
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+            min-height: 1px;
+            padding: 1.25rem;
+        }
+
+        .row.row-10 {
+            margin-left: -10px;
+            margin-right: -10px;
+        }
+
+        .align-items-center {
+            -ms-flex-align: center !important;
+            align-items: center !important;
+        }
+
+        .infoCompany-card_tab .job-list_item .list-item_name {
+            height: 22px;
+            line-height: 22px;
+        }
+
+            .infoCompany-card_tab .job-list_item .list-item_name a {
+                vertical-align: top;
+                color: var(--blue-color);
+                text-transform: capitalize;
+            }
+
+        .text-ellipsis {
+            overflow: hidden;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: inline-block;
+            max-width: 100%;
+        }
+
+        .fw-700 {
+            font-weight: 700 !important;
+        }
+
+        .size-095rem {
+            font-size: 1.25rem !important;
+        }
+
+        .vertical-middle {
+            vertical-align: middle !important;
+        }
+
+        .infoCompany-card_tab .job-list_item:not(:first-of-type) {
+            border-top: 1px solid #dee2e6 !important;
+            margin-top: 1rem;
+            padding-top: 1rem;
+        }
+
+        .blue-color {
+            color: var(--blue-color) !important;
+        }
+
+        .button-theme {
+            border: 1px solid #c4c4c4;
+            color: #1f2d3d !important;
+            -webkit-transition: .1s all ease-in;
+            -o-transition: .1s all ease-in;
+            transition: .1s all ease-in;
+            text-decoration: none !important;
+            outline: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            padding: 10px 15px;
+            font-size: 1.05rem;
+            border-radius: 4px !important;
+        }
+
+        .list-item_button.text-right a {
+            background: white !important;
+        }
+
+        .button-basic:hover {
+            color: var(--blue-color) !important;
+            border-color: var(--blue-color) !important;
+        }
+
+        .btn_share {
+            font-size: 15px;
+            color: gray;
+            padding: 7px 10px;
+            border-radius: 6px;
+            border: none;
+            outline: none;
+            /* margin-top: 10px; */
+            border: 1px solid var(--primary-color);
+            background: #f1f1f1;
+            display: inline-block;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            gap: 1px;
+        }
+
+            .btn_share i {
+                font-size: 16px;
+            }
+
+                .btn_share i:hover {
+                    color: #003699;
+                    cursor: pointer;
+                }
+
+        .infoCompany-card_tab .card-body .card-images .images-inner > a {
+            width: 100%;
+            padding-top: 75%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: block;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .contact-item i {
+            color: #003699 !important;
+        }
+    </style>
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+        }
+
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        #prevImage {
+            left: 5%;
+        }
+
+        #nextImage {
+            right: 5%;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="breadcrumb-container breadcrumb-chitietnhatuyendung">
+        <div class="container">
+            <nav class="breadcrumb is-small breadcrumb-chitietntd" aria-label="breadcrumbs">
+                <ul>
+                    <li><a href="/trang-chu.html">Trang chủ</a></li>
+                    <li><a href="/tra-cuu-nha-tuyen-dung.html" aria-current="page">Nhà tuyển dụng</a></li>
+                    <li class="is-active"><a href="#" id="tieudetrang" aria-current="page">VSIP - Bình Dương</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="container mt-4">
+        <div class="row container-content">
+            <div class="col-md-9 col-ms-7 col-xs-12" id="content">
+                <div class="container-bg-img">
+                    <img id="bg-img" src="#" />
+                </div>
+                <div class="header-detail">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="header-logo">
+                                <img id="img-logo" src="#" alt="Alternate Text" />
+                            </div>
+                        </div>
+                        <div class="col-md-10 thongtin-congty-header">
+                            <div class="header-content">
+                                <h5 id="header-Soluongtintuyendung"></h5>
+                                <h5 id="header-TenCongTy" style="text-transform:uppercase;"></h5>
+                                <p>
+                                    <i class="fa-solid fa-bullhorn"></i>&nbsp;<span id="header-soluongtintuyendung"></span>
+                                    <i style="margin-left: 10px" class="fas fa-users mr-1" aria-hidden="true"></i>&nbsp;<span id="header-soluongtheodoi"></span>
+                                </p>
+                                @*<p><i class="fa-solid fa-globe"></i>&nbsp; <a href="#" id="header-website"></a></p>
+                                    <p><i class="fa fa-users"></i>&nbsp; <span id="header-quymo"></span></p>*@
+                                <p class="nganhnghe_box"><i class="fa-solid fa-inbox"></i>&nbsp; <span id="header-nganhnghe"></span></p>
+                            </div>
+                            <span class="">
+                                <button id="btn_theodoicongty" class="btn-theodoi">
+                                    <i class="fa-regular fa-bookmark"></i>&nbsp;Theo dõi
+                                </button>
+                            </span>
+                            <span class="" style="display: inline-block;">
+
+                                <div class="btn_share">
+                                    Chia sẻ:
+                                    <div id="fb-root"></div>
+                                    <script>
+                                        (function (d, s, id) {
+                                            var js, fjs = d.getElementsByTagName(s)[0];
+                                            if (d.getElementById(id)) return;
+                                            js = d.createElement(s); js.id = id;
+                                            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+                                            fjs.parentNode.insertBefore(js, fjs);
+                                        }(document, 'script', 'facebook-jssdk'));
+                                    </script>
+                                    <!-- Your share button code -->
+                                    <div class="fb-share-button" id="btn-share-face" data-href=""></div>
+                                    &nbsp; <i class="fas fa-copy" onclick="copyToClipboard(this)" id="thongtinheaderchiase"></i>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                    <div id="logo-img_xacthuc">
+                        <img src="~/Images/CongThongTinViecLam/daxacthuc.png" id="img-xacthuc" />
+                    </div>
+
+                </div>
+                @*  *@
+                <div class="section-noidung section-noidung-tuyendung">
+                    <h5>Việc làm đang tuyển dụng</h5>
+                    <div style="display: flex; justify-content: space-between">
+                        <input style="width: 350px;" type="text" class="form-control" placeholder="Tên công việc, vị trí ứng tuyển" id="TenCongTy_loc">
+                        <button id="btnTraCuu" type="button" class="btn btn-primary d-flex justify-content-center align-items-center" style="display: none">
+                            <i class="fa fa-search"></i>&nbsp; Tìm kiếm
+                        </button>
+                    </div>
+
+                    @*<div id="list-congviec">
+
+                        </div>*@
+
+                    <div class="infoCompany-card infoCompany-card_tab overflow-hidden card" id="vieclamdangtuyendung">
+                        <div class="card-body">
+                            <div class="job-list expanded-list" id="list-congviec">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*  *@
+                <div class="section-noidung section-noidung-GioiThieu">
+                    <h5>Giới thiệu công ty</h5>
+                    <p id="GioiThieu"></p>
+                </div>
+                <div class="section-noidung section-noidung-GioiThieu infoCompany-card_tab">
+                    <h5>Hình ảnh hoạt động</h5>
+                    <div class="card-body">
+                        <div class="card-images">
+                            <div class="row row-10" id="HinhAnhHoatDong">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-ms-5 col-xs-12">
+                <div class="section-noidung section-noidung-GioiThieu">
+                    <h5>Thông tin liên hệ</h5>
+
+                    <div class="contact-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            @*<p><b>Số điện thoại liên hệ</b></p>*@
+                            <p id="contact-sodienthoai" class="contact-desc"></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            @* <p><b>Địa chỉ công ty</b></p>*@
+                            <p id="contact-diachi" class="contact-desc"></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fa-solid fa-globe"></i>
+                        <div>
+                            @* <p><b>Địa chỉ công ty</b></p>*@
+                            <p id="header-website" class="contact-desc"><a href="#" class="header-website-link"></a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fa fa-users"></i>
+                        <div>
+                            @* <p><b>Địa chỉ công ty</b></p>*@
+                            <p id="header-quymo" class="contact-desc"></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            @* <p><b>Email</b></p>*@
+                            <p id="contact-email" class="contact-desc"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-noidung section-noidung-GioiThieu">
+                    <h5>Vị trí công ty</h5>
+                    <div>
+                        <div class="container-iframe" id="iframe">
+                            @*<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3926.228120752434!2d105.94833447481015!3d10.24317698987499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310a82bd26c0e3ab%3A0xc2d365c9bffc026f!2zQ3R5IFROSEggUGjDoXQgVHJp4buDbiBQaOG6p24gTeG7gW0gTmjhuqV0IFTDom0gLSBOVFNPRlQ!5e0!3m2!1svi!2s!4v1711111950086!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>*@
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Load Facebook SDK for JavaScript -->
+
+
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <button id="prevImage" class="nav-button">❮</button>
+        <img class="modal-content" id="modalImage">
+        <button id="nextImage" class="nav-button">❯</button>
+    </div>
+    <script src="~/Areas/CongThongTinViecLam/Scripts/ChiTietNhaTuyenDung.js?v=@DateTime.Now.Ticks.ToString()"></script>
+
+</asp:Content>

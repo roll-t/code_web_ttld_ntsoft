@@ -1,0 +1,255 @@
+﻿
+@{
+    ViewBag.Title = "DoiTuongKT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+    @@media (min-width: 992px) {
+        #mdThemMoi .modal-dialog {
+            width: 45% !important;
+        }
+
+        #mdTimKiemIcon .modal-dialog {
+            width: 80% !important;
+        }
+
+        #mdNhapExcel .modal-dialog {
+            width: 70% !important;
+        }
+    }
+
+    .profile-picture {
+        border: 1px solid #CCC;
+        background-color: #FFF;
+        padding: 4px;
+        display: inline-block;
+        max-width: 100%;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        box-shadow: 1px 1px 1px rgb(0 0 0 / 15%);
+    }
+
+    img.editable-click {
+        border: 1px dotted #BBB;
+    }
+
+    .editable-click {
+        border-bottom: 1px dashed #BBB;
+        cursor: pointer;
+        font-weight: 400;
+    }
+
+    .editable-empty, .editable-empty:focus, .editable-empty:hover {
+        font-style: italic;
+        color: #D14;
+        text-decoration: none;
+    }
+
+    .editable-click, a.editable-click, a.editable-click:hover {
+        text-decoration: none;
+        border-bottom: dashed 1px #08c;
+    }
+
+    .carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+
+    img {
+        vertical-align: middle;
+    }
+    .KhungVien {
+        padding: 5px 10px 0px 10px !important;
+    }
+    .user-profile-header-banner img {
+        height: 200px !important;
+    }
+    @@media (min-width: 576px){
+        .mt-sm-5 {
+            margin-top: 7rem !important;
+        }
+    }
+    .user-profile-header-banner img{width:100%;object-fit:cover;height:250px}.user-profile-header{margin-top:-2rem}.user-profile-header .user-profile-img{border:5px solid;width:120px}.light-style .user-profile-header .user-profile-img{border-color:#fff}.dark-style .user-profile-header .user-profile-img{border-color:#2b2c40}.dataTables_wrapper .card-header .dataTables_filter label{margin-top:0 !important;margin-bottom:0 !important}
+    @@media(max-width: 767.98px) {
+        .user-profile-header .user-profile-img {
+            width: 100px
+        }
+        .user-profile-header-banner img {
+            height: 150px
+        }
+    }                                                                                                                 
+</style>
+<div class="page-content no-padding-left no-padding-right">
+    <div class="row" style="margin-top:4px">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="user-profile-header-banner">
+                    <img  src="/Images/pexels-pixabay-268415.jpg" class="rounded-top"alt="Banner Profile"  />
+                </div>
+                <div class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4" style=" margin-top: -6rem !important;">
+                    <div class="flex-shrink-0 mt-n2 mx-sm-0 mx-auto">
+                        <img id="AnhDaiDien_dmk" src="" alt="user image" class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img" style=" height: 125px !important; object-fit: cover;margin-top:20px">
+                    </div>
+                    <div class="flex-grow-1 mt-3 mt-sm-5">
+                        <div class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
+                            <div class="user-profile-info">
+                                <ul class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2" style="color: #1b4579; font-size: 16px;">
+                                    <li class="list-inline-item fw-semibold">
+                                        <i class="bx bx-pen"></i> <span id="lblTenDangNhap"></span>
+                                    </li>
+                                    <li class="list-inline-item fw-semibold">
+                                    
+                                        <i class="bx bx-map"></i> Đơn vị <span id="lblTenDonVi"></span>
+                                    </li>
+                                   
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="space-4"></div>
+    <div class="row">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-5">
+            <fieldset class="KhungVien">
+                <legend>Thông tin mật khẩu mới</legend>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="MKCu">Mật khẩu cũ</label>
+                            <input class="form-control input-sm" type="password" placeholder="Nhập mật khẩu cũ..." id="MKCu" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="MKMoi">Mật khẩu mới</label>
+                            <input class="form-control input-sm" type="password" placeholder="Nhập mật khẩu mới..." id="MKMoi" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="display:none">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="XNMK">Xác nhận</label>
+                            <input class="form-control input-sm" type="password" placeholder="Nhập mã xác nhận mới..." id="XNMK" />
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <div class="form-check d-flex align-items-center" id="divNgungSD">
+                                <input class="form-check-input input-group-lg" type="checkbox" id="HienMK">
+                                <label style="padding-top: 5px;" class="form-check-label" for="HienMK"> &ensp;Hiển thị mật khẩu</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-margin-bottom">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <button class="btn btn-success" id="btnLuu" style="float:right"><i class="fa fa-check"></i>&ensp;Xác nhận</button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <!--Table here-->
+</div>
+
+<style type="text/css">
+    .user-profile-header .user-profile-img {
+        border: 5px solid white !important;
+    }
+      .colXoa {
+            padding: 4px 2px 1px 2px !important;
+            text-align: left !important;
+            border-left: 0px !important;
+        }
+
+        .btn-group-xs > .btn, .btn-xs {
+            line-height: 15px !important;
+            padding-left: 6px !important;
+            padding-right: 6px !important;
+            border: 1px;
+        }
+
+        .colSua {
+            padding: 4px 2px 1px 2px !important;
+            border-right: 0px !important;
+            text-align: right !important;
+        }
+
+        th, td {
+            vertical-align: middle !important;
+        }
+
+        .dataTables_length select {
+            display: contents;
+        }
+
+        @@media (max-width: 991px) {
+            .modal-dialog {
+                width: 100%;
+            }
+
+            .page-content {
+                padding-top: 49px !important;
+            }
+        }
+
+        @@media (max-width: 639px) {
+            .dataTables_wrapper .col-xs-6 {
+                width: 100% !important;
+                text-align: center !important;
+            }
+
+            .dataTables_filter, .dataTables_paginate {
+                text-align: center !important;
+                display: block;
+            }
+        }
+
+        @@media (min-width: 992px) {
+            .modal-dialog {
+                width: 45%;
+            }
+            #mdTimKiemIcon .modal-dialog {
+                width: 60%;
+            }
+        }
+    #mdTimKiemIcon .modal-body {
+        padding: 5px 10px;
+    }
+        .box{
+            height:220px;
+            overflow-x:auto;
+            overflow:auto;
+        }
+        #listIconACE{
+            height:220px;
+            overflow-x:auto;
+            overflow:auto;
+        }
+        .fa-hover{
+            cursor: pointer;
+        }
+        .fa-hover a{
+            color: #000;
+        }
+    
+</style>
+<script src="~/Areas/HeThong/Scripts/DoiMatKhau.js?v=@DateTime.Now.Ticks.ToString();"></script>

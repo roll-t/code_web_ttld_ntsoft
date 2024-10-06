@@ -1,0 +1,1 @@
+Ext.define('MISA.Control.MISAPanel',{xtype:'misapanel',extend:'Ext.panel.Panel',alias:'widget.misapanel',border:false,});

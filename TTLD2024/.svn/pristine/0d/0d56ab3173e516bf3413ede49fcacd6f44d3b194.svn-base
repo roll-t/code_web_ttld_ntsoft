@@ -1,0 +1,102 @@
+﻿<style type="text/css">
+      
+</style>
+<input type="hidden" id="ViecLamID" />
+<div id="mdChonViecLam_us" class="modal modal-blur fade" data-backdrop="static">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document" style="max-width: 90% !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-bold" id="tieuDeChonViecLam_us">Chọn việc làm</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body padding-10">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="mb-2">
+                                <label class="form-label" for="TenToChuc_USChonViecLam">Tên tổ chức</label>
+                                <input type="text" class="form-control" id="TenToChuc_USChonViecLam" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="mb-2">
+                                <label class="form-label" for="TenViecLam_USChonViecLam">Tên việc làm</label>
+                                <input type="text" class="form-control" id="TenViecLam_USChonViecLam" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="mb-2">
+                                <label class="form-label" for="NoiDungTimKim_USChonViecLam">Nội dung tìm kiếm</label>
+                                <input type="text" class="form-control" id="NoiDungTimKim_USChonViecLam" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label" for="btnLocViecLam_us">&nbsp;</label>
+                            <button type="button" class="btn btn-primary btn-nts-them" id="btnLocViecLam_us"><i class="fa-solid fa-filter"></i>&ensp;Lọc</button>
+                        </div>
+                    </div>                    
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="Grid_ChonViecLam_us"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-12 padding-0">
+                        <div class="right" style="float:right">
+                            <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                <i class="fa fa-close"></i>&nbsp;Đóng
+                            </a>
+                            <button type="button" id="btnChonViecLamVaDong_us" class="btn btn-success"><i class="fa fa-check"></i>&ensp;Chọn và đóng</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function show_ModalChonViecLam() {
+        $('#mdChonViecLam_us').modal('show');
+        setTimeout(() => { Grid_ChonViecLam_us.redraw(true); }, 500);
+    }
+
+    var tabledata = [
+        { MaSo: 1, HoVaTen: "Đặng Minh Tâm", CongViecUngTuyen: "Lái xe", NgayNop: "16/07/2024", ViTriUngTuyen: "Nhân viên láy xe", QuocGiaLamViec: "Việt Nam", TenToChuc: "Công ty lái xe Bến Cát", LoaiHinhNoiLamViec: "Tư nhân" },
+        { MaSo: 1, HoVaTen: "Đặng Minh Tâm", CongViecUngTuyen: "Lái xe", NgayNop: "16/07/2024", ViTriUngTuyen: "Nhân viên láy xe", QuocGiaLamViec: "Việt Nam", TenToChuc: "Công ty lái xe Bến Cát", LoaiHinhNoiLamViec: "Tư nhân" },
+        { MaSo: 1, HoVaTen: "Đặng Minh Tâm", CongViecUngTuyen: "Lái xe", NgayNop: "16/07/2024", ViTriUngTuyen: "Nhân viên láy xe", QuocGiaLamViec: "Việt Nam", TenToChuc: "Công ty lái xe Bến Cát", LoaiHinhNoiLamViec: "Tư nhân" },
+        { MaSo: 1, HoVaTen: "Đặng Minh Tâm", CongViecUngTuyen: "Lái xe", NgayNop: "16/07/2024", ViTriUngTuyen: "Nhân viên láy xe", QuocGiaLamViec: "Việt Nam", TenToChuc: "Công ty lái xe Bến Cát", LoaiHinhNoiLamViec: "Tư nhân" },
+        { MaSo: 1, HoVaTen: "Đặng Minh Tâm", CongViecUngTuyen: "Lái xe", NgayNop: "16/07/2024", ViTriUngTuyen: "Nhân viên láy xe", QuocGiaLamViec: "Việt Nam", TenToChuc: "Công ty lái xe Bến Cát", LoaiHinhNoiLamViec: "Tư nhân" },
+    ];
+    //-------------------Grid kinh nghiệm làm việc---------------//
+    var Grid_ChonViecLam_us = new Tabulator("#Grid_ChonViecLam_us", {
+        layout: "fitColumns",
+        pagination: true,
+        paginationSize: 50,
+        paginationSizeSelector: [50, 100, 150, 200, 500, true],
+        height: '500px',
+        data: tabledata,
+        columns: [            
+            { title: "STT", field: "STT", formatter: 'textarea', vertAlign: "middle", width: 80, headerHozAlign: "center", hozAlign: "center" },
+            { title: "Mã việc làm", field: "MaViecLam", formatter: 'textarea', vertAlign: "middle", minWidth: 100, headerHozAlign: "center", hozAlign: "center" },
+            { title: "Tên việc làm", field: "TenViecLam", formatter: 'textarea', vertAlign: "middle", minWidth: 200, headerHozAlign: "center" },
+            { title: "Tên doanh nghiệp, tổ chức", field: "TenCongTy", formatter: 'textarea', minWidth: 250, vertAlign: "middle", headerHozAlign: "center" },
+            { title: "Mức lương", field: "MucLuong", formatter: 'textarea', vertAlign: "middle", minWidth: 150, headerHozAlign: "center", hozAlign: "center" },
+            { title: "Yêu cầu kinh nghiệm", field: "YeuCauKinhNghiem", formatter: 'textarea', vertAlign: "middle", minWidth: 120, headerHozAlign: "center", hozAlign: "center" },
+            { title: "ViecLamID", field: "ViecLamID", width: 0, visible: false }
+        ],
+        locale: true,
+        paginationCounter: "rows",
+        langs: TabulatorLangsVi,
+        placeholder: 'Không có dữ liệu',
+    });
+
+    //---------------------------------Đóng modal---------------------------------
+    $(document).on('click', '#btnChonViecLamVaDong_us', function () {
+        $('#mdChonViecLam_us').modal('hide');
+    });
+</script>

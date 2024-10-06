@@ -1,0 +1,331 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MasterPage_CamNang.cshtml";
+}
+
+<style>
+    .gallery {
+        background: #EEE;
+    }
+
+    .gallery-cell {
+        width: 100%;
+        height: 200px;
+        margin-right: 10px;
+        background: #8C8;
+        counter-increment: gallery-cell;
+    }
+
+        /* cell number */
+        .gallery-cell:before {
+            display: block;
+            text-align: center;
+            /*content: counter(gallery-cell);*/
+            line-height: 200px;
+            font-size: 80px;
+            color: white;
+        }
+
+    .img-banner-tc {
+        width: 100%;
+        height: 650px;
+    }
+
+    .img-news-banner {
+        width: 80%;
+        height: 300px;
+        border-radius: 6px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .img-news-banner-child {
+        width: 100%;
+        height: 100px;
+        border-radius: 6px;
+    }
+
+    .border-new {
+        border: 1px solid #d5d5d5;
+        padding: 10px;
+        border-radius: 0 0 12px 12px;
+    }
+
+    .content-news-child {
+        margin-left: 10px !important;
+    }
+
+    .title-news {
+        font-weight: bold;
+        font-size: 16px;
+        color: black;
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+        margin: 8px 0;
+    }
+
+    .content-news {
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .news-title {
+        font-weight: bold;
+        color: black;
+        font-size: 16px;
+        margin: 10px 0;
+    }
+
+    div.box-item-news-work {
+        padding: 10px !important;
+        border-radius: 8px;
+        position: relative;
+    }
+
+    .img-news-work {
+        border-radius: 8px;
+        width: 100%;
+        height: 200px;
+    }
+
+    .text-2-row {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .text-5-row {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5;
+        overflow: hidden;
+    }
+
+    .news-hot {
+        background: #40a5ff;
+        padding: 12px 10px;
+        border-radius: 10px 10px 0px 0;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .box-news-tt {
+        font-size: 26px;
+        font-weight: bold;
+        color: black;
+        padding: 10px 0;
+    }
+
+    .btn-banner {
+        width: 40px !important;
+    }
+
+    .img-lienket {
+        border-radius: 10px;
+        padding: 2px;
+        height: 135px;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .border-lienket {
+        border: 1px solid #cccccc;
+        border-radius: 0 0 5px 5px;
+        padding: 10px;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .ribbon-news {
+        height: 28px;
+        position: absolute !important;
+        top: 10px;
+        left: -15px !important;
+    }
+
+    .box-item-news-work {
+        margin-bottom: 1.5rem;
+    }
+
+    .panel.is-primary .panel-heading {
+        background-color: #00d1b2;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    .panel-block.is-active {
+        border-left-color: #485fc7;
+        color: #363636;
+        text-transform: capitalize;
+        font-size: 16px;
+    }
+
+    .panel-block {
+        align-items: center;
+        color: #363636;
+        display: flex;
+        justify-content: flex-start;
+        padding: .75em .5em;
+        text-transform: capitalize;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    a.panel-block:hover, label.panel-block:hover {
+        background-color: #cbffd7;
+    }
+</style>
+<style>
+    .item_camnang {
+        width: 100%;
+        min-height: 300px;
+        display: block;
+        padding: 20px 10px;
+        margin-bottom: 18px;
+    }
+
+    .item_camnang-img {
+        width: 100%;
+        height: 144px;
+        object-position: center;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 1px solid #eae7e799;
+    }
+
+    .item_camnang:hover .item_camnang-img {
+        transform: scale(1);
+        transition: all ease-in-out 0.3s;
+        box-shadow: 0 1px 1rem 0 rgba(0,0,0,0.4);
+    }
+
+    .item_camnang-tieude {
+        margin-top: 14px;
+    }
+
+    .item_camnang-tieude-h3 {
+        margin-top: 14px;
+        font-size: 20px;
+        color: #000000;
+    }
+
+        .item_camnang-tieude-h3:hover {
+            color: #00c8c9;
+            cursor: pointer;
+        }
+
+    #item_banner {
+        width: 100%;
+        height: auto;
+    }
+
+    #item_top {
+        width: 100%;
+        border-radius: 8px;
+        min-height: 300px;
+    }
+
+    .item_top-title-link {
+        font-size: 20px;
+    }
+
+    .item_top-title-camnang {
+        font-size: 30px;
+        color: #000000;
+    }
+
+        .item_top-title-camnang:hover {
+            color: #00c8c9;
+            cursor: pointer;
+        }
+    #content {
+        display: flex;
+        flex-wrap: wrap;        
+    }
+
+    @@media (max-width: 1024px) {
+        .item_camnang-img {
+            border: unset;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+        }
+    }
+
+    @@media (max-width: 992px) {
+        .col-md-3 {
+            width: 25%;
+        }
+
+        .item_camnang-img {
+            border: unset;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+        }
+    }
+
+    @@media (max-width: 786px) {
+        .col-md-3 {
+            width: 33%;
+        }
+    }
+
+    @@media (max-width: 580px) {
+        .col-md-3 {
+            width: 100%;
+        }
+    }
+    .text-3-row {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+    }
+
+</style>
+
+<section class="section" style="background: #fcfcfc">
+    <div class="container is-fullhd" id="">
+        <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd" style="gap: 0 10px; display: flex; align-items: center; justify-content: center; color: #000000; font-family: Montserrat !important; font-size: 20px !important; font-weight: 600 !important;">
+            Kết quả tìm kiếm cho:
+        </div>
+        <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd" style="gap: 0 10px; display: flex; align-items: center; justify-content: center; font-family: Montserrat !important; font-size: 40px !important; line-height: 1.2 !important; font-weight: 700 !important; text-transform: none !important;" id="TieuDeNoiDungTimKiem">
+
+        </div>
+    </div>
+</section>
+<section class="section" style="background: #fcfcfc; padding: 10px">
+    <div class="container is-fullhd" id="">
+        <div class="row" id="content">
+
+        </div>
+        <div id="content_pagination"></div>
+    </div>
+</section>
+<section style=" background: #f8f8f8; padding: 10px">
+    <div class="container is-fullhd" id="" >
+        <div class="row">
+            <div class="col-md-12">
+                <h2>
+                    <div style=" width: 350px; background: #579bfb; padding: 5px 10px; color: white; border-radius: 4px; font-size: 19px;"> <i class="fa-solid fa-book" ></i> Cẩm nang nghề nghiệp mới nhất</div>
+                </h2>
+            </div>
+        </div>
+        <div class="row" id="camNangCungLoai">
+            @*<div class="col-md-3">
+                    <div class="item_camnang">
+                        <a href="#">
+                            <div style="width:100%;height:90%;">
+                                <img src="~/Images/anhtest.jpg" class="item_camnang-img" />
+                            </div>
+                            <div class="item_camnang-tieude">
+                                <a href="#" style="text-transform:uppercase;">Kiến thức văn phòng</a>
+                                <h3 class="item_camnang-tieude-h3">Chỉ số CQ là gì? Làm cách nào biến chỉ số thông minh sáng tạo thành sức mạnh?</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>*@
+        </div>
+    </div>
+</section>
+<script src="~/Areas/CamNangNgheNghiep/Scripts/TimKiemCamNang.js?v=@DateTime.Now.Ticks.ToString()"></script>

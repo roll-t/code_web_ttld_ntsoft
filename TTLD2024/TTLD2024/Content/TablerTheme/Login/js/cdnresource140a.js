@@ -1,0 +1,2 @@
+Ext.define('MISA.Mixin.ControlBinding',{bindingData:function(data,config){var me=this;me.setValue(data[me.setField]);},updateData:function(data){var me=this,value;if(typeof me.getValue!='undefined'){value=me.getValue();if(!Ext.isEmpty(value)&&typeof value==='string'){data[me.setField]=value.trim();}else
+{data[me.setField]=value;}}},});

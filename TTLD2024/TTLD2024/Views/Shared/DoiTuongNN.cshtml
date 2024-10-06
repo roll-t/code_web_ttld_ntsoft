@@ -1,0 +1,761 @@
+﻿<style type="text/css">
+    img#avatar_DoiTuong_us {
+        width: 190px;
+        height: 160px;
+    }
+
+    .items-body-content {
+        display: flex;
+        align-items: center;
+        grid-gap: 0px 5px;
+        padding: 15px 0 5px 0;
+        font-size: 13px;
+        cursor: pointer;
+    }
+
+    .items-body-content {
+        border-bottom: 1px solid rgb(229, 229, 229);
+    }
+
+    @@media(min-width: 576px) {
+        #mdThemMoiDoiTuongNN_us .modal-dialog {
+            max-width: 1000px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+    }
+
+    #mdThemMoiDoiTuongNN_us.modal .select2-container {
+        z-index: 10;
+    }
+</style>
+
+
+
+<div class="modal modal-blur fade" id="mdThemMoiDoiTuongNN_us" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tieuDeModal_ThemDoiTuongNN_us" style="font-weight: bold;"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="font-weight: bold;"> &times;</button>
+            </div>
+            <div class="modal-body" id="mdThemMoiDoiTuong_body_us">
+                <input type="hidden" value="" id="hdfDoiTuongID_us" />
+                <div class="row" style="margin: 5px;">
+                    <div class="col-md-3 box-shadow-primary" style="border-radius: 6px; margin: 0 5px 0 -5px;">
+                        <div class="row mt-3">
+                            <div style="padding: 0 8px">
+                                <div class="centered" style=" display: flex; justify-content: center; align-items: center;">
+                                    <div class="row mx-auto">
+                                        <div class="col-12">
+                                            <span class="profile-picture" id="chonAvatar_DoiTuong_us">
+                                                <img id="avatar_DoiTuong_us" class=" editable editable-click editable-empty img-fluid" alt="Hình đại diện" src="~/Images/user.png">
+                                            </span>
+                                        </div>
+
+                                        <input type="file" class="d-none" id="avatar_us_DoiTuong_us" accept=".jpg,.jpeg,.png">
+                                    </div>
+                                </div>
+
+                                <div id="lblTenDoiTuongNN_us" style="text-align: center; font-weight: bold; text-transform: uppercase; overflow: hidden;" class="text-primary">---</div>
+                                <div class="items-body">
+                                    <span class="items-body-content">
+                                        <span>Số hộ chiếu: <b id="lblSoHoChieuDoiTuongNN_us">---</b></span>
+                                    </span>
+                                    <span class="items-body-content">
+                                        <span>Giới tính: <b id="lblGioiTinhDoiTuongNN_us">---</b></span>
+                                    </span>
+                                    <span class="items-body-content">
+                                        <span>Quốc tịch: <b id="lblQuocTichDoiTuongNN_us">---</b></span>
+                                    </span>
+                                    <span class="items-body-content">
+                                        <span>Số điện thoại: <b id="lblSoDienThoaiDoiTuongNN_us">---</b></span>
+                                    </span>
+                                    <span class="items-body-content">
+                                        <span>Email: <b id="lblEmailDoiTuongNN_us">---</b></span>
+                                    </span>
+                                    <span class="items-body-content">
+                                        <span>Địa chỉ: <b id="lblDiaChiDoiTuongNN_us">---</b></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9 box-shadow-primary" style="padding: 10px; margin: 0 -7px 0 7px; border-radius: 4px;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="line-modal">
+                                    <div class="text-line-modal"><div class="text-line" style="width: 445px;">Thông tin đối tượng người nước ngoài</div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="MaDoiTuongNN_us">Mã đối tượng</label>
+                                    <input type="text" class="form-control" id="MaDoiTuongNN_us" required maxlength="50">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="HoVaTenDoiTuongNN_us">Họ và tên</label>
+                                    <input type="text" class="form-control" id="HoVaTenDoiTuongNN_us" maxlength="250" required>
+                                </div>
+                            </div>
+                            <div class=" col-md-6">
+                                <div class="form-group">
+                                    <label for="GioiTinhDoiTuongNN_us" class="form-label">Giới tính</label>
+                                    <select class="form-control input-sm" id="GioiTinhDoiTuongNN_us" tabindex="0" data-dropdown-parent="#mdThemMoiDoiTuongNN_us" required></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="">
+                            <div class=" col-md-6">
+                                <div class="form-group">
+                                    <label for="QuocTichDoiTuongNN_us" class="form-label">Quốc tịch</label>
+                                    <select class="form-control input-sm" id="QuocTichDoiTuongNN_us" tabindex="0" data-dropdown-parent="#mdThemMoiDoiTuongNN_us" required></select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="NgaySinhDoiTuongNN_us">Ngày sinh</label>
+                                    <input type="text" class="form-control date-picker" id="NgaySinhDoiTuongNN_us" required autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="">Loại hộ chiếu</label>
+                                    <div class="input-group">
+                                        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style=" font-weight: normal; border-radius: 4px 0 0 4px !important;" id="drop_MaSo" data-value="0">
+                                            -Chọn- &nbsp; <i class="fa-solid fa-caret-down"></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item dropInput_MaSo" href="#" data-value="0" data-name="-Chon-">
+                                                -Chọn-
+                                            </a>
+                                            <a class="dropdown-item dropInput_MaSo" href="#" data-value="1" data-name="P">
+                                                P
+                                            </a>
+                                            <a class="dropdown-item dropInput_MaSo" href="#" data-value="2" data-name="O">
+                                                O
+                                            </a>
+                                            <a class="dropdown-item dropInput_MaSo" href="#" data-value="3" data-name="D">
+                                                D
+                                            </a>
+                                        </div>
+                                        <input type="text" class="form-control" id="MaSoDoiTuongNN_us" maxlength="500" placeholder="Mã số">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="SoHoChieuDoiTuongNN_us">Số hộ chiếu</label>
+                                    <input type="text" class="form-control" id="SoHoChieuDoiTuongNN_us" maxlength="20" required >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="NgayCapDoiTuongNN_us">Ngày cấp</label>
+                                    <input type="text" class="form-control date-picker" id="NgayCapDoiTuongNN_us" autocomplete="off" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="CoGiaTriDenDoiTuongNN_us">Có giá trị đến</label>
+                                    <input type="text" class="form-control date-picker" id="CoGiaTriDenDoiTuongNN_us" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=" col-md-6" style="">
+                                <div class="form-group">
+                                    <label for="NoiCapDoiTuongNN_us" class="form-label">Nơi cấp</label>
+                                    <select class="form-control input-sm" id="NoiCapDoiTuongNN_us" tabindex="0" data-dropdown-parent="#mdThemMoiDoiTuongNN_us"></select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="CoQuanCapDoiTuongNN_us">Cơ quan cấp</label>
+                                    <input type="text" class="form-control" id="CoQuanCapDoiTuongNN_us" maxlength="500">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="SoDienThoaiDoiTuongNN_us">Số điện thoại</label>
+                                    <input type="text" class="form-control" id="SoDienThoaiDoiTuongNN_us" maxlength="20">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="EmailDoiTuongNN_us">Email</label>
+                                    <input type="email" class="form-control" id="EmailDoiTuongNN_us" maxlength="50">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=" col-md-6">
+                                <div class="form-group">
+                                    <label for="TinhIDDoiTuongNN_us" class="form-label">Tỉnh/Thành phố</label>
+                                    <select class="form-control input-sm" id="TinhIDDoiTuongNN_us" tabindex="0" data-dropdown-parent="#mdThemMoiDoiTuong_body_us" required></select>
+                                </div>
+                            </div>
+                            <div class=" col-md-6">
+                                <div class="form-group">
+                                    <label for="HuyenIDDoiTuongNN_us" class="form-label">Quận/Huyện</label>
+                                    <select class="form-control input-sm" id="HuyenIDDoiTuongNN_us" tabindex="0" data-dropdown-parent="#mdThemMoiDoiTuong_body_us" required></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="XaIDDoiTuongNN_us" class="form-label">Xã/Phường</label>
+                                    <select class="form-control input-sm" id="XaIDDoiTuongNN_us" tabindex="0" data-dropdown-parent="#mdThemMoiDoiTuong_body_us" required></select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="ThonIDDoiTuongNN_us" class="form-label">Thôn/Xóm</label>
+                                    <select class="form-control input-sm" id="ThonIDDoiTuongNN_us" tabindex="0" data-dropdown-parent="#mdThemMoiDoiTuong_body_us"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label for="SoNhaDoiTuongNN_us" class="form-label">Địa chỉ</label>
+
+                                <div class="input-group mb-0">
+                                    <input type="text" class="form-control" placeholder="Số nhà" autocomplete="off" id="SoNhaDoiTuongNN_us" style="min-width: 20%;">
+                                    <span class="input-group-text" style="min-width: 80%;" id="DiaChiDoiTuongNN_us">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="GhiChuDoiTuongNN_us">Ghi chú</label>
+                                    <textarea class="form-control" id="GhiChuDoiTuongNN_us" rows="3" maxlength="500"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div style="display: flex; align-items: center; justify-content: space-between">
+                    <div class="col-md-6" style="display: flex; align-items: center">
+                        <label style="margin-bottom: unset" class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="TrangThaiDoiTuongNN_us">
+                            <label class="form-check-label" for="TrangThaiDoiTuongNN_us">Ngưng sử dụng</label>
+                        </label>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="float:right;text-align: right">
+                            <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal" id="btnDongMdDoiTuongNN_US">
+                                <i class="fa fa-close"></i>&nbsp;Đóng (F4)
+                            </a>
+                            <a href="#" id="btnLuuVaDongThemDoiTuongNN_us" class="btn btn-success btn-luuvadong ms-auto">
+                                <i class="fa fa-save"></i>&ensp;Lưu và đóng (F9)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var textDiaChi_defaut = "";
+    var soCCCD = "";
+    $(function () {
+        setTimeout(() => {
+            loadDataCombo_ToChucUS();
+        }, 200);
+        $('.dropInput_MaSo').click(function (event) {
+            event.preventDefault();
+            var value = $(this).attr('data-value');
+            var text = $(this).data('name');
+            $('#drop_MaSo').attr('data-value', value).html(text + ' &nbsp; <i class="fa-solid fa-caret-down"></i>');
+        });
+    });
+    $(document).ready(function () {
+        $('#SoDienThoaiDoiTuongNN_us').on('input', function () {
+            formatPhoneNumberNhap(this);
+        });
+
+        // Restrict input to numbers only
+        $('#SoDienThoaiDoiTuongNN_us').on('keydown', function (event) {
+            // Allow control keys (backspace, delete, tab, etc.)
+            if (event.ctrlKey || event.metaKey || [8, 46, 37, 38, 39, 40, 9, 27, 13].includes(event.keyCode)) {
+                return;
+            }
+            // Check if event.key is defined and allow only numeric input
+            if (event.key && event.key.match(/[\d]/)) {
+                return;
+            }
+            // Prevent default action if not allowed
+            event.preventDefault();
+        });
+    });
+
+    
+    function loadDataCombo_ToChucUS() {
+        NTS.loadDataCombo({
+            name: '#NoiCapDoiTuongNN_us',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCTinh_Combo',
+            columns: 2,
+            indexValue: 0,
+            indexText: 1,
+            indexText1: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0,
+        });
+        NTS.loadDataCombo({
+            name: '#GioiTinhDoiTuongNN_us',
+            ajaxUrl: '/DanhMuc/DungChung/GetGioiTinh_Combo',
+            columns: 1,
+            indexValue: 0,
+            indexText: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0,
+        });
+        NTS.loadDataCombo({
+            name: '#QuocTichDoiTuongNN_us',
+            ajaxUrl: '/DanhMuc/DungChung/GetCombo_QuocGiaLVNuocNgoai',
+            columns: 1,
+            indexValue: 0,
+            indexText: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0,
+        });
+
+        NTS.loadDataCombo({
+            name: '#TinhIDDoiTuongNN_us',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCTinh_Combo',
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0
+        });
+
+        NTS.loadDataCombo({
+            name: '#HuyenIDDoiTuongNN_us',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCHuyen_Combo',
+            ajaxParam: { id: '' },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0,
+            indexDefault: 3,
+        });
+        NTS.loadDataCombo({
+            name: '#XaIDDoiTuongNN_us',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCXa_Combo',
+            ajaxParam: { id: '' },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0,
+            indexDefault: 3,
+        });
+        NTS.loadDataCombo({
+            name: '#ThonIDDoiTuongNN_us',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCThon_Combo',
+            ajaxParam: { id: '' },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0,
+            indexDefault: 3,
+        });
+    }
+    checkDangSD('.checkDangSDDT', 'ToChucHoGD', 'ToChucHoGDID');
+
+    $('#TrangThaiDoiTuongNN_us').on('change', function () {
+        UpdateLabelDangSD(this);
+    });
+
+    // Thành viên hộ gia đình
+    //-----------------------Change Hộ khẩu thường trú trong form thêm, sửa-------------------------//
+    $(document).on('change', '#TinhIDDoiTuongNN_us', function () {
+        NTS.loadDataCombo({
+            name: '#HuyenIDDoiTuongNN_us',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCHuyen_Combo',
+            ajaxParam: { id: $('#TinhIDDoiTuongNN_us').value() },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0
+        });
+        NTS.loadDataCombo({
+            name: '#XaIDDoiTuongNN_us',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCXa_Combo',
+            ajaxParam: { id: '' },
+            indexValue: 0,
+            indexText: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0
+        });
+        NTS.loadDataCombo({
+            name: '#ThonIDDoiTuongNN_us',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCThon_Combo',
+            ajaxParam: { id: '' },
+            indexValue: 0,
+            indexText: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0
+        });
+        //Change địa chỉ
+        var DiaChi = $('#SoNhaDoiTuongNN_us').value().trim();
+        if (DiaChi != '') {
+            DiaChi = DiaChi + ', ';
+        }
+        var txtTinh = $('#TinhIDDoiTuongNN_us');
+        var txtHuyen = $('#HuyenIDDoiTuongNN_us');
+        var txtXa = $('#XaIDDoiTuongNN_us');
+        var txtThon = $('#ThonIDDoiTuongNN_us');
+
+        if (txtTinh.select2('data')[0].text1 != '-Chọn-') {
+            if (txtHuyen.select2('data')[0].text1 != '-Chọn-') {
+                if (txtXa.select2('data')[0].text1 != '-Chọn-') {
+                    if (txtThon.select2('data')[0].text1 != '-Chọn-') {
+                        $('#DiaChiDoiTuongNN_us').html(DiaChi + txtThon.select2('data')[0].text1 + ', ' + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                        $('#lblDiaChiDoiTuongNN_us').html(DiaChi + txtThon.select2('data')[0].text1 + ', ' + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    } else {
+                        $('#DiaChiDoiTuongNN_us').html(DiaChi + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                        $('#lblDiaChiDoiTuongNN_us').html(DiaChi + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    }
+                } else {
+                    $('#DiaChiDoiTuongNN_us').html(DiaChi + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    $('#lblDiaChiDoiTuongNN_us').html(DiaChi + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                }
+            } else {
+                $('#DiaChiDoiTuongNN_us').html(DiaChi + txtTinh.select2('data')[0].text1);
+                $('#lblDiaChiDoiTuongNN_us').html(DiaChi + txtTinh.select2('data')[0].text1);
+            }
+        } else {
+            if (DiaChi != '') {
+                $('#DiaChiDoiTuongNN_us').html(DiaChi);
+                $('#lblDiaChiDoiTuongNN_us').html(DiaChi);
+            }
+            else {
+                $('#DiaChiDoiTuongNN_us').html(textDiaChi_defaut);
+                $('#lblDiaChiDoiTuongNN_us').html(textDiaChi_defaut);
+            }
+
+        }
+    });
+    $(document).on('change', '#HuyenIDDoiTuongNN_us', function () {
+        NTS.loadDataCombo({
+            name: '#XaIDDoiTuongNN_us',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCXa_Combo',
+            ajaxParam: { id: $('#HuyenIDDoiTuongNN_us').value() },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0
+        });
+        NTS.loadDataCombo({
+            name: '#ThonIDDoiTuongNN_us',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCThon_Combo',
+            ajaxParam: { id: '' },
+            indexValue: 0,
+            indexText: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0
+        });
+        //Change địa chỉ
+        var DiaChi = $('#SoNhaDoiTuongNN_us').value().trim();
+        if (DiaChi != '') {
+            DiaChi = DiaChi + ', ';
+        }
+        var txtTinh = $('#TinhIDDoiTuongNN_us');
+        var txtHuyen = $('#HuyenIDDoiTuongNN_us');
+        var txtXa = $('#XaIDDoiTuongNN_us');
+        var txtThon = $('#ThonIDDoiTuongNN_us');
+
+        if (txtTinh.select2('data')[0].text1 != '-Chọn-') {
+            if (txtHuyen.select2('data')[0].text1 != '-Chọn-') {
+                if (txtXa.select2('data')[0].text1 != '-Chọn-') {
+                    if (txtThon.select2('data')[0].text1 != '-Chọn-') {
+                        $('#DiaChiDoiTuongNN_us').html(DiaChi + txtThon.select2('data')[0].text1 + ', ' + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                        $('#lblDiaChiDoiTuongNN_us').html(DiaChi + txtThon.select2('data')[0].text1 + ', ' + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    } else {
+                        $('#DiaChiDoiTuongNN_us').html(DiaChi + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                        $('#lblDiaChiDoiTuongNN_us').html(DiaChi + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    }
+                } else {
+                    $('#DiaChiDoiTuongNN_us').html(DiaChi + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    $('#lblDiaChiDoiTuongNN_us').html(DiaChi + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                }
+            } else {
+                $('#DiaChiDoiTuongNN_us').html(DiaChi + txtTinh.select2('data')[0].text1);
+                $('#lblDiaChiDoiTuongNN_us').html(DiaChi + txtTinh.select2('data')[0].text1);
+            }
+        } else {
+            if (DiaChi != '') {
+                $('#DiaChiDoiTuongNN_us').html(DiaChi);
+                $('#lblDiaChiDoiTuongNN_us').html(DiaChi);
+            } else {
+                $('#DiaChiDoiTuongNN_us').html(textDiaChi_defaut);
+                $('#lblDiaChiDoiTuongNN_us').html(textDiaChi_defaut);
+            }
+
+        }
+    });
+    $(document).on('change', '#XaIDDoiTuongNN_us', function () {
+        NTS.loadDataCombo({
+            name: '#ThonIDDoiTuongNN_us',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCThon_Combo',
+            ajaxParam: { id: $('#XaIDDoiTuongNN_us').value() },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0
+        });
+        //Change địa chỉ
+        var DiaChi = $('#SoNhaDoiTuongNN_us').value().trim();
+        if (DiaChi != '') {
+            DiaChi = DiaChi + ', ';
+        }
+        var txtTinh = $('#TinhIDDoiTuongNN_us');
+        var txtHuyen = $('#HuyenIDDoiTuongNN_us');
+        var txtXa = $('#XaIDDoiTuongNN_us');
+        var txtThon = $('#ThonIDDoiTuongNN_us');
+
+        if (txtTinh.select2('data')[0].text1 != '-Chọn-') {
+            if (txtHuyen.select2('data')[0].text1 != '-Chọn-') {
+                if (txtXa.select2('data')[0].text1 != '-Chọn-') {
+                    if (txtThon.select2('data')[0].text1 != '-Chọn-') {
+                        $('#DiaChiDoiTuongNN_us').html(DiaChi + txtThon.select2('data')[0].text1 + ', ' + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                        $('#lblDiaChiDoiTuongNN_us').html(DiaChi + txtThon.select2('data')[0].text1 + ', ' + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    } else {
+                        $('#DiaChiDoiTuongNN_us').html(DiaChi + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                        $('#lblDiaChiDoiTuongNN_us').html(DiaChi + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    }
+                } else {
+                    $('#DiaChiDoiTuongNN_us').html(DiaChi + txtHuyen.select2('data')[0].text1 + txtTinh.select2('data')[0].text1);
+                    $('#lblDiaChiDoiTuongNN_us').html(DiaChi + txtHuyen.select2('data')[0].text1 + txtTinh.select2('data')[0].text1);
+                }
+            } else {
+                $('#DiaChiDoiTuongNN_us').html(DiaChi + txtTinh.select2('data')[0].text1);
+                $('#lblDiaChiDoiTuongNN_us').html(DiaChi + txtTinh.select2('data')[0].text1);
+            }
+        } else {
+            if (DiaChi != '') {
+                $('#DiaChiDoiTuongNN_us').html(DiaChi);
+                $('#lblDiaChiDoiTuongNN_us').html(DiaChi);
+            } else {
+                $('#DiaChiDoiTuongNN_us').html(textDiaChi_defaut);
+                $('#lblDiaChiDoiTuongNN_us').html(textDiaChi_defaut);
+            }
+
+        }
+    });
+    $(document).on('change', '#ThonIDDoiTuongNN_us', function () {
+        //Change địa chỉ
+        var DiaChi = $('#SoNhaDoiTuongNN_us').value().trim();
+        if (DiaChi != '') {
+            DiaChi = DiaChi + ', ';
+        }
+        var txtTinh = $('#TinhIDDoiTuongNN_us');
+        var txtHuyen = $('#HuyenIDDoiTuongNN_us');
+        var txtXa = $('#XaIDDoiTuongNN_us');
+        var txtThon = $('#ThonIDDoiTuongNN_us');
+
+        if (txtTinh.select2('data')[0].text1 != '-Chọn-') {
+            if (txtHuyen.select2('data')[0].text1 != '-Chọn-') {
+                if (txtXa.select2('data')[0].text1 != '-Chọn-') {
+                    if (txtThon.select2('data')[0].text1 != '-Chọn-') {
+                        $('#DiaChiDoiTuongNN_us').html(DiaChi + txtThon.select2('data')[0].text1 + ', ' + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                        $('#lblDiaChiDoiTuongNN_us').html(DiaChi + txtThon.select2('data')[0].text1 + ', ' + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    } else {
+                        $('#DiaChiDoiTuongNN_us').html(DiaChi + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                        $('#lblDiaChiDoiTuongNN_us').html(DiaChi + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    }
+                } else {
+                    $('#DiaChiDoiTuongNN_us').html(DiaChi + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    $('#lblDiaChiDoiTuongNN_us').html(DiaChi + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                }
+            } else {
+                $('#DiaChiDoiTuongNN_us').html(DiaChi + txtTinh.select2('data')[0].text1);
+                $('#lblDiaChiDoiTuongNN_us').html(DiaChi + txtTinh.select2('data')[0].text1);
+            }
+        } else {
+            if (DiaChi != '') {
+                $('#DiaChiDoiTuongNN_us').html(DiaChi);
+                $('#lblDiaChiDoiTuongNN_us').html(DiaChi);
+            } else {
+                $('#DiaChiDoiTuongNN_us').html(textDiaChi_defaut);
+                $('#lblDiaChiDoiTuongNN_us').html(textDiaChi_defaut);
+            }
+
+        }
+    });
+
+    //-----------------------Change dia chi--------------------------//
+    $('#SoNhaDoiTuongNN_us').on('input', function () {
+        //Change địa chỉ
+        var DiaChi = $('#SoNhaDoiTuongNN_us').value().trim();
+        if (DiaChi != '') {
+            DiaChi = DiaChi + ', ';
+        }
+        var txtTinh = $('#TinhIDDoiTuongNN_us');
+        var txtHuyen = $('#HuyenIDDoiTuongNN_us');
+        var txtXa = $('#XaIDDoiTuongNN_us');
+        var txtThon = $('#ThonIDDoiTuongNN_us');
+
+        if (txtTinh.select2('data')[0].text1 != '-Chọn-') {
+            if (txtHuyen.select2('data')[0].text1 != '-Chọn-') {
+                if (txtXa.select2('data')[0].text1 != '-Chọn-') {
+                    if (txtThon.select2('data')[0].text1 != '-Chọn-') {
+                        $('#DiaChiDoiTuongNN_us').html(DiaChi + txtThon.select2('data')[0].text1 + ', ' + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                        $('#lblDiaChiDoiTuongNN_us').html(DiaChi + txtThon.select2('data')[0].text1 + ', ' + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    } else {
+                        $('#DiaChiDoiTuongNN_us').html(DiaChi + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                        $('#lblDiaChiDoiTuongNN_us').html(DiaChi + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    }
+                } else {
+                    $('#DiaChiDoiTuongNN_us').html(DiaChi + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    $('#lblDiaChiDoiTuongNN_us').html(DiaChi + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                }
+            } else {
+                $('#DiaChiDoiTuongNN_us').html(DiaChi + txtTinh.select2('data')[0].text1);
+                $('#lblDiaChiDoiTuongNN_us').html(DiaChi + txtTinh.select2('data')[0].text1);
+            }
+        } else {
+            if (DiaChi != '') {
+                $('#DiaChiDoiTuongNN_us').html(DiaChi);
+                $('#lblDiaChiDoiTuongNN_us').html(DiaChi);
+            } else {
+                $('#DiaChiDoiTuongNN_us').html(textDiaChi_defaut);
+                $('#lblDiaChiDoiTuongNN_us').html(textDiaChi_defaut);
+            }
+
+        }
+
+    });
+
+    async function loadMacDinhDiaBanHC_TheoDV() {
+        try {
+            var DonVi = await NTS.getAjaxAsync('/DanhMuc/DungChung/GetThongTinDonViThaoTac', {});
+            DonVi = DonVi.Result;
+            if (DonVi != undefined && !$.isEmptyObject(DonVi) && DonVi != '' && DonVi != null) {
+                $('#TinhIDDoiTuongNN_us').value(DonVi[0].DiaBanHCID_Tinh);
+                $('#HuyenIDDoiTuongNN_us').value(DonVi[0].DiaBanHCID_Huyen);
+                $('#XaIDDoiTuongNN_us').value(DonVi[0].DiaBanHCID_Xa);
+            }
+        } catch (e) {
+
+        }
+    }
+    var soLuongHienThi_HoGiaDinhDT = 20;
+    function showModalThemMoiDoiTuongNN() {
+        $('#mdThemMoiDoiTuongNN_us').modal('show');
+        PhanQuyenComBoDiaBan('TinhIDDoiTuongNN_us', 'HuyenIDDoiTuongNN_us', 'XaIDDoiTuongNN_us', 'ThonIDDoiTuongNN_us');
+        resetForm('#mdThemMoiDoiTuongNN_us');
+        $('#lblTenDoiTuongNN_us').html('');
+        $('#lblGioiTinhDoiTuongNN_us').html('---');
+        $('#lblQuocTichDoiTuongNN_us').html('---');
+        $('#lblSoDienThoaiDoiTuongNN_us').html('---');
+        $('#lblEmailDoiTuongNN_us').html('---');
+        $('#lblDiaChiDoiTuongNN_us').html('---');
+        $('#lblSoHoChieuDoiTuongNN_us').html('---');
+        $('#TrangThaiDoiTuongNN_us').value(true);
+        UpdateLabelDangSD('#TrangThaiDoiTuongNN_us');
+        try {
+            var matutang = NTS.getAjax('/DanhMuc/DungChung/LayMaTuTang', { kyhieuLoaiPhieu: "NNN", bangDuLieu: "DoiTuongNN", cotDuLieu: "MaDoiTuongNN", dieuKienTruyVan: "", ngayLap: "" });
+            $('#MaDoiTuongNN_us').value(matutang.Result)
+        } catch (e) {
+
+        }
+        $('#drop_MaSo').attr('data-value','0');
+        $('#drop_MaSo').html(' -Chon- &nbsp; <i class="fa-solid fa-caret-down"></i>');
+        $('#GioiTinhDoiTuongNN_us option:eq(1)').prop('selected', true);
+        $('#GioiTinhDoiTuongNN_us').trigger('change');
+        loadMacDinhDiaBanHC_TheoDV();
+        $('#lblGioiTinhDoiTuongNN_us').text($('#select2-GioiTinhDoiTuongNN_us-container').text());
+        $('#lblDiaChiDoiTuongNN_us').html($('#DiaChiDoiTuongNN_us').text());
+    }
+
+    //------------------Change dữ liệu khi thêm đối tượng------------------------//
+    $(document).on('change', '#QuocTichDoiTuongNN_us', function () {
+        if ($('#mdThemMoiDoiTuongNN_us').hasClass('show')) {
+            $('#lblQuocTichDoiTuongNN_us').text($('#select2-QuocTichDoiTuongNN_us-container').text());
+        }
+    });
+
+    $(document).on('change', '#GioiTinhDoiTuongNN_us', function () {
+        if ($('#mdThemMoiDoiTuongNN_us').hasClass('show')) {
+            $('#lblGioiTinhDoiTuongNN_us').text($('#select2-GioiTinhDoiTuongNN_us-container').text());
+        }
+    })
+    $(document).on('keyup', '#SoDienThoaiDoiTuongNN_us', function () {
+        if ($('#mdThemMoiDoiTuongNN_us').hasClass('show')) {
+            $('#lblSoDienThoaiDoiTuongNN_us').text($(this).value())
+        }
+    })
+    $(document).on('keyup', '#HoVaTenDoiTuongNN_us', function () {
+        if ($('#mdThemMoiDoiTuongNN_us').hasClass('show')) {
+            $('#lblTenDoiTuongNN_us').text($(this).value().toUpperCase())
+        }
+    })
+    $(document).on('keyup', '#EmailDoiTuongNN_us', function () {
+        if ($('#mdThemMoiDoiTuongNN_us').hasClass('show')) {
+            $('#lblEmailDoiTuongNN_us').text($(this).value())
+        }
+    })
+    $(document).on('keyup', '#SoHoChieuDoiTuongNN_us', function () {
+        if ($('#mdThemMoiDoiTuongNN_us').hasClass('show')) {
+            $('#lblSoHoChieuDoiTuongNN_us').text($(this).value())
+        }
+    })
+
+    $(document).on('change', '#TinhIDDoiTuongNN_us,#HuyenIDDoiTuongNN_us,#XaIDDoiTuongNN_us,#ThonIDDoiTuongNN_us,#SoNhaDoiTuongNN_us,#DiaChiDoiTuongNN_us', function () {
+        if ($('#mdThemMoiDoiTuongNN_us').hasClass('show')) {
+            $('#lblDiaChiDoiTuongNN_us').text($('#DiaChiDoiTuongNN_us').html());
+        }
+    })
+
+    $(document).on('input', '#HoVaTenDoiTuongNN_us', function (event) {
+        const value = $(this).val();
+
+        // Lọc chuỗi bằng cách loại bỏ các ký tự không hợp lệ
+        const filteredValue = value.replace(/[^a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]/g, '');
+
+        // Chỉ cập nhật giá trị của input nếu có thay đổi
+        if (value !== filteredValue) {
+            $(this).val(filteredValue);
+        }
+    });
+
+    $(document).on('compositionend', '#HoVaTenDoiTuongNN_us', function (event) {
+        const value = $(this).val();
+
+        // Lọc chuỗi bằng cách loại bỏ các ký tự không hợp lệ
+        const filteredValue = value.replace(/[^a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]/g, '');
+
+        // Chỉ cập nhật giá trị của input nếu có thay đổi
+        if (value !== filteredValue) {
+            $(this).val(filteredValue);
+        }
+    });
+
+
+</script>

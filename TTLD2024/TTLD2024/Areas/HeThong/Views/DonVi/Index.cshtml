@@ -1,0 +1,615 @@
+﻿
+@{
+    //Author: Lê Nguyễn Chí Trung
+    //Date: 03/03/2023
+    //Sumary: Chỉnh sửa chức năng Đơn vị theo cấu trúc mới
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+    @@media (min-width: 992px) {
+        #mdThemMoi .modal-dialog {
+            width: 85% !important;
+            margin-top: 0.5% !important;
+            max-width: 100% !important;
+        }
+
+        #mdChucNang_us .modal-dialog {
+            max-width: 65% !important;
+        }
+
+        #mdNhapExcel .modal-dialog {
+            width: 85% !important;
+            margin-top: 0.5% !important;
+            max-width: 100% !important;
+        }
+
+        #mdThemMoi2 .modal-dialog {
+            width: 27% !important;
+        }
+
+        .modal-footer {
+            display: block
+        }
+    }
+
+    #mdChonDonVi_us .modal-dialog {
+        width: 70% !important;
+        max-width: 100% !important;
+    }
+
+    @@media (max-width: 639px) {
+        .dataTables_wrapper .col-xs-6 {
+            width: 100% !important;
+            text-align: center !important;
+        }
+
+        .dataTables_filter, .dataTables_paginate {
+            text-align: center !important;
+            display: block;
+        }
+    }
+
+    @@media (min-width: 992px) {
+        .modal-dialog {
+            width: 70%;
+        }
+    }
+
+    .modal-body {
+        padding: 12px 13px 14px 14px;
+    }
+
+    .modal-footer {
+        padding: 10px 12px;
+        text-align: right;
+        border-top: 1px solid #e5e5e5;
+    }
+
+    .ui-autocomplete {
+        height: 200px;
+        overflow: auto;
+        z-index: 9999;
+    }
+
+    .table th {
+        letter-spacing: 0px !important;
+    }
+
+    .input-group .btn, .input-group .form-control {
+        height: 100%;
+    }
+
+    .input-group .btn {
+        z-index: 0;
+    }
+
+    .tab-pane {
+        margin-top: 10px;
+    }
+
+    .nav-fill .nav-item .nav-link {
+        flex-direction: column;
+    }
+
+    #KhungTimKiem .select2-container--default .select2-selection--single {
+        padding-top: 0px !important;
+    }
+
+    span#select2-Cap2_2-container {
+        text-align: left;
+    }
+    .khungvienGrid {
+        margin: 5px 10px 10px 10px !important;
+    }
+    .khungvienGrid legend {
+        background: var(--tblr-blue);
+        padding: 1px 10px;
+        border-radius: 4px;
+        width: auto;
+        color: #fff;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+</style>
+
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="page-content">
+
+            @* Table du lieu *@
+            <div id="divMain">
+                <div class="row" style=" margin-bottom: -2px;">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input style=" height: 32px !important;" class="form-control input-sm" type="text" id="timKiemDonVi" placeholder="Nội dung tìm kiếm ..." autocomplete="off" />
+                            <span class="input-group-addon" style="margin: 0; padding: 0; border: none;">
+                                <button class="btn btn-primary btn-sm" id="TimKiemNangCao" style="border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important;width: 35px"><span class="fas fa-sliders-h" aria-hidden="true"></span></button>
+                            </span>
+                        </div>
+                        <div id="KhungTimKiem" style="width: 43%; z-index: 99; position: absolute; margin-top: 4px; background: #fff; padding: 12px 12px 8px 12px; border: 1px solid #e5e5e5; border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.20) 0px 5px 15px; display: none">
+                            <div class="row" style=" margin-bottom: 4px">
+                                <div class="col-md-6">
+                                    <span style="font-size: 16px; color: #38b8e6"><i class="fa fa-search"></i>Tìm kiếm nâng cao</span>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class=" col-md-12">
+                                    <label for="DonViID_Cha_TimKiem" class="form-label">Đơn vị cấp trên</label>
+                                    <select class="form-control input-sm" id="DonViID_Cha_TimKiem_us"></select>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class=" col-md-6">
+                                    <label for="TinhID_TimKiem" class="form-label">Tỉnh</label>
+                                    <select class="form-control input-sm" id="TinhID_TimKiem_us"></select>
+                                </div>
+                                <div class=" col-md-6">
+                                    <label for="HuyenID_TimKiem" class="form-label">Huyện</label>
+                                    <select class="form-control input-sm" id="HuyenID_TimKiem_us"></select>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class=" col-md-6">
+                                    <label for="XaID_TimKiem" class="form-label">Xã</label>
+                                    <select class="form-control input-sm" id="XaID_TimKiem_us"></select>
+                                </div>
+                                <div class=" col-md-6">
+                                    <label for="ThonID_TimKiem" class="form-label">Thôn/Ấp</label>
+                                    <select class="form-control input-sm" id="ThonID_TimKiem_us"></select>
+                                </div>
+                                
+                            </div>
+                            <hr style="margin: 1rem 0;" />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group" style="text-align: right">
+                                        <a href="#" class="btn btn-outline-danger" id="DongTimKiem"><i class="fa fa-close"></i> &ensp; Đóng</a>
+                                        <button type="button" id="TimKiem" class="btn btn-success" onclick="LoadDuLieuDonVi_us();"><i class="fa fa-search"></i>&ensp;Tìm kiếm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-2">
+                        <div class="text-end">
+                            <div class="btn-group">
+                                <div class="dropdown d-inline">
+                                    <button class="btn btn-primary" type="button" id="growthReportId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Thêm mới &ensp; <i class="ace-icon fa fa-angle-down icon-on-right"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-lg-end w-auto">
+                                        <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnThemMoi"><i class="fa fa-plus"></i>&ensp; Thêm trực tiếp</a>
+                                        <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnNhapExcel" style="color: #16a085"><i class="fa fa-file-excel-o"></i>&ensp; Nhập Excel</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="btn-group" style>
+                                <div class="dropdown d-inline">
+                                    <button class="btn btn-primary dropdown-toggle-hide-arrow  height-button-icon btn-nts-them" type="button" id="growthReportId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="blue fa fa-ellipsis-h"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-lg-end w-auto">
+                                        <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnPrint"><i class="text-warning fa fa-print iconsize-item"></i>&ensp; In</a>
+                                        <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnExport"><i class="text-success fa fa-file-excel-o iconsize-item"></i>&ensp; Xuất Excel</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row" style="height:4px"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="GridDonViMain" class=""></div>
+                    </div>
+                </div>
+                <div class="row" style="height:4px"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .input-group .btn, .input-group .form-control {
+        height: 98% !important;
+    }
+
+    .input-group {
+        box-shadow: unset !important;
+        border-radius: unset !important;
+    }
+</style>
+<div id="mdThemMoi" class="modal fade" data-bs-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="lblTieuDeModal"></h5>
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="widget-body rounded-10">
+                    <div class="widget-main rounded-10">
+                        <div class="row mb-2">
+                            <div class="col-md-4">
+                                <label class="form-label" for="MaDonVi">Mã đơn vị</label>
+                                <div class="input-group">
+                                    <input class="form-control input-sm" type="text" id="MaDonVi" placeholder="Nhập mã đơn vị" required />
+                                    <span class="input-group-addon" style="margin: 0; padding: 0; border: none;">
+                                        <button class="btn btn-primary btn-sm" id="btnTaoMaDonVi" style="border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; height: 93% !important">Tạo mã</button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label" for="MaQHNS">Mã QHNS</label>
+                                <input class="form-control input-sm" type="text" id="MaQHNS" placeholder="Nhập mã QHNS" />
+                            </div>
+
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-md-12">
+                                <label class="form-label" for="TenDonVi">Tên đơn vị</label>
+                                <input class="form-control input-sm" type="text" id="TenDonVi" placeholder="Nhập tên đơn vị" required />
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="form-group">
+                                <label class="form-label" for="DonViIDCha">Đơn vị cấp trên</label>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <input class="form-control " disabled="disabled" id="MaDonVi_Cha" type="text" />
+                                            <input id="DonViIDCha" type="hidden" />
+                                            <span class="input-group-addon btnChonDonViCha-span" style="margin: 0; padding: 0; border: none;">
+                                                <button class="btn btn-primary btn-sm" id="btnChonDonViCha" style="border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; height: 93% !important">Chọn</button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input class="form-control input-sm" disabled="disabled" id="TenDonVi_Cha" type="text" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-md-8">
+                                <label class="form-label">Địa chỉ</label>
+                                <input class="form-control input-sm" type="text" id="DiaChi" placeholder="Nhập tên địa chỉ" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Mã số thuế</label>
+                                <input class="form-control input-sm" type="text" id="MaSoThue" placeholder="Mã số thuế" />
+                            </div>
+                        </div>
+                        <div class="row  mb-2">
+                            <div class="col-md-3">
+                                <label class="form-label">Tỉnh, thành phố</label>
+                                <select class="form-control" id="TinhID" tabindex="0" data-dropdown-parent="#mdThemMoi">
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Quận, huyện</label>
+                                <select class="form-control input-sm" id="HuyenID" data-dropdown-parent="#mdThemMoi"></select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Xã, phường</label>
+                                <select class="form-control input-sm" id="XaID" data-dropdown-parent="#mdThemMoi"></select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Thôn, ấp</label>
+                                <select class="form-control input-sm" id="ThonID" data-dropdown-parent="#mdThemMoi"></select>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-md-4">
+                                <label class="form-label">Điện thoại</label>
+                                <input class="form-control input-sm" type="text" id="DienThoai" placeholder="Nhập số điện thoại" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Fax</label>
+                                <input class="form-control input-sm" type="text" id="Fax" placeholder="Nhập fax" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Email</label>
+                                <input class="form-control input-sm" type="email" id="Email" placeholder="Nhập Email" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="padding: unset">
+                <div class="row mb-2" style="width: 100%; align-items: center">
+                    <div class="col-md-4 w-min-250px" style="text-align: left; ">
+                        <label id="divDangSD" style="margin-bottom: unset; margin-top: 4px; " class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="DangSD">
+                            <label class="form-check-label" for="DangSD">Đang sử dụng</label>
+                        </label>
+                    </div>
+                    <div class="col-md-8 w-min-250px" style="text-align: right">
+                        <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                            <i class="fa fa-close"></i>&nbsp;Đóng (F4)
+                        </a>
+                        <a href="#" id="btnLuuVaDong" class="btn btn-success ms-auto">
+                            <i class="fa fa-save"></i>&ensp;Lưu và đóng (F9)
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-blur fade" data-bs-backdrop="static" tabindex="-1" aria-modal="true" role="dialog" id="mdNhapExcel">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header no-padding">
+                <div class="table-header">
+                    <h5 class="modal-title" id="tieuDeModalExcel">Nhận Excel thông tin đơn vị</h5>
+
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close">
+                        &times;
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="row" style="padding-bottom: 2px">
+                            <div class="col-md-12">
+                                <fieldset class="KhungVien" style="min-height:570px">
+                                    <legend><b>1. Hướng dẫn</b></legend>
+                                    <div id="noiDungTroGiup" style="line-height: 190%;">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        &ensp;  <span><i class="fa fa-download" style="color:#38B8E6"></i>&ensp;<label class="control-label no-padding-right"><b>Bước 1: Tải file excel mẫu <a href="#" onclick="TaiFileMau();" style="text-decoration: none;">tại đây</a></b></label></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        &ensp;  <span><i class="fa fa-file-excel-o" style="color:#38B8E6"></i>&ensp;<label class="control-label no-padding-right"><b>Bước 2: Chuẩn bị file đính kèm </b></label></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        &ensp;&ensp;&ensp;- Nhập số liệu vào file excle mẫu vừa tải về ở bước 1
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="display:none">
+                                                    <div class="col-md-12">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        &ensp;  <span><i class="fa fa-chain" style="color:#38B8E6"></i>&ensp;<label class="control-label no-padding-right"><b>Bước 3: Đính kèm </b></label></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        &ensp;&ensp;&ensp;- Bạn chọn file vừa nhập dữ liệu ở bước 2 để đính kèm vào phần mềm
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        &ensp;  <span><i class="fa fa-bolt" style="color:#38B8E6"></i>&ensp;<label class="control-label no-padding-right"><b>Bước 4: Kiểm tra file </b></label></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        &ensp;&ensp;&ensp;- Sau khi nạp file phần mềm sẽ tự động kiểm tra tình trạng dữ liệu lỗi hay hợp lệ.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        &ensp;  <span><i class="fa fa-clipboard" style="color:#38B8E6;"></i>&ensp;<label class="control-label no-padding-right"><b>Bước 5: Nạp file </b></label></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        &ensp;&ensp;&ensp;- Bạn chọn các dòng dữ liệu cần nạp vào phần mềm và nhấn vào nạp dữ liệu.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <fieldset class="khungvienGrid">
+                            <legend><b>1. Chọn File</b></legend>
+                            <div class="row">
+                                <div class="form-group">
+
+                                    <div class="col-md-12">
+                                        <button id="btnChonTepVB_us" type="button" class="btn btn-sm btn-primary"><i class="fa fa-paperclip"></i>&ensp;Chọn tệp đính kèm <span style="font-style: italic">(*.xlsx, *.xls)</span></button>
+                                        <button id="btnXoaHetTepVB_us" type="button" class="btn btn-sm btn-danger" style="display: none"><i class="fa fa-trash-o"></i>Xóa tất cả đính kèm</button>
+                                        <span id="lblTenFile_us" style="font-size:12px;line-height:35px"><span><b>Tên file:</b> Không có tệp nào đươc chọn</span></span>
+                                        <input type="hidden" id="txtDuongDanFileVB_us" value="" />
+                                    </div>
+                                    <input type="file" id="fileVB_us" style="display: none !important" accept=".xlsx,.xls" />
+                                </div>
+                            </div>
+                            <div class="row" style="display:none">
+                                <div class="form-group">
+                                    <span class="col-md-1 no-padding-right">Tiến độ</span>
+
+                                    <div class="col-md-11">
+                                        <div class="progress" style="width:100%">
+                                            <div class="progress-bar bg-info" role="progressbar" style="width: 0%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" id="PhanTramNhapExcel">0%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="khungvienGrid">
+                            <legend><b>2. Chọn thông tin nhận excel</b></legend>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-md-2 control-label no-padding-right" style="padding-top: 10px;">Chọn sheet</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control input-sm" id="TenSheet"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="khungvienGrid">
+                            <legend><b>3. Tình trạng file</b></legend>
+                            <div class="form-group" style="padding-top: 5px;">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-warning" id="btnKiemTraFile"><i class="fa fa-bug" aria-hidden="true"></i>&ensp;Kiểm tra file</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10 d-flex justify-content-between align-items-center">
+                                        <span class="col-md-5"><i class="fa fa-upload" style="color:#38B8E6"></i>&ensp;<label class="control-label no-padding-right" id="SoDongNhan">Số dòng nhận từ file: 0</label></span>
+                                        <span class="col-md-4"><i class="fa fa-check-square" style="color:#5cb85c"></i>&ensp;<label class=" control-label no-padding-right" id="SoDongHopLe">Số dòng hợp lệ: 0</label></span>
+                                        <span class="col-md-3"><i class="fa fa-minus-square" style="color:red"></i>&ensp;<label class=" control-label no-padding-right" id="SoDongLoi">Số dòng lỗi: 0</label></span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="khungvienGrid" id="DuLieu"  >
+                            <legend><b>4. Tình trạng dữ liệu</b></legend>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <button class="btn btn-success btn-sm" id="btnTaiFileKiemTra"><i class="fa fa-download"></i>&ensp;Tải về file đã kiểm tra</button>
+                                </div>
+                                @*<div class="col-md-3">
+                                        <span class="input-icon" style="float: right; padding-bottom: 2px; padding-top: 2px">
+                                            <input type="text" placeholder="Nội dung tìm kiếm ..." class="nav-search-input" id="timKiemNhapExcel" style="width:200px" autocomplete="off">
+                                            <i class="ace-icon fa fa-search nav-search-icon"></i>
+                                        </span>
+                                    </div>*@
+                            </div>
+                            <div class="row" style="margin-top:4px">
+
+                                <div class="col-md-12">
+
+                                    <div id="GridExcel" class="GridData"></div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div style="float: left;  text-align: left;margin-top:6px">
+                            <label class="form-check">
+                                <input class="form-check-input" id="chkGhiDe" type="checkbox">
+                                <label for="chkHienThi" class="form-check-label">Ghi đè</label>
+                            </label>
+                        </div>
+                        <div style="float:right; text-align: right; ">
+                            <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                <i class="fa fa-close"></i>&nbsp;Đóng
+                            </a>
+                            <a href="#" id="btnLuuVaDongExcel" class="btn btn-success ms-auto">
+                                <i class="ace-icon fa fa-floppy-o bigger-110"></i>&ensp;Nhập dữ liệu
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                @*<div>
+                    <label class="middle" style="line-height:0px; style="float:left">
+                        <input class="ace" type="checkbox" id="chkGhiDe" />
+                        <span class="lbl"> &nbsp;Ghi đè</span>
+                    </label>
+                </div>
+
+                <div class="col-md-8 w-min-250px" style="text-align: right">
+                    <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                        <i class="fa fa-close"></i>&nbsp;Đóng
+                    </a>
+                    <a href="#" id="btnLuuVaDongExcel" class="btn btn-success ms-auto">
+                        <i class="fa fa-save"></i>&ensp;Nhập dữ liệu
+                    </a>
+                </div>*@
+            </div>
+
+        </div>
+    </div>
+</div>
+<div id="mdTroGiup" class="modal fade-scale">
+    <div class="modal-dialog" style="width:60%">
+        <div class="modal-content">
+            <div class="modal-header no-padding">
+                <div class="table-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        <span class="white">&times;</span>
+                    </button>
+                    <span>Hướng dẫn</span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="row" style="padding-bottom: 2px">
+                    <div class="col-md-12">
+                        <div id="noiDungTroGiup">
+                            <b style="color:red">Quá trình nhập Excel tiêu chí thi đua:</b><br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;B1: Tải file <a href="#" onclick="document.getElementById('btnTaiExcelMau').click()" style="text-decoration: none;">excel mẫu</a><br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;B2: Chỉnh sửa thông tin cần thiết, các cột “Mã/Số hiệu CBCC”, “Tên cá nhân”, “Đơn vị nơi công tác” là bắt buộc nhập vì khi phần mềm kiểm tra dữ liệu sẽ kiểm tra các cột này. <br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;B3: Click vào “Nhập Excel” &rarr; Click “Chọn tệp” &rarr; Tìm file excel vừa nhập, chỉnh sửa thông tin &rarr; Click “Open”. <br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;B4: Kiểm tra thông tin nhập liệu khi xuất hiện lỗi mà phần mềm thông báo nếu có, tải file đã kiểm tra lỗi hoặc chỉnh sửa file vừa tải lên cho chính xác. <br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;B5: Tiến hành nhập lại file, lúc này quý a/c vui lòng check chọn "Ghi đè" rồi mới tiến hành nhập file, để tránh trường hợp các dòng dữ liệu đã nhập thành công ở bước 3 được phần mềm lưu vào hệ thống một lần nữa. <br />
+                            <b style="color:red">Các cột bắt buộc:</b><br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;-	Mã/Số hiệu CBCC: Nhập vào mã cán bộ công chức sao cho không được trùng nhau. <br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;-	Tên cá nhân: Nhập vào tên cá nhân(Nhân viên), không được nhập các ký tự đặc biệt<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;-	Đơn vị công tác: Cho phép chọn các đơn vị hoặc tập thể đã được nhập liệu từ danh mục “Tập thể”. <br />
+                            <b style="color:red">Chức năng ghi đè:</b><br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;-	Áp dụng trong trường hợp quý a/c muốn thay đổi chức vụ, giới tính hay một thông tin nào đó mà không phải là <b>Các cột bắt buộc</b> hoặc khi nhập Excel có dòng thông tin sai lệch, cần chỉnh sửa và nhập lại lần 2. <br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;-	Khi check chọn ghi đè, phần mềm sẽ tự động kiểm tra từng dòng thông tin cá nhân về thông tin ở 3 <b>cột bắt buộc</b> phía trên. <br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;-	Nếu trong hệ thống đã tồn tại dòng thông tin chứa cả 3 <b>cột bắt buộc</b> thì phần mềm sẽ tiến hành ghi đề các cột còn lại(<b>Chức vụ, Giới tính, Ngày sinh, Địa chỉ, CMND/CCCD, Nơi cấp, Ngày cấp, Phòng ban</b>) vào hệ thống tại dòng thông tin vừa kiểm tra.<br />
+                            <b style="color:red">Điều kiện ghi đè:</b><br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;-	Khi đã tồn tại Mã/Số hiệu CBCC trong hệ thống và 2 cột bắt buộc còn lại(Tên cá nhân, Đơn vị nơi công tác) điều xuất hiện cùng một dòng dữ liệu với Mã/Số hiệu CBCC thì đủ điều kiện ghi đè.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<input type="hidden" id="hdf_DonViID_TimKiem" />
+<input type="hidden" id="hdf_DonViID_Cha_TimKiem" />
+<input type="hidden" id="hdf_DonViID" />
+<script src="~/Areas/HeThong/Scripts/DonVi.js?v=@DateTime.Now.Ticks.ToString();"></script>
+@Html.Partial("ChonDonVi")

@@ -1,0 +1,254 @@
+﻿
+.main-tongquan {
+    padding: 10px;
+}
+
+.title-waiting {
+    background: #CBE7F2;
+    padding: 5px;
+    border-radius: 4px;
+    color: #3E9EF7;
+}
+
+.title-wait-for-completion {
+    background: #ed575757;
+    padding: 5px;
+    border-radius: 4px;
+    color: #F61D1D;
+}
+
+.box-fl-info {
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    background: white;
+    padding: 5px 10px;
+    border-radius: 9px;
+}
+
+.box-icon-info-red {
+    padding: 4px 12px;
+    border-radius: 50%;
+    background: red;
+    color: white;
+    font-size: 30px;
+}
+
+.box-icon-info-yellow {
+    padding: 4px 12px;
+    border-radius: 50%;
+    background: #FFB755;
+    color: white;
+    font-size: 30px;
+}
+
+.box-icon-info-green {
+    padding: 4px 12px;
+    border-radius: 50%;
+    background: #55FF5C;
+    color: white;
+    font-size: 30px;
+}
+
+.box-icon-info-blue {
+    padding: 4px 12px;
+    border-radius: 50%;
+    background: #3ECCEB;
+    color: white;
+    font-size: 30px;
+}
+
+.number-fl-info {
+    font-weight: bold;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-5 {
+    margin-top: 5px;
+}
+.mb-5 {
+    margin-bottom: 5px;
+}
+.mb-10 {
+    margin-bottom: 10px;
+}
+.box-file {
+    background: white;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 5px;
+    padding: 10px 5px 20px 5px;
+}
+
+.flex {
+    display: flex
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.title-file {
+    color: #3E9EF7;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.box-file-attached {
+    padding: 10px 5px;
+    border: 2px #a7a7a7;
+    border-style: dashed;
+    border-radius: 6px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.initial {
+    font-style: initial;
+}
+
+.icon-action {
+    column-gap: 10px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.grid {
+    display: grid;
+}
+
+.grid-company {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(32%, 1fr)); /* Tối đa 3 phần tử trên mỗi hàng */
+    justify-content: center; /* Canh giữa các phần tử */
+    gap: 20px; /* Khoảng cách giữa các phần tử */
+}
+
+.box-company {
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+    .box-company div {
+        margin-bottom: 3px;
+        color: #979797;
+        position: relative;
+    }
+.box-company:hover {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+    .box-company:hover .btn-unlike-company {
+        display: block;
+    }
+.box-img-company img {
+    max-width: 75px;
+    position: absolute;
+    top: -27px;
+    z-index: 10;
+    background: white;
+    border-radius: 50%;
+    padding: 1px;
+    height: 75px;
+    border: 2px solid #f3f3f3;
+}
+
+.company-name {
+    text-align: left;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: black;
+    width: 100%;
+    overflow: hidden;
+}
+
+.company-place {
+    color: #949494;
+    text-align: left;
+    width: 200px;
+}
+
+.icon-save-company {
+    font-size: 16px;
+}
+
+.text-in-line-1 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+}
+
+.text-in-line-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+}
+
+.text-in-line-3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+}
+.btn-unlike-company {
+    position: absolute !important;
+    top: -13px;
+    right: -7px;
+    display: none;
+    cursor: pointer;
+}
+    .btn-unlike-company i {
+        color: red;
+        font-size: 25px;
+        
+    }
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+    border-bottom: 2px solid var(--primary-color) !important;
+    box-shadow: unset;
+    border: unset;
+    color: var(--primary-color);
+    padding: 0;
+    font-weight: bold
+}
+.nav-tabs > li > a, .nav-tabs > li > a:focus {
+    border: unset;
+    background: unset;
+    padding: 0;
+    font-size: 14px;
+}
+.nav-tabs {
+    border: unset;
+}
+    .nav-tabs > li {
+        padding-left: 15px;
+    }
+#list-company-like .icon-save-company {
+    visibility: hidden;
+}
+.no-padding{
+    padding: 0 !important;
+}
+.box-shadow-3 {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+}
+.box-shadow-5 {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+.box-shadow-7 {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.7);
+}

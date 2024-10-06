@@ -1,0 +1,330 @@
+﻿@{
+    ViewBag.Title = "DoiTuongKT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .dropdown-toggle-split::after, .dropright .dropdown-toggle-split::after, .dropup .dropdown-toggle-split::after {
+        margin-left: 0;
+        display: inline-block;
+        margin-left: .255em;
+        vertical-align: .255em;
+        content: "";
+        border-top: .3em solid;
+        border-right: .3em solid transparent;
+        border-bottom: 0;
+        border-left: .3em solid transparent;
+    }
+
+    .dropdown-item#btnKiemTraGhiDe {
+        display: block;
+        width: 100%;
+        padding: .25rem 1.5rem;
+        clear: both;
+        font-weight: 400;
+        color: #212529;
+        text-align: inherit;
+        white-space: nowrap;
+        background-color: transparent;
+        border: 0;
+        color: white;
+    }
+
+        .dropdown-item#btnKiemTraGhiDe:hover {
+            color: white !important;
+        }
+
+    .dropdown-menu#DivKiemTraGhiDe:hover {
+        background-color: #E59729 !important;
+        color: white;
+    }
+</style>
+
+<style type="text/css">
+    @@media (max-width: 991px) {
+        #mdThemMoi .modal-dialog {
+            width: 100% !important;
+        }
+
+        #mdTimKiemIcon .modal-dialog {
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+    }
+
+    @@media (max-width: 639px) {
+        .dataTables_wrapper .col-xs-6 {
+            width: 100% !important;
+            text-align: center !important;
+        }
+
+        .dataTables_filter, .dataTables_paginate {
+            text-align: center !important;
+            display: block;
+        }
+    }
+
+    @@media (min-width: 992px) {
+        #mdThemMoi .modal-dialog {
+            width: 60% !important;
+            max-width: 100% !important;
+        }
+
+        #mdTimKiemIcon .modal-dialog {
+            width: 60% !important;
+            max-width: 100% !important;
+        }
+
+        #mdTimKiemIcon .modal-dialog {
+            width: 60% !important;
+            max-width: 100% !important;
+        }
+    }
+
+    #mdTimKiemIcon .modal-body {
+        padding: 5px 10px;
+    }
+
+    .box {
+        height: 420px;
+        overflow-x: auto;
+        overflow: auto;
+    }
+
+    #listIconACE {
+        height: 220px;
+        overflow-x: auto;
+        overflow: auto;
+    }
+
+    .fa-hover {
+        cursor: pointer;
+    }
+
+        .fa-hover a {
+            color: #000;
+        }
+</style>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    @@media (min-width: 992px) {
+        #mdThemMoi .modal-dialog {
+            width: 50% !important;
+        }
+    }
+
+    @@media (max-width: 993px) {
+        #mdThemMoi .modal-dialog {
+            width: 100% !important;
+        }
+    }
+
+    .modal-footer {
+        display: unset !important;
+    }
+</style>
+<div class="row">
+    <div class="row flex-row-reverse">
+        <div class="col mb-2">
+            <div class="text-end">
+                <button type="button" class="btn btn-primary btn-nts-them" id="btnThemMoi"><i class="fa fa-plus"></i>&ensp;Thêm mới (F2)</button>
+                <button type="button" id="btnNhanBan" class="btn btn-warning"><i class="fa fa-clone"></i>&ensp;Nhân bản</button>
+                @*<div class="btn-group">
+                    <div class="dropdown d-inline">
+                        <button class="btn btn-primary dropdown-toggle-hide-arrow height-button-icon" type="button" id="growthReportId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="blue fa fa-ellipsis-h"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-lg-end w-auto">
+                            <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnPrint"><i class="text-warning fa fa-print iconsize-item"></i>&ensp; In</a>
+                            <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnExport"><i class="text-success fa fa-file-excel-o iconsize-item"></i>&ensp; Xuất Excel</a>
+                        </div>
+                    </div>
+                </div>*@
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12">
+            <div class="input-icon mb-3">
+                <input type="text" value="" class="form-control" placeholder="Nội dung tìm kiếm ..." id="timKiem" autocomplete="off">
+                <span class="input-icon-addon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div id="Grid1"></div>
+    </div>
+    <div class="modal modal-blur fade" id="mdThemMoi" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header nts-modal">
+                    <h5 class="modal-title" id="tieuDeModal"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="txtMaMenuCha" />
+                    <input type="hidden" id="txtMaMenuGuid" />
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label" for="txtMaMenu">MenuCode</label>
+                                <input class="form-control input-sm" type="text" id="txtMaMenu" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-label" for="txtTenMenu">Tên Menu</label>
+                                <input class="form-control input-sm" type="text" id="txtTenMenu" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-label" for="txtTieuDeChucNang">Tiêu đề chức năng</label>
+                                <input class="form-control input-sm" type="text" id="txtTieuDeChucNang" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-label" for="txtDuongDanTuyetDoi">Đường dẫn tuyệt đối</label>
+                                <input class="form-control input-sm" type="text" id="txtDuongDanTuyetDoi" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-label" for="txtDuongDan">Đường dẫn</label>
+                                <input class="form-control input-sm" type="text" id="txtDuongDan" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-label" for="selMenuCha">Menu cha</label>
+                                <select class="form-control input-sm" id="selMenuCha" data-dropdown-parent="#mdThemMoi"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label  class="form-label" for="txtSapXep">Sắp xếp</label>
+                                <input class="form-control input-sm" type="text" id="txtSapXep" />
+                            </div>
+
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="txtSapXep">&nbsp;</label>
+                                <div class="input-group">
+                                    <input class="form-control input-sm" type="text" id="txtIcon" placeholder="Icon menu" />
+                                    <span class="input-group-addon height-button-icon" style="margin: 0;padding: 0;border: none;">
+                                        <button class="btn btn-primary height-button-icon" id="btnBrowseIcon" style="border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important;"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-3">
+                            <label class="form-check">
+                                <input class="form-check-input" id="chkHienThi" type="checkbox">
+                                <label for="chkHienThi" class="form-check-label">Hiển thị</label>
+                            </label>
+                        </div>
+                        <div class="col-3">
+                            <label class="form-check">
+                                <input class="form-check-input" id="chkMenuButton" type="checkbox">
+                                <label for="chkMenuButton" class="form-check-label">Menu Button</label>
+                            </label>
+                        </div>
+                        <div class="col-3">
+                            <label class="form-check">
+                                <input class="form-check-input" id="chkMenuButtonCha" type="checkbox">
+                                <label for="chkMenuButtonCha" class="form-check-label">Menu Button Cha</label>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                        </div>
+                        <div class="col-md-6">
+                            <div style="float:right;text-align: right">
+                                <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                    <i class="fa fa-close"></i>&nbsp;Đóng (F4)
+                                </a>
+                                <a href="#" id="btnLuuVaDong" class="btn btn-success ms-auto">
+                                    <i class="fa fa-save"></i>&ensp;Lưu và đóng (F9)
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal modal-blur fade" id="mdTimKiemIcon" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mdTimKiemIcon_tieude_us">Chọn icon</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row" style="">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="input-icon mb-3">
+                                <input type="text" value="" class="form-control" placeholder="Nội dung tìm kiếm ..." id="txtTimKiemIcon" autocomplete="off">
+                                <span class="input-icon-addon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row box">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-8">
+
+                    </div>
+                    <div class="col-md-4 ">
+                        @*<div class="right" style="float:right">
+                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class="fa fa-window-close"></i>&ensp;Đóng</button>
+                        </div>*@
+                        <a href="#" class="btn btn-outline-danger right" data-bs-dismiss="modal" style="float:right">
+                            <i class="fa fa-close"></i>&nbsp;Đóng
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Areas/HeThong/Scripts/Menu.js?v=@DateTime.Now.Ticks.ToString();"></script>

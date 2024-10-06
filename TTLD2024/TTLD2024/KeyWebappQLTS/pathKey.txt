@@ -1,0 +1,15 @@
+trial.Length4
+authentication.Length6
+signature.Length2
+continuous.Length4
+produckey.Length42
+trial.Length4
+authentication.Length6
+signature.Length2
+continuous.Length4
+produckey.Length42
+trial.Length4
+authentication.Length6
+signature.Length2
+continuous.Length4
+produckey.Length42

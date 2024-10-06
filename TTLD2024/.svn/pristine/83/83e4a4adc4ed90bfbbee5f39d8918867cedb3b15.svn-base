@@ -1,0 +1,218 @@
+﻿<style>
+    .modalCustom .modal-header {
+        height: 10px !important;
+        min-height: 10px !important;
+        background-color: red;
+    }
+
+    .input-group .btn, .input-group .form-control {
+        height: 100%;
+    }
+
+    .input-group .btn {
+        z-index: 0;
+    }
+
+    #KhungTimKiem .select2-container--default .select2-selection--single {
+        padding-top: 0px !important;
+    }
+</style>
+<div class="modal modal-blur fade" id="mdLuuTruBaoCao" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header nts-modal">
+                <h5 class="modal-title" id="">Lưu trữ báo cáo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="mb-3">
+                            <label class="form-label" for="TenBaoCaoLuuTru">Tên báo cáo</label>
+                            <input type="text" class="form-control" id="TenBaoCaoLuuTru" required>
+                        </div>
+                    </div>
+                    <style>
+                        #GhiChu_LuuBaoCao {
+                            height: unset !important;
+                            overflow-y: unset !important;
+                        }
+                    </style>
+                    <div class="col-lg-12">
+                        <div class="mb-3">
+                            <label class="form-label" for="GhiChu_LuuBaoCao">Ghi chú</label>
+                            <textarea class="form-control" id="GhiChu_LuuBaoCao" rows="5"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div style="display: flex; align-items: center; justify-content: space-between">
+                    <div class="col-md-12">
+                        <div style="float:right;text-align: right">
+                            <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                <i class="fa fa-close"></i>&nbsp;Đóng
+                            </a>
+                            <a href="#" onclick="LuuTruBaoCao()" class="btn btn-success ms-auto">
+                                <i class="fa fa-save"></i>&ensp;Lưu và đóng
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade modalCustom" id="mdLocDuLieu" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4 custom-center">
+                        <img src="~/Images/search2.jpg" />
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row mb-2">
+                            <div class="col-md-12">
+                                <div class="input-group">
+                                    <span class="input-group" style="width: 100% !important">
+                                    <input type="text" class="form-control input-sm" onkeyup="$(this).search1();" id="txtDonViID" for="DonViID_header" placeholder="Nhập nội dung tìm kiếm...">
+                                    <span class="input-group-addon" style="margin: 0; padding: 0; border: none;">
+                                        <button class="btn btn-primary btn-sm" id="TimKiemNangCao" style="border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important;width: 28px;height:28px;"><span class="fas fa-sliders-h" style="padding-top: 2px;" aria-hidden="true"></span></button>
+                                    </span>
+                                    </span>
+                                </div>
+                                <div id="KhungTimKiem" style="width: 43%; z-index: 99; right: 9px; position: absolute; margin-top: 4px; background: #fff; padding: 12px 12px 8px 12px; border: 1px solid #e5e5e5; border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.20) 0px 5px 15px; display: none">
+                                    <div class="row" style=" margin-bottom: 4px">
+                                        <div class="col-md-6">
+                                            <span style="font-size: 16px; color: #38b8e6"><i class="fa fa-search"></i>Tìm kiếm nâng cao</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class=" col-md-12">
+                                            <label for="TinhID_TimKiem" class="form-label">Tỉnh</label>
+                                            <select class="form-control input-sm" id="TinhID_TimKiem_us" data-dropdown-parent="#mdLocDuLieu"></select>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class=" col-md-6">
+                                            <label for="HuyenID_TimKiem" class="form-label">Huyện</label>
+                                            <select class="form-control input-sm" id="HuyenID_TimKiem_us" data-dropdown-parent="#mdLocDuLieu"></select>
+                                        </div>
+                                        <div class=" col-md-6">
+                                            <label for="XaID_TimKiem" class="form-label">Xã</label>
+                                            <select class="form-control input-sm" id="XaID_TimKiem_us" data-dropdown-parent="#mdLocDuLieu"></select>
+                                        </div>
+                                    </div>
+                                    <hr style="margin: 1rem 0;" />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group" style="text-align: right">
+                                                <a href="#" class="btn btn-outline-danger" id="DongTimKiem"><i class="fa fa-close"></i> &ensp; Đóng</a>
+                                                <button type="button" id="TimKiem" class="btn btn-success" onclick="LoadDuLieuDonVi_us();"><i class="fa fa-search"></i>&ensp;Tìm kiếm</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <a id="btn" onclick="OpenMD_CoSoTinh(); return false;" class="dropdown-item" href="#" style="color: blue;">
+                                <i class="fa fa-bar-chart" style="width: 25px;"></i>
+                                Cơ sở tính
+                            </a>
+                        <fieldset class="KhungVien" style="padding: 1px 8px 9px 8px;">
+                            <legend id="lgTenBaoCao">Đơn vị sử dụng ngân sách</legend>
+                            <div class="row mb-2">
+                                <div class="col-md-12">
+                                    <div id="Grid_ChonDonVi"></div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <hr style="margin:0px; margin-top:12px;">
+                </div>
+            </div>
+
+            <div class="modal-footer" style="padding-bottom:7px !important;">
+                <div style="float:right;text-align: right">
+
+                    <a href="#" id="btnLocDuLieu" class="btn btn-success" onclick="return false;">
+                        <i class="fa fa-filter" aria-hidden="true"></i>&nbsp;Lọc dữ liệu
+                    </a>
+                    <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                        <i class="fa fa-close"></i>&nbsp;Đóng
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var infoBaoCao;
+    var BaoCaoID;
+    BaoCaoID = window.location.pathname.split("Index")[1].replace("/", "");
+    var Grid_ChonDonVi = new Tabulator("#Grid_ChonDonVi", {
+        height: 350,
+        layout: "fitColumns",
+        pagination: false,
+        selectable: 1,
+        selectableRows: true,
+        index: "DonViID",
+        groupBy: ["TenDonVi_Cha"],
+        columns: [ //Define Table Columns
+            {
+                formatter: "rowSelection", titleFormatter: "rowSelection", hozAlign: "center", cellClick: function (e, cell) {
+                    //cell.getRow().toggleSelect();
+                }, width: 40, headerSort: false, frozen: true, headerHozAlign: "center", hozAlign: "center", vertAlign: "middle"
+            },
+            { title: "", field: "TenDonVi", minWidth: 120, visible: true },
+            { title: "DonViID", field: "DonViID", visible: false },
+        ],
+        locale: true,
+        langs: TabulatorLangsVi,
+        placeholder: 'Không có dữ liệu',
+    });
+    $(document).ready(async function () {
+        let result = NTS.getAjax('/BaoCao/DungChung/getThongTinBaoCao', { BaoCaoID: BaoCaoID });
+        if (result.Result.length > 0) {
+            infoBaoCao = result.Result[0]
+            $("#lgTenBaoCao").html(infoBaoCao.TenBaoCao + `  <i class="fa fa-info-circle green" style="color: #ffffff;cursor:pointer" ></i>`)
+        }
+        //await loadCombo();
+    });
+    //async function loadCombo() {
+    //    setTimeout(() => {
+    //        const GetAll = NTS.getAjax("/HeThong/DonVi/GetAll", {});
+    //        Grid_ChonDonVi.clearData();
+    //        if (GetAll.Result.length > 0) {
+    //            Grid_ChonDonVi.setData(GetAll.Result);
+    //            Grid_ChonDonVi.redraw(true);
+    //        }
+
+    //        var resultDV = NTS.getAjax('/DanhMuc/DungChung/GetDonViDangDangNhap', {});
+    //        if (Grid_ChonDonVi.getRows().filter(row => row.getData().DonViID.toLowerCase() == resultDV.Result[0].DonViID.toLowerCase()).length != 0) {
+    //            Grid_ChonDonVi.selectRow(resultDV.Result[0].DonViID.toLowerCase());
+    //        }
+    //        else {
+    //            if (Grid_ChonDonVi.getRows(true).length > 0) {
+    //                Grid_ChonDonVi.selectRow(Grid_ChonDonVi.getRows(true)[0].getIndex())
+    //            }
+    //        }
+    //        Grid_ChonDonVi.scrollToRow(resultDV.Result[0].DonViID.toLowerCase(), "middle", false)
+    //            .then(function () {
+    //            })
+
+    //        $('#mdLocDuLieu').modal('show')
+    //    }, 100);
+
+    //}
+    $('#btnTuyChonIn').on('click', function () {
+        LoadTuyChonIn_us(infoBaoCao.BaoCaoID);
+        return false;
+    });
+</script>
+

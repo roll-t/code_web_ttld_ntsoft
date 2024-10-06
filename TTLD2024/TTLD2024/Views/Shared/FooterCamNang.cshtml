@@ -1,0 +1,395 @@
+﻿@*<style>
+    .footer-1 {
+        width: 100%;
+        float: left;
+        background: #0070bb;
+        padding: 30px 0 0;
+    }
+
+        .footer-1 .footer-1-link {
+            width: 100%;
+            float: left;
+        }
+
+            .footer-1 .footer-1-link .inner {
+                width: 100%;
+                float: left;
+            }
+
+                .footer-1 .footer-1-link .inner h4 {
+                    font-family: "Roboto", sans-serif;
+                    font-size: 15px;
+                    color: #FFF;
+                    line-height: 24px;
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    width: 100%;
+                    float: left;
+                }
+
+                .footer-1 .footer-1-link .inner .adr {
+                    margin-bottom: 10px;
+                    width: 100%;
+                    float: left;
+                }
+
+                    .footer-1 .footer-1-link .inner .adr span {
+                        width: 100%;
+                        float: left;
+                        font-family: "Roboto", sans-serif;
+                        font-size: 14px;
+                        color: #FFF;
+                        font-weight: 400;
+                    }
+
+        .footer-1 i {
+            margin-right: 5px;
+        }
+
+    .footer {
+        width: 100%;
+        float: left;
+        padding: 0;
+    }
+
+        .footer .bottom-footer {
+            width: 100%;
+            float: left;
+            background: #0275d8;
+            border-top: 1px solid #5c95ca;
+        }
+
+    .backtop {
+        position: fixed;
+        bottom: 100px;
+        z-index: 999;
+        top: auto !important;
+        width: 40px;
+        height: 40px;
+        border: solid 3px #fff4cc;
+        line-height: 44px;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: center;
+        display: inline-block;
+        color: #fff;
+        border-radius: 0;
+        background: #ff4c4c;
+        text-decoration: none;
+        transition: opacity 0.2s ease-out;
+        opacity: 0;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    .a-left {
+        text-align: left !important;
+    }
+
+    span.wsp {
+        font-size: 14px;
+    }
+
+    .bottom-footer {
+        padding: 10px;
+    }
+
+    .a-center {
+        text-align: center
+    }
+
+    .btn-scroll-up.display {
+        opacity: .7;
+        bottom: 2px;
+        visibility: visible;
+        background: blue !important;
+        padding: 5px 10px;
+    }
+</style>*@
+<style>
+    .footer-camnnang-header{
+        margin-bottom:20px;
+    }
+    .footer-camnnang-header-name {
+        padding: 0 10px;
+        border-left: 3.5px solid #000000;
+    }
+    .footer-camnnang-header-name > span{
+        font-size:17px !important;
+        font-weight:bold !important;
+        color: #000000 !important;
+    }
+    .footer-content > p{
+        font-size:15px;
+        line-height:28px;
+    }
+    .footer-baiviet-link {
+        color: #000000 !important;
+        font-size: 14px !important;
+        width: 100%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+        .footer-baiviet-link:hover {
+            color: #00c8c9 !important;
+        }
+    .footer-content-item {
+        padding: 10px 0 4px 0 !important;
+    }
+    .footer-content{
+        padding-bottom: 10px;
+    }
+    .footer-img {
+        width: 100%;
+        border-radius: 4px !important;
+    }
+    .footer-img-item{
+        width:100%;
+        height:100%;
+        object-fit:contain;
+        object-position:center;
+        border-radius:4px !important;
+    }
+    .footer-bottom-container {
+        background: #0275d8;
+    }
+    .container-footer-logo{
+        height:100%;
+        padding:15px 0 ;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+    }
+    .container-footer-logo > h3{
+        font-size:16px;
+        color: #fff;
+    }
+    .footer-logo{
+        width:40px;
+        height:40px;
+        object-fit:contain;
+        object-position:center;
+    }
+    .footer-logobanquyen{
+        display:flex;
+        align-items:center;
+    }
+    .footer-mangXaHoi > a > i{
+        color:#fff;
+        margin-right:10px;
+        font-size:14px;
+    }
+        .footer-mangXaHoi > a > i:hover {
+            cursor: pointer;
+            transform: scale(1.5); /* Phóng to thẻ i lên 1.5 lần khi hover */
+        }
+    #s-footer {
+        background: #f7f7f7;
+        min-height: 350px;
+        width: 100%;
+        margin-top:0 !important;
+    }
+    .footer-blog-name > h3 {
+        font-size: 18px;
+    }
+</style>
+<style>
+    @@media(min-width:992px) and (max-width:1023px){
+        div.bottom-footer {
+            padding: 0 20px !important;
+        }
+    }
+    @@media(min-width:786px) and (max-width:991px) {
+        div.bottom-footer {
+            padding: 0 20px !important;
+        }
+        #s-footer {
+            padding-bottom: 0px;
+        }
+
+        #footer-camnang {
+            padding-bottom: 10px;
+        }
+        .footer-blog-name > h3{
+            font-size:14px;
+        }
+    }
+    @@media(min-width:668px) and (max-width:785px) {
+        .footer-blog-name > h3 {
+            font-size: 16px !important;
+        }
+    }
+    @@media(max-width:785px) {
+        div.bottom-footer {
+            padding: 0 20px !important;
+        }
+        div#list-footerChuDeDangXem {
+            text-align:left;
+        }
+        div#list-footer-baivienoibat {
+            text-align: left;
+        }
+        #s-footer{
+            padding-bottom:0px;
+        }
+        #footer-camnang{
+            padding-bottom:10px;
+        }
+        .footer-blog-name > h3 {
+            font-size: 12px;
+        }
+        h4.footer-camnnang-header-name {
+            text-align: left;
+        }
+    }
+</style>
+<div id="s-footer" class="container-fluid" >
+    <div class="container">
+        <div class="row" id="footer-camnang">
+            <div class="col-md-3 col-xs-12 col-sm-6">
+                <h4 class="footer-camnnang-header-name">
+                    <span>CHỦ ĐỀ ĐÁNG XEM</span>
+                </h4>
+                <div class="footer-content" id="list-footerChuDeDangXem">
+                   
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12 col-sm-6">
+                <h4 class="footer-camnnang-header-name">
+                    <span>BÀI VIẾT NỔI BẬT</span>
+                </h4>
+                <div class="footer-content" id="list-footer-baivienoibat">
+                   
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <a href="/tra-cuu-viec-lam.html" class="footer-img">
+                    <img src="~/Images/CongThongTinViecLam/img-tracuu.png" alt="Cầm nang nghề nghiệp" class="footer-img-item" />
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer-bottom-container">
+    <div class="bottom-footer">
+        <div class="container">
+            <div class="container-footer-logo">
+                <div class="footer-logobanquyen" style="margin-right: 10px;">
+                    <a href="/trang-chu.html" style="border-radius:4px !important;">
+                         <img src="~/Images/CongThongTinViecLam/logottldtv.png" class="footer-logo" />
+                    </a>
+                </div>
+                <div class="footer-blog-name">
+                    <h3 style="color: #fff;">CỔNG THÔNG TIN DỊCH VỤ - VIỆC LÀM</h3>
+                </div>
+                <div class="footer-mangXaHoi">
+                    <a href="#" title="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="#" title="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#" title="Tiktok">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="#" title="Youtube">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>   
+    $(function () {
+        //getFooterCamNang();
+        getFooterChuDeDangXem();
+        getFooterBaiVietNoiBat();
+    });
+    function getFooterCamNang() {
+        var GetAll = NTS.getAjax_NoVerifi("/CamNangNgheNghiep/TongQuanCamNang/getFooterCamNang", {});
+        if (GetAll.length > 0) {
+            let data = GetAll[0];
+            $('#footer-camnang').append(`<div class="col-xs-12 col-sm-8 col-md-4 col-lg-4 mb-2">
+                <div>
+                    <a href="/"><img style="width: 100px;margin-bottom:10px;height: 100px;" src="${data.banner.replace('*','')}"></a>
+                </div>
+                <h5 style="margin: 0 0 10px 0;"><b style="font-size: 16px;">${data.tenDonVi}</b></h5>
+                <p>
+                    <i class="fa fa-map-marker"></i>
+                    <span>${data.diaChi}</span>
+                </p>
+                <p>
+                    <i class="fa fa-phone"></i>
+                    <span>SĐT: ${data.soDT}</span>
+                </p>
+                <p>
+                    <i class="fa fa-envelope"></i>
+                    <span>Email: ${data.Email}</span>
+                </p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 mb-2">
+                <div>
+                    <h6 style="margin-bottom: 20px;font-size: 20px;"><b>VỀ CHÚNG TÔI</b></h6>
+                    <p>
+                         ${data.GioiThieu}
+                    </p>
+                </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-2 col-lg-2">
+                <div class="text-center">
+                    <h6 style="margin-bottom: 20px;"><b style="font-size: 20px;">KẾT NỐI</b></h6>
+                    <p class="social-footer">
+                        <a href="${data.Facebook}"><i class="fab fa-facebook" style="COLOR: blue;"></i></a>
+                        <a href="${data.Youtube}"><i class="fab fa-youtube" style="COLOR: red;"></i></a>
+                    </p>
+                    
+                </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-2 col-lg-2">
+                <h6 style="margin-bottom: 20px;"><b style="font-size: 20px;">GIẤY PHÉP</b></h6>
+
+                <div>                    
+                    <p class="" style="font-size: 13px;color: #666;">
+                       ${data.GiayPhepVanHanh}
+                    </p>
+                </div>
+            </div>`);
+        }
+    }
+    function getFooterChuDeDangXem() {
+        var GetAll = NTS.getAjax_NoVerifi("/CamNangNgheNghiep/TongQuanCamNang/getFooterChuDeDangXem", {});
+        if (GetAll.length > 0) {
+            for (var i = 0; i < GetAll.length; i++) {
+                let data = GetAll[i];
+                $('#list-footerChuDeDangXem').append(`<div class="footer-content-item">
+                                                            <a href="/chi-tiet-cam-nang.html?p=${data.DinhDanh}" title="${data.TieuDe}"${data.TieuDe} class="footer-baiviet-link">
+                                                                 ${data.TieuDe}
+                                                            </a>
+                                                        </div>`);
+            }
+        }
+    }
+    function getFooterBaiVietNoiBat() {
+        var GetAll = NTS.getAjax_NoVerifi("/CamNangNgheNghiep/TongQuanCamNang/getFooterBaoVietNoiBat", {});
+        if (GetAll.length > 0) {
+            for (var i = 0; i < GetAll.length; i++) {
+                let data = GetAll[i];
+                $('#list-footer-baivienoibat').append(` <div class="footer-content-item">
+                            <a href="/chuyen-muc-cam-nang-nghe-nghiep.html?p=${data.MaLoaiTinTuc}" class="footer-baiviet-link">
+                                ${data.TenLoaiTinTuc}
+                            </a>
+                        </div>`);
+            }
+        }
+    }
+</script>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>NTSOFT cảnh báo</title>
+
+    <link href="Content/themes/Theme_1/boxicons-2.1.4/css/boxicons.css" rel="stylesheet" />
+    <!-- Core CSS -->
+    <link href="Content/themes/Theme_1/css/core.css" rel="stylesheet" />
+    <link href="Content/themes/Theme_1/css/theme-default.css" rel="stylesheet" />
+    <link href="Content/themes/Theme_1/css/demo.css" rel="stylesheet" />
+
+    <!-- Vendors CSS -->
+    <link href="Content/themes/Theme_1/lib/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" />
+
+    <!-- Page CSS -->
+    <!-- Page -->
+    <style>
+        .misc-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - (1.625rem * 2));
+            text-align: center
+        }
+    </style>
+    
+    <!-- Helpers -->
+    <script src="Content/themes/Theme_1/js/helpers.js"></script>
+    <script src="Content/themes/Theme_1/js/config.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    <style type="text/css">
+        .layout-menu-fixed .layout-navbar-full .layout-menu,
+        .layout-page {
+            padding-top: 0px !important;
+        }
+
+        .content-wrapper {
+            padding-bottom: 0px !important;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container-xxl container-p-y">
+        <div class="misc-wrapper">
+            <h2 class="mb-2 mx-2">NTSOFT CẢNH BÁO Không có quyền truy cập trang</h2>
+            <p class="mb-2 mx-2">Bạn không có quyền truy cập trang này. Để biết thêm thông tin vui lòng liên hệ theo thông tin bên dưới!.</p>
+            <p class="mb-2 mx-2"><b>Thông tin liên hệ:</b></p>
+            <p class="mb-2 mx-2">Điện thoại: (0270) 3 843 058, Fax: (0270) 3 843 058</p>
+            <p class="mb-2 mx-2">Email: ntsoft@nhattamsoft.vn</p>
+            <p class="mb-2 mx-2">Địa chỉ: Số H25, đường Phan Văn Đáng, Phường 8, thành Phố Vĩnh Long, tỉnh Vĩnh Long</p>
+            <div class="mt-3">
+                <a href="/" class="btn btn-default">Quay ra</a>
+                <a href="/hethong/login" class="btn btn-primary">Trang chủ</a>
+            </div>
+
+            <div class="mt-3">
+                <img src="https://demos.themeselection.com/sneat-bootstrap-html-admin-template-free/assets/img/illustrations/page-misc-error-light.png" alt="page-misc-error-light" width="500" class="img-fluid" data-app-dark-img="illustrations/page-misc-error-dark.png" data-app-light-img="illustrations/page-misc-error-light.png">
+            </div>
+        </div>
+    </div>
+
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="Content/themes/Theme_1/lib/jquery/jquery.js"></script>
+    <script src="Content/libs/popper/popper.js"></script>
+    <script src="Content/themes/Theme_1/js/bootstrap.js"></script>
+    <script src="Content/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="Content/themes/Theme_1/js/menu.js"></script>
+    <script src="Content/themes/Theme_1/js/main.js"></script>
+
+</body>
+
+</html>

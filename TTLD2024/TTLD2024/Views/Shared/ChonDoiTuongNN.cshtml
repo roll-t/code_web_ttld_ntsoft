@@ -1,0 +1,330 @@
+﻿<style type="text/css">
+    span#select2-Cap2_2_us-container {
+        text-align: left;
+    }
+
+    #mdChonDoiTuongNN_us {
+    }
+</style>
+<div id="mdChonDoiTuongNN_us" class="modal modal-blur fade" data-backdrop="static">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document" style="max-width: 60% !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-bold" id="tieuDeChonDoiTuongNN_us">Chọn đối tượng người nước ngoài</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body padding-10">
+                <div class="col-sm-4 col-xs-12">
+                    <div class="input-group">
+                        <input style=" height: 32px !important;" class="form-control input-sm" type="text" id="timKiemDoiTuongNNTT_us_Chon" placeholder="Nội dung tìm kiếm" autocomplete="off" />
+                        <span class="input-group-addon" style="margin: 0; padding: 0; border: none;">
+                            <button class="btn btn-primary btn-sm" id="TimKiemNangCao_DoiTuonGNNTT_us" style="border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; width: 35px; height: 32px"><span class="fas fa-sliders-h" aria-hidden="true"></span></button>
+                        </span>
+                        <span class="input-icon-addon" style="margin-right: 40px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                        </span>
+                    </div>
+                    <div id="KhungTimKiem_DoiTuonGNNTT_us" style="width: 35%; z-index: 99; position: absolute; margin-top: 4px; background: #fff; padding: 12px 12px 8px 12px; border: 1px solid #e5e5e5; border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.20) 0px 5px 15px; display: none">
+                        <div class="row" style=" margin-bottom: 4px">
+                            <div class="col-md-12">
+                                <span style="font-size: 16px; color: var(--tblr-color-header);"><i class="fa fa-search"></i>Tìm kiếm nâng cao</span>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class=" col-md-6">
+                                <label for="TinhID_timKiemDoiTuonGNNTT_us_Chon" class="form-label">Tỉnh/Thành phố</label>
+                                <select class="form-control input-sm" id="TinhID_timKiemDoiTuonGNNTT_us_Chon"></select>
+                            </div>
+                            <div class=" col-md-6">
+                                <label for="HuyenID_timKiemDoiTuonGNNTT_us_Chon" class="form-label">Quận/Huyện</label>
+                                <select class="form-control input-sm" id="HuyenID_timKiemDoiTuonGNNTT_us_Chon"></select>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class=" col-md-6">
+                                <label for="XaID_timKiemDoiTuonGNNTT_us_Chon" class="form-label">Phường/Xã</label>
+                                <select class="form-control input-sm" id="XaID_timKiemDoiTuonGNNTT_us_Chon"></select>
+                            </div>
+                            <div class=" col-md-6">
+                                <label for="ThonID_timKiemDoiTuonGNNTT_us_Chon" class="form-label">Thôn/Xóm</label>
+                                <select class="form-control input-sm" id="ThonID_timKiemDoiTuonGNNTT_us_Chon"></select>
+                            </div>
+                        </div>
+                      
+                        <hr style="margin: 1rem 0;" />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" style="text-align: right">
+                                    <a href="#" class="btn btn-outline-danger" id="DongTimKiem_US"><i class="fa fa-close"></i> &ensp; Đóng</a>
+                                    <button type="button" id="btntimKiemDoiTuongNNTT_us_Chon" class="btn btn-success" style="background: var(--tblr-color-header);"><i class="fa fa-search"></i>&ensp;Tìm kiếm</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="Grid_ChonDoiTuongNNTT_us"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-12 padding-0">
+                        <div class="right" style="float:right">
+                            <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                <i class="fa fa-close"></i>&nbsp;Đóng
+                            </a>
+                            <button type="button" id="btnChonVaDongDoiTuongNNTT_us" class="btn btn-success"><i class="fa fa-check"></i>&ensp;Chọn và đóng</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* Modal xem chi tiet ghi chu *@
+<div id="mdXemThem_US_Chon" class="modal modal-blur fade" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-top" role="document" style="max-width: 800px !important;">
+        <div class="modal-content">
+            <div class="modal-header nts-modal">
+                <h5 id="tieuDeModalCT_US_Chon" class="modal-title text-bold">Thêm mới</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <p id="NoiDungCT_US_Chon" class="MoTa_CT"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //setTimeout(function () {
+        //    LoadTimKiem_ChonHGD();
+        //    PhanQuyenComBoDiaBan('TinhID_timKiemDoiTuonGNNTT_us_Chon', 'HuyenID_timKiemDoiTuonGNNTT_us_Chon', 'XaID_timKiemDoiTuonGNNTT_us_Chon', 'ThonID_timKiemDoiTuonGNNTT_us_Chon');
+        //}, 250);
+    });
+
+    function LoadTimKiem_ChonDoiTuongNN() {
+        NTS.loadDataCombo({
+            name: '#TinhID_timKiemDoiTuonGNNTT_us_Chon',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCTinh_Combo',
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '--Tất cả--',
+            showTatCa: !0,
+        });
+        NTS.loadDataCombo({
+            name: '#HuyenID_timKiemDoiTuonGNNTT_us_Chon',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCHuyen_Combo',
+            ajaxParam: { id: '' },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '--Tất cả--',
+            showTatCa: !0,
+        });
+        NTS.loadDataCombo({
+            name: '#XaID_timKiemDoiTuonGNNTT_us_Chon',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCXa_Combo',
+            ajaxParam: { id: '' },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '--Tất cả--',
+            showTatCa: !0,
+        });
+        NTS.loadDataCombo({
+            name: '#ThonID_timKiemDoiTuonGNNTT_us_Chon',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCThon_Combo',
+            ajaxParam: { id: '' },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '--Tất cả--',
+            showTatCa: !0,
+        });
+    }
+    //-----------------------Change bộ lọc-------------------------//
+    $(document).on('change', '#TinhID_timKiemDoiTuonGNNTT_us_Chon', function () {
+        NTS.loadDataCombo({
+            name: '#HuyenID_timKiemDoiTuonGNNTT_us_Chon',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCHuyen_Combo',
+            ajaxParam: { id: $('#TinhID_timKiemDoiTuonGNNTT_us_Chon').value() },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '--Tất cả--',
+            showTatCa: !0
+        });
+        NTS.loadDataCombo({
+            name: '#XaID_timKiemDoiTuonGNNTT_us_Chon',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCXa_Combo',
+            ajaxParam: { id: '' },
+            indexValue: 0,
+            indexText: 2,
+            textShowTatCa: '--Tất cả--',
+            showTatCa: !0
+        });
+        NTS.loadDataCombo({
+            name: '#ThonID_timKiemDoiTuonGNNTT_us_Chon',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCThon_Combo',
+            ajaxParam: { id: '' },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '--Tất cả--',
+            showTatCa: !0
+        });
+    });
+    $(document).on('change', '#HuyenID_timKiemDoiTuonGNNTT_us_Chon', function () {
+        NTS.loadDataCombo({
+            name: '#XaID_timKiemDoiTuonGNNTT_us_Chon',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCXa_Combo',
+            ajaxParam: { id: $('#HuyenID_timKiemDoiTuonGNNTT_us_Chon').value() },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '--Tất cả--',
+            showTatCa: !0
+        });
+        NTS.loadDataCombo({
+            name: '#ThonID_timKiemDoiTuonGNNTT_us_Chon',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCThon_Combo',
+            ajaxParam: { id: '' },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '--Tất cả--',
+            showTatCa: !0
+        });
+    });
+    $(document).on('change', '#XaID_timKiemDoiTuonGNNTT_us_Chon', function () {
+        NTS.loadDataCombo({
+            name: '#ThonID_timKiemDoiTuonGNNTT_us_Chon',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCThon_Combo',
+            ajaxParam: { id: $('#XaID_timKiemDoiTuonGNNTT_us_Chon').value() },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '--Tất cả--',
+            showTatCa: !0
+        });
+    });
+
+    $(document).on('click', '#TimKiemNangCao_DoiTuonGNNTT_us', function () {
+        if ($('#KhungTimKiem_DoiTuonGNNTT_us').css('display') == "block") {
+            $('#KhungTimKiem_DoiTuonGNNTT_us').slideUp(200);
+        } else {
+            $('#KhungTimKiem_DoiTuonGNNTT_us').slideDown(200);
+        }
+        return false;
+    });
+
+    $(document).on('click', '#DongTimKiem_US', function () {
+        $('#KhungTimKiem_DoiTuonGNNTT_us   ').slideUp(200);
+        return false;
+    });
+
+    var fmGhiChu_US_Chon = function (cell) {
+        var ID = cell.getData().ToChucID;
+        var ghiChu = cell.getValue();
+        if (ghiChu != "") {
+            if (ghiChu.length > 40) {
+                ghiChu = ghiChu.substring(0, 30) + "...";
+                return `
+                        <div class="col-md-12" style="padding-right: 0px; padding-left: 0px; padding-bottom:4px;">
+                            <div class="Content-text">${ghiChu}<span class='btnXemThemGhiChu' style='color:var(--tblr-primary);'  title="Xem chi tiết ghi chú" data='${ID}' data-loai='TC'>Xem thêm</span></div>
+                        </div>`;
+            } else {
+                return `
+                    <div class="col-md-12">
+                        <p class="Content-text" style="margin-bottom: 0;">${ghiChu}</p>
+                    </div>`;
+            }
+        } else {
+            return `
+                    <div class="col-md-12">
+                        <p class="Content-text" style="margin-bottom: 0;">${ghiChu}</p>
+                    </div>`;
+        }
+    }
+
+    var Grid_ChonDoiTuongNNTT_us = new Tabulator("#Grid_ChonDoiTuongNNTT_us", {
+        height: 400,
+        layout: "fitColumns",
+        pagination: "local",
+        selectableRows: 1,
+        paginationSize: 50,
+        paginationSizeSelector: [50, 100, 150, 250, 500, true],
+        columns: [
+            { title: "Mã đối tượng", field: "MaDoiTuongNN", formatter: 'textarea', width: 120, vertAlign: "middle", minWidth: 120, headerHozAlign: "center" },
+            { title: "Họ và tên", field: "HoVaTen", formatter: 'textarea', minWidth: 180, vertAlign: "middle", headerHozAlign: "center" },
+            { title: "Giới tính", field: "TenGioiTinh", formatter: 'textarea', minWidth: 110, vertAlign: "middle", width: 80, headerHozAlign: "center" },
+            { title: "Ngày sinh", field: "NgayThangNamSinh", formatter: 'textarea', width: 120, vertAlign: "middle", headerHozAlign: "center", hozAlign: "center" },
+            { title: "Quốc tịch", field: "TenQuocTich", formatter: 'textarea', vertAlign: "middle", width: 120, headerHozAlign: "center", hozAlign: "left" },
+            { title: "Số hộ chiếu", field: "SoHoChieu", formatter: 'textarea', vertAlign: "middle", width: 120, headerHozAlign: "center", hozAlign: "left" },
+            { title: "Ngày cấp", field: "NgayCap", formatter: 'textarea', width: 120, vertAlign: "middle", headerHozAlign: "center", hozAlign: "center" },
+            { title: "Số điện thoại", field: "SoDienThoai", formatter: 'textarea', width: 120, vertAlign: "middle", minWidth: 70, headerHozAlign: "left" },
+            { title: "Email", field: "Email", formatter: 'textarea', hozAlign: "left", minWidth: 250, vertAlign: "middle", headerHozAlign: "center", headerSort: false },
+            { title: "Địa chỉ", field: "DiaChiCuThe", formatter: 'textarea', minWidth: 250, vertAlign: "middle", headerHozAlign: "center" },
+            { title: "Ghi chú", field: "GhiChu", formatter: 'textarea', hozAlign: "left", width: 250, vertAlign: "middle", headerHozAlign: "center", headerSort: false },
+            { title: "Trạng thái sử dụng", field: "TrangThai", hozAlign: "center", width: 130, formatter: 'textarea', headerSort: false, vertAlign: "middle", headerHozAlign: "center" },
+            { title: "DoiTuongNNID", field: "DoiTuongNNID", width: 0, visible: false },
+            { title: "QuocTichID", field: "QuocTichID", width: 0, visible: false }
+        ],
+        locale: true,
+        paginationCounter: "rows",
+        langs: TabulatorLangsVi,
+        placeholder: 'Không có dữ liệu',
+    });
+    $(document).on('keyup', '#timKiemDoiTuongNNTT_us_Chon', function (e) {
+        if (e.keyCode == '13') {
+            Grid_ChonDoiTuongNNTT_us.setFilter([
+                [
+                    { field: "MaDoiTuongNN", type: "like", value: $(this).val() },
+                    { field: "HoVaTen", type: "like", value: $(this).val() },
+                ]
+            ]);
+            Grid_ChonDoiTuongNNTT_us.setFilter(matchAny, { value: $(this).val() });
+        }
+    });
+    $(document).on('keyup', '#timKiemDoiTuongNNTT_us_Chon', function (e) {
+        if (e.keyCode == '13') {
+            Grid_ChonDoiTuongNNTT_us.setFilter(matchAny, { value: $(this).val() });
+        }
+    });
+
+    $(document).on('click', '.input-icon-addon', function () {
+        Grid_ChonDoiTuongNNTT_us.setFilter(matchAny, { value: $('#timKiemDoiTuongNNTT_us_Chon').val() });
+    });
+
+
+    // Xem chi tiết nội dung ghi chú hộ gia đình
+    $(document).on('click', '.btnXemThemGhiChu', function () {
+        XemChiTietGhiChuUS_Chon($(this).attr('data'));
+    });
+
+    function XemChiTietGhiChuUS_Chon(ID) {
+        $("#mdXemThem_US_Chon").modal('show');
+        $('#tieuDeModalCT_US_Chon').text('Chi tiết nội dung ghi chú');
+        const result = NTS.getAjax("/DanhMuc/DoiTuongNN/GhiChuCT", { id: ID });
+        if (!result.Err && result.Result != null) {
+            let data = result.Result[0];
+            $('#NoiDungCT_US_Chon').html(data.GhiChu);
+        } else {
+            $('#NoiDungCT_US_Chon').html("Chưa có dữ liệu");
+        }
+        return;
+    }
+   
+</script>

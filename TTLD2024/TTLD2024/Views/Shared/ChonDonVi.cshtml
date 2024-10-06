@@ -1,0 +1,150 @@
+﻿@{
+    Layout = null;
+}
+
+<style type="text/css">
+    span#select2-Cap2_2_us-container {
+        text-align: left;
+    }
+</style>
+<div id="mdChonDonVi_us" class="modal" data-backdrop="static">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-bold" id="tieuDeChonDonVi_us">Chọn đơn vị</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body padding-0">
+                <div class="col-sm-4 col-xs-12">
+                    <div class="input-icon mb-3">
+                        <input type="text" value="" class="form-control" placeholder="Nội dung tìm kiếm ..." id="timKiemDV_us" autocomplete="off">
+                        <span class="input-icon-addon">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                        </span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="Grid_ChonDonVi_us"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-12 padding-0">
+                        <div class="right" style="float:right">
+                            <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                <i class="fa fa-close"></i>&nbsp;Đóng
+                            </a>
+                            <button type="button" id="btnChonDonViVaDong_us" class="btn btn-success"><i class="fa fa-check"></i>&ensp;Chọn và đóng</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function AnHienCot2_2_us(Loai_) {
+        var table_;
+
+        table_ = Grid_ChonDonVi_us;
+        if ($('#Cap2_2_us').value() == '2') {
+            table_.showColumn('Cap2')
+            table_.hideColumn('Cap3')
+            table_.hideColumn('Cap4')
+            table_.hideColumn('Cap5')
+        }
+        if ($('#Cap2_2_us').value() == '3') {
+            table_.showColumn('Cap2')
+            table_.showColumn('Cap3')
+            table_.hideColumn('Cap4')
+            table_.hideColumn('Cap5')
+        }
+        if ($('#Cap2_2_us').value() == '4') {
+            table_.showColumn('Cap2')
+            table_.showColumn('Cap3')
+            table_.showColumn('Cap4')
+            table_.hideColumn('Cap5')
+        }
+        if ($('#Cap2_2_us').value() == '5') {
+            table_.showColumn('Cap2')
+            table_.showColumn('Cap3')
+            table_.showColumn('Cap4')
+            table_.showColumn('Cap5')
+        }
+        Grid_ChonDonVi_us.redraw();
+        return false;
+    }
+    var Grid_ChonDonVi_us = new Tabulator("#Grid_ChonDonVi_us", {
+        height: 400,
+        layout: "fitColumns",
+        pagination: "local",
+        selectableRows: 1,
+        paginationSize: 50,
+        paginationSizeSelector: [50, 100, 150, 250, 500, true],
+        columns: [ //Define Table Columns
+            /*{ title: "Mã đơn vị", field: "MaDonVi", width: 120, visible: true },*/
+            {
+                title: `<div class="row" style="align-items: center;">
+                      <div  class="col-md-9 ">
+                                        <label class="form-label" style="margin: 0 auto;" >Mã</label>
+                     </div>
+                    <div  class="col-md-3">
+                    <div style="width: 70px;float: right;padding-left: 5px;" >
+                    <select class="form-control " tabindex="0" onchange="AnHienCot2_2_us('2_2'); return false;" id="Cap2_2_us"">
+                                                <option value="2">Cấp 2</option>
+                                                <option value="3">Cấp 3</option>
+                                                <option value="4">Cấp 4</option>
+                                                <option value="5">Cấp 5</option>
+                                             </select>
+                    </div>
+                    </div>
+                    </div>`, headerHozAlign: "center", headerHozAlign: "center", vertAlign: "middle", hozAlign: "center",
+                columns: [
+                    { title: "Cấp 1", field: "Cap1", formatter: 'textarea', width: 70, vertAlign: "middle", headerHozAlign: "center" },
+                    { title: "Cấp 2", field: "Cap2", formatter: 'textarea', width: 70, vertAlign: "middle", headerHozAlign: "center" },
+                    { title: "Cấp 3", field: "Cap3", formatter: 'textarea', width: 70, vertAlign: "middle", headerHozAlign: "center" },
+                    { title: "Cấp 4", field: "Cap4", formatter: 'textarea', width: 70, vertAlign: "middle", headerHozAlign: "center" },
+                    { title: "Cấp 5", field: "Cap5", formatter: 'textarea', width: 70, vertAlign: "middle", headerHozAlign: "center" },
+                ],
+            },
+            { title: "Mã đơn vị", field: "MaDonVi", formatter: 'textarea', headerHozAlign: "center", hozAlign: "left", vertAlign: "middle", width: 150 },
+            { title: "Tên đơn vị", field: "TenDonVi", formatter: 'textarea', headerHozAlign: "center", hozAlign: "left", vertAlign: "middle", minWidth: 350 },
+            { title: "DonViID", field: "DonViID", visible: false },
+            //{ title: "Tên đơn vị cha", field: "DonViChuQuan", minWidth: 200, visible: true },
+        ],
+        locale: true,
+        paginationCounter: "rows",
+        langs: TabulatorLangsVi,
+        placeholder: 'Không có dữ liệu',
+        rowDblClick: function (e, row) { //trigger an alert message when the row is clicked
+            var vitri = Grid_ChonDonVi_us.getRowPosition(row, false);
+            Grid_ChonDonVi_us.selectRow(Grid_ChonDonVi_us.getRows()[vitri]);
+            document.getElementById("btnChonDonViVaDong_us").click();
+        },
+    });
+    $(document).on('keyup', '#timKiemDV_us', function (e) {
+        if (e.keyCode == '13') {
+            Grid_ChonDonVi_us.setFilter([
+                [
+                    { field: "MaDonVi", type: "like", value: $(this).val() },
+                    { field: "TenDonVi", type: "like", value: $(this).val() },
+                ]
+            ]);
+            //Grid_ChonDonVi_us.setFilter(matchAny, { value: $(this).val() });
+        }
+    });
+    function LoadGrid_ChonDonVi_us() {
+        
+        var data = NTS.getAjax("/DanhMuc/DungChung/GetDonVi", {});
+        if (data.Result.length > 0) {
+            Grid_ChonDonVi_us.clearData();
+            Grid_ChonDonVi_us.setData(data.Result);
+            Grid_ChonDonVi_us.redraw(true);
+            $('#Cap2_2_us').value(3);
+        }
+        /*$('#Cap2_2_us').select2({ width: '100%' });*/
+    }
+</script>

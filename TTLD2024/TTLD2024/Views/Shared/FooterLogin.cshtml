@@ -1,0 +1,259 @@
+﻿<style>
+    .footer-1 {
+        width: 100%;
+        float: left;
+        background: #0275d8 !important;
+        padding: 5px 0 5px 0;
+        position: absolute;
+        bottom: 41px;
+    }
+
+        .footer-1 .footer-1-link {
+            width: 100%;
+            float: left;
+        }
+
+            .footer-1 .footer-1-link .inner {
+                width: 100%;
+                float: left;
+            }
+
+                .footer-1 .footer-1-link .inner h4 {
+                    font-family: "Roboto", sans-serif;
+                    font-size: 15px;
+                    color: #FFF;
+                    line-height: 24px;
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    width: 100%;
+                    float: left;
+                }
+
+                .footer-1 .footer-1-link .inner .adr {
+                    margin-bottom: 10px;
+                    width: 100%;
+                    float: left;
+                }
+
+                    .footer-1 .footer-1-link .inner .adr span {
+                        width: 100%;
+                        float: left;
+                        font-family: "Roboto", sans-serif;
+                        font-size: 14px;
+                        color: #FFF;
+                        font-weight: 400;
+                    }
+
+        .footer-1 i {
+            margin-right: 5px;
+        }
+
+    .footer {
+        width: 100%;
+        float: left;
+        padding: 0;
+        position: absolute;
+        bottom: 42px;
+    }
+
+        .footer .bottom-footer {
+            width: 100%;
+            float: left;
+            background: #2f8fe7 !important;
+            border-top: 1px solid #5c95ca;
+        }
+
+    .backtop {
+        position: fixed;
+        bottom: 100px;
+        z-index: 999;
+        top: auto !important;
+        width: 40px;
+        height: 40px;
+        border: solid 3px #fff4cc;
+        line-height: 44px;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: center;
+        display: inline-block;
+        color: #fff;
+        border-radius: 0;
+        background: #ff4c4c;
+        text-decoration: none;
+        transition: opacity 0.2s ease-out;
+        opacity: 0;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    .a-left {
+        text-align: left !important;
+    }
+
+    span.wsp {
+        font-size: 14px;
+    }
+
+    .bottom-footer {
+        padding: 10px;
+    }
+
+    .a-center {
+        text-align: center
+    }
+
+    .btn-scroll-up.display {
+        opacity: .7;
+        bottom: 2px;
+        visibility: visible;
+        background: blue !important;
+        padding: 5px 10px;
+    }
+
+    .ft-box-logo {
+        background: white;
+        border-radius: 10px;
+        text-align: center;
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+
+    img.logo-cty-nts {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+
+    .slogan-cty-nts {
+        font-size: 14px;
+        color: white;
+        text-align: center;
+    }
+
+    .fast-link a, #ft-info-nts, #ft-info-nts a {
+        color: white;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .fast-link {
+        display: flex;
+        flex-direction: column;
+        gap: 10px 0;
+    }
+    #ft-info-nts{
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+    }
+    .logo-banner-main {
+        width: 100px;
+        height: 100px;
+        padding: 10px;
+    }
+    @@media (max-width: 460px) {
+        #ft-info-nts {
+            display: block !important;
+            text-align: center;
+        }
+    }
+    @@media (max-width: 991.98px) {
+        .logo-banner-main {
+            display: block !important;
+            width: 80px;
+            height: 80px;
+            padding: 10px;
+        }
+}
+    @@media (max-width: 2024px){
+            .footer-1{
+                position: absolute !important;
+            }
+            .footer {
+                position: absolute !important;
+            }
+            .register-box.grid.main{
+                margin-bottom: 10px !important;
+            }
+        }
+</style>
+<section class="footer-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3" style="display: none">
+                <div class="ft-box-logo" style="background: #0275d8 !important;margin-bottom:10px; ">
+                    <img src="~/Images/logottldtv.png" class="logo-cty-nts" id="logo-ctt" style="border-radius: 10%;" />
+                </div>
+                <div class="slogan-cty-nts" id="ten-don-vi">
+                    @*NTSOFT - Phần mềm của nhà quản lý*@
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row"  style="display: none">
+                    <div class="col-md-6 fast-link">
+                        <div><a href="/tra-cuu-ung-vien.html">Tìm ứng viên</a>           </div>
+                        <div><a href="/tra-cuu-nha-tuyen-dung.html">Nhà tuyển dụng</a> </div>
+                        <div><a href="/tra-cuu-viec-lam.html">Việc làm</a>          </div>
+                    </div>
+                    <div class="col-md-6 fast-link">
+                        <div><a href="/tra-cuu-van-ban.html">Tra cứu văn bản</a>                    </div>
+                        <div><a href="/tra-cuu-tin-tuc.html">Tin tức</a>  </div>
+                        <div><a href="/thong-ke.html">Thống kê</a>      </div>
+                    </div>
+                </div>
+                <hr  style="display: none"/>
+                <div class="row">
+                    <div class="col-md-12" id="ft-info-nts">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="bottom-footer">
+        <div class="container">
+            <div class="row row_footer">
+                <div id="copy1" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="row tablet">
+                        <div id="copyright" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fot_copyright a-center" style="color:#FFF">
+                            <span class="wsp"><span class="mobile">© 2024 - Bản quyền thuộc về NTSOFT </span><span class="hidden-xs"> | </span><span class="mobile">Cung cấp bởi <a rel="nofollow" href="https://nhattamsoft.vn" title="Nhất tâm SOFT" target="_blank" style="color:red">NTSOFT</a></span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    window.onload(getFooterDiaChiCTy())
+    function getFooterDiaChiCTy() {
+        var GetAll = NTS.getAjax("/CongThongTinViecLam/TrangChuCTT/getFooterDiaChi_CTy", {});
+        if (GetAll.length > 0) {
+            let data = GetAll[0];
+            var anhDefault = "/Images/logo-white.jpg";
+            $('#logo-ctt').attr('src', data.Logo.replaceAll("~", "").replaceAll("*", "") == '' ? anhDefault : data.Logo.replaceAll("~", "").replaceAll("*", ""));
+            $('#logo-goto-trangchu').attr('src', data.Logo.replaceAll("~", "").replaceAll("*", "") == '' ? anhDefault : data.Logo.replaceAll("~", "").replaceAll("*", ""));
+            $('#logo-ctt-header').attr('src', data.Logo.replaceAll("~", "").replaceAll("*", "") == '' ? anhDefault : data.Logo.replaceAll("~", "").replaceAll("*", ""));
+            $('#ten-don-vi').html(data.tenDonVi);
+            $('#ft-info-nts').append(`<div>
+                                        <i class="fa-solid fa-location-dot"></i> ${data.diaChi}
+                                    </div>
+                                    <div>
+                                        <i class="fa-solid fa-phone-volume"></i> ${data.soDT}
+                                    </div>
+                                    <div>
+                                        <i class="fa-solid fa-globe"></i> <a href="${data.web}">${data.web}</a>
+                                    </div>`);
+        }
+    }
+</script>

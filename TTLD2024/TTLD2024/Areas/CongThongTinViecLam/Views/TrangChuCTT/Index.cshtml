@@ -1,0 +1,2077 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/CongThongTinViecLam.cshtml";
+}
+<style>
+    .item_camnang {
+        width: 100%;
+        display: block;
+    }
+
+    .item_camnang-img {
+        width: 100%;
+        height: 144px;
+        object-position: center;
+        object-fit: cover;
+        border-radius: 8px;
+        border: none;
+    }
+
+    .item_camnang-tieude {
+        margin-top: 14px;
+    }
+
+        .item_camnang-tieude-h3:hover {
+            color: #000000;
+            cursor: default;
+        }
+
+    .col-md-4.col-xs-4.col-sm-12.content-camnangnghenghieptrangchu.aos-init.aos-animate {
+        z-index:100;
+    }
+        .content-camnangnghenghieptrangchu {
+            height: 372px;
+            max-width: 400px;
+            border-radius: 4px;
+        }
+    #item_banner {
+        width: 100%;
+        height: auto;
+    }
+
+    #item_top {
+        width: 100%;
+        border-radius: 8px;
+        min-height: 300px;
+    }
+
+    .item_top-title-link {
+        font-size: 20px;
+    }
+
+    .item_top-title-camnang {
+        font-size: 30px;
+        color: #000000;
+    }
+
+        .item_top-title-camnang:hover {
+            color: #00c8c9;
+            cursor: pointer;
+        }
+    /*    #content {
+        padding: 6px;
+        border: 1px solid #D9D9D9;
+        border-radius: 6px;
+        margin-bottom: 10px;
+        padding: 8px;
+    }
+
+    .content_text {
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+    }*/
+    #btn_xemtatcaCamNang {
+        padding: 10px 14px;
+        border: none;
+        border-radius: 8px;
+    }
+        #btn_xemtatcaCamNang:hover {
+            background: #f1f1f1;
+        }
+            #btn_xemtatcaCamNang:hover a {
+                color: #00c8c9 !important;
+            }
+   /* .tn_xemcamnang-parent {
+        display: flex;
+        justify-content: center;
+        margin-top: 35px;
+        text-align:center;
+    }*/
+    .box_hd-NhaTuyendung {
+        margin-top: 210px;
+    }
+    li.list_10NgheNghiep-container-item {
+        padding: 12px 0 !important;
+        font-size: 14px !important;
+    }
+    .list_10NgheNghiep-header-right{
+        margin-bottom:10px;
+    }
+    .tennhatuyendungluongcao-trangchu {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .row.content-camnangnghenghiep-trangchuctt {
+        display: flex;
+        justify-content: space-between;
+    }
+    @@media(max-width:1023px) {
+        .footer-1 {
+            padding: 14px !important;
+        }
+        .box_hd-NhaTuyendung,
+        .box_hd {
+            padding: 0px !important;
+        }
+    }
+    .img-bannerdoanhnghiep {
+        height: 265px !important;
+        max-width: 659px !important;
+        border-radius: 8px;
+        box-shadow: 0 1px 0.325rem rgba(0,0,0,0.3);
+    }
+    .box-nav-img {
+        background: #fcfcfc;
+    }
+    .menu-main-vo li.nav-item a.nav-link .minu {
+        color: #fff !important;
+    }
+    @@media(min-width:1200px){
+        a.text-center.item-nghenghiep.aos-init.aos-animate {
+            min-height: 140px;
+        }
+
+        a.text-center.item-nghenghiep-TatCa.aos-init aos-animate {
+            min-height: 140px !important;
+        }
+    }
+        @@media(min-width:992px) and (max-width:1200px) {
+            .img-bannerdoanhnghiep {
+                height: 207px !important;
+                max-width: 659px !important;
+            }
+
+            .hotline-nguoitimviec {
+                font-weight: 600;
+                font-size: 22px;
+                padding: 10px;
+                text-align: center;
+                color: var(--primary-color);
+            }
+
+            .hotline-nguoitimviec_Hotro {
+                text-align: center;
+                font-size: 17px;
+                font-weight: 500;
+                color: var(--primary-color);
+                padding: 4px 1px;
+            }
+
+            .footer-1 {
+                padding: 36px !important;
+            }
+
+            #header-modalListNgheNghiep {
+                font-size: 14px;
+            }
+
+            .Name_nghenghiep-list-all {
+                font-size: 9px;
+                margin-top: 17px !important;
+            }
+
+            .soluongcv-itemnghenghiep-viec {
+                font-size: 10px !important;
+            }
+
+            .Soluong_Vieclam-NgheNghiep {
+                font-size: 9px !important;
+            }
+        }
+
+        @@media(min-width:787px) and (max-width:991px) {
+            .img-bannerdoanhnghiep {
+                height: 183px !important;
+                max-width: 659px !important;
+            }
+
+            .main {
+                padding-bottom: 0 !important;
+            }
+
+            .hotline-nguoitimviec {
+                font-weight: 600;
+                font-size: 22px;
+                text-align: center;
+                color: var(--primary-color);
+            }
+
+            .hotline-nguoitimviec_Hotro {
+                text-align: center;
+                font-size: 15px;
+                font-weight: 500;
+                color: var(--primary-color);
+                padding: 4px 1px;
+            }
+
+            .footer-1 {
+                padding: 36px !important;
+            }
+
+            .Name_nghenghiep-list-all {
+                font-size: 9px;
+                margin-top: 17px !important;
+            }
+
+            .soluongcv-itemnghenghiep-viec {
+                font-size: 10px !important;
+            }
+
+            .Soluong_Vieclam-NgheNghiep {
+                font-size: 9px !important;
+            }
+
+            .box_hd-NhaTuyendung {
+                margin-top: 144px !important;
+            }
+        }
+
+        @@media(max-width:786px) {
+            .img-bannerdoanhnghiep {
+                height: 225px !important;
+                max-width: 659px !important;
+                border-radius: 8px;
+                box-shadow: 0 1px 0.325rem rgba(0,0,0,0.3);
+            }
+
+            #logo-ctt-header {
+                margin-top: 13px !important;
+                border-radius: 5px;
+            }
+
+            .hotline-nguoitimviec {
+                font-weight: 600;
+                font-size: 20px;
+                text-align: center;
+                color: var(--primary-color);
+            }
+
+            .hotline-nguoitimviec_Hotro {
+                text-align: center;
+                font-size: 15px;
+                font-weight: 500;
+                color: var(--primary-color);
+                padding: 4px 1px;
+            }
+
+            .footer-1 {
+                padding: 36px !important;
+            }
+
+            .footer-2-box2 {
+                border-top: 1px solid #e2e2e2;
+            }
+
+            .footer-2-box1 {
+                padding-bottom: 20px;
+            }
+
+            #mdDanhSachNganhNghe .modal-card, .modal-content {
+                margin: 0;
+            }
+
+            .soluongcv-itemnghenghiep-viec {
+                font-size: 10px !important;
+            }
+
+            .Soluong_Vieclam-NgheNghiep {
+                font-size: 9px !important;
+            }
+
+            .Name_nghenghiep-list-all {
+                font-size: 10px !important;
+                margin-top: 15px !important;
+            }
+
+            #banner {
+                margin-top: 35px !important;
+            }
+
+            .box_hd-NhaTuyendung {
+                margin-top: 138px !important;
+            }
+        }
+
+        @@media(max-width:687px) and (max-width:786px) {
+            .img-bannerdoanhnghiep {
+                height: 263px !important;
+                max-width: 659px !important;
+            }
+
+            .Name_nghenghiep-list-all {
+                font-size: 9px;
+                margin-top: 17px !important;
+            }
+
+            .soluongcv-itemnghenghiep-viec {
+                font-size: 10px !important;
+            }
+
+            .Soluong_Vieclam-NgheNghiep {
+                font-size: 9px !important;
+            }
+
+            .Name_nghenghiep-list-all {
+                font-size: 10px !important;
+                margin-top: 15px !important;
+            }
+
+            .box_hd-NhaTuyendung {
+                margin-top: -10px !important;
+            }
+        }
+
+        @@media(max-width:687px) {
+            .img-bannerdoanhnghiep {
+                height: 203px !important;
+                max-width: 659px !important;
+                border-radius: 8px;
+                box-shadow: 0 1px 0.325rem rgba(0,0,0,0.3);
+            }
+
+            #logo-ctt-header {
+                margin-top: 13px !important;
+                border-radius: 5px;
+            }
+
+            .hotline-nguoitimviec {
+                font-weight: 600;
+                font-size: 18px;
+                text-align: center;
+                color: var(--primary-color);
+            }
+
+            .hotline-nguoitimviec_Hotro {
+                text-align: center;
+                font-size: 14px;
+                font-weight: 500;
+                color: var(--primary-color);
+                padding: 4px 1px;
+            }
+
+            .footer-1 {
+                padding: 36px !important;
+            }
+
+            .Name_nghenghiep-list-all {
+                font-size: 9px;
+                margin-top: 17px !important;
+            }
+
+            .soluongcv-itemnghenghiep-viec {
+                font-size: 10px !important;
+            }
+
+            .Soluong_Vieclam-NgheNghiep {
+                font-size: 9px !important;
+            }
+
+            .Name_nghenghiep-list-all {
+                font-size: 10px !important;
+                margin-top: 15px !important;
+            }
+        }
+
+        @@media(min-width:448px) and (max-width:686px) {
+            .img-bannerdoanhnghiep {
+                height: 164px !important;
+                max-width: 659px !important;
+                border-radius: 8px;
+                box-shadow: 0 1px 0.325rem rgba(0,0,0,0.3);
+            }
+
+            #logo-ctt-header {
+                margin-top: 13px !important;
+                border-radius: 5px;
+            }
+
+            .main {
+                padding-bottom: 0px;
+            }
+
+            .hotline-nguoitimviec {
+                font-weight: 600;
+                font-size: 18px;
+                text-align: center;
+                color: var(--primary-color);
+            }
+
+            .hotline-nguoitimviec_Hotro {
+                text-align: center;
+                font-size: 14px;
+                font-weight: 500;
+                color: var(--primary-color);
+                padding: 4px 1px;
+            }
+
+            .footer-1 {
+                padding: 36px !important;
+            }
+
+            .soluongcv-itemnghenghiep-viec {
+                font-size: 10px !important;
+            }
+
+            .Soluong_Vieclam-NgheNghiep {
+                font-size: 9px !important;
+            }
+
+            .Name_nghenghiep-list-all {
+                font-size: 10px !important;
+                margin-top: 15px !important;
+            }
+        }
+
+        .item_camnang-tieude > p {
+            font-size: 16px;
+        }
+
+        .item_camnang-tieude > h3 {
+            font-weight: 700;
+        }
+
+        .item .right_item {
+            padding-left: 0px;
+        }
+
+        .main_option1 .item {
+            float: left;
+            width: 32.7%;
+            background: #fff;
+            border: 1px solid #ececec;
+            box-sizing: border-box;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            padding: 0px 13px 8px 13px;
+            border-radius: 4px;
+            position: relative;
+        }
+
+            .main_option1 .item .logo {
+                padding: 0px;
+            }
+
+        .name-ungvien-trangchu {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-size: 15.2px;
+            font-weight: 700;
+        }
+
+        p.p_addr {
+            font-size: 14px;
+            padding: 2px 2px;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        a.p_addr {
+            font-size: 14px;
+            padding: 2px 2px;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .item .right_item {
+            padding-left: 0px !important;
+        }
+
+        .box_img-ungvien {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .item_inf_main {
+            position: relative;
+        }
+
+        .icon-like {
+            position: absolute;
+            right: 3px;
+            font-size: 21px;
+            top: -25px;
+            cursor: pointer;
+        }
+
+        .ntd-icon-like {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 17px;
+            cursor: pointer;
+            color: #aaa;
+        }
+</style>
+<style>
+    @@media(min-width:1024px) and (max-width:1200px){
+        .main_option1 .item .logo{
+            width:70px !important;
+            height: 60px !important;
+        }
+        .img_ungvien_trangchu {
+            width: 70px !important;
+            height: 60px !important;
+        }
+        
+    }
+    @@media(min-width:786px) and (max-width:991px) {
+        .box_img-ungvien_9 {
+            padding-left: 0;
+            padding: 20px !important;
+        }
+    }
+    @@media(min-width:668px) and (max-width:785px) {
+        .box_img-ungvien_9 {
+            padding-left: 0;
+            padding: 20px !important;
+        }
+    }
+    @@media(min-width:448px) and (max-width:667px) {
+        .box_img-ungvien_9 {
+            padding-left: 0;
+            padding: 20px !important;
+        }
+        .name-ungvien-trangchu {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-size: 15.2px;
+            font-weight: 700;
+        }
+        p.p_addr {
+            font-size: 13px;
+            padding: 3px 2px;
+            width: 100%;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .icon-like {
+            position: absolute;
+            right: -12px;
+            font-size: 21px;
+            top: -25px;
+            cursor: pointer;
+        }
+    }
+    .text-center.item-nghenghiep{
+        min-width: 130px !important;
+    }
+    .tit-nhatuyendungmoi {
+        border-bottom: none !important;
+    }
+    .tit_NhaTuyenDungMoi {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .heading_nhatuyendung {
+        margin-left: 0px;
+        margin-top: 25px;
+    }
+    .NhaTuyenDung-container-content-img {
+        width:100%;
+        height:100%
+    }
+    .box-nhatuyendungmoi_trangchu-container{
+        width:200px;
+        height:200px;
+    }
+    .box-nhatuyendungmoi_trangchu-img {
+        width: 64px;
+        height: 64px;
+        object-fit: cover;
+        margin-bottom: 10px;
+    }
+    .box-nhatuyendungmoi_trangchu-container {
+        width: 245px;
+        height: 120px;
+        /* border: 1px solid var(--primary-color); */
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 1px 0.235rem rgb(0,0,0,0.3);
+    }
+        .box-nhatuyendungmoi_trangchu-container:hover {
+            border: 1px solid var(--primary-color);
+            cursor: pointer;
+            box-shadow: 0 1px 1.235rem rgba(0,0,0,0.2) !important;
+        }
+        .box-nhatuyendungmoi_trangchu-soluongtuyen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    p.box-nhatuyendungmoi_trangchu-soluongtuyen-name {
+        font-size: 13px;
+        font-weight: 600;
+        color: #847c7c;
+        width: 100%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+    .box-nhatuyendungmoi_trangchu {
+        width: 100%;
+        padding-top: 40px;
+        padding-bottom: 30px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr); /* Tạo 5 cột có kích thước bằng nhau */
+        gap: 22px 10px; /* Khoảng cách giữa các item */
+    }
+    .box-nhatuyendungmoi_trangchu-container {
+        padding: 20px;
+    }
+    button.btn-xemtatcanhatuyendungmoi {
+        padding: 10px 14px;
+        background: #ffac39;
+        color: #fff;
+        border: none;
+        font-size: 14px;
+        font-weight: 500;
+    }
+        button.btn-xemtatcanhatuyendungmoi > a {
+            color: #fff;
+        }
+        button.btn-xemtatcanhatuyendungmoi:hover {
+            background: #ee900f;
+            color: #fff;
+        }
+        button.btn-xemtatcanhatuyendungmoi:hover a {
+            background: #ee900f;
+            color: #fff;
+        }
+    .box-nhatuyendungmoi_trangchu-soluongtuyen > i {
+        color: #847c7c;
+    }
+    .company-card-branding-info-content{
+        position:relative;
+    }
+    .box-btn_xemthemnhatuyennoibat{
+        position:absolute;
+        bottom:0;
+        right:0;
+    }
+    button.btn_xemthemnhatuyennoibat {
+        padding: 4px 10px;
+        border: 1px solid var(--primary-color);
+        border-radius: 4px;
+        background: var(--primary-color);
+    }
+        button.btn_xemthemnhatuyennoibat > a {
+            font-size: 14px;
+            color: #fff;
+        }
+        button.btn_xemthemnhatuyennoibat:hover {
+            background: #fff;
+            color: var(--primary-color);
+        }
+            button.btn_xemthemnhatuyennoibat:hover a {
+                color: var(--primary-color);
+            }
+        button.btn_xemthemnhatuyennoibat > a:hover {
+            color: var(--primary-color);
+        }
+    .diadiemlamviec-viecmoi-trangchu {
+        width: 320px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+    }
+    .hinhthuclamviec_vieclammoi {
+        width: 50%;
+        display: -webkit-box !important;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+    }
+    .item.aos-init.aos-animate {
+        min-height: 130px !important;
+    }
+
+    .box-mucluongthoathuan {
+        width: 100%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+    }
+    .p_time_ngaydangtuyen {
+        font-size:12px;
+    }
+   
+    .item_camnang-box_img {
+        width: 372px;
+        height: 192px;
+    }
+    .item-linkCamNangNgheNghiep {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .content-camnangnghenghieptrangchu {
+        padding: 12px;
+        background:#fff;
+    }
+        .content-camnangnghenghieptrangchu:hover {
+            transform: scale(1);
+            transition: all ease-in-out 0.3s;
+            box-shadow: 0 1px 10px rgba(0,0,0,0.15);
+            cursor: pointer;
+        }
+    .item_camnang-tieude-p{
+        font-size:14px;
+    }
+        .item_camnang-tieude-p:hover {
+            color: #000000;
+        }
+        .item_camnang-tieude-p {
+            color: #000000 !important;
+        }
+    .item_camnang-tieude > p {
+        font-size: 16px;
+        width: 100%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+    }
+    .item_camnang-tieude-h3 {
+        margin: 12px 0;
+        font-size: 18px;
+        color: #000000;
+        line-height: 24px;
+        width: 100%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+    button.btn-xemtatcamnangnghenghiep {
+        padding: 10px 12px;
+        background: rgb(245 241 255);
+        color: var(--primary-color);
+        border: none;
+        font-size: 14px;
+        font-weight: 500;
+        border-radius: 4px;
+    }
+    .btn-xemtatcamnangnghenghiep:hover {
+        border: 1px solid var(--primary-color);
+        color: var(--primary-color);
+    }
+    .btn-xemtatcamnangnghenghiep:hover a{
+        color: var(--primary-color) !important;
+    }
+    .btn_boxxemtatcamnangnghenghiep{
+        margin-top:26px;
+    }
+    
+    .box_nameungvien-ngaysinhsdt {
+        display: flex;
+        align-items: center;
+    }
+    .box_XacThucSDT {
+        background: #28a745 !important;
+        border-radius: 50%;
+        font-size: 10px;
+        margin-left: 5px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+        .box_XacThucSDT > i {
+            font-size: 7px;
+            color: #fff;
+            padding: 3px 3.5px;
+        }
+    .main_option1 .item .logo {
+        box-shadow: unset !important;
+        width: 0px;
+        height: 0px;
+    }
+    .box_img-ungvien {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 1px solid #999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 10px;
+        padding: 0;
+    }
+    .img_ungvien_trangchu_img {
+        width: 75px;
+        height: 75px !important;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    .box_start {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+    }
+        .box_start > i {
+            font-size: 12px;
+            margin: 0 1px;
+            color: #cccccc;
+        }
+    .box-thongtinungvien_9 {
+        margin-top: 8px;
+        padding-left: 0;
+    }
+    .box_nameungvien-ngaysinhsdt > a{
+        margin: 0 2px;
+    }
+    .item.aos-init.aos-animate{
+        border-radius:4px !important;
+    }
+    .p_addr > i{
+        margin-right:2px;
+    }
+    .box-thongtinungvien_9-tencongviec {
+        width: 96%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+    }
+    .p_addr_tenungvien{
+        color:#000000;
+    }
+    .xacthucSDT {
+        width: 14px;
+        height: 14px;
+    }
+    .item_inf_main-name-ngaysinh-sdt {
+        display: flex;
+        align-items: center;
+    }
+    .item.aos-init.aos-animate {
+        border: 1px solid #e0e0e0;
+    }
+   /* span.select2-selection.select2-selection--single {
+    }*/
+</style>
+<style>
+    .top-employ__image_congty {
+        height: 70px;
+    }
+    .titlecustom {
+        position: relative;
+        cursor: pointer; /* Makes it clear that the element is interactive */
+    }
+
+        .titlecustom:hover:after {
+            background: #333;
+            background: rgba(0, 0, 0, .8);
+            border-radius: 5px;
+            bottom: 100%; /* Adjusts position above the element */
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            content: attr(data-title);
+            padding: 5px 15px;
+            position: absolute;
+            z-index: 1000; /* Ensures it appears above other elements */
+            white-space: nowrap; /* Prevents text wrapping */
+            opacity: 0; /* Initially hidden */
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .titlecustom:hover:before {
+            border: solid;
+            border-color: #333 transparent;
+            border-width: 7px 8px 0 8px;
+            bottom: calc(100% - 5px); /* Position the arrow */
+            left: 50%;
+            transform: translateX(-50%);
+            content: "";
+            position: absolute;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .titlecustom:hover:after,
+        .titlecustom:hover:before {
+            opacity: 1;
+            visibility: visible;
+        }
+    @@media(min-width:1024px) and (max-width:1200px) {
+        .box-nhatuyendungmoi_trangchu-container {
+            width: 190px;
+            height: 100px;
+            /* border: 1px solid var(--primary-color); */
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 1px 0.235rem rgb(0,0,0,0.3);
+        }
+        .box-nhatuyendungmoi_trangchu-img {
+            width: 54px;
+            height: 54px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        p.box-nhatuyendungmoi_trangchu-soluongtuyen-name {
+            font-size: 12px;
+        }
+        .content-camnangnghenghieptrangchu {
+            height: 365px;
+            width: 327px;
+            border-radius: 4px;
+        }
+        .item_camnang-tieude-h3 {
+            font-size: 17px;
+        }
+        .item_camnang-tieude-p {
+            font-size: 13px;
+        }
+        .item_camnang-box_img {
+            width: 350px;
+            height: 174px;
+        }
+        .img-bannerdoanhnghiep {
+            height: 190px !important;
+            max-width: 634px !important;
+            width: 100% !important;
+        }
+        div#copyright {
+            padding: 16px 40px !important;
+        }
+        .name-ungvien-trangchu {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-size: 14.2px;
+            font-weight: 700;
+        }
+        .img_ungvien_trangchu_img {
+            width: 65px;
+            height: 65px !important;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .box_img-ungvien {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 1px solid #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 -3px;
+            padding: 0;
+        }
+        .box-thongtinungvien_9 {
+            margin-top: 8px;
+            padding-left: 5px;
+        }
+        a.p_addr {
+            font-size: 13px;
+            padding: 2px 2px;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .box_start > i {
+            font-size: 10px;
+            margin: 0 1px;
+            color: #cccccc;
+        }
+        .box_start {
+            margin-top: 12px;
+        }
+        p.p_addr {
+            font-size: 13px;
+        }
+        .tit.tit-nhatuyendungmoi.tit_NhaTuyenDungMoi {
+            margin-top: 17px;
+        }
+        .tennhatuyendungluongcao-trangchu {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .diadiemlamviec-viecmoi-trangchu {
+            width: 200px;
+        }
+        .exp-item a {
+            background: #dedede;
+            padding: 2px 4px;
+            color: black;
+            border-radius: 4px;
+            font-size: 8px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        .p_time_ngaydangtuyen {
+            font-size: 10px;
+        }
+        p.p_salary.box-mucluongthoathuan {
+            font-size: 8px;
+        }
+        .title_new {
+            font-size: 17px;
+        }
+        .diadiemlamviec-viecmoi-trangchu {
+            width: 220px;
+        }
+        .diadiemlamviec-viecmoi-trangchu {
+            width: 210px !important;
+        }
+    }
+    @@media(min-width:992px) and (max-width:1023px) {
+        .box-nhatuyendungmoi_trangchu-container {
+            width: 188px;
+            height: 100px;
+            /* border: 1px solid var(--primary-color); */
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 1px 0.235rem rgb(0,0,0,0.3);
+        }
+
+        .box-nhatuyendungmoi_trangchu-img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        p.box-nhatuyendungmoi_trangchu-soluongtuyen-name {
+            font-size: 12px;
+        }
+
+        .content-camnangnghenghieptrangchu {
+            height: 365px;
+            width: 327px;
+            border-radius: 4px;
+        }
+
+        .item_camnang-tieude-h3 {
+            font-size: 17px;
+        }
+
+        .item_camnang-tieude-p {
+            font-size: 13px;
+        }
+
+        .item_camnang-box_img {
+            width: 350px;
+            height: 174px;
+        }
+
+        .img-bannerdoanhnghiep {
+            height: 190px !important;
+            max-width: 634px !important;
+            width: 100% !important;
+        }
+        div#copyright {
+            padding: 16px 40px !important;
+        }
+        select#DiaDiem_usBanner + .select2-container--default .select2-selection--single {
+            height: 40px !important;
+            line-height: 40px !important;
+        }
+
+        select#DiaDiem_usBanner + .select2-container--default .select2-selection__rendered {
+            line-height: 40px !important;
+        }
+
+        div.selDiaDiemTimKiem .search-icon-select {
+            position: absolute;
+            left: 19px;
+            z-index: 9;
+            color: #808080;
+            font-size: 13px;
+            top: 76%;
+            transform: translateY(-50%);
+        }
+
+        div.search-icon-select {
+            position: absolute;
+            left: 12px;
+            z-index: 9;
+            color: #808080;
+            font-size: 13px;
+            top: 61%;
+            transform: translateY(-50%);
+        }
+
+        div.selDiaDiemTimKiem .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 40px !important;
+        }
+
+        select#DiaDiem_usBanner + .select2-container--default .select2-selection__rendered {
+            line-height: 40px !important;
+        }
+
+        select#DiaDiem_usBanner + .select2-container--default .select2-selection--single {
+            height: 40px !important;
+            line-height: 40px !important;
+        }
+        #btn-search-submit {
+            height: 38px;
+        }
+        
+    }
+    @@media(min-width:768px) and (max-width:991px) {
+        .box-nhatuyendungmoi_trangchu-container {
+            width: 188px;
+            height: 100px;
+            /* border: 1px solid var(--primary-color); */
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 1px 0.235rem rgb(0,0,0,0.3);
+        }
+
+        .box-nhatuyendungmoi_trangchu-img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        p.box-nhatuyendungmoi_trangchu-soluongtuyen-name {
+            font-size: 12px;
+        }
+
+        .content-camnangnghenghieptrangchu {
+            height: 365px;
+            width: 327px;
+            border-radius: 4px;
+        }
+
+        .item_camnang-tieude-h3 {
+            font-size: 17px;
+        }
+
+        .item_camnang-tieude-p {
+            font-size: 13px;
+        }
+
+        .item_camnang-box_img {
+            width: 350px;
+            height: 174px;
+        }
+
+        .img-bannerdoanhnghiep {
+            height: 190px !important;
+            max-width: 634px !important;
+            width: 100% !important;
+        }
+
+        div#copyright {
+            padding: 16px 40px !important;
+        }
+        .footer-1 {
+            padding: 12px !important;
+        }
+        .container-thongtinvetoi {
+            margin-left: 1px;
+        }
+        .footer-mangXH {
+            display: flex;
+            width: 40px;
+            height: 30px;
+            background: #fff;
+            border-radius: 10px;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+        }
+        #logo-ctt-header {
+            margin-top: 12px !important;
+            border-radius: 5px;
+        }
+        .tit.tit-nhatuyendungmoi.tit_NhaTuyenDungMoi {
+            margin-top: 10px !important;
+        }
+        .tit.tit-nhatuyendungmoi.tit_NhaTuyenDungMoi {
+            margin-top: 20px !important;
+        }
+        .box-nhatuyendungmoi_trangchu-container {
+            width: 174px;
+            height: 95px;
+            /* border: 1px solid var(--primary-color); */
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 1px 0.235rem rgb(0,0,0,0.3);
+        }
+        .box-nhatuyendungmoi_trangchu-img {
+            width: 45px;
+            height: 45px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .box-nhatuyendungmoi_trangchu {
+            width: 100%;
+            padding-top: 40px;
+            padding-bottom: 16px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 22px 10px;
+        }
+        .content-camnangnghenghieptrangchu {
+            height: 360px;
+            width: 322px;
+            border-radius: 4px;
+        }
+        .footer-mangXH {
+            display: flex;
+            width: 27px;
+            height: 27px;
+            background: #fff;
+            border-radius: 10px;
+            align-items: center;
+            justify-content: center;
+            margin-right: 7px;
+        }
+            .footer-mangXH > i {
+                color: var(--primary-color);
+                font-size: 16px;
+            }
+        .img-bannerdoanhnghiep {
+            height: 189px !important;
+            max-width: 634px !important;
+            width: 100% !important;
+        }
+        .diadiemlamviec-viecmoi-trangchu {
+            width: 220px;
+        }
+        .tennhatuyendungluongcao-trangchu {
+        }
+        .diadiemlamviec-viecmoi-trangchu {
+            width: 270px;
+        }
+        .exp-item a {
+            background: #dedede;
+            padding: 2px 5px;
+            color: black;
+            border-radius: 4px;
+            font-size: 11px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        .name_company, .p_salary, .p_time, .title_new {
+            font-size: 12px;
+        }
+        select#DiaDiem_usBanner + .select2-container--default .select2-selection--single {
+            height: 40px !important;
+            line-height: 40px !important;
+        }
+        select#DiaDiem_usBanner + .select2-container--default .select2-selection__rendered {
+            line-height: 40px !important;
+        }
+        div.selDiaDiemTimKiem .search-icon-select {
+            position: absolute;
+            left: 19px;
+            z-index: 9;
+            color: #808080;
+            font-size: 13px;
+            top: 76%;
+            transform: translateY(-50%);
+        }
+        div.search-icon-select {
+            position: absolute;
+            left: 12px;
+            z-index: 9;
+            color: #808080;
+            font-size: 13px;
+            top: 61%;
+            transform: translateY(-50%);
+        }
+        .selDiaDiemTimKiem .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 40px !important;
+        }
+        select#DiaDiem_usBanner + .select2-container--default .select2-selection__rendered {
+            line-height: 40px !important;
+        }
+        select#DiaDiem_usBanner + .select2-container--default .select2-selection--single {
+            height: 40px !important;
+            line-height: 40px !important;
+        }
+        #btn-search-submit {
+            height: 38px !important;
+        }
+        p.diadiemlamviec-viecmoi-trangchu {
+            width: 240px !important;
+        }
+        p.p_time.p_time_ngaydangtuyen {
+            font-size: 11px;
+        }
+        .name_company, .p_salary, .p_time, .title_new {
+            font-size: 13px;
+        }
+        div.exp-item a {
+            font-size: 9px;
+        }
+    }
+    @@media(min-width:668px) and (max-width:768px) {
+        select#DiaDiem_usBanner + .select2-container--default .select2-selection--single {
+            height: 40px !important;
+            line-height: 40px !important;
+        }
+
+        select#DiaDiem_usBanner + .select2-container--default .select2-selection__rendered {
+            line-height: 40px !important;
+        }
+
+        div.selDiaDiemTimKiem .search-icon-select {
+            position: absolute;
+            left: 19px;
+            z-index: 9;
+            color: #808080;
+            font-size: 13px;
+            top: 76%;
+            transform: translateY(-50%);
+        }
+
+        div.search-icon-select {
+            position: absolute;
+            left: 12px;
+            z-index: 9;
+            color: #808080;
+            font-size: 13px;
+            top: 61%;
+            transform: translateY(-50%);
+        }
+
+        .selDiaDiemTimKiem .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 40px !important;
+        }
+
+        select#DiaDiem_usBanner + .select2-container--default .select2-selection__rendered {
+            line-height: 40px !important;
+        }
+
+        select#DiaDiem_usBanner + .select2-container--default .select2-selection--single {
+            height: 40px !important;
+            line-height: 40px !important;
+        }
+
+        #btn-search-submit {
+            height: 38px !important;
+        }
+        p.diadiemlamviec-viecmoi-trangchu {
+            width: 200px !important;
+        }
+
+        p.p_time.p_time_ngaydangtuyen {
+            font-size: 11px;
+        }
+
+        div.exp-item a {
+            font-size: 8px;
+        }
+        .tennhatuyendungluongcao-trangchu {
+        }
+        .new-item {
+            width: 44px;
+            font-size: 10px;
+        }
+        .name_company, .p_salary, .p_time, .title_new {
+            font-size: 11px !important;
+        }
+    }
+    @@media(max-width:668px) {
+        select#DiaDiem_usBanner + .select2-container--default .select2-selection--single {
+            height: 40px !important;
+            line-height: 40px !important;
+        }
+
+        select#DiaDiem_usBanner + .select2-container--default .select2-selection__rendered {
+            line-height: 40px !important;
+        }
+
+        div.selDiaDiemTimKiem .search-icon-select {
+            position: absolute;
+            left: 19px;
+            z-index: 9;
+            color: #808080;
+            font-size: 13px;
+            top: 76%;
+            transform: translateY(-50%);
+        }
+
+        i.search-icon-select {
+            left: 9px;
+            font-size: 14px;
+            top: 48%;
+        }
+        i.search-wrapper .search-icon {
+            position: absolute;
+            left: 4px !important;
+            top: 54% !important;
+            transform: translateY(-50%);
+            color: gray;
+            font-size: 16px;
+        }
+
+        .selDiaDiemTimKiem .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 40px !important;
+        }
+
+        select#DiaDiem_usBanner + .select2-container--default .select2-selection__rendered {
+            line-height: 40px !important;
+        }
+
+        select#DiaDiem_usBanner + .select2-container--default .select2-selection--single {
+            height: 40px !important;
+            line-height: 40px !important;
+        }
+
+        #btn-search-submit {
+            height: 38px !important;
+        }
+        div.selDiaDiemTimKiem .search-icon-select {
+            position: absolute;
+            left: 19px;
+            z-index: 9;
+            color: #808080;
+            font-size: 13px;
+            top: 60%;
+            transform: translateY(-50%);
+        }
+        div.box-chuainput-nghenghiep {
+            padding: 3px 6px 0px 0px;
+        }
+        span.select2-container--default .select2-selection--single .select2-selection__arrow b {
+            margin-left: 2px;
+            margin-top: 0px;
+        }
+        #btn-search-submit{
+            min-width:50px !important;
+        }
+        span.hidden_mb {
+            font-size: 9px;
+        }
+        #btn-search-submit i.fa.fa-search {
+            font-size: 10px;
+        }
+       
+    }
+    @@media(min-width:448px) and (max-width:668px) {
+      /*  p.diadiemlamviec-viecmoi-trangchu {
+            width: 147px !important;
+            font-size: 9px;
+        }
+
+        p.p_time.p_time_ngaydangtuyen {
+            font-size: 11px;
+        }
+
+        div.exp-item a {
+            font-size: 8px;
+        }
+
+        .tennhatuyendungluongcao-trangchu {
+            width: 60%;
+        }
+
+        .new-item {
+            width: 44px;
+            font-size: 10px;
+        }
+
+        .name_company, .p_salary, .p_time, .title_new {
+            font-size: 9px !important;
+        }
+
+        .main_option1 .item .logo {
+            float: left;
+            width: 75px;
+            height: 52px;
+            line-height: 50px;
+            text-align: center;
+            padding: 5px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            margin-right: 10px;
+        }
+
+        .new-item {
+            width: 48px;
+        }*/
+    }
+    @@media(max-width:447px) {
+        .img-bannerdoanhnghiep {
+            height: 172px !important;
+        }
+        div#copyright {
+            padding: 8px 38px !important;
+        }
+        .col-md-6.col-xm-6.col-sm-6.footer-2-box2 {
+            padding-top: 30px;
+        }
+        .Box-chucvu-mucluong-htlv {
+            display: flex;
+            gap:0px 10px;
+            flex-wrap: wrap;
+        }
+        .hinhthuclamviec_vieclammoi {
+            width: 33%;
+        }
+        .tennhatuyendungluongcao-trangchu {
+        }
+        .diadiemlamviec-viecmoi-trangchu {
+            width: 224px !important;
+        }
+        .img-bannerdoanhnghiep {
+            height: 139px !important;
+        }
+        .item_camnang-box_img {
+            width: 108px;
+            height: 70px;
+        }
+        .content-camnangnghenghieptrangchu {
+            height: 210px;
+            /* max-width: 100%; */
+            /* border: 1px solid #999; */
+            border-radius: 4px;
+        }
+        .item_camnang-tieude-h3 {
+            margin: 2px 0;
+            font-size: 12px;
+            line-height: 18px;
+        }
+        div.item_camnang-tieude > p {
+            font-size: 11px !important;
+            width: 100%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+        }
+        .box-nhatuyendungmoi_trangchu {
+            width: 100%;
+            padding-top: 40px;
+            padding-bottom: 30px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 9px 0px;
+        }
+        .box-nhatuyendungmoi_trangchu-container {
+            width: 165px;
+            height: 85px;
+        }
+        .box-nhatuyendungmoi_trangchu-img {
+            width: 32px;
+            height: 33px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        p.box-nhatuyendungmoi_trangchu-soluongtuyen-name {
+            font-size: 11px;
+            font-weight: 600;
+            color: #847c7c;
+            width: 100%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+        }
+        button.btn-xemtatcamnangnghenghiep {
+            padding: 10px 12px;
+            background: rgb(245 241 255);
+            color: var(--primary-color);
+            border: none;
+            font-size: 11px;
+            font-weight: 500;
+            border-radius: 4px;
+        }
+        .box_img-ungvien {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 1px solid #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 -2px;
+            padding: 0;
+        }
+        .img_ungvien_trangchu_img {
+            width: 70px;
+            height: 70px !important;
+        }
+        .box_img-ungvien {
+            width: 74px;
+            height: 74px;
+        }
+        .box_start > i {
+            font-size: 8px;
+            margin: 0 1px;
+            color: #cccccc;
+        }
+        .tit.tit-nhatuyendungmoi.tit_NhaTuyenDungMoi.ir{
+            padding-right:0px;
+            background:none;
+        }
+        .box_hd .main {
+            padding: 9px 13px 8px;
+        }
+        .heading-bold {
+            font-size: 17px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        button.btn-xemtatcanhatuyendungmoi {
+            padding: 10px 14px;
+            background: #ffac39;
+            color: #fff;
+            border: none;
+            font-size: 10px;
+            font-weight: 500;
+        }
+        #ViecLam_Loc_us {
+            font-size: 9px;
+        }
+        #NganhNghe_usBanner + .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 35px;
+            padding-left: 20px;
+        }
+     
+       
+      
+        div.box-chuainput-nghenghiep {
+             padding:0px; 
+        }
+        /*.list-nghenghiep_icon {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            justify-content: center;*/ /* Centers the grid items along the X-axis */
+            /*gap: 10px;*/ /* Optional: Adjust the spacing between items if needed */
+        /*}*/
+       
+
+
+    }
+    @@media(min-width: 768px) and (max-width:992px) {
+        .text-center.item-nghenghiep {
+            min-width: 235px !important;
+        }
+        .img_nganhnghe-list {
+            max-width: 30px !important;
+            height: 35px !important;
+        }
+        .item-nghenghiep-TatCa {
+            min-width: 235px !important;
+        }
+        .box-nhatuyendungmoi_trangchu {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px 10px;
+        }
+        .box-nhatuyendungmoi_trangchu-container {
+            width: 161px;
+            height: 95px;
+            /* border: 1px solid var(--primary-color); */
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 1px 0.235rem rgb(0,0,0,0.3);
+        }
+        .img-bannerdoanhnghiep {
+            height: 254px !important;
+            max-width: 634px !important;
+            width: 100% !important;
+        }
+        div.exp-item a {
+            font-size: 10px;
+        }
+        p.Name_nghenghiep-list {
+            font-size: 13px;
+        }
+        .box_hd_nhaTuyenDungNoiBat {
+            margin-top: 374px !important;
+        }
+        p.box-nhatuyendungmoi_trangchu-soluongtuyen-name {
+            font-size: 10px;
+        }
+        .box-nhatuyendungmoi_trangchu-img {
+            width: 48px;
+            height: 48px;
+        }
+        .content-camnangnghenghieptrangchu {
+            height: 350px;
+            width: 292px;
+            border-radius: 4px;
+        }
+        .item_camnang-box_img {
+            width: 350px;
+            height: 143px;
+        }
+            .footer-mangXH > i {
+                color: var(--primary-color);
+                font-size: 16px !important;
+            }
+        .footer-mangXH {
+            display: flex;
+            width: 27px;
+            height: 27px;
+            margin-right: 4px !important;
+        }
+    }
+    @@media(max-width: 1200px) {
+        .col-sm-3.col-xs-3.col-md-3.selDiaDiemTimKiem {
+            display: none;
+        }
+
+        .col-btn-search.col-xs-2.col-md-2.col-sm-2 {
+            display: none;
+        }
+
+        .col-md-5.col-xs-5.col-sm-5.selNganhNghe_usBanner {
+            display: none;
+        }
+
+        input#ViecLam_Loc_us {
+            border-right: 1px solid #fff !important;
+        }
+    }
+
+    @@media(min-width: 993px) and (max-width:1023px) {
+        .Name_nghenghiep-list {
+            font-size: 13px;
+        }
+        .text-center.item-nghenghiep,
+      {
+            min-width: 235px !important;
+        }
+    }
+    @@media(min-width: 1024px) and (max-width:1200px) {
+        .box-nhatuyendungmoi_trangchu-container {
+            width: 164px;
+            height: 94px;
+        }
+        .box-nhatuyendungmoi_trangchu-img {
+            width: 49px;
+            height: 49px;
+        }
+        .hinhthuclamviec_vieclammoi {
+            width: 33%;
+        }
+        p.p_salary.box-mucluongthoathuan {
+            font-size: 10px;
+        }
+        .box_img-ungvien {
+            margin: 0 8px;
+        }
+        .content-camnangnghenghieptrangchu {
+            height: 365px;
+            width: 294px;
+            border-radius: 4px;
+        }
+    }
+
+        .diadiemlamviec-viecmoi-trangchu {
+            width: 300px;
+        }
+
+        div.list-nghenghiep_icon {
+            display: grid;
+            grid-template-columns: auto auto auto; /* Each column only takes as much width as needed */
+            justify-content: center; /* Centers the grid horizontally */
+            align-items: center; /* Centers the items vertically */
+            gap: 10px; /* Optional: Adjust the spacing between items */
+        }
+    @@media(min-width: 448px) and (max-width:767px) {
+        div#box_search-tranhchu {
+            width: 62%;
+        }
+        div.exp-item a {
+            font-size: 10px;
+        }
+        .name_company, .p_salary, .p_time, .title_new {
+            font-size: 10px !important;
+        }
+        .box_img-ungvien {
+            margin: 0 -6px;
+        }
+        .img_ungvien_trangchu_img {
+            width: 70px;
+            height: 70px !important;
+        }
+        .box_img-ungvien {
+            width: 74px;
+            height: 74px;
+        }
+        .box_start > i {
+            font-size: 11px;
+        }
+        .box-nhatuyendungmoi_trangchu-container {
+            width: 132px;
+            height: 84px;
+        }
+        p.box-nhatuyendungmoi_trangchu-soluongtuyen-name {
+            font-size: 8px;
+        }
+        .box-nhatuyendungmoi_trangchu-img {
+            width: 43px;
+            height: 43px;
+        }
+        .item_camnang-box_img {
+            width: 372px;
+            height: 123px;
+        }
+        .content-camnangnghenghieptrangchu {
+            height: 318px;
+        }
+        .col-md-6.col-xm-6.col-sm-6.footer-2-box2 {
+            padding-top: 20px;
+        }
+        div#copyright {
+            padding: 0 40px !important;
+        }
+        .img-bannerdoanhnghiep {
+            height: 264px !important;
+          
+        }
+    }
+    div.item_camnang-tieude:hover {
+        cursor: pointer;
+    }
+    a.item_camnang-tieude-h3:hover {
+        cursor: pointer;
+    }
+    div#name_modal-body {
+        min-height: 100vh;
+    }
+    .btn-luutru-nhatuyendung {
+        cursor: pointer;
+        font-size: 20px;
+    }
+</style>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="~/Content/TablerTheme/libs/css/Style_TrangChuCTT.css" rel="stylesheet" />
+    <link href="~/Content/CongThongTin/css/aos.css" rel="stylesheet" />
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js"></script>*@
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    @Html.Partial("BannerCongThongTin")
+   
+        <div class="box_hd box_hd_nhaTuyenDungNoiBat" style="">
+            <div class="main" style="padding-top:0px !important;">
+                <div class="tit">
+                    <div class="ir">
+                        <h2 class="heading">Nhà tuyển dụng <label class="heading-bold">nổi bật</label></h2>
+                        <div class="view-more-tc"><a href="/tra-cuu-nha-tuyen-dung.html">Xem thêm <i class="fa-solid fa-chevron-right"></i></a></div>
+                    </div>
+                </div>
+                <div class="box_main" style="margin-top: 10px;">
+                    <div class="swiper-container two">
+                        <div class="swiper-wrapper" id="banner-company">
+                            <!-- Add Pagination -->
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="box_main">
+            <div id="company-hangdau">
+            </div>
+            <div class="box_hd" id="jobhot">
+                <div class="main">
+                    <div class="tit">
+                        <div class="ir">
+                            <h2 class="heading">Việc làm <label class="heading-bold">Mới nhất</label></h2>
+                            <div class="view-more-tc"><a href="/tra-cuu-viec-lam.html">Xem thêm <i class="fa-solid fa-chevron-right"></i></a></div>
+                        </div>
+                    </div>
+                    <div class="slick_hd main_option1">
+                        <div class="page_slick" id="list-new-job">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @* Box 2 hình ảnh *@
+        <div class="box-nav-img" style="">
+            @*<a href="/ho-so-cua-toi.html" data-aos="fade-right" data-aos-duration="1000">
+                <img src="~/Images/CongThongTinViecLam/img-taohoso.png" />
+            </a>
+            <a href="/tra-cuu-viec-lam.html" data-aos="fade-left" data-aos-duration="1000">
+                <img src="~/Images/CongThongTinViecLam/img-tracuu.png" />
+            </a>*@
+            <a href="/tra-cuu-nha-tuyen-dung.html" data-aos="fade-right" data-aos-duration="1000">
+                <img src="~/Images/CongThongTinViecLam/img-taohoso.png" class="img-bannerdoanhnghiep" />
+            </a>
+            <a href="/tra-cuu-ung-vien.html" data-aos="fade-left" data-aos-duration="1000">
+                <img src="~/Images/CongThongTinViecLam/img-tracuu.png" class="img-bannerdoanhnghiep" />
+            </a>
+        </div>
+            @* Box Lương cao *@
+            <div class="box_hd" id="jobgood">
+                <div class="main">
+                    <div class="tit">
+                        <div class="ir">
+
+                            <h2 class="heading">
+                                Việc làm
+                                <label class="heading-bold">Lương cao</label>
+                            </h2>
+                            <div class="view-more-tc"><a href="/tra-cuu-viec-lam.html">Xem thêm <i class="fa-solid fa-chevron-right"></i></a></div>
+                        </div>
+                    </div>
+                    <div class="slick_hd main_option1">
+                        <div class="page_slick" id="list-high-salary">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @* Box 2 hình ảnh *@
+            <div class="box-nav-img">
+                <a href="/tra-cuu-nha-tuyen-dung.html" data-aos="fade-right" data-aos-duration="1000">
+                    <img src="~/Images/CongThongTinViecLam/img-doanhnghieptrangchu1.png" class="img-bannerdoanhnghiep" />
+                </a>
+                <a href="/tra-cuu-ung-vien.html" data-aos="fade-left" data-aos-duration="1000">
+                    <img src="~/Images/CongThongTinViecLam/img-doanhnghieptrangchu2.png" class="img-bannerdoanhnghiep" />
+                </a>
+            </div>
+            <section class="box_main">
+                <div class="box_hd " id="UngVienNew">
+                    <div class="main">
+                        <div class="tit">
+                            <div class="ir">
+                                <h2 class="heading">Hồ sơ ứng viên&ensp;<label class="heading-bold">Mới nhất</label></h2>
+                                <div class="view-more-tc"><a href="/tra-cuu-ung-vien.html">Xem thêm <i class="fa-solid fa-chevron-right"></i></a></div>
+                            </div>
+                        </div>
+                        <div class="slick_hd main_option1">
+                            <div class="page_slick" id="list-new-UngVien">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            @* Box Nhà tuyển dụng *@
+            <div class="box_hd" id="jobemploy">
+                <div class="main">
+                    <div class="tit tit-nhatuyendungmoi tit_NhaTuyenDungMoi">
+                        <div class="ir">
+                            <h2 class="heading heading_nhatuyendung">NHÀ TUYỂN DỤNG MỚI</h2>
+                            @*<div class="view-more-tc"><a href="/tra-cuu-nha-tuyen-dung.html">Xem thêm <i class="fa-solid fa-chevron-right"></i></a></div>*@
+                        </div>
+                    </div>
+                    <div class="NhaTuyenDung-container">
+                        <div class="NhaTuyenDung-container-content">
+                            <div class="box-nhatuyendungmoi_trangchu" id="NhaTuyenDung-container-content-list">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tit tit-nhatuyendungmoi tit_NhaTuyenDungMoi">
+                        <div class="ir" style="padding-right:0px;">
+                            <button class="btn-xemtatcanhatuyendungmoi"><a href="/tra-cuu-nha-tuyen-dung.html">Xem tất cả</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @* Tin tức tuyển dụng *@
+            @*<div class="box_hd" id="content-news">
+            <div class="main">
+                <div class="tit mb-5">
+                    <div class="ir">
+
+                        <h2 class="heading">TIN TỨC TUYỂN DỤNG</h2>
+                        <div class="view-more-tc"><a href="/tra-cuu-tin-tuc.html">Xem thêm <i class="fa-solid fa-chevron-right"></i></a></div>
+                    </div>
+                </div>
+                <div class="main_option1">
+                    <div class="row" id="news-main">
+                    </div>
+                    <div class="mt-5">
+                        <div class="row" id="list-sub-news">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+            @* Cẩm nang nghề nghiệp *@
+            <div class="box_hd" id="linkpage">
+                <div class="main">
+                    <div class="tit tit-nhatuyendungmoi tit_NhaTuyenDungMoi">
+                        <div class="ir">
+                            <h2 class="heading heading_nhatuyendung">CẨM NANG NGHỀ NGHIỆP</h2>
+                        </div>
+                    </div>
+                    <div class="slick_hd main_option1">
+                        <div class="page_slick">
+                            <div class="row content-camnangnghenghiep-trangchuctt" id="content">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tit tit-nhatuyendungmoi tit_NhaTuyenDungMoi btn_boxxemtatcamnangnghenghiep">
+                        <div class="ir" style="padding-right:0!important;">
+                            <button class="btn-xemtatcamnangnghenghiep"><a target="_blank" href="/tong-quan-cam-nang-nghe-nghiep.html">Xem thêm cẩm nang nghề nghiệp</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @* Box Liên kết trang *@
+            <div class="box_hd" id="linkpage">
+                <div class="main">
+                    <div class="tit">
+                        <div class="ir">
+
+                            <h2 class="heading">LIÊN KẾT TRANG</h2>
+                        </div>
+                    </div>
+                    <div class="slick_hd main_option1">
+                        <div class="page_slick">
+                            <div class="owl-carousel" id="box-link-page">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <script src="~/Areas/CongThongTinViecLam/Scripts/TrangChu.js?v=@DateTime.Now.Ticks.ToString()"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="~/Content/CongThongTin/js/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+
+</asp:Content>
+

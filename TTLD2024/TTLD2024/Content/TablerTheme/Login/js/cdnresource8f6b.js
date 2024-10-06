@@ -1,0 +1,1 @@
+Ext.define('MISA.Control.MISAContainer',{xtype:'misacontainer',extend:'Ext.Container',alias:'widget.misacontainer',});

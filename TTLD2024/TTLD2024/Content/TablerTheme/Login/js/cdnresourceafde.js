@@ -1,0 +1,2 @@
+Ext.define('MISA.Control.MISAAjaxProxy',{extend:'Ext.data.proxy.Ajax',alias:'proxy.misaajaxproxy',initConfig:function(config){var me=this,baseUrl=MISA.CommonFn.getBaseUrl();if(config&&config.url&&config.url.startWith('_/index.html')){config.url=config.url.replace("_/index.html",baseUrl);}
+return me.callParent(arguments);}})

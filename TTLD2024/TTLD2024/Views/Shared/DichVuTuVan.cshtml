@@ -1,0 +1,84 @@
+﻿<style type="text/css">
+</style>
+<input type="hidden" id="DichVuTuVanID" />
+<div id="mdDichVuTuVan_us" class="modal modal-blur fade" data-backdrop="static">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document" style="max-width: 35% !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-bold" id="tieuDeDichVuTuVan_us">Thêm đánh giá chất lượng sử dụng dịch vụ tư vấn</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body padding-10">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-2">
+                                <label class="form-label" for="STT_USDichVuTuVan">Số thứ tự</label>
+                                <input type="text" class="form-control" id="STT_USDichVuTuVan" autocomplete="off" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-2">
+                                <label class="form-label" for="DanhGia_USChonViecLam">Đánh giá</label>
+                                <select id="DanhGia_USChonViecLam" tabindex="0" data-dropdown-parent="#mdDichVuTuVan_us" class="form-control">
+                                    <option value="" selected>-Chọn-</option>
+                                    <option value="1">Đạt</option>
+                                    <option value="2">Không đạt</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="mb-2">
+                                <label class="form-label" for="CongViecChinh_USChonViecLam">Nội dung</label>
+                                <input list="countrydata" class="form-control" id="CongViecChinh_USChonViecLam" maxlength="500" required>
+                                <input type="hidden" id="CongViecChinh_USChonViecLamID">
+                                <input type="hidden" id="CongViecChinh_USChonViecLamValue">
+                                @*<textarea list="countrydata" class="form-control" id="CongViecChinh_USChonViecLam" rows="3" maxlength="500" required></textarea>*@
+                                <datalist id="countrydata">
+                                </datalist>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="mb-2">
+                                <label class="form-label" for="NhanXet_USChonViecLam">Nhận xét</label>
+                                <textarea class="form-control" id="NhanXet_USChonViecLam" rows="2" maxlength="500"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-12 padding-0">
+                        <div class="right" style="float:right">
+                            <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                <i class="fa fa-close"></i>&nbsp;Đóng
+                            </a>
+                            <button type="button" id="btnLuuDichVuTuVan_us" class="btn btn-success"><i class="fa fa-save"></i>&ensp;Lưu và đóng</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        setTimeout(() => {
+            $('#DanhGia_USChonViecLam').select2({ width: '100%' })
+        }, 500);
+        
+    })
+    function show_ModalDichVuTuVan() {
+        resetForm('#mdDichVuTuVan_us');
+        $('#CongViecChinh_USChonViecLamID').value('');
+        $('#CongViecChinh_USChonViecLamValue').value('');
+        $('#mdDichVuTuVan_us').modal('show');
+    }
+</script>

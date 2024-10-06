@@ -1,0 +1,81 @@
+﻿@using System.Data;
+@{
+    DataTable dataTable = new TTLD2024.Controllers.LeftBarController().GetMenu();
+    string absolutePath = Request.Url.AbsolutePath.ToString();
+}
+<style>
+        .nav-link p {
+            padding-left: 7px !important;
+        }
+
+        .search-title .text-light {
+            color: #7f7777 !important;
+        }
+
+        a.brand-link > span {
+            color: #2B7DBC;
+        }
+    </style>
+<div class="sidebar" id="sidebar">
+    <script type="text/javascript">
+        try { ace.settings.check('sidebar', 'fixed') } catch (e) { }
+    </script>
+
+    <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+        <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+            <h1 class="navbar-brand navbar-brand-autodark">
+                <a href="#" style="text-decoration: none" class="brand-link">
+                    <img src="/Images/icon_QLLD_title.png" alt="NTSOFT" class="brand-image img-circle elevation-3" style="width: 30px !important;margin-top: -3px;" />
+                    <span class="font-weight-bold text-primary " style="color:#2B7DBC; font-weight:bold;font-size:16px;">NTSOFT - TTLĐ</span>
+                </a>
+            </h1>
+        </div>
+
+        <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+            <h1 class="navbar-brand navbar-brand-autodark">
+                <a href="#" style="text-decoration: none" class="brand-link">
+                    <img src="/Images/icon_QLLD_title.png" alt="NTSOFT" class="brand-image img-circle elevation-3" style="width: 32px !important;margin-top: -3px;" />
+                </a>
+            </h1>
+        </div>
+    </div><!-- #sidebar-shortcuts -->
+
+    <ul class="nav nav-list " style="max-height: 87vh; overflow-y: auto; overflow-x: hidden; scrollbar-width: none; ">
+        @foreach (DataRow item in dataTable.Rows)
+        {
+            <li class="@(item["DuongDan"].ToString() == absolutePath ? "active nts-menu" : new TTLD2024.Controllers.LeftBarController().CheckOpen(absolutePath, item["MenuID"].ToString()).ToString())">
+                <a href="@item["DuongDan"].ToString()" class="@(item["DuongDan"].ToString() == "" ? "dropdown-toggle" : "")"
+                   @(item["MenuButton"].ToString() == "True" ? "onclick=\"OnClickMenu('" + item["DuongDan"].ToString() + "')\"" : "")>
+                    <i class='menu-icon @item["Icon"].ToString()'></i>
+                    <span class="menu-text">@item["TenMenu"].ToString()</span>
+                    @{
+                        string arrowIcon = item["DuongDan"].ToString() == ""  ? "<b class=\"arrow fa-solid fa-chevron-right\"></b>" : "";
+                        HtmlString arrowHtml = new HtmlString(arrowIcon);
+                    }
+                    @arrowHtml
+                </a>
+                @(new HtmlString(new TTLD2024.Controllers.LeftBarController().ChildMenu(absolutePath, item["MenuID"].ToString())))
+            </li>
+        }
+    </ul><!-- /.nav-list -->
+
+    <div class="sidebar-collapse "  id="sidebar-collapse">
+        <i class="icon-double-angle-left fa fa-angles-left menu-collapse" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+    </div>
+
+    <script type="text/javascript">
+        try { ace.settings.check('sidebar', 'collapsed') } catch (e) { }
+    </script>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $(document).on('click', '.sidebar-collapse', function () {
+            var icon = $(".menu-collapse");
+            var currentClass = icon.hasClass("fa-angles-left") ? "fa-angles-left" : "fa-angles-right";
+            var newClass = currentClass === "fa-angles-left" ? "fa-angles-right" : "fa-angles-left";
+            icon.removeClass(currentClass);
+            icon.addClass(newClass);
+        });
+    });
+</script>

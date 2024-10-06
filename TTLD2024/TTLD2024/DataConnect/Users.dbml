@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TTLD2024_mau" Class="UsersDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenDangNhap" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MatMa" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MaXacNhan" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="UserGroupCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UserGroupID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DonViID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="NgayDangNhap" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NgayThaoTac" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DangSD" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Online" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IpNet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UserID_ThaoTac" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="PermissC1" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PhongBanID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="NhanVienID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="MenuID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NgaySinh" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SoDienThoai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MenuID_HienThi" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="HoVaTen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Avatar" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GioiTinh" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DiDong" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CCCD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HoSoCBCCVCID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="DonViXetDuyet" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AuthID" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AuthCode" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="TimeAuthOut" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="thongbaoNC" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TenChucVu" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserPermiss" Member="UserPermisses">
+    <Type Name="UserPermiss">
+      <Column Name="UserPerID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MenuID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Permission" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserGroup" Member="UserGroups">
+    <Type Name="UserGroup">
+      <Column Name="UserGroupID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserGroupCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UserGroupName" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Menu" Member="Menus">
+    <Type Name="Menu">
+      <Column Name="MenuID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MenuCode" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="TenMenu" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="DuongDan" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Icon" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="MenuID_cha" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="SapXep" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MenuButton" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LaMenuCha_Button" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="HienThi" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DuongDanTuyetDoi" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="NoiDungTieuDe" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MenuGroupID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MenuGroup" Member="MenuGroups">
+    <Type Name="MenuGroup">
+      <Column Name="MenuGroupID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MenuGroupCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TenMenuGroup" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Icon" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DienGiai" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DangSD" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblDB" Member="tblDBs">
+    <Type Name="tblDB">
+      <Column Name="dbName" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="dbSize" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="dbRemark" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DonVi" Member="DonVis">
+    <Type Name="DonVi">
+      <Column Name="DonViID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenDonVi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Fax" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaSoThue" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="DonViID_Cha" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="DiaBanHCID_Huyen" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="DangSD" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SoDienThoai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NgayThaoTac" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MaDonVi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaQHNS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DiaBanHCID_Xa" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="DiaBanHCID_Thon" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="DiaBanHCID_Tinh" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Cap" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Log]" Member="Logs">
+    <Type Name="Log">
+      <Column Name="LogID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DonViID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="NgayDangNhap" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TenMayTinh" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="IP" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="KeyUser" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UngVien" Member="UngViens">
+    <Type Name="UngVien">
+      <Column Name="UngVienID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ThanhVienHoGDID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SoDienThoai" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="MatMa" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SoCCCD" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="HoVaTen" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="NgayThangNamSinh" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GioiTinhID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="DanTocID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="TonGiaoID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="NoiSinh" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="QuocTich" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="NgayCap" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NoiCapID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="DoiTuongUuTienID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="AnhDaiDien" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TrangThaiDuyet" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AuthID" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TimeAuthOut" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="HoSoDinhKem" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NgayGuiXetDuyet" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NgayTuChoi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NoiDungTuChoi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MaUngVien" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DinhDanh" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="TrangThaiKichHoat" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NhaTuyenDung" Member="NhaTuyenDungs">
+    <Type Name="NhaTuyenDung">
+      <Column Name="NhaTuyenDungID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ToChucID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SoDienThoai" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="MatMa" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MaSothue" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="SoCCCD" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="TenToChuc" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NguoiDaiDien" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="LoaiHinhDNID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="NganhNgheKD" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TinhID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="HuyenID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="XaID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="DiaChiCuThe" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Logo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Website" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ViTriGoogleMap" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GioiThieu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TrangThaiDuyet" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AuthID" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TimeAuthOut" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="HinhAnhCongTy" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Banner" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="XacThuc" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="NgayTuChoi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NoiDungTuChoi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DangSD" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="NgayThaoTac" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MaNhaTuyenDung" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DinhDanh" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="TrangThaiKichHoat" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.Insert_Log" Method="Insert_Log">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="DonViID" Parameter="donViID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="TenMayTinh" Parameter="tenMayTinh" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="IP" Parameter="iP" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="KeyUser" Parameter="keyUser" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="Insert_LogResult">
+      <Column Name="LogID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DonViID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="NgayDangNhap" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TenMayTinh" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="IP" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="KeyUser" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Insert_Log" Method="Insert_Log1">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="DonViID" Parameter="donViID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="TenMayTinh" Parameter="tenMayTinh" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="IP" Parameter="iP" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="KeyUser" Parameter="keyUser" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="Insert_LogResult1">
+      <Column Name="LogID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DonViID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="NgayDangNhap" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TenMayTinh" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="IP" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="KeyUser" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

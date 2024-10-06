@@ -1,0 +1,763 @@
+﻿
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>HỆ THỐNG QUẢN LÝ NGÂN SÁCH  - NTSOFT QLNS</title>
+    <meta name="description" content="HỆ THỐNG QUẢN LÝ NGÂN SÁCH - NTSOFT QLNS" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <link href="../../Content/TablerTheme/css/Login/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../Content/themes/Theme_1/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../../Content/TablerTheme/css/Login/fonts.googleapis.com.css" />
+    <link rel="stylesheet" href="../../Content/TablerTheme/css/Login/select2.min.css" />
+    <link rel="stylesheet" href="../../Content/TablerTheme/css/Login/jquery-ui.custom.min.css" />
+    <link rel="stylesheet" href="../../Content/TablerTheme/css/Login/jquery.gritter.min.css" />
+    <link rel="stylesheet" href="../../Content/TablerTheme/css/Login/ace.min.css" />
+    <link rel="stylesheet" href="../../Content/TablerTheme/css/Login/style.css" />
+    <link rel="stylesheet" href="../../Content/TablerTheme/css/Login/bootstrap-datepicker3.min.css" />
+    <script src="../../Content/TablerTheme/js/Login/jquery-2.1.4.min.js"></script>
+    <script src="../../Scripts/DungChung/NTSPlugin.js"></script>
+    <script src="../../Scripts/DungChung/NTSLibrary.js"></script>
+
+    <script src="../../Scripts/DungChung/NTSPlugin.js"></script>
+    <link href="../../Content/themes/Theme_1/css/theme-default.css" rel="stylesheet" />
+    <link href="../../css/customs.css" rel="stylesheet" />
+    <link href="../../Content/TablerTheme/Login/toast.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .input-icon > .ace-icon {
+            font-size: 14px;
+        }
+
+        .ntsloadding {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            opacity: 0.5;
+            text-align: center;
+            background: #CCC;
+            filter: alpha(opacity=80);
+        }
+
+        .message-loading-overlay > .ace-icon {
+            position: absolute;
+            top: 40%;
+            left: 49%;
+            right: 0;
+            text-align: center;
+        }
+
+        .login-container {
+            width: 420px;
+            margin: 0 auto;
+        }
+
+        .input-icon > input {
+            padding-left: 5px !important;
+            padding-right: 6px !important;
+        }
+
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+        }
+    </style>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Verdana;
+            font-weight: 300;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            align-items: center;
+            margin-top: -1px;
+            color: 3f3f3f;
+        }
+
+        h1 {
+            font-weight: 300;
+        }
+
+        form {
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 50px;
+            height: 100%;
+            text-align: center;
+            width: 100%;
+        }
+
+        button {
+            border-radius: 6px;
+            padding: 12px 24px;
+            background: #ffffff14;
+            border: 1px solid #fff;
+            color: #fff;
+            cursor: pointer;
+            outline: none;
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: 300;
+            transition: transform 80ms ease-in;
+        }
+
+            button:hover {
+                background: #fff;
+                color: #9b59b6;
+            }
+
+            button:active {
+                transform: scale(0.95);
+            }
+
+        input, input[type="password"], input[type="text"] {
+            background: transparent;
+            padding: 13px 16px;
+            background-color: #f0f4f3;
+            border: none;
+            font-size: 15px;
+            margin-bottom: 7px;
+            width: 100%;
+        }
+
+            input::placeholder {
+                color: #a0a0a0;
+            }
+
+            input[type="password"]::placeholder {
+                color: #a0a0a0;
+            }
+
+            input[type="text"]::placeholder {
+                color: #a0a0a0;
+            }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            position: relative;
+            overflow: hidden;
+            width: 768px;
+            max-width: 100%;
+            min-height: 480px;
+        }
+
+        .form-container {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            transition: all 0.6s ease-in-out;
+        }
+
+            .form-container.sign-in-container {
+                left: 0;
+                width: 60%;
+                z-index: 2;
+            }
+
+            .form-container.sign-up-container {
+                left: 0;
+                width: 60%;
+                opacity: 0;
+                z-index: 1;
+            }
+
+            .form-container button, .form-container a {
+                background: #9b59b6;
+                border: 1px solid #bfdeff;
+                color: #fff;
+            }
+
+            .form-container a {
+                margin-top: 8px;
+                text-decoration: none;
+                cursor: pointer;
+                border-radius: 6px;
+                padding: 12px 24px;
+                cursor: pointer;
+                outline: none;
+                font-size: 13px;
+                text-transform: uppercase;
+                font-weight: 300;
+                transition: transform 80ms ease-in;
+                font-family: inherit;
+                font-size: inherit;
+                line-height: 15px;
+                height: 40px;
+                width: 100%;
+            }
+
+            .form-container button:hover {
+                background: transparent;
+                color: #9b59b6;
+            }
+
+            .form-container a:hover {
+                background: transparent;
+                color: #9b59b6;
+            }
+
+        .container.right-panel-active .sign-in-container {
+            transform: translateX(66.5%);
+        }
+
+        .container.right-panel-active .sign-up-container {
+            transform: translateX(66.5%);
+            opacity: 1;
+            z-index: 5;
+            animation: show 0.6s;
+        }
+
+        .overlay-container {
+            position: absolute;
+            top: 0;
+            left: 60%;
+            width: 40%;
+            height: 100%;
+            overflow: hidden;
+            transition: transform 0.6s ease-in-out;
+            z-index: 100;
+        }
+
+            .overlay-container .overlay {
+                background: linear-gradient(-45deg, #9b59b6, #edc4ff, #ffffff);
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: 0 0;
+                color: #ffffff;
+                position: relative;
+                left: -100%;
+                left: -150%;
+                height: 100%;
+                width: 250%;
+                transform: translateX(0);
+                transition: transform 0.6s ease-in-out;
+            }
+
+                .overlay-container .overlay .overlay-panel {
+                    position: absolute;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    padding: 0 30px;
+                    text-align: center;
+                    top: 0;
+                    height: 100%;
+                    width: 40%;
+                    transform: translateX(0);
+                    transition: transform 0.6s ease-in-out;
+                }
+
+                    .overlay-container .overlay .overlay-panel.overlay-left {
+                        transform: translateX(-20%);
+                    }
+
+                    .overlay-container .overlay .overlay-panel.overlay-right {
+                        right: 0;
+                        transform: translateX(0);
+                    }
+
+        .container.right-panel-active .overlay-container {
+            transform: translateX(-150%);
+        }
+
+            .container.right-panel-active .overlay-container .overlay {
+                transform: translateX(60%);
+            }
+
+                .container.right-panel-active .overlay-container .overlay .overlay-left {
+                    transform: translateX(0);
+                }
+
+                .container.right-panel-active .overlay-container .overlay .overlay-right {
+                    transform: translateX(20%);
+                }
+
+        .bg-bubbles li {
+            position: absolute;
+            list-style: none;
+            display: block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.15);
+            bottom: -160px;
+            -webkit-animation: square 25s infinite;
+            animation: square 25s infinite;
+            -webkit-transition-timing-function: linear;
+            transition-timing-function: linear;
+            z-index: 1;
+        }
+
+            .bg-bubbles li:nth-child(1) {
+                left: 10%;
+            }
+
+            .bg-bubbles li:nth-child(2) {
+                left: 20%;
+                width: 80px;
+                height: 80px;
+                -webkit-animation-delay: 2s;
+                animation-delay: 2s;
+                -webkit-animation-duration: 17s;
+                animation-duration: 17s;
+            }
+
+            .bg-bubbles li:nth-child(3) {
+                left: 25%;
+                -webkit-animation-delay: 4s;
+                animation-delay: 4s;
+            }
+
+            .bg-bubbles li:nth-child(4) {
+                left: 40%;
+                width: 60px;
+                height: 60px;
+                -webkit-animation-duration: 22s;
+                animation-duration: 22s;
+                background-color: rgba(255, 255, 255, 0.25);
+            }
+
+            .bg-bubbles li:nth-child(5) {
+                left: 70%;
+            }
+
+            .bg-bubbles li:nth-child(6) {
+                left: 80%;
+                width: 120px;
+                height: 120px;
+                -webkit-animation-delay: 3s;
+                animation-delay: 3s;
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+
+            .bg-bubbles li:nth-child(7) {
+                left: 32%;
+                width: 160px;
+                height: 160px;
+                -webkit-animation-delay: 7s;
+                animation-delay: 7s;
+            }
+
+            .bg-bubbles li:nth-child(8) {
+                left: 55%;
+                width: 20px;
+                height: 20px;
+                -webkit-animation-delay: 15s;
+                animation-delay: 15s;
+                -webkit-animation-duration: 40s;
+                animation-duration: 40s;
+            }
+
+            .bg-bubbles li:nth-child(9) {
+                left: 25%;
+                width: 10px;
+                height: 10px;
+                -webkit-animation-delay: 2s;
+                animation-delay: 2s;
+                -webkit-animation-duration: 40s;
+                animation-duration: 40s;
+                background-color: rgba(255, 255, 255, 0.3);
+            }
+
+            .bg-bubbles li:nth-child(10) {
+                left: 90%;
+                width: 160px;
+                height: 160px;
+                -webkit-animation-delay: 11s;
+                animation-delay: 11s;
+            }
+
+        @keyframes show {
+            0%, 39.99% {
+                opacity: 0;
+                z-index: 1;
+            }
+
+            40%, 100% {
+                opacity: 1;
+                z-index: 5;
+            }
+        }
+
+        @keyframes square {
+            0% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
+
+            100% {
+                -webkit-transform: translateY(-700px) rotate(600deg);
+                transform: translateY(-700px) rotate(600deg);
+            }
+        }
+
+        input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], textarea {
+            background-color: #f0f4f3 !important;
+        }
+
+        @media (min-width: 768px) {
+            .d-md-flex {
+                display: -ms-flexbox !important;
+                display: flex !important;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .order-md-last {
+                -webkit-box-ordinal-group: 14;
+                -ms-flex-order: 13;
+                order: 13;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .text-wrap, .login-wrap {
+                width: 100% !important;
+            }
+
+            .text-wrap-h {
+                height: 100px !important;
+            }
+
+            .overlay-container {
+                left: 0%;
+                width: 250%;
+            }
+
+                .overlay-container .overlay {
+                    left: 0%;
+                    width: 100%;
+                }
+            /* .overlay-panel.overlay-left {
+                display: none !important;
+            }*/
+
+            .order-md-last > p {
+                display: none !important;
+            }
+
+            .text-wrap > button {
+                display: none !important;
+            }
+
+            .social-login {
+                display: none !important;
+            }
+
+            #signInVer2 {
+                display: block !important;
+            }
+
+            form {
+                padding: 0 15px !important;
+                margin-top: 40px !important;
+                width: 250% !important;
+            }
+
+            h3 {
+                font-size: 18px !important;
+                margin-top: 60px !important;
+            }
+
+            .container.right-panel-active .overlay-container {
+                transform: translateX(-60%);
+            }
+
+            .text-wrap-re {
+                width: 40% !important;
+            }
+
+            .overlay-container .overlay .overlay-panel.overlay-left {
+                transform: translateX(0%);
+            }
+
+            .container.right-panel-active .sign-up-container {
+                transform: translateX(0%) !important;
+            }
+
+            .formVer2 {
+                margin-top: 0px !important;
+            }
+
+            .container {
+                width: 360px;
+            }
+        }
+
+        .text-wrap, .login-wrap {
+            width: 60%;
+        }
+
+        body {
+            background-size: cover;
+            background-position: center;
+        }
+        input[type=text]:focus-visible {
+            border: 1px solid #46A2FE !important;
+        }
+
+        input[type=password]:focus-visible {
+            border: 1px solid #46A2FE !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="toast hide" id="show_canhbao">
+            <div class="content">
+
+                <div class="details">
+                    <i class="fa fa-bell"></i>&nbsp;&nbsp;<span> Cảnh bảo</span>
+                    <p style="color:white;padding-top:3px">Hurray! Internet is connected.</p>
+                </div>
+            </div>
+            <div class="close-icon"><i class="fa fa-times"></i></div>
+        </div>
+    </div>
+    <div class="container" id="container">
+
+
+        <div class="form-container sign-up-container  d-md-flex text-wrap text-wrap-re">
+            <form class="formVer2">
+                <h2 class="text-primary">QUÊN MẬT KHẨU</h2>
+                <div class="space-6"></div>
+                <p>Nhập tên đăng nhập của bạn hệ thống sẽ gửi mã xác thực đến mail bạn đã đăng ký trước đó</p>
+                <input placeholder="Tên đăng nhập" />
+
+                <button style="width:100%">Gửi mã xác nhận</button>
+                <a class="ghost" id="signInVer2" style="display:none">Quay lại</a>
+            </form>
+
+        </div>
+        <div class="form-container sign-in-container  d-md-flex text-wrap text-wrap-re">
+            <form>
+                <h3 class="text-primary">NHẬP MÃ XÁC THỰC</h3>
+                <div class="space-6"></div>
+                <input  type="text" id="txtMaXacThuc" placeholder="Mã xác thực" />
+
+                <div class="row" style="width: 100%;">
+                    <div class="col-md-6 no-padding-left">
+                        <!--<button style="background: unset; border: unset; color: black; text-transform: unset;float:left " id="btnTrangChu">Gửi lại mã</button>-->
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                </div>
+                <button style="width:100%;" id="btnXacThuc" onclick="return false"><i class="fa fa-lock"></i> Đặt lại mật khẩu</button>
+            </form>
+        </div>
+        <div class="overlay-container text-wrap-h">
+
+            <div class="overlay">
+                <div class="bg-bubbles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </div>
+
+                <div class="overlay-panel overlay-left  order-md-last text-wrap text-wrap-re">
+                    <h3 style="line-height:1.3"><span class="lblTenPhanMem"></span> <br /><span class="text-danger lblTenVietTatPM" style="color: #c25a5a; text-shadow: #ffe0e0 1px 0 3px; "></span></h3>
+                    <div class="space-20"></div>
+
+                    <div class="social-login left" style="">
+                        <i class="ace-icon fa fa-phone-square"></i>
+                        Điện thoại: <span class="lblSoDienThoai">(0270) 3 843 058</span><br>
+                        <i class="ace-icon fa fa-envelope"></i>
+                        Email: <span class="lblEmail">ntsoft@nhattamsoft.vn</span><br>
+                        <i class="ace-icon fa fa-edge"></i>
+                        Website: <span class="lblweb">nhattamsoft.vn</span>
+                    </div>
+                    <div class="social-login center" style="font-style: italic">
+                        <i>Hỗ trợ khách hàng: Sáng từ 7h30 đến 11h, chiều từ 13h30 đến 17h00 các ngày trong tuần từ Thứ Hai đến Thứ Bảy</i>
+                    </div>
+                    <div class="space-6"></div>
+                    <button class="ghost" id="signIn">Quay lại</button>
+                </div>
+                <div class="overlay-panel overlay-right  order-md-last text-wrap text-wrap-re">
+                    <h3 style="line-height:1.3"><span class="lblTenPhanMem"></span> <br /><span class="text-danger lblTenVietTatPM" style="color: #c25a5a; text-shadow: #ffe0e0 1px 0 3px; "></span></h3>
+                    <div class="space-20"></div>
+
+                    <div class="social-login left" style="">
+                        <i class="ace-icon fa fa-phone-square"></i>
+                        Điện thoại: <span class="lblSoDienThoai">(0270) 3 843 058</span><br>
+                        <i class="ace-icon fa fa-envelope"></i>
+                        Email: <span class="lblEmail">ntsoft@nhattamsoft.vn</span><br>
+                        <i class="ace-icon fa fa-edge"></i>
+                        Website: <span class="lblweb">nhattamsoft.vn</span>
+                    </div>
+                    <div class="space-6"></div>
+                    <div class="social-login center" style="font-style: italic">
+                        <i>Hỗ trợ khách hàng: Sáng từ 7h30 đến 11h, chiều từ 13h30 đến 17h00 các ngày trong tuần từ Thứ Hai đến Thứ Bảy</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../Content/TablerTheme/js/Login/jquery-2.1.4.min.js"></script>
+    <script src="../../Content/TablerTheme/js/Login/ace-extra.min.js"></script>
+    <script src="../../Content/TablerTheme/js/Login/bootstrap.min.js"></script>
+    <script src="../../Content/themes/Theme_1/material-preloader/js/materialPreloader.js"></script>
+    <script src="../../Content/TablerTheme/js/Login/jquery.gritter.min.js"></script>
+    <script src="../../Content/TablerTheme/js/Login/bootbox.js"></script>
+    <script src="../../Content/TablerTheme/js/Login/select2.min.js"></script>
+    <script src="../../Content/TablerTheme/js/Login/ace-elements.min.js"></script>
+    <script src="../../Content/TablerTheme/js/Login/ace.min.js"></script>
+    <script src="../../Content/TablerTheme/js/Login/jquery-ui.min.js"></script>
+    <script src="../../Content/TablerTheme/js/Login/jquery.mask.min.js"></script>
+    <script src="../../Content/TablerTheme/js/Login/bootstrap-datepicker.min.js"></script>
+    <script src="../../Content/TablerTheme/js/Login/bootstrap-timepicker.min.js"></script>
+    <script src="../../Content/TablerTheme/js/Login/moment.min.js"></script>
+    <script src="../../Content/TablerTheme/js/Login/bootstrap-datetimepicker.min.js"></script>
+    <script src="../../Scripts/DungChung/NTSLibrary.js"></script>
+    <script src="../../Content/themes/Theme_1/js/jquery.ripples.js"></script>
+    <script>
+        const container = document.getElementById('container');
+        const signInButtonVer2 = document.getElementById('signInVer2');
+        const buttons = document.querySelectorAll('.form-container button')
+
+        buttons[0].addEventListener('click', (e) => {
+            e.preventDefault()
+        })
+        buttons[1].addEventListener('click', (e) => {
+            e.preventDefault()
+        })
+    </script>
+    <script type="text/javascript">
+        function offline() { //function for offline
+            wrapper.classList.remove("hide");
+            toast.classList.add("offline");
+            title.innerText = "You're offline now";
+            subTitle.innerText = "Opps! Internet is disconnected.";
+            wifiIcon.innerHTML = '<i class="uil uil-wifi-slash"></i>';
+        }
+        $(".close-icon").on("click", async function () {
+            $("#show_canhbao").removeClass("hide");
+            $("#show_canhbao").addClass("hide");
+        });
+        function canhbao(noidung) {
+            $("#show_canhbao").removeClass("hide");
+            $('#show_canhbao').removeClass("tb");
+            const wrapper = document.querySelector(".wrapper"),
+                toast = wrapper.querySelector(".toast"),
+                title = toast.querySelector("span"),
+                subTitle = toast.querySelector("p"),
+                wifiIcon = toast.querySelector(".icon"),
+                closeIcon = toast.querySelector(".close-icon");
+            toast.classList.remove("offline");
+            title.innerText = "Cảnh báo";
+            subTitle.innerText = noidung;
+            setTimeout(function () {
+                $("#show_canhbao").removeClass("hide");
+                $("#show_canhbao").addClass("hide");
+            }, 5000);
+        }
+        function thongbao(noidung) {
+            $("#show_canhbao").removeClass("hide");
+            $('#show_canhbao').addClass("tb");
+            const wrapper = document.querySelector(".wrapper"),
+                toast = wrapper.querySelector(".toast"),
+                title = toast.querySelector("span"),
+                subTitle = toast.querySelector("p"),
+                wifiIcon = toast.querySelector(".icon"),
+                closeIcon = toast.querySelector(".close-icon");
+            toast.classList.remove("offline");
+            title.innerText = "Thông báo";
+            subTitle.innerText = noidung;
+            setTimeout(function () {
+                $("#show_canhbao").removeClass("hide");
+                $("#show_canhbao").addClass("hide");
+            }, 5000);
+        }
+        var AuthID = "";
+        $(document).ready(function () {
+
+            if (location.href.search('=') != -1) {
+                AuthID = location.href.split('=')[1];
+            }
+            var resultCauHinhWebSite3 = NTS.getAjax("/HeThong/Login/GetCauHinhWebSite3", {});
+            if (resultCauHinhWebSite3.length > 0) {
+                $('.lblTenVietTatPM').text(resultCauHinhWebSite3[0].TenPMVietTatPM);
+                $('.lblTenPhanMem').text(resultCauHinhWebSite3[0].TenPhanMem);
+                $('.lblSoDienThoai').text(resultCauHinhWebSite3[0].SoDT);
+                $('.lblEmail').text(resultCauHinhWebSite3[0].Email);
+                $('.lblweb').text(resultCauHinhWebSite3[0].Web);
+                $('body').css('background-image', 'url('+resultCauHinhWebSite3[0].Banner+')');
+            } else {
+                $('.lblTenVietTatPM').text("");
+                $('.lblTenPhanMem').text("");
+                $('.lblSoDienThoai').text("");
+                $('.lblEmail').text("");
+                $('.lblweb').text("");
+            }
+        });
+
+        $(document).on('click', '#btnXacThuc', async function () {
+            debugger
+            if ($('#txtMaXacThuc').val().length == 6) {
+                var data = JSON.parse(NTS.getAjax('/api/checkAuthCode', { code: $('#txtMaXacThuc').value() + '_' + AuthID }));
+                if (data.split('_')[0] == "1") {
+                    NTS.dongthongbao();
+                    thongbao(data.split('_')[2])
+                    setTimeout(function () {
+                        window.location = "/ResetPassword/ResetPassword.html?AuthID=" + data.split('_')[1];
+                    }, 3000);
+                }
+                else
+                    if (data.split('_')[0] == "0") {
+                        NTS.dongthongbao();
+                        canhbao(data.split('_')[1]);
+                    }
+                    else
+                        if (data.split('_')[0] == "-1") {
+                            NTS.dongthongbao();
+                            canhbao(data.split('_')[1]);
+                        }
+                        else
+                            if (data.split('_')[0] == "-2") {
+                                NTS.dongthongbao();
+                                canhbao(data.split('_')[1]);
+                                setTimeout(function () {
+                                    window.location = "/hethong/login";
+                                }, 3000);
+                            }
+            } else {
+                NTS.dongthongbao();
+                canhbao('Vui lòng nhập đủ 6 ký tự!');
+                return false;
+            }
+            return false;
+        });
+        $(document).on('click', '#btnTrangChu', async function () {
+            window.location = "/hethong/login";
+            return false;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+﻿<style type="text/css">
+    span#select2-Cap2_2_us-container {
+        text-align: left;
+    }
+
+    #mdChonPhieuDKGTVL_us {
+    }
+    .MoTa_CT {
+        width: 550px;
+        height: 130px;
+    }
+</style>
+<div id="mdChonPhieuDKGTVL_us" class="modal modal-blur fade" data-backdrop="static">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document" style="max-width: 60% !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-bold" id="tieuDeChonPhieuDKGTVL_us">Chọn việc làm đang tuyển dụng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body padding-10">
+                <div class="col-sm-4 col-xs-12">
+                    <div class="input-group">
+                        <input style=" height: 32px !important;" class="form-control input-sm" type="text" id="timKiemPhieuDKGTVL_us_Chon" placeholder="Nội dung tìm kiếm" autocomplete="off" />
+                        <span class="input-group-addon" style="margin: 0; padding: 0; border: none;">
+                            <button class="btn btn-primary btn-sm" id="TimKiemNangCao_PhieuDKGTVL_us" style="border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; width: 35px; height: 32px"><span class="fas fa-sliders-h" aria-hidden="true"></span></button>
+                        </span>
+                        <span class="input-icon-addon" style="margin-right: 40px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                        </span>
+                    </div>
+                    <div id="KhungTimKiem_PhieuDKGTVL_us" style="width: 35%; z-index: 99; position: absolute; margin-top: 4px; background: #fff; padding: 12px 12px 8px 12px; border: 1px solid #e5e5e5; border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.20) 0px 5px 15px; display: none">
+                        <div class="row" style=" margin-bottom: 4px">
+                            <div class="col-md-12">
+                                <span style="font-size: 16px; color: var(--tblr-color-header);"><i class="fa fa-search"></i>Tìm kiếm nâng cao</span>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class=" col-md-6">
+                                <label for="TinhID_timKiemPhieuDKGTVL_us_Chon" class="form-label">Tỉnh/Thành phố</label>
+                                <select class="form-control input-sm" id="TinhID_timKiemPhieuDKGTVL_us_Chon"></select>
+                            </div>
+                            <div class=" col-md-6">
+                                <label for="HuyenID_timKiemPhieuDKGTVL_us_Chon" class="form-label">Quận/Huyện</label>
+                                <select class="form-control input-sm" id="HuyenID_timKiemPhieuDKGTVL_us_Chon"></select>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class=" col-md-6">
+                                <label for="XaID_timKiemPhieuDKGTVL_us_Chon" class="form-label">Phường/Xã</label>
+                                <select class="form-control input-sm" id="XaID_timKiemPhieuDKGTVL_us_Chon"></select>
+                            </div>
+                            <div class=" col-md-6">
+                                <label for="ThonID_timKiemPhieuDKGTVL_us_Chon" class="form-label">Thôn/Xóm</label>
+                                <select class="form-control input-sm" id="ThonID_timKiemPhieuDKGTVL_us_Chon"></select>
+                            </div>
+                        </div>
+
+                        <hr style="margin: 1rem 0;" />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" style="text-align: right">
+                                    <a href="#" class="btn btn-outline-danger" id="DongTimKiem_US"><i class="fa fa-close"></i> &ensp; Đóng</a>
+                                    <button type="button" id="btntimKiemPhieuDKGTVL_us_Chon" class="btn btn-success" style="background: var(--tblr-color-header);"><i class="fa fa-search"></i>&ensp;Tìm kiếm</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="Grid_ChonPhieuDKGTVLTT_us"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-12 padding-0">
+                        <div class="right" style="float:right">
+                            <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                <i class="fa fa-close"></i>&nbsp;Đóng
+                            </a>
+                            <button type="button" id="btnChonVaDongPhieuDKGTVL_us" class="btn btn-success"><i class="fa fa-check"></i>&ensp;Chọn và đóng</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Modal xem chi tiet đăng ký dịch vụ *@
+<div id="mdXemThem" class="modal modal-blur fade" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-top" role="document" style="max-width: 550px !important;">
+        <div class="modal-content">
+            <div class="modal-header nts-modal">
+                <h5 id="tieuDeModalCT" class="modal-title text-bold">Thêm mới</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <p id="NoiDungGhiChu_CT" class="MoTa_CT"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //setTimeout(function () {
+        //    LoadTimKiem_ChonHGD();
+        //    PhanQuyenComBoDiaBan('TinhID_timKiemPhieuDKGTVL_us_Chon', 'HuyenID_timKiemPhieuDKGTVL_us_Chon', 'XaID_timKiemPhieuDKGTVL_us_Chon', 'ThonID_timKiemPhieuDKGTVL_us_Chon');
+        //}, 250);
+    });
+
+    function LoadTimKiem_ChonPhieuDKGTVL() {
+        NTS.loadDataCombo({
+            name: '#TinhID_timKiemPhieuDKGTVL_us_Chon',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCTinh_Combo',
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '--Tất cả--',
+            showTatCa: !0,
+        });
+        NTS.loadDataCombo({
+            name: '#HuyenID_timKiemPhieuDKGTVL_us_Chon',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCHuyen_Combo',
+            ajaxParam: { id: '' },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '--Tất cả--',
+            showTatCa: !0,
+        });
+        NTS.loadDataCombo({
+            name: '#XaID_timKiemPhieuDKGTVL_us_Chon',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCXa_Combo',
+            ajaxParam: { id: '' },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '--Tất cả--',
+            showTatCa: !0,
+        });
+        NTS.loadDataCombo({
+            name: '#ThonID_timKiemPhieuDKGTVL_us_Chon',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCThon_Combo',
+            ajaxParam: { id: '' },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '--Tất cả--',
+            showTatCa: !0,
+        });
+    }
+    //-----------------------Change bộ lọc-------------------------//
+    $(document).on('change', '#TinhID_timKiemPhieuDKGTVL_us_Chon', function () {
+        NTS.loadDataCombo({
+            name: '#HuyenID_timKiemPhieuDKGTVL_us_Chon',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCHuyen_Combo',
+            ajaxParam: { id: $('#TinhID_timKiemPhieuDKGTVL_us_Chon').value() },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '--Tất cả--',
+            showTatCa: !0
+        });
+        NTS.loadDataCombo({
+            name: '#XaID_timKiemPhieuDKGTVL_us_Chon',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCXa_Combo',
+            ajaxParam: { id: '' },
+            indexValue: 0,
+            indexText: 2,
+            textShowTatCa: '--Tất cả--',
+            showTatCa: !0
+        });
+        NTS.loadDataCombo({
+            name: '#ThonID_timKiemPhieuDKGTVL_us_Chon',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCThon_Combo',
+            ajaxParam: { id: '' },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '--Tất cả--',
+            showTatCa: !0
+        });
+    });
+    $(document).on('change', '#HuyenID_timKiemPhieuDKGTVL_us_Chon', function () {
+        NTS.loadDataCombo({
+            name: '#XaID_timKiemPhieuDKGTVL_us_Chon',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCXa_Combo',
+            ajaxParam: { id: $('#HuyenID_timKiemPhieuDKGTVL_us_Chon').value() },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '--Tất cả--',
+            showTatCa: !0
+        });
+        NTS.loadDataCombo({
+            name: '#ThonID_timKiemPhieuDKGTVL_us_Chon',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCThon_Combo',
+            ajaxParam: { id: '' },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '--Tất cả--',
+            showTatCa: !0
+        });
+    });
+    $(document).on('change', '#XaID_timKiemPhieuDKGTVL_us_Chon', function () {
+        NTS.loadDataCombo({
+            name: '#ThonID_timKiemPhieuDKGTVL_us_Chon',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCThon_Combo',
+            ajaxParam: { id: $('#XaID_timKiemPhieuDKGTVL_us_Chon').value() },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '--Tất cả--',
+            showTatCa: !0
+        });
+    });
+
+    $(document).on('click', '#TimKiemNangCao_PhieuDKGTVL_us', function () {
+        if ($('#KhungTimKiem_PhieuDKGTVL_us').css('display') == "block") {
+            $('#KhungTimKiem_PhieuDKGTVL_us').slideUp(200);
+        } else {
+            $('#KhungTimKiem_PhieuDKGTVL_us').slideDown(200);
+        }
+        return false;
+    });
+
+    $(document).on('click', '#DongTimKiem_US', function () {
+        $('#KhungTimKiem_PhieuDKGTVL_us   ').slideUp(200);
+        return false;
+    });
+
+    var fmDangKyDV = function (cell) {
+        var ID = cell.getData().PhieuDKGTVLID;
+        var DangKyDV = cell.getValue();
+        if (DangKyDV == ";") {
+            return `
+                    <div class="col-md-12">
+                        <p class="Content-text" style="margin-bottom: 0;"></p>
+                    </div>`;
+        }
+        if (DangKyDV != "") {
+            if (DangKyDV.length > 40) {
+                DangKyDV = DangKyDV.substring(0, 30) + "...";
+                return `
+                        <div class="col-md-12" style="padding-right: 0px; padding-left: 0px; padding-bottom:4px;">
+                            <div class="Content-text">${DangKyDV}<span class='btnXemThemDangKyDV' style='color:var(--tblr-primary);'  title="Xem chi tiết ngành nghề kinh doanh chính" data='${ID}' data-loai='TC'>Xem thêm</span></div>
+                        </div>`;
+            } else {
+                return `
+                    <div class="col-md-12">
+                        <p class="Content-text" style="margin-bottom: 0;">${DangKyDV}</p>
+                    </div>`;
+            }
+        } else {
+            return `
+                    <div class="col-md-12">
+                        <p class="Content-text" style="margin-bottom: 0;">${DangKyDV}</p>
+                    </div>`;
+        }
+    }
+
+    var Grid_ChonPhieuDKGTVLTT_us = new Tabulator("#Grid_ChonPhieuDKGTVLTT_us", {
+        height: 400,
+        layout: "fitColumns",
+        pagination: "local",
+        selectableRows: 1,
+        paginationSize: 50,
+        paginationSizeSelector: [50, 100, 150, 250, 500, true],
+        columns: [
+            { title: "Mã số", field: "MaSo", formatter: 'textarea', width: 100, vertAlign: "middle", headerHozAlign: "center", hozAlign: "left" },
+            { title: "Tên công việc", field: "TenCongViec", formatter: 'textarea', vertAlign: "middle", minWidth: 200, headerHozAlign: "center", hozAlign: "left" },
+            { title: "Tên tổ chức", field: "TenToChuc", formatter: 'textarea', minWidth: 350, vertAlign: "middle", headerHozAlign: "center", hozAlign: "left" },
+            { title: "Mã số thuế/CCCD/CMND", field: "MaSoThue", formatter: 'textarea', vertAlign: "middle", minWidth: 150, headerHozAlign: "center", hozAlign: "left" },
+            { title: "Loại hình doanh nghiệp", field: "TenLoaiHinhDN", formatter: 'textarea', vertAlign: "middle", minWidth: 200, headerHozAlign: "center", hozAlign: "left" },
+            { title: "Số lượng tuyển", field: "SoLuongTuyen", formatter: 'textarea', vertAlign: "middle", minWidth: 150, headerHozAlign: "center", hozAlign: "right" },
+            { title: "Vị trí tuyển dụng", field: "TenChucVu", formatter: 'textarea', vertAlign: "middle", minWidth: 150, headerHozAlign: "center", hozAlign: "left" },
+            { title: "Số điện thoại", field: "SoDienThoai", formatter: 'textarea', vertAlign: "middle", minWidth: 150, headerHozAlign: "center", hozAlign: "left" },
+            { title: "Email", field: "Email", formatter: 'textarea', vertAlign: "middle", minWidth: 200, headerHozAlign: "center", hozAlign: "left" },
+            { title: "Địa chỉ", field: "DiaChiCuThe", formatter: 'textarea', minWidth: 300, vertAlign: "middle", headerHozAlign: "center", hozAlign: "left" },
+            { title: "Thời hạn tuyển dụng", field: "ThoiHanTuyenDung", formatter: 'textarea', minWidth: 200, vertAlign: "middle", headerHozAlign: "center", hozAlign: "center" },
+            { title: "Đăng ký dịch vụ", field: "TenDKDVTuVan", formatter: fmDangKyDV, vertAlign: "middle", minWidth: 250, headerHozAlign: "center", hozAlign: "left" },
+            { title: "PhieuDKGTVLID", field: "PhieuDKGTVLID", width: 0, visible: false },
+            { title: "ChucVu", field: "ChucVu", width: 0, visible: false },
+            { title: "HocVan", field: "HocVan", width: 0, visible: false },
+            { title: "TenTrinhDoCMKT", field: "TenTrinhDoCMKT", width: 0, visible: false },
+            { title: "TenHinhThucLamViec", field: "TenHinhThucLamViec", width: 0, visible: false },
+            { title: "TenMucLuong", field: "TenMucLuong", width: 0, visible: false },
+            { title: "CheDoPhucLoi", field: "CheDoPhucLoi", width: 0, visible: false },
+            { title: "DieuKienLV", field: "DieuKienLV", width: 0, visible: false },
+            { title: "HinhThucTuyenDung", field: "HinhThucTuyenDung", width: 0, visible: false },
+            { title: "HanTuyenDung", field: "HanTuyenDung", width: 0, visible: false },
+        ],
+        locale: true,
+        paginationCounter: "rows",
+        langs: TabulatorLangsVi,
+        placeholder: 'Không có dữ liệu',
+    });
+   
+    $(document).on('keyup', '#timKiemPhieuDKGTVL_us_Chon', function (e) {
+        if (e.keyCode == '13') {
+            Grid_ChonPhieuDKGTVLTT_us.setFilter(matchAny, { value: $(this).val() });
+        }
+    });
+
+    $(document).on('click', '.input-icon-addon', function () {
+        Grid_ChonPhieuDKGTVLTT_us.setFilter(matchAny, { value: $('#timKiemPhieuDKGTVL_us_Chon').val() });
+    });
+
+    // Xem chi tiết nội dung ghi chú hộ gia đình
+    $(document).on('click', '.btnXemThemDangKyDV', function () {
+        $('#PhieuDKGTVLID').val($(this).attr('data'));
+        XemChiTietbtnXemThemDangKyDV($(this).attr('data'));
+    });
+
+    function XemChiTietbtnXemThemDangKyDV(ID) {
+        $("#mdXemThem").modal('show');
+        $('#tieuDeModalCT').text('Chi tiết nội dung đăng ký dịch vụ');
+        const result = NTS.getAjax("/QuanLy/PhieuDangKyCungUngLaoDong/DangKyDichVuCT", { id: ID });
+        if (!result.Err && result.Result != null) {
+            let data = result.Result[0];
+            let tenDangKyDV = data.TenDKDVTuVan;
+
+            // Tách chuỗi thành các phần tử dựa trên dấu phẩy và khoảng trắng
+            let DangKyDVArray = tenDangKyDV.split(';').map(item => item.trim()).filter(item => item);
+
+            // Tạo HTML với mỗi phần tử trên một dòng
+            let htmlContent = DangKyDVArray.map(item => `- ${item};`).join('<br>');
+
+            $('#NoiDungGhiChu_CT').html(htmlContent);
+        } else {
+            $('#NoiDungGhiChu_CT').html("Chưa có dữ liệu");
+        }
+        return;
+    }
+
+
+</script>

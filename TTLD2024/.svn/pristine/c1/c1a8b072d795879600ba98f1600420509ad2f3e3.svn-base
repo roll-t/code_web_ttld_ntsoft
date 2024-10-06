@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .KhungVien {
+        padding: 5px 10px 10px 10px !important;
+    }
+</style>
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="page-content">
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <fieldset class="KhungVien">
+                        <legend><span>Danh sách người dùng</span></legend>
+                        <div class="row mb-2" style="margin-top: 4px">
+                            <div class="col-sm-5 col-xs-6">
+                                <div class="input-icon mb-3">
+                                    <input type="text" value="" class="form-control" placeholder="Nội dung tìm kiếm ..." id="timKiemDanhSachNguoiDung" autocomplete="off">
+                                    <span class="input-icon-addon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-7 col-xs-6">
+                                <select class="form-control" id="ChonDonVi" tabindex="0"></select>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div id="GridDanhSachNguoiDung" class="GridData"></div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-md-6">
+                    <fieldset class="KhungVien">
+                        <legend><span>Nhật ký đăng nhập</span></legend>
+                        <div class="row mb-2" style="margin-top: 4px">
+                            <div class="col-sm-5 col-xs-6">
+                                <div class="input-icon mb-3">
+                                    <input type="text" value="" class="form-control" placeholder="Nội dung tìm kiếm ..." id="timKiemNhatKySuDung" autocomplete="off">
+                                    <span class="input-icon-addon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div id="GridNhatKySuDung" class="GridData"></div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Areas/HeThong/Scripts/NhatKyDangNhap.js" defer="defer"></script>
+

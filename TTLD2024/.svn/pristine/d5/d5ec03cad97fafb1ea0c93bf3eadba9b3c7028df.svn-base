@@ -1,0 +1,666 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+    @@media (min-width: 992px) {
+        #mdThemMoi .modal-dialog {
+            width: 50% !important;
+        }
+    }
+    @@media (max-width: 991px) {
+        .bootbox .modal-dialog {
+            width: 95% !important;
+        }
+    }
+</style>
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="page-content">
+            <div id="Div1">
+                <div class="row">
+                    <div class="col-md-9">
+                        <button style="margin-left:4px" class="btn btn-sm btn-primary" id="btnThemMoi"><i class="fa fa-plus"></i>&ensp;Thêm mới</button>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="input-icon" style="float: right;">
+                            <input type="text" placeholder="Nội dung tìm kiếm ..." class="nav-search-input" id="timKiem" autocomplete="off">
+                            <i class="ace-icon fa fa-search nav-search-icon"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="space-4"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="Grid1" class="GridData"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="Div2" style="display: none">
+                <div class="col-xs-12 no-padding">
+                    <div class="widget-box" style="float: left">
+                        <div class="widget-body" style="">
+                            <div class="widget-main" style="padding: 4px 0px 10px 0px;">
+                                <div id="fuelux-wizard-container">
+                                    <div>
+                                        <ul class="steps">
+                                            <li data-step="1" class="active">
+                                                <span class="step">1</span>
+                                                <span class="title">Thông tin loại chứng từ</span>
+                                            </li>
+                                            <li data-step="2">
+                                                <span class="step">2</span>
+                                                <span class="title">
+                                                    Cấu hình lưới<br />
+                                                    xem chi tiết
+                                                </span>
+                                            </li>
+                                            <li data-step="3">
+                                                <span class="step">3</span>
+                                                <span class="title">
+                                                    Cấu hình lưới<br />
+                                                    hạch toán đồng thời
+                                                </span>
+                                            </li>
+                                            <li data-step="4">
+                                                <span class="step">4</span>
+                                                <span class="title">
+                                                    Cấu hình lưới<br />
+                                                    hạch toán
+                                                </span>
+                                            </li>
+                                            <li data-step="5">
+                                                <span class="step">5</span>
+                                                <span class="title">
+                                                    Cấu hình lưới<br />
+                                                    thống kê
+                                                </span>
+                                            </li>
+                                            <li data-step="6">
+                                                <span class="step">6</span>
+                                                <span class="title">
+                                                    Cấu hình lưới<br />
+                                                    thuế
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <hr class="hr" />
+                                    <div class="step-content pos-rel">
+                                        <div id="stepThongTinChung" class="step-pane active" data-step="1">
+                                            <div class="row">
+                                                <div class="col-sm-12 col-xs-12">
+                                                    <h5 class="header smaller lighter blue">
+                                                        <span class="badge badge-success">1</span> Thông tin loại chứng từ
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-xs-12">
+                                                <div class="col-md-6">
+                                                    <fieldset class="khungvien">
+                                                        <legend>1.1 Thông tin chứng từ</legend>
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label no-padding-right validation">Mã</label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control input-sm" type="text" id="LoaiCTCode" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label no-padding-right validation">Tên chứng từ</label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control input-sm" type="text" id="TenLoaiCT" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label no-padding-right">TK Nợ</label>
+                                                                <div class="col-md-3">
+                                                                    <select class="form-control input-sm" id="TaiKhoanID_No" menu-width="200%"></select>
+                                                                </div>
+                                                                <label class="col-md-3 control-label no-padding-right text-right">TK Có</label>
+                                                                <div class="col-md-3">
+                                                                    <select class="form-control input-sm" id="TaiKhoanID_Co" menu-width="200%"></select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label no-padding-right">Đồng thời TK Nợ</label>
+                                                                <div class="col-md-3">
+                                                                    <select class="form-control input-sm" id="TaiKhoanID_DTNo" menu-width="200%"></select>
+                                                                </div>
+                                                                <label class="col-md-3 control-label no-padding-right text-right">Đồng thời TK Có</label>
+                                                                <div class="col-md-3">
+                                                                    <select class="form-control input-sm" id="TaiKhoanID_DTCo" menu-width="200%"></select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label no-padding-right">Ký hiệu</label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control input-sm" type="text" id="KyHieuCT" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label no-padding-right">URL chuyển trang</label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control input-sm" type="text" id="URL" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label no-padding-right">Diễn giải</label>
+                                                                <div class="col-md-9">
+                                                                    <textarea class="form-control input-sm" id="DienGiai" rows="3">
+                                                        </textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label no-padding-right">Ngưng sử dụng</label>
+                                                                <div class="col-md-9">
+                                                                    <label class="middle">
+                                                                        <input class="ace" type="checkbox" id="NgungSD" />
+                                                                        <span class="lbl">&nbsp;</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <fieldset class="khungvien">
+                                                        <legend>1.2 Quy tắc đánh số</legend>
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label no-padding-right">Mẫu chứng từ</label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control input-sm" type="text" id="MauSoCT" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label no-padding-right">Số ký tự</label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control input-sm" type="text" id="SoKyTu" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label no-padding-right">Tiền tố</label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control input-sm" type="text" id="KyHieuPhiaTruoc" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label no-padding-right">Hậu tố</label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control input-sm" type="text" id="KyHieuPhiaSau" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <div class="col-md-4">
+                                                                    <span class="lbl">Tăng liên tiếp&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;</span>
+                                                                    <label class="middle">
+                                                                        <input class="ace" type="radio" id="TuTang" name="tt" />
+                                                                        <span class="lbl">&nbsp;</span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-7 text-right">
+                                                                    <span>Tăng theo tháng&ensp;</span>
+                                                                    <label class="middle">
+                                                                        <input class="ace" type="radio" id="TangTheoThang" name="tt" />
+                                                                        <span class="lbl">&nbsp;</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <div class="col-md-4">
+                                                                    <span class="lbl">Hiện ký hiệu chứng từ&nbsp;</span>
+                                                                    <label class="middle">
+                                                                        <input class="ace" type="checkbox" id="HienKyHieu" />
+                                                                        <span class="lbl">&nbsp;</span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-7 text-right">
+                                                                    <span class="lbl">Hiện dấu gạch giữa tháng và số tự tăng&nbsp;</span>
+                                                                    <label class="middle">
+                                                                        <input class="ace" type="checkbox" id="HienDauGach" />
+                                                                        <span class="lbl">&nbsp;</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="buoc2" class="step-pane" data-step="2">
+                                            <div class="row">
+                                                <div class="col-sm-12 col-xs-12">
+                                                    <h5 class="header smaller lighter blue">
+                                                        <span class="badge badge-success">2</span> Cấu hình lưới
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div id="user-profile-2" class="user-profile">
+                                                        <div class="tabbable">
+                                                            <ul class="nav nav-tabs padding-18">
+                                                                <li class="active">
+                                                                    <a data-toggle="tab" id="thongke" href="#tabthongke"
+                                                                       aria-expanded="false">
+                                                                        2.1. Nội dung thanh toán
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a data-toggle="tab" id="mucns" href="#tabmucns"
+                                                                       aria-expanded="true">
+                                                                        2.2. Thống kê
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                            <div class="tab-content no-border padding-24">
+                                                                <div id="tabthongke" class="tab-pane active">
+                                                                    <div class="row">
+                                                                        <div class="col-md-9">
+                                                                            <button style="margin-left:4px" class="btn btn-sm btn-primary" onclick="ThemMoiCauHinh('Main_HachToan'); return false;"><i class="fa fa-plus"></i>&ensp;Thêm mới</button>
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <span class="input-icon" style="float: right;">
+                                                                                <input type="text" placeholder="Nội dung tìm kiếm ..." class="nav-search-input" id="TimKiemGrid2" autocomplete="off">
+                                                                                <i class="ace-icon fa fa-search nav-search-icon"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="space-4"></div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div id="Grid2" class="GridData"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="tabmucns" class="tab-pane">
+                                                                    <div class="row">
+                                                                        <div class="col-md-9">
+                                                                            <button style="margin-left:4px" class="btn btn-sm btn-primary" onclick="ThemMoiCauHinh('Main_ThongKe'); return false;"><i class="fa fa-plus"></i>&ensp;Thêm mới</button>
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <span class="input-icon" style="float: right;">
+                                                                                <input type="text" placeholder="Nội dung tìm kiếm ..." class="nav-search-input" id="TimKiemGrid3" autocomplete="off">
+                                                                                <i class="ace-icon fa fa-search nav-search-icon"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="space-4"></div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div id="Grid3" class="GridData"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="buoc3" class="step-pane" data-step="3">
+                                            <div class="row">
+                                                <div class="col-sm-12 col-xs-12">
+                                                    <h5 class="header smaller lighter blue">
+                                                        <span class="badge badge-success">3</span> Cấu hình lưới
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                    <button style="margin-left:4px" class="btn btn-sm btn-primary" onclick="ThemMoiCauHinh('HachToan_DongThoi'); return false;"><i class="fa fa-plus"></i>&ensp;Thêm mới</button>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span class="input-icon" style="float: right;">
+                                                        <input type="text" placeholder="Nội dung tìm kiếm ..." class="nav-search-input" id="TimKiemGrid4" autocomplete="off">
+                                                        <i class="ace-icon fa fa-search nav-search-icon"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="space-4"></div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div id="Grid4" class="GridData"></div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div id="buoc4" class="step-pane" data-step="4">
+                                            <div class="row">
+                                                <div class="col-sm-12 col-xs-12">
+                                                    <h5 class="header smaller lighter blue">
+                                                        <span class="badge badge-success">4</span> Cấu hình lưới
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div id="user-profile-2" class="user-profile">
+                                                        <div class="tabbable">
+                                                            <ul class="nav nav-tabs padding-18">
+                                                                <li class="active">
+                                                                    <a data-toggle="tab" id="hoachtoan" href="#tabhoachtoan"
+                                                                       aria-expanded="false">
+                                                                        4.1 Hạch toán
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a data-toggle="tab" id="mlns" href="#tabmlns"
+                                                                       aria-expanded="true">
+                                                                        4.2. MLNS
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                            <div class="tab-content no-border padding-24">
+                                                                <div id="tabhoachtoan" class="tab-pane active">
+                                                                    <div class="row">
+                                                                        <div class="col-md-9">
+                                                                            <button style="margin-left:4px" class="btn btn-sm btn-primary" onclick="ThemMoiCauHinh('HachToan'); return false;"><i class="fa fa-plus"></i>&ensp;Thêm mới</button>
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <span class="input-icon" style="float: right;">
+                                                                                <input type="text" placeholder="Nội dung tìm kiếm ..." class="nav-search-input" id="TimKiemGrid5" autocomplete="off">
+                                                                                <i class="ace-icon fa fa-search nav-search-icon"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="space-4"></div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div id="Grid5" class="GridData"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="tabmlns" class="tab-pane">
+                                                                    <div class="row">
+                                                                        <div class="col-md-9">
+                                                                            <button style="margin-left:4px" class="btn btn-sm btn-primary" onclick="ThemMoiCauHinh('MLNS'); return false;"><i class="fa fa-plus"></i>&ensp;Thêm mới</button>
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <span class="input-icon" style="float: right;">
+                                                                                <input type="text" placeholder="Nội dung tìm kiếm ..." class="nav-search-input" id="TimKiemGrid6" autocomplete="off">
+                                                                                <i class="ace-icon fa fa-search nav-search-icon"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="space-4"></div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div id="Grid6" class="GridData"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="buoc5" class="step-pane" data-step="5">
+                                            <div class="row">
+                                                <div class="col-sm-12 col-xs-12">
+                                                    <h5 class="header smaller lighter blue">
+                                                        <span class="badge badge-success">5</span> Cấu hình lưới
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                    <button style="margin-left:4px" class="btn btn-sm btn-primary" onclick="ThemMoiCauHinh('ThongKe'); return false;"><i class="fa fa-plus"></i>&ensp;Thêm mới</button>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span class="input-icon" style="float: right;">
+                                                        <input type="text" placeholder="Nội dung tìm kiếm ..." class="nav-search-input" id="TimKiemGrid7" autocomplete="off">
+                                                        <i class="ace-icon fa fa-search nav-search-icon"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="space-4"></div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div id="Grid7" class="GridData"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="buoc6" class="step-pane" data-step="6" data-last="Kết thúc">
+                                            <div class="row">
+                                                <div class="col-sm-12 col-xs-12">
+                                                    <h5 class="header smaller lighter blue">
+                                                        <span class="badge badge-success">6</span> Cấu hình lưới
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                    <button style="margin-left:4px" class="btn btn-sm btn-primary" onclick="ThemMoiCauHinh('Thue'); return false;"><i class="fa fa-plus"></i>&ensp;Thêm mới</button>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span class="input-icon" style="float: right;">
+                                                        <input type="text" placeholder="Nội dung tìm kiếm ..." class="nav-search-input" id="TimKiemGrid8" autocomplete="off">
+                                                        <i class="ace-icon fa fa-search nav-search-icon"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="space-4"></div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div id="Grid8" class="GridData"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="hr" style="width: 100%; margin: 20px 0px; float: left;" />
+                                <div class="wizard-actions col-md-12" style="display: -webkit-box;">
+                                    <div class="col-xs-12 col-sm-9 text-left">
+                                        <p msg-step="1" class="text-info bigger-130"><i class="fa fa-book"></i>&ensp;Bạn thực hiện xong Bước 1, hãy nhấn &lt;Tiếp theo&gt; để chuyển sang Bước 2</p>
+                                        <p msg-step="2" class="text-info bigger-130"><i class="fa fa-book"></i>&ensp;Bạn thực hiện xong Bước 2, hãy nhấn &lt;Tiếp theo&gt; để chuyển sang Bước 3</p>
+                                        <p msg-step="3" class="text-info bigger-130"><i class="fa fa-book"></i>&ensp;Bạn thực hiện xong Bước 3, hãy nhấn &lt;Tiếp theo&gt; để chuyển sang Bước 4</p>
+                                        <p msg-step="4" class="text-info bigger-130"><i class="fa fa-book"></i>&ensp;Bạn thực hiện xong Bước 4, hãy nhấn &lt;Tiếp theo&gt; để chuyển sang Bước 5</p>
+                                        <p msg-step="5" class="text-info bigger-130"><i class="fa fa-book"></i>&ensp;Bạn thực hiện xong Bước 5, hãy nhấn &lt;Tiếp theo&gt; để chuyển sang Bước 6</p>
+                                        <p msg-step="6" class="text-info bigger-130"><i class="fa fa-book"></i>&ensp;Bạn thực hiện xong Bước 6, hãy nhấn &lt;Kết thúc&gt; để trở về màn hình chính</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button id="btnLui" type="button" class="btn btn-primary btn-sm btn-prev">
+                                            <i class="ace-icon fa fa-arrow-left"></i>Quay lại
+                                        </button>
+                                        <button id="btnTiep" type="button" class="btn btn-primary btn-sm btn-next" data-last="Kết thúc">
+                                            Tiếp theo <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="mdThemMoi" class="modal" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="border: none">
+            <div class="modal-header no-padding">
+                <div class="table-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        <span class="white">&times;</span> 
+                    </button>
+                    <span id="tieuDeModal"></span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <fieldset>
+                            <legend>Thông tin cấu hình</legend>
+                            <div class="row form-group">
+                                <div class="col-md-2">
+                                    <label>
+                                        Số TT
+                                    </label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control input-sm number-format" id="STT" />
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="validation">
+                                        Tên cột
+                                    </label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control input-sm" id="TenCot" />
+                                </div>
+                            </div>
+                            
+                            <div class="row form-group">
+                                <div class="col-md-2">
+                                    <label>
+                                        Mô tả
+                                    </label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control input-sm" id="MoTa" />
+                                </div>
+                                <div class="col-md-2">
+                                    <label>
+                                        Kiểu dữ liệu
+                                    </label>
+                                </div>
+                                <div class="col-md-4">
+                                    <select class="form-control input-sm" id="KieuDuLieu">
+                                        <option value="textarea" selected="selected">Văn bản</option>
+                                        <option class="money" value="money">Số/Tiền tệ</option>
+                                        <option value="check">Đánh dấu</option>
+                                    </select>
+                                </div>
+                            </div>
+                           
+                            <div class="row form-group">
+                                <div class="col-md-2">
+                                    <label>
+                                        Canh lề
+                                    </label>
+                                </div>
+                                <div class="col-md-4">
+                                    <select class="form-control input-sm" id="CanhLe">
+                                        <option value="left" selected="selected">Trái</option>
+                                        <option value="right">Phải</option>
+                                        <option value="center">Giữa</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label>
+                                        Độ rộng
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="number" class="form-control input-sm" id="ChieuDaiCot" />
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="middle" style="line-height:0;float:left">
+                                        <input class="ace" type="checkbox" id="TuDong">
+                                        <span class="lbl"> &nbsp;Tự động</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-3">
+                                    <label class="middle" style="line-height:0;float:left">
+                                        <input class="ace" type="checkbox" id="HienThi">
+                                        <span class="lbl"> &nbsp;Hiển thị</span>
+                                    </label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="middle" style="line-height:0;float:left">
+                                        <input class="ace" type="checkbox" id="KhoaViTri">
+                                        <span class="lbl"> &nbsp; Khoá vị trí</span>
+                                    </label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="middle" style="line-height:0;float:left">
+                                        <input class="ace" type="checkbox" id="TimKiem">
+                                        <span class="lbl"> &nbsp;Tìm kiếm</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button onclick="LuuThongTinCauHinh(); return false;" class="btn btn-sm btn-success"><i class="ace-icon fa fa-floppy-o bigger-110"></i>&nbsp;Lưu và đóng</button>
+            <button class="btn btn-sm btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Đóng</button>
+        </div>
+    </div>
+</div>
+<div id="Modal_SaoChep" class="modal" data-backdrop="static">
+    <div class="modal-dialog modal-md" style="width: 33%">
+        <div class="modal-content" style="border: none">
+            <div class="modal-header no-padding">
+                <div class="table-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        <span class="white">×</span>
+                    </button>
+                    <span id="tieuDeModal">Sao chép chứng từ</span>
+                </div>
+            </div>
+            <div class="modal-body" style="padding-bottom: 0">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-default" role="alert">
+                            Bạn có muốn sao chép tất cả thông tin cấu hình của chứng từ:&ensp;<b><span id="TenLoaiCT_Tu"></span></b><br>
+                            <div style="float: left; padding-top: 3px;">Đến loại chứng từ:&ensp;</div>
+                            <div style="width: 230px; float: left">
+                                <select class="form-control input-sm" id="LoaiCTID_SaoChepDen" menu-width="200%"></select>
+                            </div>
+                            <br>
+                            <input type="hidden" id="LoaiCTID_SaoChepTu" value="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="btn_LuuSaoChep" class="btn btn-sm btn-success"><i class="fa fa-check"></i>&nbsp;Đồng ý</button>
+            <button class="btn btn-sm btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Hủy</button>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="LoaiCTID" />
+<input type="hidden" id="LoaiCT_CauHinhID" />
+<input type="hidden" id="LoaiCauHinh" />
+<script src="~/Content/themes/Theme_1/js/wizard.min.js"></script>
+<script src="~/Areas/HeThong/Scripts/LoaiCT.js"></script>

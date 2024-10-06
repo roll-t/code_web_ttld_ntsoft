@@ -1,0 +1,1 @@
+Ext.define('MISA.Control.MISACheckbox',{mixins:['MISA.Mixin.ControlBinding',],extend:'Ext.form.field.Checkbox',xtype:'misacheckbox',alias:'widget.misacheckbox',labelTooltip:'',labelableRenderTpl:MISA.Constant.LabelableRenderTpl,bindingData:function(data,config){var me=this;me.setValue(data[me.setField]);}});

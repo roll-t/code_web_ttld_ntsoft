@@ -1,0 +1,442 @@
+﻿<style>
+    #mdXemThongTinNguoiNNLVVN_us .line-modal {
+        padding-bottom: 2px;
+    }
+
+    .frame-file {
+        width: 65px;
+        height: 65px;
+        border: 1px solid #d5d5d5;
+        border-radius: 4px;
+        float: left;
+        position: relative;
+    }
+
+    .frame-image {
+        width: 60px;
+        height: 60px;
+        float: left;
+        background-position: center;
+        background-size: cover;
+        border-radius: 4px;
+        position: relative;
+    }
+
+    .frame-file .fa-arrow-down {
+        position: absolute;
+        top: -8px;
+        right: 8px;
+        font-size: 15px;
+        color: #fff;
+        background-color: #4CAF50;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: none;
+        padding-top: 2px;
+        text-align: center;
+        z-index: 99;
+    }
+
+    .frame-file .fa-trash-o {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        font-size: 15px;
+        color: #fff;
+        background-color: red;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: none;
+        padding-top: 2px;
+        text-align: center;
+        z-index: 99;
+    }
+
+    .frame-top {
+        float: left;
+        width: 100%;
+        text-align: center;
+    }
+
+    .frame-file:hover > .fa-trash-o, .frame-file:hover > .fa-arrow-down {
+        display: block;
+    }
+
+    .TieuDeLabel {
+        margin-top: 10px;
+    }
+
+    .TieuDeLabel span {
+        font-weight: bold;
+    }
+</style>
+
+@* Modal xem thông tin cung lao động *@
+<div id="mdXemThongTinNguoiNNLVVN_us" class="modal modal-blur fade" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document" style="height: 100vh;margin: 0; max-width:100%;">
+        <div class="modal-content" style="height: 100vh; border-radius: unset;">
+            <div class="modal-header nts-modal" style="background: unset;color: #000;border-bottom: unset;">
+                <h5 id="lblTieuDeThongTinCungLaoDong" class="modal-title text-bold" style="font-weight:bold;"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: #000 !important;font-weight: bold;"> &times;</button>
+            </div>
+            <div class="modal-body" style="background: white;">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="box-shadow-primary" style="padding: 10px; border-radius: 4px;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line" style=" width: 290px;">Thông tin chung của đối tượng</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Ngày thu thập:
+                                            <span id="lblNgayThuThap_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style="margin: 4px 0px; border-top: 1px solid #999;">
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Họ và tên:
+                                            <span id="lblHoVaTen_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style="margin: 4px 0px; border-top: 1px solid #999;">
+
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Giới tính:
+                                            <span id="lblGioiTinh_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Ngày sinh:
+                                            <span id="lblNgaySinh_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style="margin: 4px 0px; border-top: 1px solid #999;">
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Quốc tịch:
+                                            <span id="lblQuocTich_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Hộ chiếu:
+                                            <span id="lblLoaiHoChieu_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style="margin: 4px 0px; border-top: 1px solid #999;">
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Mã số:
+                                            <span id="lblMaSo_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Số hộ chiếu:
+                                            <span id="lblSoHoChieu_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style="margin: 4px 0px; border-top: 1px solid #999;">
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Ngày cấp:
+                                            <span id="lblNgayCap_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Có giá trị đến:
+                                            <span id="lblCoGiaTriDen_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style="margin: 4px 0px; border-top: 1px solid #999;">
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Nơi cấp:
+                                            <span id="lblNoiCap_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style="margin: 4px 0px; border-top: 1px solid #999;">
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Số điện thoại:
+                                            <span id="lblSoDienThoai_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Email:
+                                            <span id="lblEmail_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style="margin: 4px 0px; border-top: 1px solid #999;">
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-12 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Nội dung thu thập:
+                                            <span id="lblNoiDungTT_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style="margin: 4px 0px; border-top: 1px solid #999;">
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="line-modal">
+                                            <div class="text-line-modal"><div class="text-line" style="width: 530px;">Đính kèm (*.DOC, *.PDF, *.PNG, *.JPG, *.JPEG) </div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-12" id="list-file-xem-dinh-kem-cung-lao-dong">
+                                        @*<div class="frame-file me-2">
+                        <div class="frame-top">
+                            <div class="frame-image" title="xh3120724095804.jpg" style="background-image:url('/TaiLieu/TaiLieuLuuGiu/DinhKem/xh3120724095804.jpg')"></div>
+                        </div>
+                        <i class="fa fa-arrow-down download-file-attachments" data-url-file="/TaiLieu/TaiLieuLuuGiu/DinhKem/xh3120724095804.jpg"></i>
+                    </div>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="box-shadow-primary" style="padding: 10px; border-radius: 4px;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line" style="width: 442px;">Thông tin học vấn</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Trình độ đào tạo:
+                                            <span id="lblTrinhDoDaoTao_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Chuyên môn đào tạo kỹ thuật:
+                                            <span id="lblChuyenNganhDT_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line" style="width: 450px">Thông tin việc làm</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-12 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Số GPLĐ/Xác nhận thuộc diện không cấp GPLĐ:
+                                            <span id="lblGiayPhepLD_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-12 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Tổ chức (nơi làm việc):
+                                            <span id="lblToChuc_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-12 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Địa điểm làm việc:
+                                            <span id="lblDiaDiemNLV_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-12 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Loại hình doanh nghiệp, tổ chức:
+                                            <span id="lblLoaiHinhDN_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-12 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Vị trí công việc:
+                                            <span id="lblViTriCV_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-12 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Nghề công việc:
+                                            <span id="lblNgheCongViec_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-12 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Thời gian làm việc:
+                                            <span id="lblThoiGianLV_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-12 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Doanh nghiệp/tổ chức/cá nhân cung cấp thông tin: 
+                                            <span id="lblNguoiCungCapThongTin_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Chữ ký
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-12 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-12" id="file-dinh-kem-chu-ky">
+                                            @*<div class="frame-file me-2">
+                            <div class="frame-top">
+                                <div class="frame-image"></div>
+                            </div>
+                            <i class="fa fa-arrow-down download-file-attachments" data-url-file=""></i>
+                        </div>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer" style="position: sticky; bottom: 0px; left: 0px; width: 100%">
+                <div style="display: flex; align-items: center; justify-content: space-between">
+                    <div class="col-md-6" style="display: flex; align-items: center">
+
+                    </div>
+                    <div class="col-md-6">
+                        <div style="float:right;text-align: right">
+                            <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                <i class="fa fa-close"></i>&nbsp;Đóng (F4)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+  
+</script>

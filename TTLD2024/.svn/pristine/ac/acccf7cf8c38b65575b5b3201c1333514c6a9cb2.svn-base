@@ -1,0 +1,1632 @@
+﻿<style type="text/css">
+    .modal {
+        --tblr-modal-width: 750px !important;
+    }
+
+    @@media (min-width: 992px) {
+        #mdThemMoiHGD .modal-dialog {
+            width: 100% !important;
+        }
+    }
+
+    @@media (max-width: 993px) {
+        #mdThemMoiHGD .modal-dialog {
+            width: 100% !important;
+        }
+    }
+
+    @@media (min-width: 1200px) {
+        .modal-xl {
+            --tblr-modal-width: 100%;
+        }
+    }
+
+    .modal-footer {
+        display: unset !important;
+    }
+
+    .btn-check:checked + .btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check) + .btn:active {
+        color: white;
+        background-color: #146654;
+        border-color: var(--tblr-btn-active-border-color);
+        box-shadow: var(--tblr-btn-active-shadow);
+    }
+
+        .btn-check:checked + .btn path {
+            fill: white !important;
+        }
+
+    .backdrop {
+        width: 100%;
+        height: 200px;
+        background-size: cover;
+        background-position: 50% 0;
+        background-repeat: no-repeat;
+        position: relative;
+    }
+
+    .info-container {
+        background-image: url('../../../../Images/_thumbs/Files/bg1.jpg');
+        color: #fff;
+    }
+
+    .info-container-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        padding-top: 15px;
+        position: relative;
+    }
+
+    .backdrop:before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        background-color: rgba(2,13,24,.75);
+    }
+
+    .info-container-header-left {
+        display: flex;
+        align-items: center;
+        gap: 0 10px;
+    }
+
+    .info-img-container {
+        width: 64px;
+        height: 64px;
+        object-fit: cover;
+        border-radius: 100%;
+        border: 2px solid #ccc;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        background: white;
+        color: var(--tblr-color-header) !important;
+        font-weight: bold;
+        font-size: 20px !important;
+    }
+
+    .info-img-list-container {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 100%;
+        border: 2px solid #ccc;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        background: white;
+        color: var(--tblr-color-header) !important;
+        font-weight: bold;
+        font-size: 14px !important;
+    }
+
+    .info-img {
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+    }
+
+    .info-body {
+        margin: 0 10px !important;
+        margin-top: -100px !important;
+    }
+
+    h5#lblHoTenChuHoMain_View {
+        font-size: 20px;
+    }
+
+    span#lblDiaChi_View {
+        font-size: 16px;
+    }
+
+    .TieuDeLabel_tab2 {
+        margin-top: 10px;
+    }
+
+    .TieuDeLabel span {
+        font-weight: bold;
+    }
+
+    #GridHoGiaDinh_List .tabulator-table {
+        width: 100%;
+    }
+
+    #GridHoGiaDinh_List .tabulator-row {
+        padding-left: 10px;
+    }
+
+        #GridHoGiaDinh_List .tabulator-row table {
+            vertical-align: middle;
+            border-collapse: collapse;
+        }
+
+            #GridHoGiaDinh_List .tabulator-row table tr td:first-of-type {
+                width: 60px;
+            }
+
+            #GridHoGiaDinh_List .tabulator-row table tr td {
+                border: none;
+            }
+
+            #GridHoGiaDinh_List .tabulator-row table img {
+                border: 2px solid #ccc;
+            }
+
+    #GridHoGiaDinh_List img {
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+        object-fit: cover;
+    }
+
+    #GridHoGiaDinh_List strong {
+        color: var(--tblr-color-header);
+        font-size: 14px;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .text-info {
+        color: var(--tblr-color-header) !important;
+    }
+
+    .text-line-modal:after {
+        content: "";
+        width: 100%;
+        display: block;
+        height: 1px;
+        border-bottom: 1px solid var(--tblr-color-header);
+    }
+
+    .text-line-modal {
+        display: flex;
+        align-items: center;
+    }
+
+    .text-line {
+        width: 175px;
+        color: var(--tblr-color-header);
+        font-weight: bold;
+        font-size: 14px !important;
+    }
+
+    .line-modal {
+        padding-bottom: 10px;
+    }
+
+    .display-flex {
+        display: flex;
+    }
+
+    .align-items-center {
+        align-items: center;
+    }
+
+    .justify-content-center {
+        justify-content: center;
+    }
+
+    ul.nav.nav-tabs.card-header-tabs {
+        --tblr-nav-link-padding-x: 0.75rem;
+        --tblr-nav-link-padding-y: 0.5rem;
+        --tblr-nav-link-color: var(--tblr-secondary);
+        --tblr-nav-link-hover-color: var(--tblr-link-hover-color);
+        --tblr-nav-link-disabled-color: var(--tblr-disabled-color);
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+    }
+
+    .card-header {
+        padding: var(--tblr-card-cap-padding-y) var(--tblr-card-cap-padding-x);
+        margin-bottom: 0;
+        color: var(--tblr-card-cap-color);
+        background-color: var(--tblr-card-cap-bg);
+        border-bottom: var(--tblr-card-border-width) solid var(--tblr-card-border-color);
+    }
+
+    .tabulator-headers .tabulator-col {
+        align-content: center;
+    }
+
+    #GridHoGiaDinh_List.tabulator .tabulator-footer .tabulator-footer-contents {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    #GridHoGiaDinh_List.tabulator .tabulator-footer .tabulator-page-counter {
+        width: 100%;
+        padding-bottom: 5px;
+    }
+
+    .card-header {
+        padding-bottom: 0;
+    }
+
+    .form-check.form-switch {
+        margin: 0;
+    }
+
+    #GridHoGiaDinh_List.tabulator .tabulator-tableholder {
+        overflow-x: hidden;
+    }
+
+
+    .btnXemThem {
+        color: var(--tblr-primary);
+        font-weight: 550;
+        font-size: 11px;
+        text-decoration: none;
+        border: none;
+        outline: none;
+        margin-left: 7px;
+        background: transparent;
+    }
+
+    /*.btnXemThem {
+        padding: 3px 2px 3px 3px;
+        color: #fff;
+        font-weight: 550;
+        font-size: 11px;
+        text-decoration: none;
+        border: none;
+        outline: none;
+        background: var(--tblr-primary);
+        position: relative;
+        margin-left: 7px;
+    }*/
+
+    /* .btnXemThem::before {
+            content: "";
+            border-width: 11px 5px;
+            left: -10px;
+            top: 0px;
+            border-style: solid;
+            position: absolute;
+            border-color: transparent var(--tblr-primary) transparent transparent;
+        }
+
+        .btnXemThem::after {
+            content: "";
+            border-width: 11px 4px;
+            left: 55px;
+            top: 0px;
+            border-style: solid;
+            position: absolute;
+            border-color: var(--tblr-primary) transparent var(--tblr-primary) var(--tblr-primary);
+        }*/
+
+    #lblGhiChu_b2 {
+        /* width: 300px; */
+        display: -webkit-box !important;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+    }
+
+    #lblGhiChu_usDoiTuong {
+        /* width: 300px; */
+        display: -webkit-box !important;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5;
+        overflow: hidden;
+    }
+
+    #lblGhiChu_USHoGiaDinh, #lblGhiChu_View {
+        display: -webkit-box !important;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 9;
+        overflow: hidden;
+    }
+
+
+
+    #hoverBox {
+        display: none;
+        position: absolute;
+        width: 300px;
+        height: auto;
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        padding: 10px;
+        top: 0;
+        right: 196px;
+        border-radius: 4px;
+    }
+
+        #hoverBox:hover {
+            display: block
+        }
+
+    .option-column {
+        font-size: 15px !important;
+        font-weight: bold;
+        text-align: center;
+        color: var(--tblr-color-btnThemMoi);
+    }
+
+    .card-header-tabs .nav-link.active svg.mod-down path {
+        fill: var(--tblr-primary) !important;
+    }
+</style>
+@* Modal thêm mới *@
+<div id="mdThemMoiHGD" class="modal modal-blur fade" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document" style="height: 100vh;margin: 0;">
+        <div class="modal-content" style="height: 100vh;">
+            <div class="modal-header nts-modal" style="background: unset;color: #000;border-bottom: unset;">
+                <h5 id="lblTieuDeThemMoi" class="modal-title text-bold" style="font-weight:bold;">Thêm mới hộ gia đình</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: #000 !important;font-weight: bold;"> &times;</button>
+            </div>
+            <div class="modal-body " style="background: white;">
+                <div class="box-shadow-primary" style="padding: 10px;border-radius: 4px">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="line-modal">
+                                <div class="text-line-modal"><div class="text-line">Thông tin hộ gia đình</div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="form-label" for="MaHo">Mã hộ</label>
+                                <input type="text" class="form-control" id="MaHo" required maxlength="60">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="form-label" for="drop_GiayTo">Số giấy tờ</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="z-index: 99999; font-weight: normal; border-radius: 4px 0 0 4px !important;" id="drop_GiayTo" data-value="1">
+                                        Sổ hộ khẩu &nbsp; <i class="fa-solid fa-caret-down"></i>
+                                    </button>
+                                    <div class="dropdown-menu" style="z-index: 99999;">
+                                        <a class="dropdown-item dropInput_GiayTo" href="#" data-value="1" data-name="Sổ hộ khẩu">
+                                            Sổ hộ khẩu
+                                        </a>
+                                        <a class="dropdown-item dropInput_GiayTo" href="#" data-value="2" data-name="Sổ tạm trú">
+                                            Sổ tạm trú
+                                        </a>
+                                    </div>
+                                    <input type="text" class="form-control" id="SoGiayTo" required maxlength="9">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="form-label" for="HoVaTen">Họ và tên</label>
+                                <input type="text" class="form-control" id="HoVaTen" required maxlength="60">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="form-label" for="SoDinhDanh">Số CMND/CCCD/Số định danh</label>
+                                <input type="text" class="form-control" id="SoDinhDanh" required maxlength="12" onkeypress="return isNumberKey(event);">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="form-label" for="NgayCapSoDinhDanh">Ngày cấp</label>
+                                <input class="form-control input-sm date-picker" id="NgayCapSoDinhDanh" type="text" data-date-format="dd/mm/yyyy" placeholder="dd/mm/yyyy" required />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="form-label" for="NoiCap_TinhID">Nơi cấp</label>
+                                <select class="form-control input-sm" id="NoiCap_TinhID" tabindex="0" data-dropdown-parent="#mdThemMoiHGD" required></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="form-label" for="NgaySinh">Ngày sinh</label>
+                                <input class="form-control input-sm date-picker" id="NgaySinh" type="text" data-date-format="dd/mm/yyyy" placeholder="dd/mm/yyyy" required />
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="form-label" for="GioiTinhID">Giới tính</label>
+                                <select class="form-control input-sm" id="GioiTinhID" tabindex="0" data-dropdown-parent="#mdThemMoiHGD" required></select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="form-label" for="QuocTichID">Quốc tịch</label>
+                                <select class="form-control input-sm" id="QuocTichID" tabindex="0" data-dropdown-parent="#mdThemMoiHGD" required></select>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="form-label" for="DanTocID">Dân tộc</label>
+                                <select class="form-control input-sm" id="DanTocID" tabindex="0" data-dropdown-parent="#mdThemMoiHGD" required></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="form-label" for="TonGiaoID">Tôn giáo</label>
+                                <select class="form-control input-sm" id="TonGiaoID" tabindex="0" data-dropdown-parent="#mdThemMoiHGD" required></select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="form-label" for="SoDinhDanh">Số điện thoại</label>
+                                <input type="text" class="form-control" id="SoDienThoai" maxlength="60">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="form-label" for="Email">Email</label>
+                                <input type="email" class="form-control" id="Email" maxlength="60">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="form-label" for="PhanLoaiHoID">Phân loại hộ</label>
+                                <select class="form-control input-sm" id="PhanLoaiHoID" tabindex="0" data-dropdown-parent="#mdThemMoiHGD"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="line-modal" style="padding-top: 10px;">
+                                <div class="text-line-modal"><div class="text-line">Nơi thường trú</div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="TinhID_TT" class="form-label">Tỉnh/Thành phố</label>
+                                <select class="form-control input-sm" id="TinhID_TT" tabindex="0" data-dropdown-parent="#mdThemMoiHGD" required></select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="HuyenID_TT" class="form-label">Quận/Huyện</label>
+                                <select class="form-control input-sm" id="HuyenID_TT" tabindex="0" data-dropdown-parent="#mdThemMoiHGD" required></select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="XaID_TT" class="form-label">Xã/Phường</label>
+                                <select class="form-control input-sm" id="XaID_TT" tabindex="0" data-dropdown-parent="#mdThemMoiHGD" required></select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="ThonID_TT" class="form-label">Thôn/Xóm</label>
+                                <select class="form-control input-sm" id="ThonID_TT" tabindex="0" data-dropdown-parent="#mdThemMoiHGD"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class=" col-md-3">
+                            <div class="form-group">
+                                <label for="SoNha_TT" class="form-label">Số nhà</label>
+                                <input type="text" class="form-control" id="SoNha_TT" maxlength="60">
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="" class="form-label">&nbsp;</label>
+                                <input type="text" class="form-control" id="DiaChiThuongTru" maxlength="500" placeholder="Hệ thống tự tạo khi chọn Tỉnh, huyện, xã,...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-label" for="">Ghi chú</label>
+                                <textarea class="form-control" id="GhiChu" rows="5" maxlength="500"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+            </div>
+            <div class="modal-footer" style="position: fixed; bottom: 0px; left: 0px; width: 100%">
+                <div style="display: flex; align-items: center; justify-content: space-between">
+                    <div class="col-md-6" style="display: flex; align-items: center">
+                        <label style="margin-bottom: unset" class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="TrangThai">
+                            <label class="form-check-label" for="TrangThai">Ngưng sử dụng</label>
+                        </label>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="float:right;text-align: right">
+                            <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                <i class="fa fa-close"></i>&nbsp;Đóng (F4)
+                            </a>
+                            <a href="#" id="btnLuuVaDongHGD" class="btn btn-success btn-luuvadong ms-auto">
+                                <i class="fa fa-save"></i>&ensp;Lưu và đóng (F9)
+                            </a>
+                            <a href="#" id="btnTiepTuc" class="btn btn-success ms-auto">
+                                <i class="fa-solid fa-arrow-right"></i>&ensp;Tiếp tục (F10)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Modal tiếp tục *@
+<div id="mdThemMoiTiepTuc" class="modal modal-blur fade" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static" style="overflow:hidden">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document" style="height: 100vh;margin: 0;">
+        <div class="modal-content" style="height: 100vh;">
+            <div class="modal-header nts-modal" style="display:none;">
+                <h5 id="lblTieuDeThemMoi" class="modal-title text-bold" style="display:none;"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div style=" height: 100vh; box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); padding: 10px 10px; border-radius: 4px;">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div>
+                                        <a href="#" onclick="QuayRa()" style="text-decoration: none; display: flex; align-items: center; gap: 5px;">
+                                            <svg style="width: 20px;" enable-background="new 0 0 16 16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><g id="line" style="display:none;fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"><path d="m9.5 9.5h2c2.2 0 4 1.8 4 4v-3c0-2.2-1.8-4-4-4h-2v-4l-6 5.5 6 5.5v-2" display="inline" opacity=".2"></path><path d="m6.5 2.5-6 5.5 6 5.5" display="inline" opacity=".2"></path></g><g id="line_1_x2C_5" display="none"><g display="inline"><path d="m13.3 6c-.4 0-.8.3-.8.8s.3.8.8.8c.7 0 1.3.6 1.3 1.3v.5c-.6-.5-1.4-.8-2.3-.8h-2c-.4 0-.8.3-.8.8v2.2l-3.7-3.6 3.7-3.5v2.2c0 .4.3.8.8.8s.7-.3.7-.7v-4c0-.3-.2-.6-.5-.7-.2-.2-.6-.1-.8.1l-5.5 5.3c-.1.1-.2.3-.2.5s.1.4.2.5l5.5 5.3c.1.1.3.2.5.2.1 0 .2 0 .3-.1.3-.1.5-.4.5-.7v-3.2h1.3c1.2 0 2.3 1 2.3 2.3v1c0 .4.3.8.8.8s.8-.3.8-.8v-4.5c-.2-1.6-1.4-2.8-2.9-2.8z" fill="#000000" style="fill: rgb(247, 103, 7);"></path><path d="m1.8 8 4.9-4.7c.3-.3.3-.8 0-1.1-.2-.3-.7-.3-1 0l-5.5 5.3c-.1.1-.2.3-.2.5s.1.4.2.5l5.5 5.3c.2.1.4.2.6.2s.4-.1.5-.2c.3-.3.3-.8 0-1.1z" fill="#000000" style="fill: rgb(247, 103, 7);"></path></g></g><g id="line_expanded" display="none"><g display="inline"><path d="m9.5 14c-.1 0-.2 0-.3-.1l-6-5.5c-.1-.1-.2-.3-.2-.4s.1-.3.2-.4l6-5.5c.1-.1.3-.1.5-.1.2.1.3.3.3.5v3.5h1.5c2.5 0 4.5 2 4.5 4.5v3c0 .3-.2.5-.5.5s-.5-.2-.5-.5c0-1.9-1.6-3.5-3.5-3.5h-2c-.3 0-.5-.2-.5-.5s.2-.5.5-.5h2c1.4 0 2.7.7 3.5 1.7v-.2c0-1.9-1.6-3.5-3.5-3.5h-2c-.3 0-.5-.2-.5-.5v-2.9l-4.8 4.4 4.8 4.4v-.9c0-.3.2-.5.5-.5s.5.2.5.5v2c0 .2-.1.4-.3.5-.1 0-.1 0-.2 0z" fill="#000000" style="fill: rgb(247, 103, 7);"></path></g><g display="inline"><path d="m6.5 14c-.1 0-.2 0-.3-.1l-6-5.5c-.1-.1-.2-.3-.2-.4s.1-.3.2-.4l6-5.5c.2-.2.5-.2.7 0s.2.5 0 .7l-5.7 5.2 5.6 5.1c.2.2.2.5 0 .7 0 .1-.2.2-.3.2z" fill="#000000" style="fill: rgb(247, 103, 7);"></path></g></g><g id="solid"><g><path d="m11.5 6h-1.5v-3.5c0-.2-.1-.4-.3-.5-.2 0-.4 0-.5.1l-6 5.5c-.1.1-.2.3-.2.4s.1.3.2.4l6 5.5c.1.1.2.1.3.1h.2c.2-.1.3-.3.3-.5v-3.5h1.5c1.9 0 3.5 1.6 3.5 3.5 0 .3.2.5.5.5s.5-.2.5-.5v-3c0-2.5-2-4.5-4.5-4.5z" fill="#000000" style="fill: rgb(247, 103, 7);"></path><path d="m1.2 8 5.6-5.1c.2-.2.2-.5 0-.7-.1-.2-.4-.3-.6-.1l-6 5.5c-.1.1-.2.3-.2.4s.1.3.2.4l6 5.5c.1.1.2.1.3.1s.3-.1.4-.2c.2-.2.2-.5 0-.7z" fill="#000000" style="fill: rgb(247, 103, 7);"></path></g></g><g id="filled_line" display="none"><g display="inline"><path d="m4.6 9 4.9-4.5v2h2c2.2 0 4 1.8 4 4v3c0-2.2-1.8-4-4-4h-2v4z" fill="#f9c00c"></path><g><g><path d="m9.5 14c-.1 0-.2 0-.3-.1l-6-5.5c-.1-.1-.2-.3-.2-.4s.1-.3.2-.4l6-5.5c.1-.1.3-.1.5-.1.2.1.3.3.3.5v3.5h1.5c2.5 0 4.5 2 4.5 4.5v3c0 .3-.2.5-.5.5s-.5-.2-.5-.5c0-1.9-1.6-3.5-3.5-3.5h-2c-.3 0-.5-.2-.5-.5s.2-.5.5-.5h2c1.4 0 2.7.7 3.5 1.7v-.2c0-1.9-1.6-3.5-3.5-3.5h-2c-.3 0-.5-.2-.5-.5v-2.9l-4.8 4.4 4.8 4.4v-.9c0-.3.2-.5.5-.5s.5.2.5.5v2c0 .2-.1.4-.3.5-.1 0-.1 0-.2 0z" fill="#3e3643"></path></g><g><path d="m6.5 14c-.1 0-.2 0-.3-.1l-6-5.5c-.1-.1-.2-.3-.2-.4s.1-.3.2-.4l6-5.5c.2-.2.5-.2.7 0s.2.5 0 .7l-5.7 5.2 5.6 5.1c.2.2.2.5 0 .7 0 .1-.2.2-.3.2z" fill="#3e3643"></path></g></g></g></g><g id="flat" display="none"><g display="inline"><g><path d="m3 8c0 .1.1.3.2.4l6 5.5c.1.1.2.1.3.1h.2c.2-.1.3-.3.3-.5v-3.5h1.5c1.9 0 3.5 1.6 3.5 3.5 0 .3.2.5.5.5s.5-.2.5-.5v-3c0-.9-.3-1.8-.8-2.5z" fill="#3bb3e3"></path></g><path d="m3.2 7.6 6-5.5c.1-.1.2-.1.3-.1h.2c.2.1.3.3.3.5v3.5h1.5c1.5 0 2.9.8 3.7 2h-12.2c0-.1.1-.3.2-.4z" fill="#4fc6f5"></path><g><path d="m0 8h1.2l5.6-5.1c.2-.2.2-.5 0-.7-.1-.2-.4-.3-.6-.1l-6 5.5c-.1.1-.2.3-.2.4z" fill="#4fc6f5"></path></g><g><path d="m0 8h1.2l5.6 5.1c.2.2.2.5 0 .7s-.5.2-.7 0l-6-5.5c0 0-.1-.2-.1-.3z" fill="#3bb3e3"></path></g></g></g><g id="colored_line" display="none"><g display="inline"><g><path d="m9.5 14c-.1 0-.2 0-.3-.1l-6-5.5c-.1-.1-.2-.3-.2-.4s.1-.3.2-.4l6-5.5c.1-.1.3-.1.5-.1.2.1.3.3.3.5v3.5h1.5c2.5 0 4.5 2 4.5 4.5v3c0 .3-.2.5-.5.5s-.5-.2-.5-.5c0-1.9-1.6-3.5-3.5-3.5h-2c-.3 0-.5-.2-.5-.5s.2-.5.5-.5h2c1.4 0 2.7.7 3.5 1.7v-.2c0-1.9-1.6-3.5-3.5-3.5h-2c-.3 0-.5-.2-.5-.5v-2.9l-4.8 4.4 4.8 4.4v-.9c0-.3.2-.5.5-.5s.5.2.5.5v2c0 .2-.1.4-.3.5-.1 0-.1 0-.2 0z" fill="#1689fc"></path></g><g><path d="m6.5 14c-.1 0-.2 0-.3-.1l-6-5.5c-.1-.1-.2-.3-.2-.4s.1-.3.2-.4l6-5.5c.2-.2.5-.2.7 0s.2.5 0 .7l-5.7 5.2 5.6 5.1c.2.2.2.5 0 .7 0 .1-.2.2-.3.2z" fill="#3e5959"></path></g></g></g><g id="duo_tone" display="none"><g display="inline"><path d="m9.5 6.5v-4l-6 5.5 6 5.5v-4h2c2.2 0 4 1.8 4 4v-3c0-2.2-1.8-4-4-4z" fill="#00ecce"></path><g><path d="m9.5 14c-.1 0-.2 0-.3-.1l-6-5.5c-.1-.1-.2-.3-.2-.4s.1-.3.2-.4l6-5.5c.1-.1.3-.1.5-.1.2.1.3.3.3.5v3.5h1.5c2.5 0 4.5 2 4.5 4.5v3c0 .3-.2.5-.5.5s-.5-.2-.5-.5c0-1.9-1.6-3.5-3.5-3.5h-2c-.3 0-.5-.2-.5-.5s.2-.5.5-.5h2c1.4 0 2.7.7 3.5 1.7v-.2c0-1.9-1.6-3.5-3.5-3.5h-2c-.3 0-.5-.2-.5-.5v-2.9l-4.8 4.4 4.8 4.4v-.9c0-.3.2-.5.5-.5s.5.2.5.5v2c0 .2-.1.4-.3.5-.1 0-.1 0-.2 0z" fill="#01a28e"></path></g><g><path d="m6.5 14c-.1 0-.2 0-.3-.1l-6-5.5c-.1-.1-.2-.3-.2-.4s.1-.3.2-.4l6-5.5c.2-.2.5-.2.7 0s.2.5 0 .7l-5.7 5.2 5.6 5.1c.2.2.2.5 0 .7 0 .1-.2.2-.3.2z" fill="#01a28e"></path></g></g></g></svg>
+                                            <p style="margin-bottom: 0; color: #F76707;">Quay ra</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div style=" text-align: right;">
+                                        <a href="#" style="text-decoration: none; color: var(--tblr-color-header);" id="btnSuaHGD_Buoc2">
+                                            Sửa
+                                            <i class="fa-solid fa-pen-to-square" style="width: 20px !important; height: 20px !important; color: var(--tblr-color-header);"></i>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <hr style="margin: 13px 0; " />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="display-flex align-items-center justify-content-center">
+                                        <div style="font-size: 32px !important; border: 1px solid var(--tblr-color-header); border-radius: 50%; height: 100px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--tblr-color-header); width: 100px;" id="TenVietTat"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="display-flex align-items-center justify-content-center">
+                                        <div style="font-size: 16px !important; color: var(--tbl-btn-luuvadong); font-weight: bold; margin-top: 5px; text-transform: uppercase;" id="">
+                                            Chủ hộ:
+                                            <span id="lblHoTenChuHo_b2"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div>
+                                        <div>Sổ hộ khẩu: <label style="font-weight:bold; display: inline;" id="lblSoHk_b2"></label></div>
+                                    </div>
+                                </div>
+                                <hr style="margin: 10px 0; " />
+                                <div class="col-md-12">
+                                    <div>
+                                        <div>Giới tính: <label style="font-weight:bold; display: inline;" id="lblGioiTinh_b2"></label></div>
+                                    </div>
+                                </div>
+                                <hr style="margin: 10px 0; " />
+                                <div class="col-md-12">
+                                    <div>
+                                        <div> Ngày sinh: <label style="font-weight:bold; display: inline;" id="lblNamSinh_b2"></label></div>
+                                    </div>
+                                </div>
+                                <hr style="margin: 10px 0; " />
+                                <div class="col-md-12">
+                                    <div>
+                                        <div>Số CMND/CCCD/Số định danh: <label style="font-weight:bold; display: inline;" id="lblSoCCD_b2"></label></div>
+                                    </div>
+                                </div>
+                                <hr style="margin: 10px 0; " />
+                                <div class="col-md-12">
+                                    <div>
+                                        <div>Ngày cấp: <label style="font-weight:bold; display: inline;" id="lblNgayCap_b2"></label></div>
+                                    </div>
+                                </div>
+                                <hr style="margin: 10px 0; " />
+                                <div class="col-md-12">
+                                    <div>
+                                        <div>Nơi cấp: <label style="font-weight:bold; display: inline;" id="lblNoiCap_b2"></label></div>
+                                    </div>
+                                </div>
+                                <hr style="margin: 10px 0; " />
+                                <div class="col-md-12">
+                                    <div>
+                                        <div>Số điện thoại: <label style="font-weight:bold; display: inline;" id="lblSoDienThoai_b2"></label></div>
+                                    </div>
+                                </div>
+                                <hr style="margin: 10px 0; " />
+                                <div class="col-md-12">
+                                    <div>
+                                        <div>Email:  <label style="font-weight:bold; display: inline;" id="lblEmail_b2"></label></div>
+                                    </div>
+                                </div>
+
+                                <hr style="margin: 10px 0; " />
+                                <div class="col-md-12">
+                                    <div>
+                                        <div>Nơi thường trú: <label style="font-weight:bold; display: inline;" id="lblHKTT_b2"></label></div>
+                                    </div>
+                                </div>
+                                <hr style="margin: 10px 0; " />
+                                <div class="col-md-12">
+                                    <div>
+                                        <div>Phân loại hộ: <label style="font-weight:bold; display: inline;" id="lblPhanLoaiHD_b2"></label></div>
+                                    </div>
+                                </div>
+                                <hr style="margin: 10px 0; " />
+                                <div class="col-md-12">
+                                    <div>
+                                        <div><label style="font-weight:bold; display: inline;" id="lblGhiChu_b2"></label></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card container-content ">
+                            <div class="card-header" style="padding-bottom: 0;">
+                                <ul class="nav nav-tabs card-header-tabs" data-bs-toggle="tabs" role="tablist" style="padding-left: 10px;">
+                                    <li class="nav-item" role="presentation">
+                                        <a href="#Tab3" id="btnTab3" class="nav-link active" data-bs-toggle="tab" aria-selected="true" tabindex="-1" role="tab">
+                                            <svg class="icon icon-tabler icon-tabler-users-group" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                                                <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1"></path>
+                                                <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                                                <path d="M17 10h2a2 2 0 0 1 2 2v1"></path>
+                                                <path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                                                <path d="M3 13v-1a2 2 0 0 1 2 -2h2"></path>
+                                            </svg>&nbsp; Thành viên hộ gia đình
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a href="#Tab4" id="btnTab4" class="nav-link" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">
+                                            <svg class="icon icon-tabler icon-tabler-file-description" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                                                <path d="M9 17h6"></path>
+                                                <path d="M9 13h6"></path>
+                                            </svg>&nbsp; Tài liệu
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade active show" id="Tab3" role="tabpanel" aria-labelledby="btnTab3">
+                                        <div class="row flex-row-reverse">
+                                            <div class="col-md-1  mr-2" style="visibility:hidden">
+                                                <button style="float:right;margin-right:10px" class="btn btn-primary height-button-icon mr-2" type="button" id="cauhinhluoi">
+                                                    <i class="fa fa-cog"></i>
+                                                </button>
+                                            </div>
+                                            <div class="col-md-7 text-end">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="input-icon mb-3">
+                                                    <input type="text" value="" class="form-control" placeholder="Nội dung tìm kiếm" id="timkiem_thanhvien" autocomplete="off">
+                                                    <span class="input-icon-addon">
+                                                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div id="Grid_ThanhVien" class="GridData tabulator" role="grid" tabulator-layout="fitColumns" style="height: 500px;">
+                                                    <div class="tabulator-header" role="rowgroup">
+                                                        <div class="tabulator-header-contents" role="rowgroup">
+                                                            <div class="tabulator-headers" role="row">
+                                                                <div class="tabulator-col" role="columnheader" aria-sort="none" tabulator-field="ThaoTac" style="min-width: 40px; width: 60px;">
+                                                                    <div class="tabulator-col-content">
+                                                                        <div class="tabulator-col-title-holder">
+                                                                            <div class="tabulator-col-title" style="text-align: center;">
+                                                                                <botton id="btnThemDoiTuong" class="btn btn-xs btn-primary"><i class="fa fa-plus" aria-hidden="true"></i></botton>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="HoVaTen" style="min-width: 40px; width: 200px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Họ và tên</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="TenMoiQuanHe" style="min-width: 40px; width: 150px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Tên mối quan hệ</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="SoCCCD" style="min-width: 40px; width: 170px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Số CCCD</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="NgaySinh" style="min-width: 40px; width: 110px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Ngày sinh</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="GioiTinh" style="min-width: 40px; width: 90px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Giới tính</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="TenDanToc" style="min-width: 40px; width: 120px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Tên dân tộc</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="Thon_ThuongTru" style="min-width: 40px; width: 135px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Thôn thường trú</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="Xa_ThuongTru" style="min-width: 40px; width: 135px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Xã thường trú</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="Huyen_ThuongTru" style="min-width: 40px; width: 135px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Huyện thường trú</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="Tinh_ThuongTru" style="min-width: 40px; width: 135px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Tỉnh thường trú</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span>
+                                                            </div><div class="tabulator-frozen-rows-holder" style="min-width: 0px;"></div>
+                                                        </div>
+                                                    </div><div class="tabulator-tableholder" tabindex="0" style="height: calc(100% + 0px); max-height: calc(100% + 0px);"><div class="tabulator-table" role="rowgroup"></div></div><div class="tabulator-footer"><div class="tabulator-footer-contents"><span class="tabulator-page-counter"><span><span>Hiển thị</span><span> 1-50 </span><span>của</span><span> 3200 </span><span>dòng</span></span></span><span class="tabulator-paginator"><label>Kích thước</label><select class="tabulator-page-size" aria-label="Kích thước" title="Kích thước"><option value="50">50</option><option value="100">100</option><option value="150">150</option><option value="200">200</option><option value="500">500</option><option value="true">All</option></select><button class="tabulator-page" type="button" role="button" aria-label="Trang đầu" title="Trang đầu" data-page="first" disabled=""><i class="fa fa-step-backward" aria-hidden="true"></i></button><button class="tabulator-page" type="button" role="button" aria-label="Lùi lại" title="Lùi lại" data-page="prev" disabled=""><i class="fa fa-chevron-left" aria-hidden="true"></i></button><span class="tabulator-pages"><button class="tabulator-page active" type="button" role="button" aria-label="Hiển thị 1" title="Hiển thị 1" data-page="1">1</button><button class="tabulator-page" type="button" role="button" aria-label="Hiển thị 2" title="Hiển thị 2" data-page="2">2</button><button class="tabulator-page" type="button" role="button" aria-label="Hiển thị 3" title="Hiển thị 3" data-page="3">3</button><button class="tabulator-page" type="button" role="button" aria-label="Hiển thị 4" title="Hiển thị 4" data-page="4">4</button><button class="tabulator-page" type="button" role="button" aria-label="Hiển thị 5" title="Hiển thị 5" data-page="5">5</button></span><button class="tabulator-page" type="button" role="button" aria-label="Kế tiếp" title="Kế tiếp" data-page="next"><i class="fa fa-chevron-right" aria-hidden="true"></i></button><button class="tabulator-page" type="button" role="button" aria-label="Trang cuối" title="Trang cuối" data-page="last"><i class="fa fa-step-forward" aria-hidden="true"></i></button></span></div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="Tab5" role="tabpanel" aria-labelledby="btnTab5">
+                                        <fieldset class="KhungVien">
+                                            <legend><span>Chính sách hộ</span></legend>
+                                            <div class="row flex-row-reverse">
+                                                <div class="col-md-8 text-end">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="input-icon mb-3">
+                                                        <input type="text" value="" class="form-control" placeholder="Nội dung tìm kiếm" id="timkiem_gridChinhSachHo" autocomplete="off">
+                                                        <span class="input-icon-addon">
+                                                            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div id="GridChinhSachHo" class="GridData tabulator" role="grid" tabulator-layout="fitColumns" style="height: 550px;"><div class="tabulator-header" role="rowgroup"><div class="tabulator-header-contents" role="rowgroup"><div class="tabulator-headers" role="row"><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="SoQuyetDinh" style="min-width: 40px; width: 150px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Số quyết định</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="NgayQuyetDinh" style="min-width: 40px; width: 150px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Ngày quyết định</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="HoVaTen" style="min-width: 40px; width: 150px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Họ và tên</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="NgaySinh" style="min-width: 40px; width: 120px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Ngày sinh</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="SoCCCD" style="min-width: 40px; width: 150px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">CMND/CCCD</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="GioiTinh" style="min-width: 40px; width: 120px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Giới tính</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="NgayHuong" style="min-width: 40px; width: 120px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Ngày hưởng</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="HeSo" style="min-width: 40px; width: 100px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Hệ số</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="MucHuong" style="min-width: 40px; width: 150px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Mức hưởng</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col" role="columnheader" aria-sort="none" tabulator-field="SoTienHuong" style="min-width: 40px; width: 150px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title tabulator-col-title-wrap" style="text-align: center;">Số tiền hưởng</div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col" role="columnheader" aria-sort="none" tabulator-field="SoSoLinhTien" style="min-width: 40px; width: 150px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title tabulator-col-title-wrap" style="text-align: center;">Số sổ lĩnh tiền</div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col" role="columnheader" aria-sort="none" tabulator-field="GhiChu" style="min-width: 350px; width: 350px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title tabulator-col-title-wrap" style="text-align: center;">Ghi chú</div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="LoaiDoiTuong" style="min-width: 40px; width: 300px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Loại đối tượng</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span></div><div class="tabulator-frozen-rows-holder" style="min-width: 0px;"></div></div></div><div class="tabulator-tableholder" tabindex="0" style="height: calc(100% + 0px); max-height: calc(100% + 0px);"><div class="tabulator-table" role="rowgroup"></div></div><div class="tabulator-footer"><div class="tabulator-footer-contents"><span class="tabulator-page-counter"><span><span>Hiển thị</span><span> 0 </span><span>dòng</span></span></span><span class="tabulator-paginator"><label>Kích thước</label><select class="tabulator-page-size" aria-label="Kích thước" title="Kích thước"><option value="50">50</option><option value="100">100</option><option value="150">150</option><option value="200">200</option><option value="500">500</option><option value="true">All</option></select><button class="tabulator-page" type="button" role="button" aria-label="Trang đầu" title="Trang đầu" data-page="first" disabled=""><i class="fa fa-step-backward" aria-hidden="true"></i></button><button class="tabulator-page" type="button" role="button" aria-label="Lùi lại" title="Lùi lại" data-page="prev" disabled=""><i class="fa fa-chevron-left" aria-hidden="true"></i></button><span class="tabulator-pages"><button class="tabulator-page active" type="button" role="button" aria-label="Hiển thị 1" title="Hiển thị 1" data-page="1">1</button></span><button class="tabulator-page" type="button" role="button" aria-label="Kế tiếp" title="Kế tiếp" data-page="next" disabled=""><i class="fa fa-chevron-right" aria-hidden="true"></i></button><button class="tabulator-page" type="button" role="button" aria-label="Trang cuối" title="Trang cuối" data-page="last" disabled=""><i class="fa fa-step-forward" aria-hidden="true"></i></button></span></div></div></div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div class="tab-pane fade" id="Tab4" role="tabpanel" aria-labelledby="btnTab4">
+                                        <div class="row flex-row-reverse">
+                                            <div class="col-md-8 text-end">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="input-icon mb-3">
+                                                    <input type="text" value="" class="form-control" placeholder="Nội dung tìm kiếm" id="timKiem_tllg_us" autocomplete="off">
+                                                    <span class="input-icon-addon">
+                                                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div id="GridTaiLieuLuuGiu_us" class="GridData tabulator" role="grid" tabulator-layout="fitColumns" style="height: 500px;"><div class="tabulator-header" role="rowgroup"><div class="tabulator-header-contents" role="rowgroup"><div class="tabulator-headers" role="row" style="height: 0px;"><div class="tabulator-col tabulator-frozen tabulator-frozen-left" role="columnheader" aria-sort="none" tabulator-field="ThaoTac" style="min-width: 40px; width: 60px; height: 0px; position: sticky; left: 0px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;"><button id="btnThemMoi_TL" class="btn btn-xs btn-primary"><i class="fa fa-plus" aria-hidden="true"></i></button></div></div></div></div><span class="tabulator-col-resize-handle" style="position: sticky; height: 0px;"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="TaiLieuLuuGiuID" style="display: none; min-width: 40px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title">TaiLieuLuuGiuID</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="SoVanBan" style="min-width: 40px; width: 120px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Số văn bản</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="NgayKy" style="min-width: 40px; width: 120px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Ngày ký</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="TrichYeuNoiDung" style="min-width: 300px; width: 300px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Trích yếu nội dung</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="CoQuanBanHanh" style="min-width: 40px; width: 200px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">CQ ban hành</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="NguoiKy" style="min-width: 40px; width: 150px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Người ký</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="ChucDanh" style="min-width: 40px; width: 200px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Chức danh</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="TenLoaiTaiLieu" style="min-width: 40px; width: 200px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Loại tài liệu</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="CheDoLuuGiu" style="min-width: 40px; width: 150px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Chế độ lưu giữ</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col" role="columnheader" aria-sort="none" style="min-width: 40px; width: 140px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Xem tài liệu</div></div></div></div><span class="tabulator-col-resize-handle"></span></div><div class="tabulator-frozen-rows-holder" style="min-width: 0px;"></div></div></div><div class="tabulator-tableholder" tabindex="0" style="height: calc(100% + 0px); max-height: calc(100% + 0px);"><div class="tabulator-table" role="rowgroup"></div></div><div class="tabulator-footer"><div class="tabulator-footer-contents"><span class="tabulator-page-counter"><span><span>Hiển thị</span><span> 0 </span><span>dòng</span></span></span><span class="tabulator-paginator"><label>Kích thước</label><select class="tabulator-page-size" aria-label="Kích thước" title="Kích thước"><option value="50">50</option><option value="100">100</option><option value="150">150</option><option value="250">250</option><option value="500">500</option><option value="true">All</option></select><button class="tabulator-page" type="button" role="button" aria-label="Trang đầu" title="Trang đầu" data-page="first" disabled=""><i class="fa fa-step-backward" aria-hidden="true"></i></button><button class="tabulator-page" type="button" role="button" aria-label="Lùi lại" title="Lùi lại" data-page="prev" disabled=""><i class="fa fa-chevron-left" aria-hidden="true"></i></button><span class="tabulator-pages"><button class="tabulator-page active" type="button" role="button" aria-label="Hiển thị 1" title="Hiển thị 1" data-page="1">1</button></span><button class="tabulator-page" type="button" role="button" aria-label="Kế tiếp" title="Kế tiếp" data-page="next" disabled=""><i class="fa fa-chevron-right" aria-hidden="true"></i></button><button class="tabulator-page" type="button" role="button" aria-label="Trang cuối" title="Trang cuối" data-page="last" disabled=""><i class="fa fa-step-forward" aria-hidden="true"></i></button></span></div></div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="Tab6" role="tabpanel" aria-labelledby="btnTab6">
+                                        <fieldset class="KhungVien">
+                                            <legend><span>Quá trình tham gia BHYT</span></legend>
+                                            <div class="row flex-row-reverse">
+                                                <div class="col-md-4 text-end">
+                                                    <div class="input-icon mb-3">
+                                                        <input type="text" value="" class="form-control" placeholder="Nội dung tìm kiếm" id="timKiem_qttgbhyt" autocomplete="off">
+                                                        <span class="input-icon-addon">
+                                                            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="input-icon mb-3">
+                                                        <select class="form-control" id="QuaTrinhDoiTuongThamGiaBHYT" tabindex="0">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div id="GridQuaTrinhThamGiaBHYT" class="GridData tabulator" role="grid" tabulator-layout="fitColumns" style="height: 550px;"><div class="tabulator-header" role="rowgroup"><div class="tabulator-header-contents" role="rowgroup"><div class="tabulator-headers" role="row"><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="NgayKeKhai" style="min-width: 40px; width: 150px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Ngày kê khai</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="SoTheBHYT" style="min-width: 40px; width: 150px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Số thẻ BHYT</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="SoThangHieuLuc" style="min-width: 40px; width: 150px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Số tháng hiệu lực</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="TuNgay" style="min-width: 40px; width: 120px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Từ ngày</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="DenNgay" style="min-width: 40px; width: 120px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Đến ngày</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="PhiThamGia" style="min-width: 40px; width: 150px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Phí thẻ BHYT</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="TyLeNSHoTro" style="min-width: 40px; width: 150px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Tỷ lệ NS hỗ trợ</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col" role="columnheader" aria-sort="none" tabulator-field="SoTienNSHoTro" style="min-width: 40px; width: 150px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title tabulator-col-title-wrap" style="text-align: center;">Sô tiền NS hỗ trợ</div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="MaSoBHXH" style="min-width: 40px; width: 150px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Mã số BHXH</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="TenLoaiDoiTuong" style="min-width: 40px; width: 300px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Loại đối tượng tham gia BHYT</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col tabulator-sortable tabulator-col-sorter-element" role="columnheader" aria-sort="none" tabulator-field="TenPhuongAnKhaiBao" style="min-width: 40px; width: 180px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title" style="text-align: center;">Phương án khai báo</div><div class="tabulator-col-sorter"><div class="tabulator-arrow"></div></div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col" role="columnheader" aria-sort="none" tabulator-field="NoiKCBBanDau" style="min-width: 40px; width: 200px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title tabulator-col-title-wrap" style="text-align: center;">Nơi đăng ký KCB ban đầu</div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col" role="columnheader" aria-sort="none" tabulator-field="NoiCapTheBHYT" style="min-width: 40px; width: 200px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title tabulator-col-title-wrap" style="text-align: center;">Nơi cấp thẻ BHYT</div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col" role="columnheader" aria-sort="none" tabulator-field="NoiDangKy" style="min-width: 40px; width: 200px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title tabulator-col-title-wrap" style="text-align: center;">Nơi đăng ký</div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col" role="columnheader" aria-sort="none" tabulator-field="NgayBaoGiam" style="min-width: 40px; width: 100px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title tabulator-col-title-wrap" style="text-align: center;">Ngày báo giảm</div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col" role="columnheader" aria-sort="none" tabulator-field="SoThangConLai" style="min-width: 40px; width: 170px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title tabulator-col-title-wrap" style="text-align: center;">Số tháng chưa sử dụng</div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col" role="columnheader" aria-sort="none" tabulator-field="SoTienHoanTra" style="min-width: 40px; width: 120px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title tabulator-col-title-wrap" style="text-align: center;">Số tiền hoàn trả</div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col" role="columnheader" aria-sort="none" tabulator-field="Loai" style="min-width: 40px; width: 120px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title tabulator-col-title-wrap" style="text-align: center;">Trạng thái</div></div></div></div><span class="tabulator-col-resize-handle"></span><div class="tabulator-col" role="columnheader" aria-sort="none" tabulator-field="DinhKem" style="min-width: 40px; width: 150px;"><div class="tabulator-col-content"><div class="tabulator-col-title-holder"><div class="tabulator-col-title tabulator-col-title-wrap" style="text-align: center;">Đính kèm</div></div></div></div><span class="tabulator-col-resize-handle"></span></div><div class="tabulator-frozen-rows-holder" style="min-width: 0px;"></div></div></div><div class="tabulator-tableholder" tabindex="0" style="height: calc(100% + 0px); max-height: calc(100% + 0px);"><div class="tabulator-table" role="rowgroup"></div></div><div class="tabulator-footer"><div class="tabulator-footer-contents"><span class="tabulator-page-counter"><span><span>Hiển thị</span><span> 0 </span><span>dòng</span></span></span><span class="tabulator-paginator"><label>Kích thước</label><select class="tabulator-page-size" aria-label="Kích thước" title="Kích thước"><option value="50">50</option><option value="100">100</option><option value="150">150</option><option value="200">200</option><option value="500">500</option><option value="true">All</option></select><button class="tabulator-page" type="button" role="button" aria-label="Trang đầu" title="Trang đầu" data-page="first" disabled=""><i class="fa fa-step-backward" aria-hidden="true"></i></button><button class="tabulator-page" type="button" role="button" aria-label="Lùi lại" title="Lùi lại" data-page="prev" disabled=""><i class="fa fa-chevron-left" aria-hidden="true"></i></button><span class="tabulator-pages"><button class="tabulator-page active" type="button" role="button" aria-label="Hiển thị 1" title="Hiển thị 1" data-page="1">1</button></span><button class="tabulator-page" type="button" role="button" aria-label="Kế tiếp" title="Kế tiếp" data-page="next" disabled=""><i class="fa fa-chevron-right" aria-hidden="true"></i></button><button class="tabulator-page" type="button" role="button" aria-label="Trang cuối" title="Trang cuối" data-page="last" disabled=""><i class="fa fa-step-forward" aria-hidden="true"></i></button></span></div></div></div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div class="tab-pane fade" id="TabThanhVien_View" role="tabpanel">
+                                        <h4>Activity tab</h4>
+                                        <div>Donec ac vitae diam amet vel leo egestas consequat rhoncus in luctus amet, facilisi sit mauris accumsan nibh habitant senectus</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* Xem thông tin hộ gia đình *@
+<div class="modal modal-blur fade" id="mdXemChiTiet_usHoGiaDinh" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog" role="document" style=" max-width: 100vw; margin: 0; overflow: hidden !important;">
+        <div class="modal-content" style="max-height: 95vh; padding-bottom: 30px">
+            <div class="modal-header" style="background: unset;color: #000;border-bottom: unset;">
+                <h5 class="modal-title" id="mdXemTTHoGiaDinhCT" style="font-weight:bold">Xem thông tin hộ gia đình </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: #000 !important;font-weight: bold;"> &times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="card container-content ">
+                    <div class="card-header" style="padding-bottom: 0;margin-bottom: 10px;">
+                        <ul class="nav nav-tabs card-header-tabs" data-bs-toggle="tabs" role="tablist" style=" padding-left: 10px;">
+                            <li class="nav-item" role="presentation">
+                                <a href="#Tab1_ViewHoGiaDinh" id="btnTab1_ViewHoGiaDinh" class="nav-link active" data-bs-toggle="tab" aria-selected="true" role="tab">
+                                    <svg width="16" height="16" viewBox="0 0 20 16" fill="none" class="mod-down">
+                                        <path d="M10 0C4.47708 0 0 4.47708 0 10C0 11.8333 0.494792 13.5507 1.35625 15.0278C1.55104 15.3618 1.92222 15.5556 2.30903 15.5556H17.691C18.0778 15.5556 18.449 15.3618 18.6438 15.0278C19.5052 13.5507 20 11.8333 20 10C20 4.47708 15.5229 0 10 0ZM10 2.22222C10.5108 2.22222 10.9229 2.57396 11.0528 3.0434C11.0142 3.12187 10.9611 3.19028 10.933 3.275L10.6128 4.23576C10.4347 4.35694 10.2319 4.44444 10.0003 4.44444C9.38681 4.44444 8.88924 3.94687 8.88924 3.33333C8.88924 2.71979 9.38646 2.22222 10 2.22222ZM3.33333 12.2222C2.71979 12.2222 2.22222 11.7247 2.22222 11.1111C2.22222 10.4976 2.71979 10 3.33333 10C3.94688 10 4.44444 10.4976 4.44444 11.1111C4.44444 11.7247 3.94688 12.2222 3.33333 12.2222ZM5 6.66667C4.38646 6.66667 3.88889 6.1691 3.88889 5.55556C3.88889 4.94201 4.38646 4.44444 5 4.44444C5.61354 4.44444 6.11111 4.94201 6.11111 5.55556C6.11111 6.1691 5.61354 6.66667 5 6.66667ZM13.5684 4.15243L11.4389 10.5413C11.9142 10.949 12.2222 11.5465 12.2222 12.2222C12.2222 12.6292 12.1049 13.0052 11.9139 13.3333H8.08611C7.89514 13.0052 7.77778 12.6292 7.77778 12.2222C7.77778 11.0437 8.69792 10.0892 9.85764 10.0142L11.9875 3.625C12.1323 3.18889 12.6031 2.94965 13.0417 3.09826C13.4781 3.24375 13.7135 3.71597 13.5684 4.15243ZM14.0774 6.13854L14.6163 4.52222C14.7368 4.47743 14.8639 4.44479 15 4.44479C15.6135 4.44479 16.1111 4.94236 16.1111 5.5559C16.1111 6.16944 15.6135 6.66701 15 6.66701C14.6049 6.66667 14.2747 6.44896 14.0774 6.13854ZM16.6667 12.2222C16.0531 12.2222 15.5556 11.7247 15.5556 11.1111C15.5556 10.4976 16.0531 10 16.6667 10C17.2802 10 17.7778 10.4976 17.7778 11.1111C17.7778 11.7247 17.2802 12.2222 16.6667 12.2222Z" fill="#000000" />
+                                    </svg>
+                                    &nbsp; Thông tin chung
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#Tab3_ViewHoGiaDinh" id="btnTab3_ViewHoGiaDinh" class="nav-link" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">
+                                    <svg class="icon icon-tabler icon-tabler-users-group" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                                        <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1"></path>
+                                        <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                                        <path d="M17 10h2a2 2 0 0 1 2 2v1"></path>
+                                        <path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                                        <path d="M3 13v-1a2 2 0 0 1 2 -2h2"></path>
+                                    </svg>&nbsp; Thành viên hộ gia đình
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#Tab4_ViewHoGiaDinh" id="btnTab4_ViewHoGiaDinh" class="nav-link" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-description" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                                        <path d="M9 17h6"></path>
+                                        <path d="M9 13h6"></path>
+                                    </svg>&nbsp; Tài liệu
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane fade active show" id="Tab1_ViewHoGiaDinh" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                                        Loại giấy tờ:
+                                                        <span id="lblSoHoKhau_USHoGiaDinh"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="col-md-12 control-div no-padding-right TieuDeLabel">
+                                                        Số giấy tờ:
+                                                        <span id="lblSoGiayTo_USHoGiaDinh"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr style="margin: 0px 0px 25px 0; border-top: 1px solid #999;">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <div class="col-md-12 control-div no-padding-right TieuDeLabel">
+                                                        Họ và tên chủ hộ:
+                                                        <span id="lblHoVaTen_USHoGiaDinh"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <div class="col-md-12 control-div no-padding-right TieuDeLabel">
+                                                        Giới tính:
+                                                        <span id="lblGioiTinh_USHoGiaDinh"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <div class="col-md-12 control-div no-padding-right TieuDeLabel">
+                                                        Ngày sinh:
+                                                        <span id="lblNgaySinh_USHoGiaDinh"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr style="margin: 0px 0px 25px 0; border-top: 1px solid #999;">
+                                        <div class="row">
+                                            <div class="col-md-4 ">
+                                                <div class="form-group">
+                                                    <div class="col-md-12 control-div no-padding-right TieuDeLabel">
+                                                        CMND/CCCD/Mã định danh:
+                                                        <span id="lblMaDinhDanh_USHoGiaDinh"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <div class="col-md-12 control-div no-padding-right TieuDeLabel">
+                                                        Ngày cấp:
+                                                        <span id="lblNgayCap_USHoGiaDinh"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <div class="col-md-12 control-div no-padding-right TieuDeLabel">
+                                                        Nơi cấp:
+                                                        <span id="lblNoiCap_USHoGiaDinh"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr style="margin: 0px 0px 25px 0; border-top: 1px solid #999;">
+                                        <div class="row">
+                                            <div class="col-md-4 ">
+                                                <div class="form-group">
+                                                    <div class="col-md-12 control-div no-padding-right TieuDeLabel">
+                                                        Dân tộc:
+                                                        <span id="lblDanToc_USHoGiaDinh"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <div class="col-md-12 control-div no-padding-right TieuDeLabel">
+                                                        Tôn giáo:
+                                                        <span id="lblTonGiao_USHoGiaDinh"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <div class="col-md-12 control-div no-padding-right TieuDeLabel">
+                                                        Quốc tịch:
+                                                        <span id="lblQuocTich_USHoGiaDinh"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr style="margin: 0px 0px 25px 0; border-top: 1px solid #999;">
+                                        <div class="row">
+                                            <div class="col-md-4 ">
+                                                <div class="form-group">
+                                                    <div class="col-md-12 control-div no-padding-right TieuDeLabel">
+                                                        Số điện thoại:
+                                                        <span id="lblSoDienThoai_USHoGiaDinh"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <div class="col-md-12 control-div no-padding-right TieuDeLabel">
+                                                        Email:
+                                                        <span id="lblEmail_USHoGiaDinh"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr style="margin: 0px 0px 25px 0; border-top: 1px solid #999;">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <div class="col-md-12 control-div no-padding-right TieuDeLabel">
+                                                        Nơi thường trú:
+                                                        <span id="lblMaDiaChi_USHoGiaDinh"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr style="margin: 0px 0px 25px 0; border-top: 1px solid #999;">
+                                        <div class="row">
+                                            <div class="col-md-4 ">
+                                                <div class="form-group">
+                                                    <div class="col-md-12 control-div no-padding-right TieuDeLabel">
+                                                        Thôn/Xóm:
+                                                        <span id="lblThon_USHoGiaDinh"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <div class="col-md-12 control-div no-padding-right TieuDeLabel">
+                                                        Phường/Xã:
+                                                        <span id="lblXa_USHoGiaDinh"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <div class="col-md-12 control-div no-padding-right TieuDeLabel">
+                                                        Quận/Huyện:
+                                                        <span id="lblHuyen_USHoGiaDinh"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr style="margin: 0px 0px 25px 0; border-top: 1px solid #999;">
+                                        <div class="row">
+                                            <div class="col-md-4 ">
+                                                <div class="form-group">
+                                                    <div class="col-md-12 control-div no-padding-right TieuDeLabel">
+                                                        Tỉnh/Thành phố:
+                                                        <span id="lblTinh_USHoGiaDinh"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <div class="col-md-12 control-div no-padding-right TieuDeLabel">
+                                                        Phân loại hộ:
+                                                        <span id="lblPhanLoaiHo_USHoGiaDinh"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr style="margin: 10px 0px 25px 0; border-top: 1px solid #999;">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <div class="col-md-12 control-div no-padding-right TieuDeLabel">
+                                                        <span id="lblGhiChu_USHoGiaDinh"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr style="margin: 0px 0px 25px 0; border-top: 1px solid #999;">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="Tab3_ViewHoGiaDinh" role="tabpanel">
+                                <div class="row flex-row-reverse">
+                                    <div class="col-md-8 text-end mb-2">
+                                    </div>
+                                    <div class="col-md-4  mb-2">
+                                        <div class="input-icon mb-3">
+                                            <input type="text" value="" class="form-control" placeholder="Nội dung tìm kiếm" id="timkiem_thanhvien_USHoGiaDinh" autocomplete="off">
+                                            <span class="input-icon-addon">
+                                                <svg class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12_View">
+                                        <div id="Grid_ThanhVien_USHoGiaDinh" class="GridData"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="Tab4_ViewHoGiaDinh" role="tabpanel">
+                                <div class="row flex-row-reverse">
+                                    <div class="col-md-8 text-end mb-2">
+                                    </div>
+                                    <div class="col-md-4  mb-2">
+                                        <div class="input-icon mb-3">
+                                            <input type="text" value="" class="form-control" placeholder="Nội dung tìm kiếm " id="timKiem_tllg_us_View" autocomplete="off">
+                                            <span class="input-icon-addon">
+                                                <svg class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="GridTaiLieuLuuGiu_USHoGiaDinh" class="GridData"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="position: fixed; bottom: 0px; left: 0px; width: 100%">
+                <div style="display: flex; align-items: center; justify-content: space-between">
+                    <div class="col-md-6" style="display: flex; align-items: center">
+                    </div>
+                    <div class="col-md-6">
+                        <div style="float:right;text-align: right">
+                            <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                <i class="fa fa-close"></i>&nbsp;Đóng
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        setTimeout(() => { loadDataCombo(); }, 250);
+        $('.dropInput_GiayTo').click(function (event) {
+            event.preventDefault();
+            var value = $(this).attr('data-value');
+            var text = $(this).data('name');
+            $('#drop_GiayTo').attr('data-value', value).html(text + ' &nbsp; <i class="fa-solid fa-caret-down"></i>');
+        });
+    });
+
+    function loadDataCombo() {
+        NTS.loadDataCombo({
+            name: '#GioiTinhID',
+            ajaxUrl: '/DanhMuc/DungChung/GetGioiTinh_Combo',
+            columns: 1,
+            indexValue: 0,
+            indexText: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0,
+        });
+        NTS.loadDataCombo({
+            name: '#NoiCap_TinhID',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCAllTinh_Combo',
+            columns: 1,
+            indexValue: 0,
+            indexText: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0,
+        });
+        NTS.loadDataCombo({
+            name: '#QuocTichID',
+            ajaxUrl: '/DanhMuc/DungChung/GetCombo_QuocGia',
+            columns: 1,
+            indexValue: 0,
+            indexText: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0,
+        });
+        NTS.loadDataCombo({
+            name: '#DanTocID',
+            ajaxUrl: '/DanhMuc/DungChung/GetDanToc_Combo',
+            columns: 1,
+            indexValue: 0,
+            indexText: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0,
+        });
+        NTS.loadDataCombo({
+            name: '#TonGiaoID',
+            ajaxUrl: '/DanhMuc/DungChung/GetComBo_TonGiao',
+            columns: 1,
+            indexValue: 0,
+            indexText: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0,
+        });
+        NTS.loadDataCombo({
+            name: '#PhanLoaiHoID',
+            ajaxUrl: '/DanhMuc/DungChung/GetPhanLoaiHo_Combo',
+            columns: 1,
+            indexValue: 0,
+            indexText: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0,
+        });
+    }
+
+    //-----------------------Change Hộ khẩu thường trú trong form thêm, sửa-------------------------//
+    $(document).on('change', '#TinhID_TT', function () {
+        NTS.loadDataCombo({
+            name: '#HuyenID_TT',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCHuyen_Combo',
+            ajaxParam: { id: $('#TinhID_TT').value() },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0
+        });
+        NTS.loadDataCombo({
+            name: '#XaID_TT',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCXa_Combo',
+            ajaxParam: { id: '' },
+            indexValue: 0,
+            indexText: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0
+        });
+        NTS.loadDataCombo({
+            name: '#ThonID_TT',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCThon_Combo',
+            ajaxParam: { id: '' },
+            indexValue: 0,
+            indexText: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0
+        });
+        //Change địa chỉ
+        var DiaChi = $('#SoNha_TT').value().trim();
+        if (DiaChi != '') {
+            DiaChi = DiaChi + ', ';
+        }
+        var txtTinh = $('#TinhID_TT');
+        var txtHuyen = $('#HuyenID_TT');
+        var txtXa = $('#XaID_TT');
+        var txtThon = $('#ThonID_TT');
+
+        if (txtTinh.select2('data')[0].text1 != '-Chọn-') {
+            if (txtHuyen.select2('data')[0].text1 != '-Chọn-') {
+                if (txtXa.select2('data')[0].text1 != '-Chọn-') {
+                    if (txtThon.select2('data')[0].text1 != '-Chọn-') {
+                        $('#DiaChiThuongTru').value(DiaChi + txtThon.select2('data')[0].text1 + ', ' + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    } else {
+                        $('#DiaChiThuongTru').value(DiaChi + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    }
+                } else {
+                    $('#DiaChiThuongTru').value(DiaChi + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                }
+            } else {
+                $('#DiaChiThuongTru').value(DiaChi + txtTinh.select2('data')[0].text1);
+            }
+        } else {
+            if (DiaChi != '') {
+                $('#DiaChiThuongTru').value(DiaChi);
+            }
+            else {
+                $('#DiaChiThuongTru').value(textDiaChi_defaut);
+            }
+
+        }
+    });
+    $(document).on('change', '#HuyenID_TT', function () {
+        NTS.loadDataCombo({
+            name: '#XaID_TT',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCXa_Combo',
+            ajaxParam: { id: $('#HuyenID_TT').value() },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0
+        });
+        NTS.loadDataCombo({
+            name: '#ThonID_TT',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCThon_Combo',
+            ajaxParam: { id: '' },
+            indexValue: 0,
+            indexText: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0
+        });
+        //Change địa chỉ
+        var DiaChi = $('#SoNha_TT').value().trim();
+        if (DiaChi != '') {
+            DiaChi = DiaChi + ', ';
+        }
+        var txtTinh = $('#TinhID_TT');
+        var txtHuyen = $('#HuyenID_TT');
+        var txtXa = $('#XaID_TT');
+        var txtThon = $('#ThonID_TT');
+
+        if (txtTinh.select2('data')[0].text1 != '-Chọn-') {
+            if (txtHuyen.select2('data')[0].text1 != '-Chọn-') {
+                if (txtXa.select2('data')[0].text1 != '-Chọn-') {
+                    if (txtThon.select2('data')[0].text1 != '-Chọn-') {
+                        $('#DiaChiThuongTru').value(DiaChi + txtThon.select2('data')[0].text1 + ', ' + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    } else {
+                        $('#DiaChiThuongTru').value(DiaChi + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    }
+                } else {
+                    $('#DiaChiThuongTru').value(DiaChi + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                }
+            } else {
+                $('#DiaChiThuongTru').value(DiaChi + txtTinh.select2('data')[0].text1);
+            }
+        } else {
+            if (DiaChi != '') {
+                $('#DiaChiThuongTru').value(DiaChi);
+            } else {
+                $('#DiaChiThuongTru').value(textDiaChi_defaut);
+            }
+
+        }
+    });
+    $(document).on('change', '#XaID_TT', function () {
+        NTS.loadDataCombo({
+            name: '#ThonID_TT',
+            ajaxUrl: '/DanhMuc/DungChung/GetDiaBanHCThon_Combo',
+            ajaxParam: { id: $('#XaID_TT').value() },
+            columns: 2,
+            indexValue: 0,
+            indexText1: 2,
+            textShowTatCa: '-Chọn-',
+            showTatCa: !0
+        });
+        //Change địa chỉ
+        var DiaChi = $('#SoNha_TT').value().trim();
+        if (DiaChi != '') {
+            DiaChi = DiaChi + ', ';
+        }
+        var txtTinh = $('#TinhID_TT');
+        var txtHuyen = $('#HuyenID_TT');
+        var txtXa = $('#XaID_TT');
+        var txtThon = $('#ThonID_TT');
+
+        if (txtTinh.select2('data')[0].text1 != '-Chọn-') {
+            if (txtHuyen.select2('data')[0].text1 != '-Chọn-') {
+                if (txtXa.select2('data')[0].text1 != '-Chọn-') {
+                    if (txtThon.select2('data')[0].text1 != '-Chọn-') {
+                        $('#DiaChiThuongTru').value(DiaChi + txtThon.select2('data')[0].text1 + ', ' + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    } else {
+                        $('#DiaChiThuongTru').value(DiaChi + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    }
+                } else {
+                    $('#DiaChiThuongTru').value(DiaChi + txtHuyen.select2('data')[0].text1 + txtTinh.select2('data')[0].text1);
+                }
+            } else {
+                $('#DiaChiThuongTru').value(DiaChi + txtTinh.select2('data')[0].text1);
+            }
+        } else {
+            if (DiaChi != '') {
+                $('#DiaChiThuongTru').value(DiaChi);
+            } else {
+                $('#DiaChiThuongTru').value(textDiaChi_defaut);
+            }
+
+        }
+    });
+    $(document).on('change', '#ThonID_TT', function () {
+        //Change địa chỉ
+        var DiaChi = $('#SoNha_TT').value().trim();
+        if (DiaChi != '') {
+            DiaChi = DiaChi + ', ';
+        }
+        var txtTinh = $('#TinhID_TT');
+        var txtHuyen = $('#HuyenID_TT');
+        var txtXa = $('#XaID_TT');
+        var txtThon = $('#ThonID_TT');
+
+        if (txtTinh.select2('data')[0].text1 != '-Chọn-') {
+            if (txtHuyen.select2('data')[0].text1 != '-Chọn-') {
+                if (txtXa.select2('data')[0].text1 != '-Chọn-') {
+                    if (txtThon.select2('data')[0].text1 != '-Chọn-') {
+                        $('#DiaChiThuongTru').value(DiaChi + txtThon.select2('data')[0].text1 + ', ' + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    } else {
+                        $('#DiaChiThuongTru').value(DiaChi + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    }
+                } else {
+                    $('#DiaChiThuongTru').value(DiaChi + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                }
+            } else {
+                $('#DiaChiThuongTru').value(DiaChi + txtTinh.select2('data')[0].text1);
+            }
+        } else {
+            if (DiaChi != '') {
+                $('#DiaChiThuongTru').value(DiaChi);
+            } else {
+                $('#DiaChiThuongTru').value(textDiaChi_defaut);
+            }
+
+        }
+    });
+
+    //-----------------------Change dia chi--------------------------//
+    $('#SoNha_TT').on('input', function () {
+        //Change địa chỉ
+        var DiaChi = $('#SoNha_TT').value().trim();
+        if (DiaChi != '') {
+            DiaChi = DiaChi + ', ';
+        }
+        var txtTinh = $('#TinhID_TT');
+        var txtHuyen = $('#HuyenID_TT');
+        var txtXa = $('#XaID_TT');
+        var txtThon = $('#ThonID_TT');
+
+        if (txtTinh.select2('data')[0].text1 != '-Chọn-') {
+            if (txtHuyen.select2('data')[0].text1 != '-Chọn-') {
+                if (txtXa.select2('data')[0].text1 != '-Chọn-') {
+                    if (txtThon.select2('data')[0].text1 != '-Chọn-') {
+                        $('#DiaChiThuongTru').value(DiaChi + txtThon.select2('data')[0].text1 + ', ' + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    } else {
+                        $('#DiaChiThuongTru').value(DiaChi + txtXa.select2('data')[0].text1 + ', ' + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                    }
+                } else {
+                    $('#DiaChiThuongTru').value(DiaChi + txtHuyen.select2('data')[0].text1 + ', ' + txtTinh.select2('data')[0].text1);
+                }
+            } else {
+                $('#DiaChiThuongTru').value(DiaChi + txtTinh.select2('data')[0].text1);
+            }
+        } else {
+            if (DiaChi != '') {
+                $('#DiaChiThuongTru').value(DiaChi);
+            } else {
+                $('#DiaChiThuongTru').value(textDiaChi_defaut);
+            }
+
+        }
+
+    });
+
+    function LoadThongTinDonVi() {
+        try {
+            var DonVi = NTS.getAjax('/DanhMuc/DungChung/GetThongTinDonViThaoTac', {});
+            DonVi = DonVi.Result;
+            if (DonVi != undefined && !$.isEmptyObject(DonVi) && DonVi != '' && DonVi != null) {
+                $('#TinhID_TT').value(DonVi[0].DiaBanHCID_Tinh);
+                $('#HuyenID_TT').value(DonVi[0].DiaBanHCID_Huyen);
+                $('#XaID_TT').value(DonVi[0].DiaBanHCID_Xa);
+            }
+        } catch (e) {
+
+        }
+    }
+
+    function showModalThemMoi() {
+        $('#lblTieuDeThemMoi').text('Thêm mới hộ gia đình');
+        $('#mdThemMoiHGD').modal('show');
+        PhanQuyenComBoDiaBan('TinhID_TT', 'HuyenID_TT', 'XaID_TT', 'ThonID_TT');
+        resetForm("#mdThemMoiHGD");
+        $('#drop_GiayTo').attr('data-value', 1);
+        $('#drop_GiayTo').html('Sổ hộ khẩu &nbsp; <i class="fa-solid fa-caret-down"></i>');
+        //// Chọn phần tử thứ 2 trong select
+        $('#GioiTinhID option:eq(1)').prop('selected', true);
+        $('#GioiTinhID').trigger('change');
+
+        $('#QuocTichID option:eq(1)').prop('selected', true);
+        $('#QuocTichID').trigger('change');
+
+        $('#DanTocID option:eq(1)').prop('selected', true);
+        $('#DanTocID').trigger('change');
+
+        $('#TonGiaoID option:eq(1)').prop('selected', true);
+        $('#TonGiaoID').trigger('change');
+
+        $('#NoiCap_TinhID option:eq(1)').prop('selected', true);
+        $('#NoiCap_TinhID').trigger('change');
+
+        $('#GiongHoKhauThuongTru').prop('checked', false);
+        $('#TrangThai').value(true);
+        UpdateLabelDangSD('#TrangThai');
+        tempthem = 'them';
+        try {
+            var matutang = NTS.getAjax('/DanhMuc/DungChung/LayMaTuTang', { kyhieuLoaiPhieu: "HGD", bangDuLieu: "HoGiaDinh", cotDuLieu: "MaHoGiaDinh", dieuKienTruyVan: "", ngayLap: "" });
+            $('#MaHo').value(matutang.Result)
+        } catch (e) {
+
+        }
+
+        // Gán mặc định tỉnh, huyện, xã của địa chỉ thường trú theo tỉnh, huyện, xã theo đơn vị đăng nhập
+        setTimeout(() => {
+            LoadThongTinDonVi();
+        },50);
+        return false;
+    }
+
+    function SuaDuLieu(ID) {
+        if (!QuyenSua()) {
+            return false;
+        }
+        $('#lblTieuDeThemMoi').text('Cập nhật hộ gia đình');
+        $('#mdThemMoiTiepTuc').modal('hide');
+        $('#mdThemMoiHGD').modal('show');
+        PhanQuyenComBoDiaBan('TinhID_TT', 'HuyenID_TT', 'XaID_TT', 'ThonID_TT');
+        const result = NTS.getAjax('/DanhMuc/HoGiaDinh/LoadDuLieuSua', { id: ID });
+        if (!result.Err && result.Result != null) {
+            let data = result.Result[0];
+            $('#HoGiaDinhID').value(data.HoGiaDinhID);
+            $('#MaHo').value(data.MaHoGiaDinh);
+            $('#HoVaTen').value(data.HoVaTenChuHo);
+            $('#SoDinhDanh').value(data.SoCCCD);
+            soCCCD = data.SoCCCD;
+            $('#NgayCapSoDinhDanh').value(data.NgayCap);
+            $('#NoiCap_TinhID').value(data.NoiCapID);
+            $('#GioiTinhID').value(data.GioiTinhID);
+            $('#NgaySinh').value(data.NgayThangNamSinh);
+            $('#QuocTichID').value(data.QuocTichID);
+            $('#DanTocID').value(data.DanTocID);
+            $('#TonGiaoID').value(data.TonGiaoID);
+            $('#SoDienThoai').value(data.SoDienThoai);
+            $('#PhanLoaiHoID').value(data.PhanLoaiHoGDID);
+            $('#Email').value(data.Email);
+            $('#drop_GiayTo').attr('data-value', data.LoaiHoGD); //Loai ho gia dinh gia tri la "1": so ho khau, gia tri la "2": so tam tru
+            if (data.LoaiHoGD == 1) {
+                $('#drop_GiayTo').html(' Sổ hộ khẩu &nbsp; <i class="fa-solid fa-caret-down"></i>');
+            } else {
+                $('#drop_GiayTo').html(' Sổ tạm trú &nbsp; <i class="fa-solid fa-caret-down"></i>');
+            }
+            $('#drop_GiayTo').attr('data-value', data.LoaiHoGD);
+            $('#SoGiayTo').value(data.SoGiayTo);
+            $('#SoNha_TT').value(data.SoNhaTT);
+            setTimeout(() => {
+                $('#TinhID_TT').value(data.DiaBanHCID_TinhTT);
+                $('#HuyenID_TT').value(data.DiaBanHCID_HuyenTT);
+                $('#XaID_TT').value(data.DiaBanHCID_XaTT);
+                $('#ThonID_TT').value(data.DiaBanHCID_ThonTT);
+            }, 50);
+            $('#DiaChiThuongTru').value(data.DiaChiCuTheTT);
+            $('#TrangThai').value(data.TrangThai);
+            $('#GhiChu').value(data.GhiChu);
+            UpdateLabelDangSD('#TrangThai');
+        }
+        else result.CanhBao ? NTS.canhbao(result.Msg) : NTS.loi(result.Msg);
+        tempthem = 'sua';
+    }
+
+    ///////// PHÍM TẮT /////////
+    var hotKey = 0; // 1 thêm
+    $(document).on('keydown', function (e) {
+        console.log(e.keyCode);
+        switch (e.keyCode) {
+            case 113:
+                if (hotKey == 0)
+                    $('#btnThemMoi').trigger('click');
+                e.preventDefault();
+                break;
+            case 114:
+                if (hotKey == 0)
+                    $('.nav-search-input').focus();
+                e.preventDefault();
+                break;
+            case 115:
+                if (hotKey == 1)
+                    if ($('#mdThemMoiHGD').hasClass('show')) {
+                        $('#mdThemMoiHGD').modal('hide');
+                        e.preventDefault();
+                        break;
+                    } else if ($('#mdThemMoiThanhVien_us').hasClass('show')) {
+                        $('#mdThemMoiThanhVien_us').modal('hide');
+                        e.preventDefault();
+                        break;
+                    } else if ($('#mdThemMoi_TL').hasClass('show')) {
+                        $('#mdThemMoi_TL').modal('hide');
+                        e.preventDefault();
+                        break;
+                    }
+            case 120:
+                if (hotKey == 1) {
+                    if ($('#mdThemMoiHGD').hasClass('show')) {
+                        $('#btnLuuVaDongHGD').trigger('click');
+                        e.preventDefault();
+                        break;
+                    }
+                    else if ($('#mdThemMoiThanhVien_us').hasClass('show')) {
+                        $('#btnLuuVaDongThemThanhVien_us').trigger('click');
+                        e.preventDefault();
+                        break;
+                    }
+                    else if ($('#mdThemMoi_TL').hasClass('show')) {
+                        $('#btnLuuVaDong_TL').trigger('click');
+                        e.preventDefault();
+                        break;
+                    }
+                }
+            case 121:
+                if (hotKey == 1) {
+                    if ($('#mdThemMoiHGD').hasClass('show')) {
+                        $('#btnTiepTuc').trigger('click');
+                        e.preventDefault();
+                        break;
+                    }
+                }
+        }
+    });
+    $(document).on('shown.bs.modal', '#mdThemMoiHGD', function () {
+        hotKey = 1;
+    });
+    $(document).on('hidden.bs.modal', '#mdThemMoiHGD', function () {
+        hotKey = 0;
+    });
+
+    $(document).on('shown.bs.modal', '#mdThemMoiThanhVien_us', function () {
+        hotKey = 1;
+    });
+    $(document).on('hidden.bs.modal', '#mdThemMoiThanhVien_us', function () {
+        hotKey = 0;
+    });
+
+    $(document).on('shown.bs.modal', '#mdThemMoi_TL', function () {
+        hotKey = 1;
+    });
+    $(document).on('hidden.bs.modal', '#mdThemMoi_TL', function () {
+        hotKey = 0;
+    });
+
+
+
+</script>
+

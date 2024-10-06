@@ -1,0 +1,1 @@
+Ext.define('MISA.Control.MISAButton',{xtype:'misabutton',extend:'Ext.button.Button',alias:'widget.misabutton',});Ext.define('MISA.Control.MISASplitButton',{xtype:'misasplitbutton',extend:'Ext.button.Split',alias:'widget.misasplitbutton'});

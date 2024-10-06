@@ -1,0 +1,221 @@
+﻿<style>
+    .bg-ln-header {
+        background: linear-gradient(135deg, #ff0000 50%, #f2ff0f 50%);
+    }
+
+    .custom-btn-login {
+        margin-top: 5px;
+        margin-bottom: 3px !important;
+        border-radius: 5px !important;
+    }
+
+    img.custom-img-sld {
+        max-width: 100px;
+    }
+
+    .is-3 {
+        gap: 0.75rem;
+    }
+
+    .navbar-item {
+        color: #fff;
+        font-size: 14px;
+        font-family: "Roboto", sans-serif;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+    .nav-link {
+    }
+    .navbar-dropdown .navbar-item {
+        color: black;
+        font-weight: normal;
+        text-transform: uppercase !important;
+    }
+      a:hover{
+          text-decoration: none;
+      }
+      @@media (max-width: 900px){
+
+      }
+       @@media (max-width: 1024px){
+          .tt-project, .btn-respone{
+              display: none;
+          }
+          .box-nav{
+              display: none;
+          }
+          .input-find{
+              width: 100% !important;
+          }
+          .field{
+              padding: 10px;
+          }
+          .tt-project{
+              display: none
+          }
+      }
+       @@media (min-width: 1024px){
+           .menu-mobile{
+               display: none;
+           }
+       }
+       .menu-mobile {
+            margin-top: 8px;
+            margin-bottom: -5px;
+            z-index: 10;
+       }
+       #menuMobile{
+            display: none;
+            position: fixed;
+            background: white;
+            margin-left: 10px;
+            padding: 10px;
+            border-radius: 0 10px 10px 10px;
+            z-index: 10;
+       }
+       ul.menu-list.menu-list-data {
+            margin-left: 10px;
+            border-left: 3px solid #d2d2d2;
+        }
+</style>
+
+<div class="columns bg-ln-header" style="ALIGN-ITEMS: CENTER;z-index: 10;position: relative;">
+    <div class="column is-5 is-offset-1 tt-project" style="color: #fff;padding-top: 22px;font-size: 14px;">
+        CỔNG THÔNG TIN QUẢN LÝ THÔNG TIN THỊ TRƯỜNG LAO ĐỘNG
+    </div>
+    <div class="column is-1 is-offset-3 btn-respone">
+        <div class="buttons">
+            <button class="button is-danger is-small custom-btn-login"><i class="fa-regular fa-user"></i>&nbsp Đăng nhập</button>
+        </div>
+    </div>
+    <div class="column menu-mobile" onclick="showMenuMobile()">
+        <span style="padding: 10px;" id="btn-menuMobile"><i class="fa-solid fa-bars" style="font-size: 20px;color: white;"></i></span>
+        <aside class="menu">
+            <ul class="menu-list" id="menuMobile">                
+            </ul>
+        </aside>
+    </div>
+</div>
+<div class="columns" style="margin-bottom: 0;">
+    <div class="column" style="padding-top: 0; padding-bottom: 0;" id="Header_Img">
+    </div>
+</div>
+<div class="columns " style="background: #3e8ed0;align-items: center;margin-bottom: 0px;">
+    <div class="column is-8 is-offset-1 box-nav" style="padding-bottom: unset;">
+        <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+            <div id="navbarBasicExample" class="navbar-menu">
+
+            </div>
+        </nav>
+    </div>
+    <div class="column is-2 input-find" style="padding-bottom: unset;">
+        <div class="field">
+            <p class="control has-icons-left" style="margin-bottom: 0;">
+                <input class="input" type="text" placeholder="Tìm kiếm" style="height: 40px;" id="TimKiem">
+                <span class="icon is-small is-left">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+            </p>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        getMenu();
+        TimKiem();
+
+        getbanner();
+    });
+
+    function getMenu() {
+        var GetAll = NTS.getAjax_NoVerifi("/CongThongTinViecLam/TrangChuCTT/getMenu", {});
+        if (GetAll.length > 0) {
+            let textContent = '';
+            let soMenuCon = 0, soMenuConMobile = 0;
+            let MenuMobile = '';
+            for (var i = 0; i < GetAll.length; i++) {
+                let data = GetAll[i];
+                //neu co chuc nang con
+                if (data.CoChucNangCon == 0) {
+                    //neu dang la menu con
+                    if (soMenuCon > 0) {
+                        textContent += `<a href="${data.DuongDanUrl}" class="navbar-item">${data.TenChucNang}</a>`;
+                        //nếu là menu con cuối cùng thì kết  thúc bằng 2 thẻ div
+                        if (soMenuCon == 1) {
+                            textContent += '</div></div>';
+                        } else { // nêu chưa phải là menu con cuối cùng thì cho thẻ ngăn cách là hr
+                            textContent += `<hr class="navbar-divider">`;
+                        }
+                        //khi them 1 menu con thi tru di 1
+                        soMenuCon--;
+                    } else {
+                        textContent += `<a href="${data.DuongDanUrl}" class="navbar-item">${data.TenChucNang}</a>`;
+                    }
+                }
+                //neu khong co chuc nang con
+                else {
+                    soMenuCon = data.CoChucNangCon;
+                    textContent += `<div class="navbar-item has-dropdown is-hoverable">
+                        <a href="${data.DuongDanUrl}" class="navbar-link">${data.TenChucNang}</a>
+                        <div class="navbar-dropdown">`;
+                }
+
+            }
+            for (var i = 0; i < GetAll.length; i++) {
+                let data = GetAll[i];
+                let pathName = window.location.pathname;
+                if (data.CoChucNangCon == 0) {
+                    //neu dang la menu con
+                    if (soMenuConMobile > 0) {
+                        MenuMobile += `<li><a ${pathName == data.DuongDanUrl ? 'class="is-active"' : ''} href="${data.DuongDanUrl}">${data.TenChucNang}</a></li>`;
+                        //nếu là menu con cuối cùng thì kết  thúc bằng 2 thẻ div
+                        if (soMenuConMobile == 1) {
+                            MenuMobile += '</ul>';
+                        }
+                        //else { // nêu chưa phải là menu con cuối cùng thì cho thẻ ngăn cách là hr
+                        //    textContent += `<hr class="navbar-divider">`;
+                        //}
+                        //khi them 1 menu con thi tru di 1
+                        soMenuConMobile--;
+                    } else {
+                        MenuMobile += `<li><a ${pathName == data.DuongDanUrl ? 'class="is-active"' : ''}  href="${data.DuongDanUrl}">${data.TenChucNang}</a></li>`;
+                    }
+                }
+                //neu khong co chuc nang con
+                else {
+                    soMenuConMobile = data.CoChucNangCon;
+                    MenuMobile += `<li><a ${pathName == data.DuongDanUrl ? 'class="is-active"' : ''}  href="${data.DuongDanUrl}">${data.TenChucNang}</a></li>
+                                    <ul class="menu-list menu-list-data">`;
+                }
+            }
+            $("#menuMobile").append(MenuMobile);
+            $('#navbarBasicExample').append(`
+                <div class="navbar-start">
+                    ${textContent}
+                </div>`);
+        }
+
+    }
+    function TimKiem() {
+        $('#TimKiem').keypress(function (e) {
+            if (e.which == 13) { // Kiểm tra mã phím, 13 là mã phím cho phím Enter
+                window.open(
+                    '/tim-kiem-tin-tuc.html?key=' + $('#TimKiem').value(), '_self'
+                );
+            }
+        });
+    }
+    function getbanner() {
+        var GetAll = NTS.getAjax_NoVerifi("/CongThongTin/TrangChu/getFooterDiaChi", {});
+        if (GetAll.Result.length > 0) {
+            for (var i = 0; i < GetAll.Result.length; i++) {
+                let data = GetAll.Result[i];
+                $('#Header_Img').append(
+                    ` <img src="${data.banner.replace('*','')}" style="width: 100%; height: 140px;" />`);
+            }
+        }
+    }
+    function showMenuMobile() {
+        $("#menuMobile").toggle();
+    }
+</script>

@@ -1,0 +1,277 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/CongThongTin.cshtml";
+}
+
+<link href="~/Content/CongThongTin/css/splide.min.css" rel="stylesheet" />
+<link href="~/Content/CongThongTin/css/semantic.min.css" rel="stylesheet" />
+<style>
+    .gallery {
+        background: #EEE;
+    }
+
+    .gallery-cell {
+        width: 100%;
+        height: 200px;
+        margin-right: 10px;
+        background: #8C8;
+        counter-increment: gallery-cell;
+    }
+
+        /* cell number */
+        .gallery-cell:before {
+            display: block;
+            text-align: center;
+            /*content: counter(gallery-cell);*/
+            line-height: 200px;
+            font-size: 80px;
+            color: white;
+        }
+
+    .img-banner-tc {
+        width: 100%;
+        height: 650px;
+    }
+
+    .img-news-banner {
+        width: 100%;
+        height: 300px;
+        border-radius: 6px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .img-news-banner-child {
+        width: 100%;
+        height: 100px;
+        border-radius: 6px;
+    }
+
+    .border-new {
+        border: 1px solid #d5d5d5;
+        padding: 10px;
+        border-radius: 0 0 12px 12px;
+    }
+
+    .content-news-child {
+        margin-left: 10px !important;
+    }
+
+    .title-news {
+        font-weight: bold;
+        font-size: 16px;
+        color: black;
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+        margin: 8px 0;
+    }
+
+    .content-news {
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .news-title {
+        font-weight: bold;
+        color: black;
+        font-size: 16px;
+        margin: 10px 0;
+    }
+
+    div.box-item-news-work {
+        padding: 10px !important;
+        border-radius: 8px;
+        position: relative;
+    }
+
+    .img-news-work {
+        border-radius: 8px;
+        width: 100%;
+        height: 200px;
+    }
+
+    .text-2-row {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .text-5-row {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5;
+        overflow: hidden;
+    }
+
+    .news-hot {
+        background: #40a5ff;
+        padding: 12px 10px;
+        border-radius: 10px 10px 0px 0;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .box-news-tt {
+        font-size: 26px;
+        font-weight: bold;
+        color: black;
+        padding: 10px 0;
+    }
+
+    .btn-banner {
+        width: 40px;
+    }
+
+    .img-lienket {
+        border-radius: 10px;
+        padding: 2px;
+        height: 135px;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .border-lienket {
+        border: 1px solid #cccccc;
+        border-radius: 0 0 5px 5px;
+        padding: 10px;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .ribbon-news {
+        height: 28px;
+        position: absolute !important;
+        top: 10px;
+        left: -15px !important;
+    }
+
+    .box-item-news-work {
+        margin-bottom: 1.5rem;
+    }
+
+    @@media (max-width: 1024px) {
+        .img-banner-tc {
+            height: 350px;
+        }
+    }
+
+    @@media (max-width: 640px) {
+        .img-banner-tc {
+            height: 250px;
+        }
+
+        .box-news-tt {
+            font-size: 18px;
+        }
+    }
+
+    @@media (max-width: 320px) {
+        .img-banner-tc {
+            height: 200px;
+        }
+    }
+</style>
+
+<section class="splide" id="splideBanner" aria-label="Splide Basic HTML Example">
+    <div class="splide__arrows">
+        <button class="splide__arrow splide__arrow--prev btn-banner" onclick="return false">
+            <img src="https://cdn-icons-png.flaticon.com/128/189/189254.png" alt="Alternate Text" />
+        </button>
+        <button class="splide__arrow splide__arrow--next btn-banner" onclick="return false">
+            <img src="https://cdn-icons-png.flaticon.com/128/189/189253.png" alt="Alternate Text" />
+        </button>
+    </div>
+    <div class="splide__track">
+        <ul class="splide__list" id="box-img">
+        </ul>
+    </div>
+</section>
+
+@*<%-- Tin nổi bật --%>*@
+<section class="section">
+    <div class="news-hot container is-fullhd">
+        <i class="fa-solid fa-bars-staggered"></i> TIN NỔI BẬT
+    </div>
+
+    <div class="container is-fullhd border-new">
+        <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd">
+            <div class="column is-half" style="border-right: 1px solid #dadada;padding-right: 5px !important;" id="featured-news-main">
+
+            </div>
+            <div class="column" style="padding-left: 5px !important;" id="featured-news-child">
+
+            </div>
+        </div>
+    </div>
+</section>
+@*<%-- Tin tức về việc làm --%>*@
+<section class="section" style="background:#fcfcfc">
+    <div class="container is-fullhd center box-news-tt" style="margin-bottom: 10px;">
+        <img src="https://cdn-icons-png.flaticon.com/128/7425/7425883.png" alt="Alternate Text" style="width: 40px;" /> TIN TỨC VỀ VIỆC LÀM -  THỊ TRƯỜNG LAO ĐỘNG
+    </div>
+    <div class="container is-fullhd" id="tintuc-content">
+
+    </div>
+</section>
+@*<%-- Liên kết trang --%>*@
+<section class="section">
+    <div class="news-hot container is-fullhd">
+        <i class="fa-brands fa-gg"></i> LIÊN KẾT TRANG
+    </div>
+    <div class="container border-lienket">
+        <section class="splide" id="splideLienKet" aria-label="Splide Basic HTML Example">
+            <div class="splide__arrows">
+                <button class="splide__arrow splide__arrow--prev btn-banner" onclick="return false">
+                    <img src="https://cdn-icons-png.flaticon.com/128/189/189254.png" alt="Alternate Text" />
+                </button>
+                <button class="splide__arrow splide__arrow--next btn-banner" onclick="return false">
+                    <img src="https://cdn-icons-png.flaticon.com/128/189/189253.png" alt="Alternate Text" />
+                </button>
+            </div>
+            <div class="splide__track">
+                <ul class="splide__list" id="list-data-lienket">
+                </ul>
+            </div>
+        </section>
+    </div>
+</section>
+<script src="~/Areas/CongThongTin/Scripts/TrangChu.js"></script>
+<script src="~/Content/CongThongTin/js/semantic.min.js"></script>
+<script src="~/Content/CongThongTin/js/splide.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var splide = new Splide('#splideBanner', {
+            type: 'loop',
+            autoplay: true,
+            interval: 2000
+        });
+        splide.mount();
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        var splide = new Splide('#splideLienKet', {
+            type: 'loop',
+            autoplay: true,
+            interval: 4000,
+            perPage: 6,
+            perMove: 1,
+            gap: 10,
+            breakpoints: {
+                1024: {
+                    perPage: 4,
+                },
+                800: {
+                    perPage: 3,
+                },
+                640: {
+                    perPage: 2,
+                },
+                400: {
+                    perPage: 1,
+                },
+            }
+        });
+        splide.mount();
+    });
+</script>

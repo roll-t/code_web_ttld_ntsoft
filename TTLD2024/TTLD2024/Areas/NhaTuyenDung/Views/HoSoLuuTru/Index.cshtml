@@ -1,0 +1,271 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MasterPage_CTT_QuanTri_ViecLam.cshtml";
+}
+
+<style>
+    @@media (max-width: 991px) {
+        .modal-dialog {
+            width: 100%;
+        }
+
+        .page-content {
+            padding-top: 49px !important;
+        }
+
+        .bootbox .modal-dialog {
+            width: 40%;
+        }
+    }
+
+    @@media (min-width: 992px) {
+        .modal-dialog {
+            width: 100%;
+        }
+
+        .bootbox .modal-dialog {
+            width: 40%;
+        }
+
+        #modal_xemHSUngTuyen .modal-dialog {
+            width: 50%;
+        }
+    }
+
+    .box-file {
+        padding: 0;
+    }
+
+    label {
+        height: 0;
+    }
+
+    #modal_xemHSLuuTru .modal-content {
+        border-radius: 10px !important;
+    }
+
+    #modal_xemHSLuuTru .modal-dialog {
+        width: 100%;
+    }
+    @@media (min-width: 576px) {
+        #modal_xemHSLuuTru .modal-dialog {
+            max-width: 800px;
+        }
+    }
+    .label-timkiem {
+        display: inline;
+    }
+    .modal .modal-header {
+        background: var(--primary-color);
+        color: #fff;
+    }
+    @@media(max-width:767px) {
+        .btn-them-xuatexcel {
+            margin-top: 10px;
+        }
+
+        #KhungTimKiem {
+            width: 97% !important;
+        }
+    }
+
+    @@media(max-width:667px) {
+        .btn-them-xuatexcel {
+            margin-top: 10px;
+        }
+
+        #KhungTimKiem {
+            width: 96% !important;
+        }
+    }
+
+    @@media(max-width:467px) {
+        .btn-them-xuatexcel {
+            margin-top: 10px;
+        }
+
+        #KhungTimKiem {
+            width: 95% !important;
+        }
+    }
+    @@media (max-width: 991px) {
+    .page-content {
+         padding-top:10px !important; 
+    }
+}
+</style>
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+            <h3>HỒ SƠ LƯU TRỮ</h3>
+        </div>
+        <div class="page-content" style="background: white !important;">
+            <div class="box-file">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input style=" height: 32px !important;" class="form-control input-sm" type="text" id="timKiem" placeholder="Nội dung tìm kiếm" autocomplete="off" />
+                            <span class="input-group-addon" style="margin: 0; padding: 0; border: none;">
+                                <button class="btn btn-primary btn-sm" id="TimKiemNangCao" style="border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; width: 35px; height: 32px"><span class="fas fa-sliders-h" aria-hidden="true"></span></button>
+                            </span>
+                            <span class="input-icon-addon" style="margin-right: 40px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                            </span>
+                        </div>
+                        <div id="KhungTimKiem" style="width: 35%; z-index: 99; position: absolute; margin-top: 4px; background: #fff; padding: 12px 12px 8px 12px; border: 1px solid #e5e5e5; border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.20) 0px 5px 15px; display: none">
+                            <div class="row" style=" margin-bottom: 4px">
+                                <div class="col-md-6">
+                                    <span style="font-size: 16px; color: var(--primary-color);"><i class="fa fa-search"></i>Tìm kiếm nâng cao</span>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class=" col-md-6">
+                                    <label for="MucLuong_TimKiem_us" class="form-label label-timkiem"><b>Mức lương</b></label>
+                                    <select class="form-control input-sm" id="MucLuong_TimKiem_us"></select>
+                                </div>
+                                <div class=" col-md-6">
+                                    <label for="KinhNghiem_TimKiem_us" class="form-label label-timkiem"><b>Kinh nghiệm</b></label>
+                                    <select class="form-control input-sm" id="KinhNghiem_TimKiem_us"></select>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class=" col-md-12">
+                                    <label for="HocVan_TimKiem_us" class="form-label label-timkiem"><b>Học vấn</b></label>
+                                    <select class="form-control input-sm" id="HocVan_TimKiem_us"></select>
+                                </div>
+                            </div>
+                            <hr style="margin: 1rem 0;" />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group" style="text-align: right">
+                                        <a href="#" class="btn btn-outline-danger" id="DongTimKiem" style="background:#FF0000 !important;color:#FFFFFF;"><i class="fa fa-close"></i> &ensp; Đóng</a>
+                                        <button type="button" id="TimKiem" class="btn btn-success" style="background: var(--primary-color) !important;"><i class="fa fa-search"></i>&ensp;Tìm kiếm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 btn-them-xuatexcel">
+                        <button class="btn btn-sm" id="btnXuatExcel" type="button" style="float: right; margin-left: 8px; background: #66CE9C !important"><i class="fa fa-download" aria-hidden="true"></i>&ensp;Xuất Excel</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">                        
+                        @*<div class="row">
+                            <div class="col-md-3">
+                                <span class="input-icon" style="padding-bottom: 2px; padding-top: 2px; width: 100%;">
+                                    <input type="text" placeholder="Nội dung tìm kiếm ..." class="nav-search-input" id="timKiemHoSoUngTuyen" autocomplete="off" style="width: 100%;">
+                                    <i class="ace-icon fa fa-search nav-search-icon"></i>
+                                </span>
+                            </div>
+                        </div>*@
+                        <div class="space-4"></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="Grid1" class="GridData"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal_xemHSLuuTru" class="modal" data-backdrop="static">
+    <div class="modal-dialog modal-full" id="mdXuatBaoCao-modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="modal_xemtruockhiin_tieude_us" class="modal-title text-bold">Xem thông tin hồ sơ lưu trữ</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>                
+            </div>
+            <div class="modal-body" style="padding-top: 2px">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="control-label no-padding-right"><b>Tên ứng viên: </b></label>
+                            <label class="control-label no-padding-right" id="TenUngVien"></label>
+                        </div>
+                        <div class="col-md-6 container-noidung">
+                            <label class="control-label no-padding-right"><b>Vị trí ứng tuyển: </b></label>
+                            <label class="control-label no-padding-right" id="ViTriUngTuyen"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 container-noidung">
+                            <label class="control-label no-padding-right"><b>Ngày sinh: </b></label>
+                            <label class="control-label no-padding-right" id="NgaySinh"></label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label no-padding-right"><b>Giới tính: </b></label>
+                            <label class="control-label no-padding-right" id="GioiTinh"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 container-noidung">
+                            <label class="control-label no-padding-right"><b>Email: </b></label>
+                            <label class="control-label no-padding-right" id="Email"></label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label no-padding-right"><b>Điện thoại: </b></label>
+                            <label class="control-label no-padding-right" id="DienThoai"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="control-label no-padding-right"><b>Hình thức làm việc: </b></label>
+                            <label class="control-label no-padding-right" id="HinhThucLamViec"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 container-noidung">
+                            <label class="control-label no-padding-right"><b>Mước lương mong muốn: </b></label>
+                            <label class="control-label no-padding-right" id="MucLuong"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 container-noidung">
+                            <label class="control-label no-padding-right"><b>Công việc mong muốn: </b></label>
+                            <label class="control-label no-padding-right" id="CongViecMongMuon"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 container-noidung">
+                            <label class="control-label no-padding-right"><b>Ngành nghề: </b></label>
+                            <label class="control-label no-padding-right" id="TenNganhNghe"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 container-noidung">
+                            <label class="control-label no-padding-right"><b>Địa điểm có thể làm việc: </b></label>
+                            <label class="control-label no-padding-right" id="DiaDiemLamViec"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 container-noidung">
+                            <label class="control-label no-padding-right"><b>Giới thiệu bản thân: </b></label>
+                            <label class="control-label no-padding-right" id="GioiThieu"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 container-noidung">
+                            <label class="control-label no-padding-right"><b>Mục tiêu công việc: </b></label>
+                            <label class="control-label no-padding-right" id="MucTieu"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 container-noidung">
+                            <label class="control-label no-padding-right"><b>Địa chỉ: </b></label>
+                            <label class="control-label no-padding-right" id="DiaChi"></label>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer" style="padding: 5px 10px;">
+                <a href="#" class="btn btn-danger" data-bs-dismiss="modal">
+                    <i class="fa fa-close"></i>&nbsp;Đóng
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Areas/NhaTuyenDung/Scripts/HoSoLuuTru.js?v=@DateTime.Now.Ticks.ToString()"></script>

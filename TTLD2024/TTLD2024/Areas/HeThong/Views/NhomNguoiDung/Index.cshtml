@@ -1,0 +1,248 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    @@media (min-width: 992px) {
+        #mdThemChucNang .modal-dialog {
+            max-width: 60% !important;
+        }
+    }
+
+    @@media (max-width: 993px) {
+        #mdThemChucNang .modal-dialog {
+            max-width: 100% !important;
+        }
+    }
+    .modal-footer{
+        display: block
+    }
+    .KhungVien {
+        padding: 5px 10px 10px 10px !important;
+    }
+</style>
+<link href="/Content/AdminLTE/tabulator/dist/css/tabulator.min.css" rel="stylesheet" />
+<link href="/Content/AdminLTE/tabulator/dist/css/tabulator_custom.min.css" rel="stylesheet" />
+<div class="row">
+    <div class="col-md-4">
+        @*<div class="row">
+            <div class="col-md-12">
+                <span class="badge badge-primary badge-heading">1. Danh sách Nhóm người dùng</span>
+                <hr class="hr-heading">
+            </div>
+        </div>*@
+        <fieldset class="KhungVien">
+            <legend><span>1. Danh sách Nhóm người dùng</span></legend>
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="input-icon mb-3">
+                        <input type="text" value="" class="form-control" placeholder="Nội dung tìm kiếm ..." id="timKiem" autocomplete="off">
+                        <span class="input-icon-addon">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="padding-top:5px">
+                <div class="col-md-12">
+                    <div id="Grid1" class="GridData"></div>
+                </div>
+            </div>
+        @*</fieldset>*@
+        
+    </div>
+    <div class="col-md-6">
+
+        <fieldset class="KhungVien">
+            <legend><span>2. Danh sách Quyền của nhóm</span></legend>
+
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="input-icon mb-3">
+                        <input type="text" value="" class="form-control" placeholder="Nội dung tìm kiếm ..." id="timKiemQuyen" autocomplete="off">
+                        <span class="input-icon-addon">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <button class="btn btn-primary" id="btnCapNhatUserTheoNhom" alt="Cập nhật tất cả user theo phân quyền của nhóm đang chọn" onclick="return false;">
+                        Cập nhật phân quyền nhóm người dùng
+                    </button>
+                </div>
+            </div>
+            <div class="row" style="padding-top:5px">
+                <div class="col-md-12">
+                    <div id="Grid2" class="GridData"></div>
+                </div>
+            </div>
+        </fieldset>
+            
+    </div>
+    <div class="col-md-2">
+        <fieldset class="KhungVien">
+            <legend><span>3. Gán quyền</span></legend>
+
+
+            <label class="form-check">
+                <input class="form-check-input quyen" type="checkbox" id="ChonAll">
+                <span class="form-check-label">Chọn/Bỏ tất cả</span>
+            </label>
+            <label class="form-check">
+                <input class="form-check-input quyen" type="checkbox" id="Xem" value="Xem">
+                <span class="form-check-label">Xem</span>
+            </label>
+            <label class="form-check">
+                <input class="form-check-input quyen" type="checkbox" id="Them" value="Thêm">
+                <span class="form-check-label">Thêm</span>
+            </label>
+            <label class="form-check">
+                <input class="form-check-input quyen" type="checkbox" id="Xoa" value="Xóa">
+                <span class="form-check-label">Xóa</span>
+            </label>
+            <label class="form-check">
+                <input class="form-check-input quyen" type="checkbox" id="Sua" value="Sửa">
+                <span class="form-check-label">Sửa</span>
+            </label>
+            <label class="form-check">
+                <input class="form-check-input quyen" type="checkbox" id="Nap" value="Nạp">
+                <span class="form-check-label">Nạp</span>
+            </label>
+            <label class="form-check">
+                <input class="form-check-input quyen" type="checkbox" id="In" value="In">
+                <span class="form-check-label">In</span>
+            </label>
+            <label class="form-check">
+                <input class="form-check-input quyen" type="checkbox" id="P1" value="P1">
+                <span class="form-check-label">P1</span>
+            </label>
+            <label class="form-check">
+                <input class="form-check-input quyen" type="checkbox" id="P2" value="P2">
+                <span class="form-check-label">P2</span>
+            </label>
+            <label class="form-check">
+                <input class="form-check-input quyen" type="checkbox" id="P3" value="P3">
+                <span class="form-check-label">P3</span>
+            </label>
+            <label class="form-check">
+                <input class="form-check-input quyenall" type="checkbox" id="GanTatCa">
+                <span class="form-check-label">Gán quyền tất cả</span>
+            </label>
+
+            <button class="btn btn-primary" id="btnGanQuyen" style=" margin-top: 6px;margin-bottom:10px"><i class="fa fa-times"></i>&ensp;Gán quyền</button>
+        </fieldset>
+            
+
+    </div>
+</div>
+
+<div class="modal modal-blur fade" id="mdThemChucNang" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header nts-modal">
+                <h5 class="modal-title">Danh sách chức năng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="ChucVuID" />
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-icon mb-3">
+                                    <input type="text" value="" class="form-control" placeholder="Nội dung tìm kiếm ..." id="timKiemChucNang" autocomplete="off">
+                                    <span class="input-icon-addon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div id="Grid_ChonChucNang" class="GridData"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="display: normal !important">
+            <div style="display: flex; align-items: center; justify-content: space-between">
+                <div class="col-md-6" style="display: flex; align-items: center">
+                    <label style="margin-bottom: unset" class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="ckChoUser">
+                        <label class="form-check-label" for="ckChoUser">Thêm cho user</label>
+                    </label>
+                </div>
+                <div class="col-md-6">
+                    <div style="float:right;text-align: right">
+                        <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                            <i class="fa fa-close"></i>&nbsp;Đóng
+                        </a>
+                        <a href="#" id="btnChonChucNangVaDong" class="btn btn-success ms-auto">
+                            <i class="fa fa-check"></i>&ensp;Chọn và đóng
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+@*<div class="modal fade" id="mdThemChucNang" data-bs-backdrop="static">
+    <div class="modal-dialog" style="max-width:100%; width: 60%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tieuDeModal">Danh sách chức năng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="ChucVuID" />
+                <div class="row">
+                    <fieldset class="khungvienGrid">
+
+                        <div class="col-md-12">
+                            <div class="row" style="padding-bottom: 2px; padding-top: 5px;">
+                                <div class="col-md-6" style="">
+                                    <div class="input-group input-group-merge">
+                                        <span class="input-group-text"><i class="bx bx-search"></i></span>
+                                        <input type="text" id="timKiemChucNang" class="form-control" placeholder="Nội dung tìm kiếm ..." aria-label="Nội dung tìm kiếm ...">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="Grid_ChonChucNang" class="GridData"></div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="row">
+                    <div class="col w-min-250px">
+
+                        <div class="">
+                            <input class="form-check-input" type="checkbox" id="ckChoUser">
+                            <label class="form-check-label" for="ckChoUser">
+                                &nbsp;Thêm cho user
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col w-min-250px">
+                        <div class=" text-end">
+                            <a href="#" id="btnChonChucNangVaDong" class="btn btn-sm btn-success">
+                                <i class="ace-icon fa fa-floppy-o bigger-110"></i>&nbsp;Chọn và đóng
+                            </a> &nbsp;
+                            <a href="#" class="btn btn-sm btn-danger" data-bs-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Đóng</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+<script src="/Content/AdminLTE/tabulator/dist/js/tabulator.min.js"></script>
+<script src="~/Areas/HeThong/Scripts/NhomNguoiDung.js?v=@DateTime.Now.Ticks.ToString()"></script>

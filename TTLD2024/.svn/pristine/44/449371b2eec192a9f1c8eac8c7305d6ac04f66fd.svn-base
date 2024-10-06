@@ -1,0 +1,1814 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Content/AceAdmin/ace.min.js"></script>
+<script src="~/Content/AceAdmin/ace-elements.min.js"></script>
+<link href="~/Content/AceAdmin/ace.css" rel="stylesheet" />
+<style>
+    @@media (min-width: 1200px) {
+        .modal-xl {
+            --tblr-modal-width: 100%;
+        }
+    }
+
+    .text-info {
+        color: var(--tblr-color-header) !important;
+    }
+
+    .text-line-modal:after {
+        content: "";
+        width: 100%;
+        display: block;
+        height: 1px;
+        border-bottom: 1px solid var(--tblr-color-header);
+    }
+
+    .text-line-modal {
+        display: flex;
+        align-items: center;
+        gap: 10px
+    }
+
+    .text-line {
+        width: 175px;
+        color: var(--tblr-color-header);
+        font-weight: bold;
+        font-size: 14px !important;
+    }
+
+    .line-modal {
+        padding-bottom: 1px;
+    }
+
+    .display-flex {
+        display: flex;
+    }
+
+    .align-items-center {
+        align-items: center;
+    }
+
+    .justify-content-center {
+        justify-content: center;
+    }
+
+    .modal-footer {
+        display: unset !important;
+    }
+
+    label.middle {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    span.lbl {
+        padding-left: 10px;
+    }
+
+    ul#KyNangMem input.form-control {
+        margin-bottom: 5px;
+    }
+
+    #mdThemMoi .form-check {
+        margin-bottom: 0;
+    }
+
+    #GridKinhNghiemLamViec .tabulator-col-content, #GridDanhGia .tabulator-col-content {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ace-file-multiple .ace-file-container:before {
+        margin: 5px;
+    }
+
+    .ace-file-multiple .ace-file-container .ace-file-name .ace-icon {
+        line-height: 50px;
+        width: auto;
+        font-size: 40px;
+    }
+
+    .box-hdsd {
+        align-content: flex-start;
+    }
+</style>
+@* Style dropzone *@
+<style>
+    .ace-file-multiple .ace-file-container.selected .ace-file-name .ace-icon {
+        margin-right: 12px !important;
+    }
+
+    .ace-file-name:not(.large) {
+        width: 100% !important;
+    }
+
+    .btn-del-item {
+        float: right;
+        background-color: red !important;
+        z-index: 1;
+        border-radius: 50%;
+    }
+
+    .ace-file-multiple .ace-file-container .ace-file-name.large:after {
+        background-color: #fff;
+        color: #000;
+    }
+
+    .ace-file-multiple .ace-file-container .ace-file-name.large {
+        border-bottom: 1px solid #ffffff;
+        border: 1px dashed #d2d0d0;
+    }
+
+    .ace-file-multiple .ace-file-container:before {
+        font-size: 14px;
+    }
+
+    .ace-file-multiple .ace-file-container .ace-file-name.large {
+        width: 24%;
+        float: left;
+        height: 180px;
+    }
+
+        .ace-file-multiple .ace-file-container .ace-file-name.large img {
+            width: 100% !important;
+            height: 148px !important;
+            background-size: contain;
+        }
+
+    .TieuDeLabel_tab2 {
+        margin-top: 10px;
+    }
+
+    .TieuDeLabel span {
+        font-weight: bold;
+    }
+</style>
+<style>
+    /*sELECT HỘ GIA ĐÌNH*/
+
+    .select2-container--bootstrap-5 .select2-dropdown {
+        top: 0 !important; /* Điều chỉnh top của dropdown nếu cần */
+    }
+
+    #countrydata {
+        position: absolute;
+        max-height: 20em;
+        border: 0 none;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+        #countrydata option {
+            font-size: 0.8em;
+            padding: 0.3em 1em;
+            background-color: #ccc;
+            cursor: pointer;
+        }
+
+            #countrydata option:hover, #countrydata option:focus {
+                color: #fff;
+                background-color: #036;
+                outline: 0 none;
+            }
+
+    .xemDinhKemChuKy {
+        display: -webkit-box !important;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        color: var(--tblr-color-header);
+    }
+
+        .xemDinhKemChuKy:hover {
+            color: white;
+            background: var(--tbl-btn-luuvadong);
+        }
+
+    #btnXoaChuKy:hover {
+        color: white !important;
+        background: red;
+    }
+
+    .MoTa_CT {
+        width: 720px;
+        height: 380px;
+        background-size: contain; /* Đảm bảo hình ảnh được thu nhỏ hoặc phóng to để vừa khít */
+        background-repeat: no-repeat; /* Tránh lặp lại hình ảnh */
+        background-position: center; /* Đặt hình ảnh vào giữa */
+    }
+
+    #hoverBox_CLD {
+        display: none;
+        position: absolute;
+        width: auto;
+        height: auto;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 5px 0;
+        top: 64px;
+        left: 183px;
+        border-radius: 4px;
+        background: white;
+    }
+
+    .btnInPhieuThuThap:hover ~ #hoverBox_CLD {
+        display: block;
+    }
+
+    #hoverBox_CLD:hover {
+        display: block;
+    }
+
+    .dropdown-item.active, .dropdown-item:hover {
+        color: var(--tblr-dropdown-link-active-color);
+        text-decoration: none;
+        background-color: var(--tblr-dropdown-link-active-bg);
+    }
+</style>
+<style>
+    .vodiapickerDT {
+        display: none;
+    }
+
+    #ListDataDoiTuongNN {
+        padding-left: 0px;
+    }
+
+        #ListDataDoiTuongNN img, .btn-select img {
+            width: 20px;
+        }
+
+        #ListDataDoiTuongNN li {
+            list-style: none;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+        }
+
+            #ListDataDoiTuongNN li:hover {
+                background-color: #F4F3F3;
+                cursor: pointer;
+            }
+
+            #ListDataDoiTuongNN li img {
+                margin: 5px;
+            }
+
+    /* item list */
+
+    .OptionDoiTuongNN {
+        display: none;
+        width: 100%;
+        max-width: calc(41% - 28px);
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: 5px;
+        position: absolute;
+        z-index: 1;
+        display: block;
+        background: white;
+    }
+
+    @@media (max-width: 1200px) and (min-width: 901px) {
+        .OptionDoiTuongNN {
+            max-width: calc(50% - 28px) !important;
+        }
+    }
+
+    @@media (max-width: 900px) and (min-width: 701px) {
+        .OptionDoiTuongNN {
+            max-width: calc(50% - 28px) !important;
+        }
+    }
+
+    @@media (max-width: 700px) {
+        .OptionDoiTuongNN {
+            max-width: calc(100% - 40px) !important;
+        }
+    }
+
+    .open {
+        display: show !important;
+    }
+
+    .btn-select {
+        width: 100%;
+        height: auto;
+        min-height: 30px;
+        border-radius: 4px 0 0 4px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        text-align: left;
+    }
+
+    .btn-select-DoiTuongNN > li {
+        width: 100%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+    }
+
+    .btn-select li {
+        list-style: none;
+        float: left;
+        padding-bottom: 0px;
+        width: 100%;
+    }
+
+    .btn-select:hover li {
+        margin-left: 0px;
+    }
+
+    .btn-select:hover {
+        background-color: #F4F3F3;
+        border: 1px solid transparent;
+        box-shadow: inset 0 0px 0px 1px #ccc;
+    }
+
+    .btn-select:focus {
+        outline: none;
+    }
+
+    .opImg {
+        display: inline-block;
+        height: 50px;
+        width: 50px;
+        background-color: aquamarine;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 50%;
+        color: white;
+        font-weight: bold;
+        font-size: 25px !important;
+        min-width: 50px;
+    }
+
+    .opInfo {
+        padding-left: 10px;
+    }
+
+    .listOption {
+        background-color: white;
+        height: 300px;
+        overflow-y: scroll;
+    }
+
+    .text-diachi {
+        width: 100%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+    }
+
+    .lang-select {
+        display: flex;
+    }
+
+    .opInfo.Chon {
+        text-align: center;
+        width: 100%;
+    }
+</style>
+<style>
+    #select2-DoiTuongUuTienID-container li:first-child {
+        /* CSS để áp dụng cho li đầu tiên */
+        display: none; /* Ví dụ: ẩn li đầu tiên */
+    }
+
+    #select2-KyNangMem-container li:first-child {
+        /* CSS để áp dụng cho li đầu tiên */
+        display: none; /* Ví dụ: ẩn li đầu tiên */
+    }
+
+    #select2-DangKyDichVuID-container li:first-child {
+        /* CSS để áp dụng cho li đầu tiên */
+        display: none; /* Ví dụ: ẩn li đầu tiên */
+    }
+
+    #select2-CheDoPhucLoi-container li:first-child {
+        /* CSS để áp dụng cho li đầu tiên */
+        display: none; /* Ví dụ: ẩn li đầu tiên */
+    }
+
+    #select2-HinhThucTuyenDungID-container li:first-child {
+        /* CSS để áp dụng cho li đầu tiên */
+        display: none; /* Ví dụ: ẩn li đầu tiên */
+    }
+
+    #select2-NoiLamViecID-container li:first-child {
+        /* CSS để áp dụng cho li đầu tiên */
+        display: none; /* Ví dụ: ẩn li đầu tiên */
+    }
+
+    #select2-TrongLuongNangID-container li:first-child {
+        /* CSS để áp dụng cho li đầu tiên */
+        display: none; /* Ví dụ: ẩn li đầu tiên */
+    }
+
+    #select2-DiDungID-container li:first-child {
+        /* CSS để áp dụng cho li đầu tiên */
+        display: none; /* Ví dụ: ẩn li đầu tiên */
+    }
+
+    #select2-NgheNoiID-container li:first-child {
+        /* CSS để áp dụng cho li đầu tiên */
+        display: none; /* Ví dụ: ẩn li đầu tiên */
+    }
+
+    #select2-ThiLucID-container li:first-child {
+        /* CSS để áp dụng cho li đầu tiên */
+        display: none; /* Ví dụ: ẩn li đầu tiên */
+    }
+
+    #select2-Dung2TayID-container li:first-child {
+        /* CSS để áp dụng cho li đầu tiên */
+        display: none; /* Ví dụ: ẩn li đầu tiên */
+    }
+
+    #select2-ThaoTacTayID-container li:first-child {
+        /* CSS để áp dụng cho li đầu tiên */
+        display: none; /* Ví dụ: ẩn li đầu tiên */
+    }
+
+    #select2-SanSangLamViecID-container li:first-child {
+        /* CSS để áp dụng cho li đầu tiên */
+        display: none; /* Ví dụ: ẩn li đầu tiên */
+    }
+</style>
+<style>
+    #mdThemMoi .modal-dialog {
+        height: 100vh; /* Modal chiếm toàn bộ chiều cao màn hình */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Đảm bảo footer luôn nằm ở dưới */
+    }
+
+    #mdThemMoi .modal-content {
+        height: 100%; /* Chiếm hết chiều cao của dialog */
+        display: flex;
+        flex-direction: column;
+    }
+
+    #mdThemMoi .modal-body {
+        overflow-y: auto;
+        flex-grow: 1; /* Body chiếm không gian còn lại */
+    }
+
+    #mdThemMoi .modal-footer {
+        flex-shrink: 0; /* Footer không bị thu nhỏ */
+    }
+    /* Ẩn thanh cuộn trong trình duyệt Webkit nhưng vẫn cho phép cuộn */
+    #mdThemMoi .modal-body {
+        overflow-y: scroll; /* Để đảm bảo cuộn luôn có thể thực hiện */
+    }
+
+        #mdThemMoi .modal-body::-webkit-scrollbar {
+            display: none; /* Ẩn thanh cuộn */
+        }
+    /* Ẩn thanh cuộn trong Firefox nhưng vẫn cho phép cuộn */
+    #mdThemMoi .modal-body {
+        overflow-y: scroll; /* Để đảm bảo cuộn luôn có thể thực hiện */
+        scrollbar-width: none; /* Ẩn thanh cuộn */
+    }
+</style>
+<style>
+    .vodiapickerPhieuDKGTVL {
+        display: none;
+    }
+
+    #ListDataPhieuDKGTVL {
+        padding-left: 0px;
+    }
+
+        #ListDataPhieuDKGTVL img, .btn-select img {
+            width: 20px;
+        }
+
+        #ListDataPhieuDKGTVL li {
+            list-style: none;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+        }
+
+            #ListDataPhieuDKGTVL li:hover {
+                background-color: #F4F3F3;
+                cursor: pointer;
+            }
+
+            #ListDataPhieuDKGTVL li img {
+                margin: 5px;
+            }
+
+    /* item list */
+
+    .OptionPhieuDKGTVL {
+        display: none;
+        width: 100%;
+        max-width: calc(41% - 28px);
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: 5px;
+        position: absolute;
+        z-index: 100000 !important;
+        display: block;
+        background: white;
+    }
+
+    @@media (max-width: 1200px) and (min-width: 901px) {
+        .OptionPhieuDKGTVL {
+            max-width: calc(50% - 28px) !important;
+        }
+    }
+
+    @@media (max-width: 900px) and (min-width: 701px) {
+        .OptionPhieuDKGTVL {
+            max-width: calc(50% - 28px) !important;
+        }
+    }
+
+    @@media (max-width: 700px) {
+        .OptionPhieuDKGTVL {
+            max-width: calc(100% - 40px) !important;
+        }
+    }
+
+    .open {
+        display: show !important;
+    }
+
+    .btn-select {
+        width: 100%;
+        height: auto;
+        min-height: 30px;
+        border-radius: 4px 0 0 4px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        text-align: left;
+    }
+
+    .btn-select-PhieuDKGTVL > li {
+        width: 100%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+    }
+
+    .btn-select li {
+        list-style: none;
+        float: left;
+        padding-bottom: 0px;
+        width: 100%;
+    }
+
+    .btn-select:hover li {
+        margin-left: 0px;
+    }
+
+    .btn-select:hover {
+        background-color: #F4F3F3;
+        border: 1px solid transparent;
+        box-shadow: inset 0 0px 0px 1px #ccc;
+    }
+
+    .btn-select:focus {
+        outline: none;
+    }
+
+    .opImg {
+        display: inline-block;
+        height: 50px;
+        width: 50px;
+        background-color: aquamarine;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 50%;
+        color: white;
+        font-weight: bold;
+        font-size: 25px !important;
+        min-width: 50px;
+    }
+
+    .opInfo {
+        padding-left: 10px;
+    }
+
+    .listOption {
+        background-color: white;
+        height: 300px;
+        overflow-y: scroll;
+    }
+
+    .text-diachi {
+        width: 100%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+    }
+
+    .lang-select {
+        display: flex;
+    }
+
+    .opInfo.Chon {
+        text-align: center;
+        width: 100%;
+    }
+</style>
+<input type="hidden" id="PhieuDKTimViecID" />
+<input type="hidden" id="NguoiTimViecID" />
+<input type="hidden" id="KinhNghiemLVUngVienID" />
+<input type="hidden" id="DanhGiaTVDVID" />
+<div class="row">
+    <div class="col-md-4">
+        <div class="input-group">
+            <input style=" height: 32px !important;" class="form-control input-sm" type="text" id="timKiem" placeholder="Nội dung tìm kiếm" autocomplete="off" />
+            <span class="input-group-addon" style="margin: 0; padding: 0; border: none;">
+                <button class="btn btn-primary btn-sm" id="TimKiemNangCao" style="border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; width: 35px; height: 32px"><span class="fas fa-sliders-h" aria-hidden="true"></span></button>
+            </span>
+            <span class="input-icon-addon" style="margin-right: 40px;">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+            </span>
+        </div>
+        <div id="KhungTimKiem" style="width: 35%; z-index: 99; position: absolute; margin-top: 4px; background: #fff; padding: 12px 12px 8px 12px; border: 1px solid #e5e5e5; border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.20) 0px 5px 15px; display: none">
+            <div class="row" style=" margin-bottom: 4px">
+                <div class="col-md-6">
+                    <span style="font-size: 16px; color: var(--tblr-color-header);"><i class="fa fa-search"></i>Tìm kiếm nâng cao</span>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class=" col-md-6">
+                    <label for="TinhID_TimKiem_us" class="form-label">Tỉnh/Thành phố</label>
+                    <select class="form-control input-sm" id="TinhID_TimKiem_us"></select>
+                </div>
+                <div class=" col-md-6">
+                    <label for="HuyenID_TimKiem_us" class="form-label">Quận/Huyện</label>
+                    <select class="form-control input-sm" id="HuyenID_TimKiem_us"></select>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class=" col-md-6">
+                    <label for="XaID_TimKiem_us" class="form-label">Phường/Xã</label>
+                    <select class="form-control input-sm" id="XaID_TimKiem_us"></select>
+                </div>
+                <div class=" col-md-6">
+                    <label for="ThonID_TimKiem_us" class="form-label">Thôn/Xóm</label>
+                    <select class="form-control input-sm" id="ThonID_TimKiem_us"></select>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class=" col-md-6">
+                    <label class="form-label" for="HoVaTen_TimKiem_US">Họ và tên</label>
+                    <input type="text" class="form-control" id="HoVaTen_TimKiem_US" autocomplete="off">
+                </div>
+                <div class=" col-md-6">
+                    <label class="form-label" for="SoCCCD_TimKiem_US">CCCD/CMND/Số định danh</label>
+                    <input type="text" class="form-control" id="SoCCCD_TimKiem_US" autocomplete="off">
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class=" col-md-6">
+                    <label class="form-label" for="TuNgay_TimKiem_US">Từ ngày</label>
+                    <input type="text" class="form-control date-picker" id="TuNgay_TimKiem_US" autocomplete="off">
+                </div>
+                <div class=" col-md-6">
+                    <label class="form-label" for="DenNgay_TimKiem_US">Đến ngày</label>
+                    <input type="text" class="form-control date-picker" id="DenNgay_TimKiem_US" autocomplete="off">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group" style="text-align: right">
+                        <a href="#" class="btn btn-outline-danger" id="DongTimKiem"><i class="fa fa-close"></i> &ensp; Đóng</a>
+                        <button type="button" id="TimKiem" class="btn btn-success" style="background: var(--tblr-color-header);"><i class="fa fa-search"></i>&ensp;Tìm kiếm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col mb-2">
+        <div class="text-end">
+            @*<button type="button" class="btn btn-primary btn-nts-them" id="btnThemMoi"><i class="fa fa-plus"></i>&ensp;Thêm mới (F2)</button>*@
+            <div class="btn-group" style="">
+                <div class="dropdown d-inline">
+                    <button type="button" class="btn btn-primary btn-nts-them" id="btnThemMoi"><i class="fa fa-plus"></i>&ensp;Thêm mới (F2)</button>
+                    <div class="dropdown-menu dropdown-menu-lg-end w-auto">
+                        <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnThemMoiBanDau"><i style=" font-size: 17px;" class="text-warning fa-solid fa-user-plus iconsize-item"></i>&ensp; Thêm mới cung lao động ban đầu</a>
+                        <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnThemMoiBienDong"><i style="font-size: 17px; color: #4299E1 !important;" class="text-primary fa-solid fa-user-pen iconsize-item"></i>&ensp; Thêm mới cung lao động biến động</a>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-group" style="">
+                <div class="dropdown d-inline">
+                    <button class="btn btn-primary dropdown-toggle-hide-arrow  height-button-icon" type="button" id="growthReportId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="blue fa fa-ellipsis-h"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-lg-end w-auto">
+                        <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnThietLapCot"><i style=" font-size: 17px;" class="text-warning fa-solid fa-gear iconsize-item"></i>&ensp; Tùy chỉnh cột</a>
+                        <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnPrint" style="display: none; font-size: 17px;"><i class="text-warning fa fa-print iconsize-item"></i>&ensp; In</a>
+                        <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnExport"><i style="font-size: 17px; color: #4299E1 !important;" class="text-primary fa-solid fa-download iconsize-item"></i>&ensp; Xuất danh sách phiếu đăng ký tìm việc làm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="space-4"></div>
+<div class="row">
+    <div id="grid-layout">
+        <div class="col-md-12">
+            <div id="Grid1"></div>
+        </div>
+    </div>
+</div>
+
+@* Modal thêm mới *@
+<div id="mdThemMoi" class="modal modal-blur fade" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document" style="margin: 0;">
+        <div class="modal-content" style="border-radius: unset;">
+            <div class="modal-header nts-modal" style="background: unset;color: #000;border-bottom: unset;">
+                <h5 id="lblTieuDeThemMoi" class="modal-title text-bold" style="font-weight:bold;">Phiếu đăng ký tìm việc làm</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: #000 !important;font-weight: bold;"> &times;</button>
+            </div>
+            <div class="modal-body" style="background: white;">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="box-shadow-primary" style="padding: 10px; border-radius: 4px; height: 100%;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line">Thông tin cá nhân</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-0">
+                                        <label class="form-label" for="MaSo">Mã số</label>
+                                        <input type="text" class="form-control" id="MaSo" autocomplete="off" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-0">
+                                        <label class="form-label" for="NgayNopHoSo">Ngày nộp hồ sơ</label>
+                                        <input type="text" class="form-control date-picker" id="NgayNopHoSo" autocomplete="off" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div id="n"></div>
+                                    <label class="form-label validation" for="DoiTuongNNID_ChuHo" id="lbDoiTuongNNID_ChuHo">
+                                        Họ và tên
+                                        <i style="color: blue;cursor:pointer; display:none" class="fa fa-info-circle" aria-hidden="true" id="LichSuDangKy"></i>
+                                    </label>
+                                    <select class="vodiapickerDT" id="DoiTuongNNID_ChuHo">
+                                    </select>
+                                    <div class="lang-select">
+                                        <button class="btn-select btn-select-DoiTuongNN" value="" id="SelectDoiTuongNN_US"></button>
+                                        <span class="input-group-text cursor-pointer" style="border-radius: 0 4px 4px 0px;" id="HienThiTatCaDoiTuongNN"><i class="fa-solid fa-ellipsis" style="color:var(--tbl-btn-luuvadong)"></i></span>
+                                        <div class="OptionDoiTuongNN" style=" z-index: 10070; margin-top: 30px; display: none">
+                                            <ul id="ListDataDoiTuongNN" class="listOption" style=" background-color: white;margin-bottom: 4px; "></ul>
+                                            <span id="btnThemNhanhDoiTuongNN" style="display: none; width: fit-content; margin: auto; margin-bottom: 4px; cursor: pointer;" class="badge bg-green"> <i class="fa fa-plus"></i>&nbsp;Thêm mới</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-0">
+                                        <label class="form-label" for="DoiTuongUuTienID">Đối tượng ưu tiên</label>
+                                        <select class="form-control" id="DoiTuongUuTienID" tabindex="0" data-dropdown-parent="#mdThemMoi" multiple>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-0">
+                                        <label class="form-label" for="SoDiDong">Số di động</label>
+                                        <input type="text" class="form-control" id="SoDiDong">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="mb-0">
+                                        <label class="form-label" for="Email">Email</label>
+                                        <input type="email" class="form-control" id="Email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line">Địa chỉ thường trú</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="col-lg-12">
+                                        <div class="mb-0">
+                                            <label for="TinhID_TT" class="form-label">Tỉnh/Thành phố</label>
+                                            <select class="form-control input-sm" id="TinhID_TT" tabindex="0" data-dropdown-parent="#mdThemMoi" required></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="mb-0">
+                                            <label for="HuyenID_TT" class="form-label">Quận/Huyện</label>
+                                            <select class="form-control input-sm" id="HuyenID_TT" tabindex="0" data-dropdown-parent="#mdThemMoi" required></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="mb-0">
+                                            <label for="XaID_TT" class="form-label">Xã/Phường</label>
+                                            <select class="form-control input-sm" id="XaID_TT" tabindex="0" data-dropdown-parent="#mdThemMoi" required></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="mb-0">
+                                            <label for="ThonID_TT" class="form-label">Thôn/Xóm</label>
+                                            <select class="form-control input-sm" id="ThonID_TT" tabindex="0" data-dropdown-parent="#mdThemMoi"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="col-lg-12">
+                                        <div class="mb-0">
+                                            <label for="SoNha_TT" class="form-label">Số nhà</label>
+                                            <input type="text" class="form-control" id="SoNha_TT">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="mb-0">
+                                            <label for="DiaChiThuongTru" class="form-label">&nbsp;</label>
+                                            <textarea type="text" class="form-control" id="DiaChiThuongTru" rows="7" disabled></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal">
+                                            <div class="text-line" style="width: 220px;">Nơi ở hiện nay</div>
+                                            <div style="display: flex; align-items: center; color: var(--tblr-color-header); font-weight: bold; gap: 3px; ">
+                                                <label>(</label>
+                                                <input class="form-check-input" type="checkbox" id="GiongHoKhauThuongTru">
+                                                <span class="form-check-label" style="width: 180px;">Giống hộ khẩu thường trú <i class="fa-solid fa-circle-info text-primary" title="Ghi rõ theo thứ tự số nhà, đường phố, xóm, làng; thôn, ấp, bản, buôn, phum, sóc; xã/phường/thị trấn; quận/huyện/thị xã/thành phố thuộc tỉnh; tỉnh/thành phố trực thuộc trung ương"></i> </span>
+                                                <label>)</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="col-lg-12">
+                                        <div class="mb-0">
+                                            <label for="TinhID_HN" class="form-label">Tỉnh/Thành phố</label>
+                                            <select class="form-control input-sm" id="TinhID_HN" tabindex="0" data-dropdown-parent="#mdThemMoi" required></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="mb-0">
+                                            <label for="HuyenID_HN_us" class="form-label">Quận/Huyện</label>
+                                            <select class="form-control input-sm" id="HuyenID_HN" tabindex="0" data-dropdown-parent="#mdThemMoi" required></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="mb-0">
+                                            <label for="XaID_HN" class="form-label">Xã/Phường</label>
+                                            <select class="form-control input-sm" id="XaID_HN" tabindex="0" data-dropdown-parent="#mdThemMoi" required></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="mb-0">
+                                            <label for="ThonID_HN" class="form-label">Thôn/Xóm</label>
+                                            <select class="form-control input-sm" id="ThonID_HN" tabindex="0" data-dropdown-parent="#mdThemMoi"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="col-lg-12">
+                                        <div class="mb-0">
+                                            <label for="SoNha_HN" class="form-label">Số nhà</label>
+                                            <input type="text" class="form-control" id="SoNha_HN">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="mb-0">
+                                            <label for="DiaChiThuongTruHN" class="form-label">&nbsp;</label>
+                                            <textarea type="text" class="form-control" id="DiaChiThuongTruHN" rows="7" disabled></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="box-shadow-primary" style="padding: 10px; border-radius: 4px; height: 100%;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line" style="width: 470px">Trình độ học vấn, chuyên môn kỹ thuật</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="mb-0">
+                                        <label for="TrinhDoPTID" class="form-label">Trình độ học vấn</label>
+                                        <select class="form-control input-sm" id="TrinhDoPTID" tabindex="0" data-dropdown-parent="#mdThemMoi" required></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-0">
+                                        <label for="TrinhDoCMKTID" class="form-label">Trình độ CMKT cao nhất</label>
+                                        <select class="form-control input-sm" id="TrinhDoCMKTID" tabindex="0" data-dropdown-parent="#mdThemMoi" required></select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-0">
+                                        <label for="ChuyenNganhDTID" class="form-label" id="lbChuyenNganhDTID">Chuyên nghành đào tạo</label>
+                                        <select class="form-control input-sm" id="ChuyenNganhDTID" tabindex="0" data-dropdown-parent="#mdThemMoi" disabled></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-0">
+                                        <label for="TrinhDoCMKTID_Khac" class="form-label">Trình độ CMKT khác</label>
+                                        <select class="form-control input-sm" id="TrinhDoCMKTID_Khac" tabindex="0" data-dropdown-parent="#mdThemMoi"></select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-0">
+                                        <label for="ChuyenNganhDaoID_Khac" class="form-label">Chuyên ngành đào tạo khác</label>
+                                        <select class="form-control input-sm" id="ChuyenNganhDaoID_Khac" tabindex="0" data-dropdown-parent="#mdThemMoi" required></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-0">
+                                        <label for="TrinhDoKyNangNgheID" class="form-label">Trình độ kỹ năng nghề</label>
+                                        <select class="form-control input-sm" id="TrinhDoKyNangNgheID" tabindex="0" data-dropdown-parent="#mdThemMoi"></select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-0">
+                                        <label for="BacKyNangNghe" class="form-label">Bậc</label>
+                                        <select class="form-control input-sm" id="BacKyNangNghe" tabindex="0" data-dropdown-parent="#mdThemMoi"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line" style=" width: 300px;">Trình độ ngoại ngữ</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-0">
+                                        <label class="form-label" for="NgoaiNgu1">Ngoại ngữ 1</label>
+                                        <select class="form-control input-sm" id="NgoaiNgu1" tabindex="0" data-dropdown-parent="#mdThemMoi"></select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-0">
+                                        <label class="form-label" for="ChungChi1">Chứng chỉ</label>
+                                        <input type="text" class="form-control" id="ChungChiNgoaiNgu1" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="mb-0" style="margin-top: 5px; display: flex; gap: 10px; justify-content: space-between;">
+                                        <label class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="NgoaiNgu1_Tot" name="TrinhDoNgoaiNgu1">
+                                            <span class="form-check-label">Tốt</span>
+                                        </label>
+                                        <label class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="NgoaiNgu1_Kha" name="TrinhDoNgoaiNgu1">
+                                            <span class="form-check-label">Khá</span>
+                                        </label>
+                                        <label class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="NgoaiNgu1_TrungBinh" name="TrinhDoNgoaiNgu1">
+                                            <span class="form-check-label">Trung bình</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-0">
+                                        <label class="form-label" for="NgoaiNgu2">Ngoại ngữ 2</label>
+                                        <select class="form-control input-sm" id="NgoaiNgu2" tabindex="0" data-dropdown-parent="#mdThemMoi"></select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-0">
+                                        <label class="form-label" for="ChungChi2">Chứng chỉ</label>
+                                        <input type="text" class="form-control" id="ChungChiNgoaiNgu2" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="mb-0" style="margin-top: 5px; display: flex; gap: 10px; justify-content: space-between;">
+                                        <label class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="NgoaiNgu2_Tot" name="TrinhDoNgoaiNgu2">
+                                            <span class="form-check-label">Tốt</span>
+                                        </label>
+                                        <label class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="NgoaiNgu2_Kha" name="TrinhDoNgoaiNgu2">
+                                            <span class="form-check-label">Khá</span>
+                                        </label>
+                                        <label class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="NgoaiNgu2_TrungBinh" name="TrinhDoNgoaiNgu2">
+                                            <span class="form-check-label">Trung bình</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line">Trình độ tin học</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-0">
+                                        <label class="form-label" for="TinHocVP">Trình độ tin học văn phòng</label>
+                                        <select class="form-control input-sm" id="TinHocVP" tabindex="0" data-dropdown-parent="#mdThemMoi"></select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-0" style="margin-top: 25px; display: flex; gap: 10px; justify-content: space-between;">
+                                        <label class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="ChungChiTinHocVP_Tot" name="TrinhDoTinHocVP">
+                                            <span class="form-check-label">Tốt</span>
+                                        </label>
+                                        <label class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="ChungChiTinHocVP_Kha" name="TrinhDoTinHocVP">
+                                            <span class="form-check-label">Khá</span>
+                                        </label>
+                                        <label class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="ChungChiTinHocVP_TrungBinh" name="TrinhDoTinHocVP">
+                                            <span class="form-check-label">Trung bình</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-0">
+                                        <label class="form-label" for="TinHocKhac">Trình độ tin học văn phòng khác</label>
+                                        <select class="form-control input-sm" id="TinHocKhac" tabindex="0" data-dropdown-parent="#mdThemMoi"></select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-0" style="margin-top: 25px; display: flex; gap: 10px; justify-content: space-between;">
+                                        <label class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="ChungChiTinHocKhac_Tot" name="TrinhDoTinHocKhac">
+                                            <span class="form-check-label">Tốt</span>
+                                        </label>
+                                        <label class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="ChungChiTinHocKhac_Kha" name="TrinhDoTinHocKhac">
+                                            <span class="form-check-label">Khá</span>
+                                        </label>
+                                        <label class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="ChungChiTinHocKhac_TrungBinh" name="TrinhDoTinHocKhac">
+                                            <span class="form-check-label">Trung bình</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line">Kỹ năng mềm</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="mb-0">
+                                        <label for="KyNangMem" class="form-label">Kỹ năng mềm</label>
+                                        <select class="form-control input-sm" id="KyNangMem" tabindex="0" data-dropdown-parent="#mdThemMoi" multiple></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-0">
+                                        <label for="KyNangMemKhac" class="form-label">Kỹ năng mềm khác</label>
+                                        <input type="text" class="form-control" id="KyNangMemKhac" autocomplete="off" placeholder="Kỹ năng mềm khác">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*----------------------------------------*@
+                    <div class="col-md-2">
+                        <div class="box-shadow-primary" style="padding: 10px; border-radius: 4px; height: 100%;">
+                            <div class="row mt-2 box-hdsd" style="background-color: white; border-radius: 8px; padding: 18px 12px 0px 20px; height:100%;">
+                                <ul class="steps steps-counter steps-vertical">
+                                    <h2 style="margin-bottom:0px">CÁC BƯỚC THỰC HIỆN</h2>
+                                    <li class="step-item active">
+                                        <div class="h4 m-0">Thông tin cơ bản</div>
+                                        <div class="text-secondary">Nhập các thông tin chung như: Họ và tên, giới tính, CMND/CCCD/Số định danh,...</div>
+                                        <img src="/Images/Nen.png" style="max-width: 60%;">
+                                    </li>
+                                    <li class="step-item" onclick="ChuyenModal2()">
+                                        <div class="h4 m-0">Kinh nghiệm làm việc, đăng ký dịch vụ</div>
+                                        <div class="text-secondary">Đính kèm các văn bằng, chứng chỉ, tài liệu có liên quan</div>
+                                        <img src="/Images/Nen3.png" style="max-width: 60%; ">
+                                    </li>
+                                    <li class="step-item" onclick="ChuyenModal3()">
+                                        <div class="h4 m-0">Việc làm mong muốn</div>
+                                        <div class="text-secondary">Nhập các thông tin việc làm mong muốn như: Tên công việc, mức lương, chức vụ, chế độ phúc lợi,...</div>
+                                        <img src="/Images/Nen2.png" style="max-width: 60%; ">
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="position: sticky; bottom: 0px; left: 0px; width: 100%; z-index: 99999;">
+                <div style="display: flex; align-items: center; justify-content: space-between">
+                    <div class="col-md-6" style="display: flex; align-items: center">
+                    </div>
+                    <div class="col-md-6">
+                        <div style="float:right;text-align: right">
+                            <a href="#" id="btnTiepTuc_ViecMongMuon" class="btn btn-success btn-luuvadong ms-auto">
+                                <i class="fa-solid fa-arrow-right"></i>&ensp;Tiếp tục (F9)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* ----------------------------------------------------------------------------------------------------- *@
+@* Modal viec lam mong muon *@
+<div id="mdThemMoiViecLamMongMuon" class="modal modal-blur fade" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document" style="margin: 0;">
+        <div class="modal-content" style="border-radius: unset;">
+            <div class="modal-header nts-modal" style="background: unset;color: #000;border-bottom: unset;">
+                <h5 id="lblTieuDeThemMoiViecLamMongMuon" class="modal-title text-bold" style="font-weight:bold;">Phiếu đăng ký tìm việc làm</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: #000 !important;font-weight: bold;"> &times;</button>
+            </div>
+            <div class="modal-body" style="background: white;">
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="box-shadow-primary" style="padding: 10px; border-radius: 4px;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line">Tên công việc</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="mb-0">
+                                        <label class="form-label" for="MaSoNguoiTimViec">Mã số</label>
+                                        <input type="text" class="form-control" id="MaSoNguoiTimViec" autocomplete="off" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="mb-0">
+                                        <label class="form-label" for="LoaiHinDNID">Loại hình doanh nghiệp</label>
+                                        <select class="form-control" id="LoaiHinDNID" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" required>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-0">
+                                        <label class="form-label" for="TenCongViec">Tên công việc</label>
+                                        <input type="text" class="form-control" id="TenCongViec" autocomplete="off" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="mb-0">
+                                        <label class="form-label" for="MoTaCongViec">Mô tả công việc</label>
+                                        <textarea class="form-control" id="MoTaCongViec" rows="2" maxlength="500"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="line-modal">
+                                                <div class="text-line-modal"><div class="text-line">Mã nghề</div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="MaNgheCap1">Cấp 1</label>
+                                                <select class="form-control" id="MaNgheCap1" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" required>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="MaNgheCap2">Cấp 2</label>
+                                                <select class="form-control" id="MaNgheCap2" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" required>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="MaNgheCap3">Cấp 3</label>
+                                                <select class="form-control" id="MaNgheCap3" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" required>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="MaNgheCap4">Cấp 4</label>
+                                                <select class="form-control" id="MaNgheCap4" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" required>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="line-modal">
+                                                <div class="text-line-modal"><div class="text-line" style="width: 400px;">Nơi làm việc ưu tiên</div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="TinhID_UuTien1">Ưu tiên 1: Tỉnh</label>
+                                                <select class="form-control" id="TinhID_UuTien1" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" required>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="HuyenID_UuTien1">Ưu tiên 1: Quận/huyện</label>
+                                                <select class="form-control" id="HuyenID_UuTien1" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" required>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="Quan_UuTien1">Quận/huyện/KCN</label>
+                                                <input type="text" class="form-control" id="Quan_UuTien1" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="TinhID_UuTien2">Ưu tiên 2: Tỉnh</label>
+                                                <select class="form-control" id="TinhID_UuTien2" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" required>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="HuyenID_UuTien2">Ưu tiên 2: Quận/huyện</label>
+                                                <select class="form-control" id="HuyenID_UuTien2" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" required>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="Quan_UuTien2">Quận/huyện/KCN</label>
+                                                <input type="text" class="form-control" id="Quan_UuTien2" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="line-modal">
+                                            <div class="text-line-modal"><div class="text-line" style="width: 400px;">Thông tin việc làm mong muốn</div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="ChucVuID">Chức vụ</label>
+                                                <select class="form-control" id="ChucVuID" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" required>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="ChucVuKhac">Chức vụ khác</label>
+                                                <input type="text" class="form-control" id="ChucVuKhac" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="HinhThucLamViecID">Hình thức làm việc</label>
+                                                <select class="form-control" id="HinhThucLamViecID" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" required>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="MucDichLamViecID">Mục đích làm việc</label>
+                                                <select class="form-control" id="MucDichLamViecID" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" required>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="KinhNghiemLamViecID">Kinh nghiệm làm việc cần tìm</label>
+                                                <select class="form-control" id="KinhNghiemLamViecID" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" required>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="LoaiHopDongLDID">Loại hợp đồng</label>
+                                                <select class="form-control" id="LoaiHopDongLDID" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" required>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="KhaNangDapUngID">Khả năng đáp ứng</label>
+                                                <select class="form-control" id="KhaNangDapUngID" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" required>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="MucLuongID">Mức lương</label>
+                                                <select class="form-control" id="MucLuongID" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" required>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="LuongTheoNgay">Lương theo ngày</label>
+                                                <input type="text" class="form-control" id="LuongTheoNgay" autocomplete="off" onkeyup="formatCurrency(this)" style="text-align:right;">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="LuongTheoGio">Lương theo giờ</label>
+                                                <input type="text" class="form-control" id="LuongTheoGio" autocomplete="off" onkeyup="formatCurrency(this)" style="text-align:right;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <label class="form-label" for="CheDoPhucLoi">Chế độ phúc lợi</label>
+                                        <select class="form-control" id="CheDoPhucLoi" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" multiple>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="mb-0">
+                                            <label class="form-label" for="CheDoPhucLoiKhac">Chế độ phúc lợi khác</label>
+                                            <input type="text" class="form-control" id="CheDoPhucLoiKhac" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row" style="display:none">
+                                <div class="col-lg-4">
+                                    <div class="mb-0">
+                                        <label class="form-label" for="HoTroAnID">Hỗ trợ ăn</label>
+                                        <select class="form-control" id="HoTroAnID" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line">Điều kiện làm việc</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="NoiLamViecID">Nơi làm việc</label>
+                                                <select class="form-control" id="NoiLamViecID" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" multiple>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="TrongLuongNangID">Trọng lượng nâng</label>
+                                                <select class="form-control" id="TrongLuongNangID" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" multiple>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="DiDungID">Đứng hoặc đi lại</label>
+                                                <select class="form-control" id="DiDungID" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" multiple>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="ThaoTacTayID">Thao tác bằng tay</label>
+                                                <select class="form-control" id="ThaoTacTayID" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" multiple>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="Dung2TayID">Dùng 2 tay</label>
+                                                <select class="form-control" id="Dung2TayID" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" multiple>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="SanSangLamViecID">Sẵn sàng làm việc</label>
+                                                <select class="form-control" id="SanSangLamViecID" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" required multiple>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="NgheNoiID">Nghe nói</label>
+                                                <select class="form-control" id="NgheNoiID" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" multiple>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="ThiLucID">Thị lực</label>
+                                                <select class="form-control" id="ThiLucID" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" multiple>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="mb-0">
+                                                <label class="form-label" for="HinhThucTuyenDungID">Hình thức tuyển dụng</label>
+                                                <select class="form-control" id="HinhThucTuyenDungID" tabindex="0" data-dropdown-parent="#mdThemMoiViecLamMongMuon" required multiple>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box-shadow-primary mt-2" style="padding: 10px; border-radius: 4px;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line">Giới thiệu việc làm</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div id="n"></div>
+                                    <label class="form-label" for="PhieuDKGTVLID_ComBo" id="lbPhieuDKGTVLID_ComBo">
+                                        Họ và tên
+                                        <i style="color: blue;cursor:pointer; display:none" class="fa fa-info-circle" aria-hidden="true" id="LichSuDangKyPhieuDKGTVL"></i>
+                                    </label>
+                                    <select class="vodiapickerPhieuDKGTVL" id="PhieuDKGTVLID_ComBo">
+                                    </select>
+                                    <div class="lang-select">
+                                        <button class="btn-select btn-select-PhieuDKGTVL" value="" id="SelectPhieuDKGTVL_US"></button>
+                                        <span class="input-group-text cursor-pointer" style="border-radius: 0 4px 4px 0px;" id="HienThiTatCaPhieuDKGTVL"><i class="fa-solid fa-ellipsis" style="color:var(--tbl-btn-luuvadong)"></i></span>
+                                        <div class="OptionPhieuDKGTVL" style=" z-index: 10070; margin-top: 30px; display: none">
+                                            <ul id="ListDataPhieuDKGTVL" class="listOption" style=" background-color: white;margin-bottom: 4px; "></ul>
+                                            <span id="btnThemNhanhPhieuDKGTVL" style="display: none; width: fit-content; margin: auto; margin-bottom: 4px; cursor: pointer;" class="badge bg-green"> <i class="fa fa-plus"></i>&nbsp;Thêm mới</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <label>Chức vụ: <b id="lblChuVu_PhieuDKGTVL"></b></label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <label>Mức lương: <b id="lblMucLuong_PhieuDKGTVL"></b></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <label>Trình độ học vấn: <b id="lblHocVan_PhieuDKGTVL"></b></label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <label>Chế độ phúc lợi: <b id="lblCheDoPhucLoi_PhieuDKGTVL"></b></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <label>Trình độ CMKT:<b id="lblCMKT_PhieuDKGTVL"></b></label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <label>Điều kiện làm việc: <b id="lblDKLV_PhieuDKGTVL"></b></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <label>Hình thức làm việc: <b id="lblHinhThucLV_PhieuDKGTVL"></b></label>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label>Hình thức tuyển dụng: <b id="lblHinhThucTuyenDung_PhieuDKGTVL"></b></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*----------------------------------------*@
+                    <div class="col-md-2">
+                        <div class="box-shadow-primary" style="padding: 10px; border-radius: 4px; height: 100%;">
+                            <div class="row mt-2 box-hdsd" style="background-color: white; border-radius: 8px; padding: 18px 12px 30px 20px; height:100%">
+                                <ul class="steps steps-counter steps-vertical">
+                                    <h2 style="margin-bottom:0px">CÁC BƯỚC THỰC HIỆN</h2>
+                                    <li class="step-item ">
+                                        <div class="h4 m-0">Thông tin cơ bản</div>
+                                        <div class="text-secondary">Nhập các thông tin chung như: Họ và tên, giới tính, CMND/CCCD/Số định danh,...</div>
+                                        <img src="/Images/Nen.png" style="max-width: 60%;">
+                                    </li>
+                                    <li class="step-item" onclick="ChuyenModal2()">
+                                        <div class="h4 m-0">Kinh nghiệm làm việc, đăng ký dịch vụ</div>
+                                        <div class="text-secondary">Đính kèm các văn bằng, chứng chỉ, tài liệu có liên quan</div>
+                                        <img src="/Images/Nen3.png" style="max-width: 60%; ">
+                                    </li>
+                                    <li class="step-item active" onclick="ChuyenModal3()">
+                                        <div class="h4 m-0">Việc làm mong muốn</div>
+                                        <div class="text-secondary">Nhập các thông tin việc làm mong muốn như: Tên công việc, mức lương, chức vụ, chế độ phúc lợi,...</div>
+                                        <img src="/Images/Nen2.png" style="max-width: 60%; ">
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="position: sticky; bottom: 0px; left: 0px; width: 100%; z-index: 99999;">
+                <div style="display: flex; align-items: center; justify-content: space-between">
+                    <div class="col-md-6" style="display: flex; align-items: center">
+                    </div>
+                    <div class="col-md-6">
+                        <div style="float:right;text-align: right">
+                            <a href="#" id="btnQuayLaiBuoc2" class="btn btn-success ms-auto">
+                                <i class="fa-solid fa-left-long"></i>&ensp;Quay lại (F8)
+                            </a>
+                            <a href="#" id="btnKetThuc" class="btn btn-success btn-luuvadong ms-auto">
+                                <i class="fa-solid fa-forward-step"></i>&ensp;Kết thúc (F9)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* ----------------------------------------------------------------------------------------------------- *@
+@* Modal viec lam mong muon *@
+<div id="mdKinhNghiemVaDKDichVu" class="modal modal-blur fade" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document" style="margin: 0;">
+        <div class="modal-content" style="border-radius: unset;">
+            <div class="modal-header nts-modal" style="background: unset;color: #000;border-bottom: unset;">
+                <h5 id="lblTieuDeThemMoiViecLamMongMuon" class="modal-title text-bold" style="font-weight:bold;">Phiếu đăng ký tìm việc làm</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: #000 !important;font-weight: bold;"> &times;</button>
+            </div>
+            <div class="modal-body" style="background: white;">
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="box-shadow-primary" style="padding: 10px; border-radius: 4px; height: 100%;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line">Kinh nghiệm làm việc</div></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div id="grid-layout-KN">
+                                    <div class="mb-0">
+                                        <div class="col-md-12">
+                                            <div id="GridKinhNghiemLamViec"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-lg-3" style="display: flex;align-items: center;">
+                                    <div class="mb-2">
+                                        <label class="form-label" for="QuocGiaID_LamViec">Đã từng làm việc ở nước ngoài tại</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-2">
+                                        <select class="form-control" id="QuocGiaID_LamViec" tabindex="0" data-dropdown-parent="#mdKinhNghiemVaDKDichVu">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line">Đăng ký dịch vụ</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="mb-0">
+                                        <label class="form-label" for="DangKyDichVuID">Đăng ký dịch vụ</label>
+                                        <select class="form-control" id="DangKyDichVuID" tabindex="0" data-dropdown-parent="#mdKinhNghiemVaDKDichVu" multiple>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="mb-2">
+                                        <label class="form-label" for="NoiDungDichVuKhac">Tên dịch vụ khác</label>
+                                        <input type="text" class="form-control" id="NoiDungDichVuKhac" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div id="grid-layout-DG">
+                                    <div class="mb-0">
+                                        <div class="col-md-12">
+                                            <div id="GridDanhGia"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line" style="width: 1100px;">Đính kèm văn bằng, chứng chỉ,CV....(*.DOC, *.PDF, *.PNG, *.JPG, *.JPEG)</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="file" id="HoSoKemTheo_USDangKy" multiple accept=".pdf, .png, .jpg, .jpeg">
+                                    <input type="hidden" id="txtHoSoKemTheo_USDangKy">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line" style="width: 600px;">Tài liệu khác....(*.DOC, *.PDF, *.PNG, *.JPG, *.JPEG)</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="file" id="DinhKem_VanBan" multiple accept=".pdf, .png, .jpg, .jpeg">
+                                    <input type="hidden" id="txtDinhKem_VanBan">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*----------------------------------------*@
+                    <div class="col-md-2">
+                        <div class="box-shadow-primary" style="padding: 10px; border-radius: 4px; height: 100%;">
+                            <div class="row mt-2 box-hdsd" style="background-color: white; border-radius: 8px; padding: 18px 12px 30px 20px; height:100%">
+                                <ul class="steps steps-counter steps-vertical">
+                                    <h2 style="margin-bottom:0px">CÁC BƯỚC THỰC HIỆN</h2>
+                                    <li class="step-item ">
+                                        <div class="h4 m-0">Thông tin cơ bản</div>
+                                        <div class="text-secondary">Nhập các thông tin chung như: Họ và tên, giới tính, CMND/CCCD/Số định danh,...</div>
+                                        <img src="/Images/Nen.png" style="max-width: 60%;">
+                                    </li>
+                                    <li class="step-item active" onclick="ChuyenModal2()">
+                                        <div class="h4 m-0">Kinh nghiệm làm việc, đăng ký dịch vụ</div>
+                                        <div class="text-secondary">Đính kèm các văn bằng, chứng chỉ, tài liệu có liên quan</div>
+                                        <img src="/Images/Nen3.png" style="max-width: 60%; ">
+                                    </li>
+                                    <li class="step-item " onclick="ChuyenModal3()">
+                                        <div class="h4 m-0">Việc làm mong muốn</div>
+                                        <div class="text-secondary">Nhập các thông tin việc làm mong muốn như: Tên công việc, mức lương, chức vụ, chế độ phúc lợi,...</div>
+                                        <img src="/Images/Nen2.png" style="max-width: 60%; ">
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="position: sticky; bottom: 0px; left: 0px; width: 100%; z-index: 99999;">
+                <div style="display: flex; align-items: center; justify-content: space-between">
+                    <div class="col-md-6" style="display: flex; align-items: center">
+                    </div>
+                    <div class="col-md-6">
+                        <div style="float:right;text-align: right">
+                            <a href="#" id="btnQuayLaiBuoc1" class="btn btn-success ms-auto">
+                                <i class="fa-solid fa-left-long"></i>&ensp;Quay lại (F8)
+                            </a>
+                            <a href="#" id="btnTiepTucBuoc3" class="btn btn-success btn-luuvadong ms-auto">
+                                <i class="fa-solid fa-arrow-right"></i>&ensp;Tiếp tục (F9)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* Modal xem chi tiet đăng ký dịch vụ *@
+<div id="mdXemThem" class="modal modal-blur fade" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-top" role="document" style="max-width: 550px !important;">
+        <div class="modal-content">
+            <div class="modal-header nts-modal">
+                <h5 id="tieuDeModalCT" class="modal-title text-bold">Thêm mới</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <p id="NoiDungGhiChu_CT" class="MoTa_CT"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("ChonPhieuDKGTVL")
+@Html.Partial("ThietLapCot")
+@Html.Partial("KinhNghiemLamViec")
+@Html.Partial("DichVuTuVan")
+@Html.Partial("ModalPrint_Full")
+<script src="/Areas/QuanLy/Scripts/PhieuDangKyTimViecLam.js?v=@DateTime.Now.Ticks.ToString()"></script>
+@Html.Partial("ChonDoiTuongCaNhan")

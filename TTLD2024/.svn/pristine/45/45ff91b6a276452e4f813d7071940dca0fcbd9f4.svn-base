@@ -1,0 +1,180 @@
+﻿<div class="modal modal-blur fade" id="mdTuyChonIn_us" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tieuDeModal_us">Tùy chọn in/xuất</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="NguoiLap_us">Họ tên người lập</label>
+                                    <input type="text" class="form-control" id="NguoiLap_us" placeholder="Nhập họ tên người lập">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="ChucDanhNguoiLap_us">Chức danh người lập</label>
+                                    <input type="text" class="form-control" id="ChucDanhNguoiLap_us" placeholder="Nhập chức danh người lập">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="DiaDanh_us">Địa danh</label>
+                                    <input type="text" class="form-control" id="DiaDanh_us" placeholder="Nhập địa danh">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="DangNgayBaoCao_us">Loại ngày lập báo cáo</label>
+                                    <select class="form-control" id="DangNgayBaoCao_us" tabindex="0">
+                                        <option value="1" selected> Lấy ngày hiện tại</option>
+                                        <option value="2">Lấy ngày từ thiết lập</option>
+                                        <option value="3">Ngày... tháng... năm...</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="NgayLapBaoCao1_us">Ngày lập báo cáo</label>
+                                    <div class="input-group"><input type="text" class="form-control date-picker" id="NgayLapBaoCao1_us" autocomplete="off" placeholder="dd/MM/yyyy" disabled="disabled"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3 form-group">
+                                    <label class="form-label" for="NgayLapBaoCao2_us">Ngày lập báo cáo</label>
+                                    <input type="text" class="form-control input-sm cauhinh" id="NgayLapBaoCao2_us" placeholder="Ngày... tháng... năm..." autocomplete="off" disabled="disabled">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div style="display: flex; align-items: center; justify-content: space-between">
+                    <div class="col-md-12">
+                        <div style="float:right;text-align: right">
+                            <a href="javascript:void(0);" class="btn btn-outline-danger" data-bs-dismiss="modal"><i class="fa fa-close"></i>&nbsp; Đóng</a> &nbsp;
+                            <a href="javascript:void(0);" class="btn btn-success" onclick="LuuTuyChonIn_us();return false;">
+                                <i class="ace-icon fa fa-save bigger-110"></i>&nbsp; Lưu và đóng
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var tempthem_us = "them";
+    var BaoCaoID_us;
+    var ThietLapBaoCaoID_us;
+    $(function () { });
+    $('#DangNgayBaoCao_us').on('change', function () {
+        if ($('#DangNgayBaoCao_us').value() == '1') {
+            $('#NgayLapBaoCao1_us').attr('disabled', true);
+            $('#NgayLapBaoCao2_us').attr('disabled', true);
+        }
+        if ($('#DangNgayBaoCao_us').value() == '2') {
+            $('#NgayLapBaoCao1_us').attr('disabled', false);
+            $('#NgayLapBaoCao2_us').attr('disabled', true);
+        }
+        if ($('#DangNgayBaoCao_us').value() == '3') {
+            $('#NgayLapBaoCao1_us').attr('disabled', true);
+            $('#NgayLapBaoCao2_us').attr('disabled', false);
+            $('#NgayLapBaoCao2_us').value('ngày... tháng...năm...')
+        }
+        return false;
+    });
+    function LoadCombo() {
+        $('#DangNgayBaoCao_us').select2({ width: '100%' });
+    }
+
+    function LoadTuyChonIn_us(ID) {
+        BaoCaoID_us = ID;
+        LoadCombo();
+        try {
+            debugger
+            var Data = NTS.getAjax("/BaoCao/DanhSachBaoCao/LayDuLieu", { ID: ID })[0];
+            var DataBC = NTS.getAjax("/BaoCao/DanhSachBaoCao/LayDuLieuBC", { ID: ID })[0];
+            if (Data != undefined) {
+                $('#NguoiLap_us').value(Data.NguoiLap);
+                $('#ChucDanhNguoiLap_us').value(Data.ChucDanhNguoiLap);
+                $('#DiaDanh_us').value(Data.DiaDanh);
+                $('#DangNgayBaoCao_us').value(Data.LoaiNgayLap);
+                $('#NgayLapBaoCao1_us').value(Data.NgayLapBaoCao);
+                $('#NgayLapBaoCao2_us').value(Data.NgayLapBaoCao2);
+                ThietLapBaoCaoID_us = "";
+            }
+            if (DataBC != undefined) {
+
+                $('#NguoiLap_us').value(DataBC.NguoiLap == "" ? Data.NguoiLap : DataBC.NguoiLap);
+                $('#ChucDanhNguoiLap_us').value(DataBC.ChucDanhNguoiLap == "" ? Data.ChucDanhNguoiLap : DataBC.ChucDanhNguoiLap);
+                $('#DiaDanh_us').value(DataBC.DiaDanh == "" ? Data.DiaDanh : DataBC.DiaDanh);
+                $('#DangNgayBaoCao_us').value(DataBC.LoaiNgayLap == "" ? Data.LoaiNgayLap : DataBC.LoaiNgayLap);
+                $('#NgayLapBaoCao1_us').value(DataBC.NgayLapBaoCao == "" ? Data.NgayLapBaoCao : DataBC.NgayLapBaoCao);
+                $('#NgayLapBaoCao2_us').value(DataBC.NgayLapBaoCao2 == "" ? Data.NgayLapBaoCao2 : DataBC.NgayLapBaoCao2);
+                ThietLapBaoCaoID_us = DataBC.ThietLapBaoCaoID;
+            }
+            KiemTraLoaiNgayBC();
+            $('#mdTuyChonIn_us').modal('show');
+        }
+        catch { }
+    };
+    function LuuTuyChonIn_us() {
+        var Mang = new Array();
+        Mang[0] = $('#NguoiLap_us').value();
+        Mang[1] = $('#ChucDanhNguoiLap_us').value();
+        Mang[2] = $('#DiaDanh_us').value();
+        Mang[3] = $('#DangNgayBaoCao_us').value();
+        Mang[4] = $('#NgayLapBaoCao1_us').value();
+        Mang[5] = $('#NgayLapBaoCao2_us').value();
+        Mang[6] = ThietLapBaoCaoID_us;
+        Mang[7] = BaoCaoID_us;
+
+        var result = NTS.getAjax('/BaoCao/DanhSachBaoCao/LuuThongTinCauHinhHeThong', { _arrayT: Mang });
+        if (result.split('_')[0] == "1") {
+            NTS.thanhcong(result.split('_')[1]);
+            $('#mdTuyChonIn_us').modal('hide');
+            return false;
+        }
+        else if (result.split('_')[0] == "-1") {
+            NTS.loi(result.result.split('_')[1]);
+            return false;
+        } else {
+            NTS.loi(result);
+            return false;
+        }
+    };
+
+    function KiemTraLoaiNgayBC() {
+        if ($('#DangNgayBaoCao_us').value() == '1') {
+            $('#NgayLapBaoCao1_us').attr('disabled', true);
+            $('#NgayLapBaoCao1_us').value("");
+            $('#NgayLapBaoCao2_us').attr("");
+        }
+        if ($('#DangNgayBaoCao_us').value() == '2') {
+            $('#NgayLapBaoCao1_us').attr('disabled', false);
+            $('#NgayLapBaoCao2_us').attr('disabled', true);
+        }
+        if ($('#DangNgayBaoCao_us').value() == '3') {
+            $('#NgayLapBaoCao1_us').attr('disabled', true);
+            $('#NgayLapBaoCao2_us').attr('disabled', false);
+            if ($('#NgayLapBaoCao2_us').value() != "" && $('#NgayLapBaoCao2_us').value() != null) {
+
+            } else {
+                $('#NgayLapBaoCao2_us').value('ngày... tháng...năm...')
+            }
+        }
+        return false;
+    }
+</script>

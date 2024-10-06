@@ -1,0 +1,3352 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Content/AceAdmin/ace.min.js"></script>
+<script src="~/Content/AceAdmin/ace-elements.min.js"></script>
+<link href="~/Content/AceAdmin/ace.css" rel="stylesheet" />
+<style>
+    #mdThemMoiGiayPhepLD_us.modal {
+        --tblr-modal-width: 90% !important;
+    }
+
+    @@media (min-width: 576px) {
+        #mdThuHoiGiayPhepLD .modal-dialog {
+            max-width: 70% !important;
+            margin: 0px !important;
+        }
+
+        #mdCapMoiGiayPhepLD .modal-dialog {
+            max-width: 100% !important;
+            margin: 0px !important;
+        }
+
+        #mdXemThongTinNguoiLaoDongNuocNgoai .modal-dialog {
+            max-width: 100% !important;
+            margin: 0px !important;
+        }
+
+        #mdCapLaiGiayPhepLD .modal-dialog {
+            max-width: 100% !important;
+            margin: 0px !important;
+        }
+
+        #mdXacNhanKhongCapGiayPhepLD .modal-dialog {
+            max-width: 100% !important;
+            margin: 0px !important;
+        }
+
+        #mdGiaHanGiayPhepLD .modal-dialog {
+            max-width: 100% !important;
+            margin: 0px !important;
+        }
+    }
+
+    @@media (min-width: 992px) {
+        #mdCapMoiGiayPhepLD .modal-dialog {
+            max-width: 100% !important;
+            margin: 0px !important;
+        }
+
+        #mdCapLaiGiayPhepLD .modal-dialog {
+            max-width: 100% !important;
+            margin: 0px !important;
+        }
+
+        #mdXacNhanKhongCapGiayPhepLD .modal-dialog {
+            max-width: 100% !important;
+            margin: 0px !important;
+        }
+
+        #mdGiaHanGiayPhepLD .modal-dialog {
+            max-width: 100% !important;
+            margin: 0px !important;
+        }
+
+        #mdXemThongTinNguoiLaoDongNuocNgoai .modal-dialog {
+            max-width: 100% !important;
+            margin: 0px !important;
+        }
+
+        #mdThuHoiGiayPhepLD .modal-dialog {
+            max-width: 70% !important;
+            margin: 0px !important;
+        }
+    }
+
+    @@media (max-width: 993px) {
+        #mdCapMoiGiayPhepLD .modal-dialog {
+            max-width: 100% !important;
+            margin: 0px !important;
+        }
+
+        #mdCapLaiGiayPhepLD .modal-dialog {
+            max-width: 100% !important;
+            margin: 0px !important;
+        }
+
+        #mdXacNhanKhongCapGiayPhepLD .modal-dialog {
+            max-width: 100% !important;
+            margin: 0px !important;
+        }
+
+        #mdGiaHanGiayPhepLD .modal-dialog {
+            max-width: 100% !important;
+            margin: 0px !important;
+        }
+
+        #mdXemThongTinNguoiLaoDongNuocNgoai .modal-dialog {
+            max-width: 100% !important;
+            margin: 0px !important;
+        }
+
+        #mdThuHoiGiayPhepLD .modal-dialog {
+            max-width: 70% !important;
+            margin: 0px !important;
+        }
+    }
+
+    @@media (min-width: 1200px) {
+        #mdCapMoiGiayPhepLD.modal-xl {
+            --tblr-modal-width: 100%;
+            margin: 0px !important;
+        }
+
+        #mdCapLaiGiayPhepLD.modal-xl {
+            --tblr-modal-width: 100%;
+            margin: 0px !important;
+        }
+
+        #mdXacNhanKhongCapGiayPhepLD.modal-xl {
+            --tblr-modal-width: 100%;
+            margin: 0px !important;
+        }
+
+        #mdGiaHanGiayPhepLD .modal-dialog {
+            max-width: 100% !important;
+            margin: 0px !important;
+        }
+
+        #mdXemThongTinNguoiLaoDongNuocNgoai .modal-dialog {
+            max-width: 100% !important;
+            margin: 0px !important;
+        }
+
+        #mdThuHoiGiayPhepLD .modal-dialog {
+            max-width: 70% !important;
+            margin: 0px !important;
+        }
+    }
+
+    .modal-footer {
+        display: unset !important;
+    }
+
+    .btn-check:checked + .btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check) + .btn:active {
+        color: white;
+        background-color: #146654;
+        border-color: var(--tblr-btn-active-border-color);
+        box-shadow: var(--tblr-btn-active-shadow);
+    }
+
+        .btn-check:checked + .btn path {
+            fill: white !important;
+        }
+
+    .backdrop {
+        width: 100%;
+        height: 200px;
+        background-size: cover;
+        background-position: 50% 0;
+        background-repeat: no-repeat;
+        position: relative;
+    }
+
+    .info-container {
+        background-image: url('../../../../Images/_thumbs/Files/bg1.jpg');
+        color: #fff;
+    }
+
+    .info-container-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        padding-top: 15px;
+        position: relative;
+    }
+
+    .backdrop:before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        background-color: rgba(2,13,24,.75);
+    }
+
+    .info-container-header-left {
+        display: flex;
+        align-items: center;
+        gap: 0 10px;
+    }
+
+    .info-img-container {
+        width: 64px;
+        height: 64px;
+        object-fit: cover;
+        border-radius: 100%;
+        border: 2px solid #ccc;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        background: white;
+        color: var(--tblr-color-header) !important;
+        font-weight: bold;
+        font-size: 20px !important;
+    }
+
+    .info-img-list-container {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 100%;
+        border: 2px solid #ccc;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        background: white;
+        color: var(--tblr-color-header) !important;
+        font-weight: bold;
+        font-size: 14px !important;
+    }
+
+    .info-img {
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+    }
+
+    .info-body {
+        margin: 0 10px !important;
+        margin-top: -100px !important;
+    }
+
+    h5#lblHoTenChuHoMain_View {
+        font-size: 20px;
+    }
+
+    span#lblDiaChi_View {
+        font-size: 16px;
+    }
+
+    .TieuDeLabel_tab2 {
+        margin-top: 10px;
+    }
+
+    .TieuDeLabel span {
+        font-weight: bold;
+    }
+
+    #GridHoGiaDinh_List .tabulator-table {
+        width: 100%;
+    }
+
+    #GridHoGiaDinh_List .tabulator-row {
+        padding-left: 10px;
+    }
+
+        #GridHoGiaDinh_List .tabulator-row table {
+            vertical-align: middle;
+            border-collapse: collapse;
+        }
+
+            #GridHoGiaDinh_List .tabulator-row table tr td:first-of-type {
+                width: 60px;
+            }
+
+            #GridHoGiaDinh_List .tabulator-row table tr td {
+                border: none;
+            }
+
+            #GridHoGiaDinh_List .tabulator-row table img {
+                border: 2px solid #ccc;
+            }
+
+    #GridHoGiaDinh_List img {
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+        object-fit: cover;
+    }
+
+    #GridHoGiaDinh_List strong {
+        color: var(--tblr-color-header);
+        font-size: 14px;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    #hoverBox_CLD {
+        display: none;
+        position: absolute;
+        width: auto;
+        height: auto;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 5px 0;
+        top: 89px;
+        left: 215px;
+        border-radius: 4px;
+        background: white;
+    }
+
+    .btnInPhieuThuThap:hover ~ #hoverBox_CLD {
+        display: block;
+    }
+
+    #hoverBox_CLD:hover {
+        display: block;
+    }
+
+    .dropdown-item.active, .dropdown-item:hover {
+        color: var(--tblr-dropdown-link-active-color);
+        text-decoration: none;
+        background-color: var(--tblr-dropdown-link-active-bg);
+    }
+
+    .form-check.form-switch {
+        margin: 0;
+    }
+</style>
+<style>
+    .list_tab.nav-item {
+        margin: 10px 0;
+    }
+
+    .btn_tabcapgiayphepLD {
+        padding: 4px 5px;
+    }
+
+    .card-header-tabs .nav-link.active {
+        color: white !important;
+        background: var(--tblr-primary) !important;
+        border-bottom: none;
+    }
+
+    .tab_noidung {
+        padding: 0 34px;
+        border-left: 2px solid #9999;
+        border-right: 2px solid #9999;
+        margin-top: 10px;
+    }
+
+    .item_capgiaypheld {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 6px;
+        background: #B0DFB7;
+        border-radius: 3px;
+        border: 2px solid #9999;
+        font-size: 12px;
+        color: #000000;
+        font-weight: 500;
+        margin-bottom: 16px;
+    }
+
+    #mdThemMoiGiayPheLD_body_us {
+        padding: 40px;
+    }
+
+    #btndongmodalThemmoi {
+        background: red;
+        color: white;
+    }
+
+        #btndongmodalThemmoi:hover {
+            background: white;
+            color: red;
+            cursor: pointer;
+        }
+
+    .badge_HoSoDeNghi {
+        width: 188px;
+        height: 34px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--tblr-primary);
+    }
+
+    .tab_noidung {
+        position: relative;
+    }
+
+    .thugon {
+        position: absolute;
+        width: 36px;
+        height: 56px;
+        border-radius: 20px;
+        display: flex;
+        right: -18px;
+        bottom: 60px;
+    }
+
+    .text-info {
+        color: var(--tblr-color-header) !important;
+    }
+
+    .text-line-modal:after {
+        content: "";
+        width: 100%;
+        display: block;
+        height: 1px;
+        border-bottom: 1px solid var(--tblr-color-header);
+    }
+
+    .text-line-modal {
+        display: flex;
+        align-items: center;
+    }
+
+    .text-line {
+        width: 175px;
+        color: var(--tblr-color-header);
+        font-weight: bold;
+        font-size: 14px !important;
+    }
+
+    .line-modal {
+        padding-bottom: 10px;
+    }
+
+    .box-img-kyten {
+        height: 227px;
+        background: #d2d2d2;
+        border-radius: 4px;
+        width: 151px;
+    }
+
+    .box-input {
+        position: absolute;
+        bottom: 0;
+    }
+</style>
+<style>
+    .vodiapickerDT {
+        display: none;
+    }
+
+    #ListDataDoiTuongNN {
+        padding-left: 0px;
+    }
+
+        #ListDataDoiTuongNN img, .btn-select img {
+            width: 20px;
+        }
+
+        #ListDataDoiTuongNN li {
+            list-style: none;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+        }
+
+            #ListDataDoiTuongNN li:hover {
+                background-color: #F4F3F3;
+                cursor: pointer;
+            }
+
+            #ListDataDoiTuongNN li img {
+                margin: 5px;
+            }
+
+    /* item list */
+
+    .OptionDoiTuongNN {
+        display: none;
+        width: 100%;
+        max-width: calc(33% - 28px);
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: 5px;
+        position: absolute;
+        z-index: 1;
+        display: block;
+        background: white;
+    }
+
+    @@media (max-width: 1200px) and (min-width: 901px) {
+        .OptionDoiTuongNN {
+            max-width: calc(50% - 28px) !important;
+        }
+    }
+
+    @@media (max-width: 900px) and (min-width: 701px) {
+        .OptionDoiTuongNN {
+            max-width: calc(50% - 28px) !important;
+        }
+    }
+
+    @@media (max-width: 700px) {
+        .OptionDoiTuongNN {
+            max-width: calc(100% - 40px) !important;
+        }
+    }
+
+    .open {
+        display: show !important;
+    }
+
+    .btn-select {
+        width: 100%;
+        height: auto;
+        min-height: 30px;
+        border-radius: 4px 0 0 4px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        text-align: left;
+    }
+
+        .btn-select li {
+            list-style: none;
+            float: left;
+            padding-bottom: 0px;
+            width: 100%;
+        }
+
+        .btn-select:hover li {
+            margin-left: 0px;
+        }
+
+        .btn-select:hover {
+            background-color: #F4F3F3;
+            border: 1px solid transparent;
+            box-shadow: inset 0 0px 0px 1px #ccc;
+        }
+
+        .btn-select:focus {
+            outline: none;
+        }
+
+    .opImg {
+        display: inline-block;
+        height: 50px;
+        width: 50px;
+        background-color: aquamarine;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 50%;
+        color: white;
+        font-weight: bold;
+        font-size: 25px !important;
+        min-width: 50px;
+    }
+
+    .opInfo {
+        padding-left: 10px;
+    }
+
+    .listOption {
+        background-color: white;
+        height: 300px;
+        overflow-y: scroll;
+    }
+
+    .text-diachi {
+        width: 100%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+    }
+
+    .lang-select {
+        display: flex;
+    }
+
+    .opInfo.Chon {
+        text-align: center;
+        width: 100%;
+    }
+</style>
+<style>
+    .vodiapickerDTXacNhan {
+        display: none;
+    }
+
+    #ListDataDoiTuongNNXacNhan {
+        padding-left: 0px;
+    }
+
+        #ListDataDoiTuongNNXacNhan img, .btn-select img {
+            width: 20px;
+        }
+
+        #ListDataDoiTuongNNXacNhan li {
+            list-style: none;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+        }
+
+            #ListDataDoiTuongNNXacNhan li:hover {
+                background-color: #F4F3F3;
+                cursor: pointer;
+            }
+
+            #ListDataDoiTuongNNXacNhan li img {
+                margin: 5px;
+            }
+
+    /* item list */
+
+    .OptionDoiTuongNNXacNhan {
+        display: none;
+        width: 100%;
+        max-width: calc(33% - 28px);
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: 5px;
+        position: absolute;
+        z-index: 1;
+        display: block;
+        background: white;
+    }
+
+    @@media (max-width: 1200px) and (min-width: 901px) {
+        .OptionDoiTuongNNXacNhan {
+            max-width: calc(50% - 28px) !important;
+        }
+    }
+
+    @@media (max-width: 900px) and (min-width: 701px) {
+        .OptionDoiTuongNNXacNhan {
+            max-width: calc(50% - 28px) !important;
+        }
+    }
+
+    @@media (max-width: 700px) {
+        .OptionDoiTuongNNXacNhan {
+            max-width: calc(100% - 40px) !important;
+        }
+    }
+
+    .open {
+        display: show !important;
+    }
+
+    .btn-select {
+        width: 100%;
+        height: auto;
+        min-height: 30px;
+        border-radius: 4px 0 0 4px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        text-align: left;
+    }
+
+    .btn-select-DoiTuongNNXacNhan > li {
+        width: 100%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+    }
+
+    .btn-select li {
+        list-style: none;
+        float: left;
+        padding-bottom: 0px;
+        width: 100%;
+    }
+
+    .btn-select:hover li {
+        margin-left: 0px;
+    }
+
+    .btn-select:hover {
+        background-color: #F4F3F3;
+        border: 1px solid transparent;
+        box-shadow: inset 0 0px 0px 1px #ccc;
+    }
+
+    .btn-select:focus {
+        outline: none;
+    }
+
+    .opImg {
+        display: inline-block;
+        height: 50px;
+        width: 50px;
+        background-color: aquamarine;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 50%;
+        color: white;
+        font-weight: bold;
+        font-size: 25px !important;
+        min-width: 50px;
+    }
+
+    .opInfo {
+        padding-left: 10px;
+    }
+
+    .listOptionXacNhan {
+        background-color: white;
+        height: 300px;
+        overflow-y: scroll;
+    }
+
+    .text-diachi {
+        width: 100%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+    }
+
+    .lang-select {
+        display: flex;
+    }
+
+    .opInfo.Chon {
+        text-align: center;
+        width: 100%;
+    }
+</style>
+<style>
+    .vodiapickerToChuc {
+        display: none;
+    }
+
+    #ListDataToChuc {
+        padding-left: 0px;
+    }
+
+        #ListDataToChuc img, .btn-select img {
+            width: 20px;
+        }
+
+        #ListDataToChuc li {
+            list-style: none;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+        }
+
+            #ListDataToChuc li:hover {
+                background-color: #F4F3F3;
+                cursor: pointer;
+            }
+
+            #ListDataToChuc li img {
+                margin: 5px;
+            }
+
+    /* item list */
+
+    .OptionToChuc {
+        display: none;
+        width: 100%;
+        max-width: calc(50% - 28px);
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: 5px;
+        position: absolute;
+        z-index: 1;
+        display: block;
+        background: white;
+    }
+
+    @@media (max-width: 1200px) and (min-width: 901px) {
+        .OptionToChuc {
+            max-width: calc(50% - 28px) !important;
+        }
+    }
+
+    @@media (max-width: 900px) and (min-width: 701px) {
+        .OptionToChuc {
+            max-width: calc(50% - 28px) !important;
+        }
+    }
+
+    @@media (max-width: 700px) {
+        .OptionToChuc {
+            max-width: calc(100% - 40px) !important;
+        }
+    }
+
+    .open {
+        display: show !important;
+    }
+
+    .btn-select-tochuc {
+        width: 100%;
+        height: auto;
+        min-height: 30px;
+        border-radius: 4px 0 0 4px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        text-align: left;
+    }
+
+        .btn-select-tochuc li {
+            list-style: none;
+            float: left;
+            padding-bottom: 0px;
+            width: 100%;
+        }
+
+        .btn-select-tochuc:hover li {
+            margin-left: 0px;
+        }
+
+        .btn-select-tochuc:hover {
+            background-color: #F4F3F3;
+            border: 1px solid transparent;
+            box-shadow: inset 0 0px 0px 1px #ccc;
+        }
+
+        .btn-select-tochuc:focus {
+            outline: none;
+        }
+
+    .ace-file-multiple .ace-file-container:before {
+        display: inline-block;
+        content: attr(data-title);
+        position: relative;
+        right: 0;
+        left: 0;
+        margin: 12px;
+        line-height: 25px;
+        background-color: #fff;
+        color: #ccc;
+        font-size: 12px;
+        font-weight: 700;
+        border-width: 0;
+    }
+
+    .ace-file-container .ace-file-name .ace-icon {
+        position: relative;
+        display: block;
+        text-align: center;
+        height: auto;
+        line-height: 64px;
+        width: auto;
+        font-size: 57px;
+        color: #d5d5d5;
+        margin: 4px 0;
+        background-color: transparent;
+    }
+
+    p.box-img-kyten-text {
+        height: 80%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .ace-file-multiple .ace-file-container {
+        height: 120px;
+    }
+
+        .ace-file-multiple .ace-file-container .ace-file-name .ace-icon {
+            font-size: 40px;
+        }
+
+        .ace-file-multiple .ace-file-container .ace-file-name .ace-icon {
+            margin: 0;
+        }
+
+        .ace-file-multiple .ace-file-container:before {
+            margin: 0px;
+        }
+
+        .ace-file-multiple .ace-file-container .ace-file-name .ace-icon {
+            line-height: 55px;
+        }
+
+    .quochieu-tieungu > h1,
+    .quochieu-tieungu > h2,
+    .quochieu-tieungu > div {
+        text-align: center;
+    }
+
+    .quochieu-tieungu > h1,
+    .quochieu-tieungu > h2,
+    .quochieu-tieungu > div {
+        margin-bottom: 0;
+    }
+
+        .quochieu-tieungu > div > p {
+            margin-bottom: 0;
+        }
+
+    p.quochieu-tieungu-border {
+        width: 220px;
+        border-bottom: 1px solid #999;
+    }
+
+    .quochuy {
+        border: 1px solid #000000;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+        .quochuy > p {
+            font-size: 15px;
+        }
+
+    .GiayPhep_Img {
+        border: 1px solid #000000;
+        height: 130px;
+        width: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        /*background-image: url('https://faceinch.vn/upload/elfinder/%E1%BA%A2nh/chup-chan-dung-5.jpg');*/
+        background-size: cover !important; /* Để đảm bảo ảnh phủ hết phần tử */
+        background-position: center; /* Để căn giữa ảnh */
+        background-repeat: no-repeat; /* Để ảnh không lặp lại */
+        color: white; /* Đổi màu chữ để nó nổi bật trên nền ảnh */
+    }
+
+    #GiayPhep_Img_mau {
+        height: 227px;
+        width: 151px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-size: cover !important; /* Để đảm bảo ảnh phủ hết phần tử */
+        background-position: center; /* Để căn giữa ảnh */
+        background-repeat: no-repeat; /* Để ảnh không lặp lại */
+        color: #000000; /* Đổi màu chữ để nó nổi bật trên nền ảnh */
+        background: #D9D9D9;
+        font-weight: bold;
+    }
+
+    #GiayPhep_Img_mau-xem {
+        height: 158px;
+        width: 151px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-image: url('https://faceinch.vn/upload/elfinder/%E1%BA%A2nh/chup-chan-dung-5.jpg');
+        background-size: cover !important; /* Để đảm bảo ảnh phủ hết phần tử */
+        background-position: center; /* Để căn giữa ảnh */
+        background-repeat: no-repeat; /* Để ảnh không lặp lại */
+        color: #000000; /* Đổi màu chữ để nó nổi bật trên nền ảnh */
+        background: #D9D9D9;
+        font-weight: bold;
+    }
+
+    #GiayPhep_Img_mau:hover {
+        cursor: pointer;
+    }
+
+    .GiayPhep_Img span {
+        padding: 5px;
+        border-radius: 5px;
+        color: #000000;
+        font-size: 10px;
+    }
+
+    .full-line {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    .dots {
+        flex-grow: 1;
+        border-bottom: 2px dotted #000; /* Đường chấm lấp đầy không gian trống */
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+
+    .dots_gerder {
+        flex-grow: 1;
+        border-bottom: 1px dotted #000; /* Đường chấm lấp đầy không gian trống */
+        margin-top: 10px;
+    }
+
+    .dots_gerder-XacNhan {
+        flex-grow: 1;
+        border-bottom: 1px dotted #000; /* Đường chấm lấp đầy không gian trống */
+        margin-top: 10px;
+    }
+
+    .text-input {
+        white-space: pre-wrap;
+    }
+
+    .full-line p {
+        margin: 0;
+    }
+
+    .GiayPhepLD_noidung > p {
+        font-weight: bold;
+        margin-bottom: 0px !important;
+        padding: 2px 0px;
+    }
+
+    .gender,
+    .full-line-gender {
+        font-weight: 500;
+    }
+
+    .innghien {
+        font-style: italic;
+    }
+
+    .row.text-GiayPhepLD div {
+        padding: 2px 0;
+        font-size: 10px !important;
+    }
+
+    .row.text-XacNhanLD div {
+        padding: 2px 0;
+        font-size: 13px !important;
+    }
+
+    .full-line-gender {
+        font-size: 10px !important;
+    }
+
+    .XacNhan_SoHieu {
+        position: relative;
+        text-align: center;
+    }
+
+    /*.dots_gerder_xacnhan {
+        flex-grow: 1;
+        border-bottom: 1px dotted #000;*/ /* Dấu chấm lấp đầy không gian */
+    /*margin: 0 5px;*/ /* Khoảng cách bên cạnh số (1) */
+    /*display: inline-block;
+        width: 40%;*/ /* Điều chỉnh để lấp đầy khoảng trống đều hai bên */
+    /*}*/
+
+    .text-input_xacnhan {
+        white-space: nowrap;
+        display: inline-block;
+        margin: 0 5px; /* Khoảng cách giữa số (1) và các dấu chấm */
+    }
+
+    .XacNhan_SoHieu-border {
+        border-bottom: 1px dashed #000; /* Đường gạch ngang dạng "------" */
+        width: 20%;
+        margin: 10px auto 0 auto; /* Căn giữa và tạo khoảng cách phía trên */
+    }
+
+    #mdCapMoiGiayPhepLD .modal-dialog {
+        height: 100vh; /* Modal chiếm toàn bộ chiều cao màn hình */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Đảm bảo footer luôn nằm ở dưới */
+    }
+
+    #mdCapMoiGiayPhepLD .modal-content {
+        height: 100%; /* Chiếm hết chiều cao của dialog */
+        display: flex;
+        flex-direction: column;
+    }
+
+    #mdCapMoiGiayPhepLD .modal-body {
+        overflow-y: auto;
+        flex-grow: 1; /* Body chiếm không gian còn lại */
+    }
+
+    #mdCapMoiGiayPhepLD .modal-footer {
+        flex-shrink: 0; /* Footer không bị thu nhỏ */
+    }
+    /* Ẩn thanh cuộn trong trình duyệt Webkit nhưng vẫn cho phép cuộn */
+    #mdCapMoiGiayPhepLD .modal-body {
+        overflow-y: scroll; /* Để đảm bảo cuộn luôn có thể thực hiện */
+    }
+
+        #mdCapMoiGiayPhepLD .modal-body::-webkit-scrollbar {
+            display: none; /* Ẩn thanh cuộn */
+        }
+    /* Ẩn thanh cuộn trong Firefox nhưng vẫn cho phép cuộn */
+    #mdCapMoiGiayPhepLD .modal-body {
+        overflow-y: scroll; /* Để đảm bảo cuộn luôn có thể thực hiện */
+        scrollbar-width: none; /* Ẩn thanh cuộn */
+    }
+
+    #mdThuHoiGiayPhepLD .modal-header {
+        background: var(--tblr-color-header) !important;
+        height: 15px !important;
+        min-height: 15px !important; /* Đảm bảo chiều cao tối thiểu */
+        padding: 0.5rem !important; /* Điều chỉnh phần padding nếu cần */
+    }
+
+    /*modal Xac nhan*/
+    #mdXacNhanKhongCapGiayPhepLD .modal-dialog {
+        height: 100vh; /* Modal chiếm toàn bộ chiều cao màn hình */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Đảm bảo footer luôn nằm ở dưới */
+    }
+
+    #mdXacNhanKhongCapGiayPhepLD .modal-content {
+        height: 100%; /* Chiếm hết chiều cao của dialog */
+        display: flex;
+        flex-direction: column;
+    }
+
+    #mdXacNhanKhongCapGiayPhepLD .modal-body {
+        overflow-y: auto;
+        flex-grow: 1; /* Body chiếm không gian còn lại */
+    }
+
+    #mdXacNhanKhongCapGiayPhepLD .modal-footer {
+        flex-shrink: 0; /* Footer không bị thu nhỏ */
+    }
+    /* Ẩn thanh cuộn trong trình duyệt Webkit nhưng vẫn cho phép cuộn */
+    #mdXacNhanKhongCapGiayPhepLD .modal-body {
+        overflow-y: scroll; /* Để đảm bảo cuộn luôn có thể thực hiện */
+    }
+
+        #mdXacNhanKhongCapGiayPhepLD .modal-body::-webkit-scrollbar {
+            display: none; /* Ẩn thanh cuộn */
+        }
+    /* Ẩn thanh cuộn trong Firefox nhưng vẫn cho phép cuộn */
+    #mdXacNhanKhongCapGiayPhepLD .modal-body {
+        overflow-y: scroll; /* Để đảm bảo cuộn luôn có thể thực hiện */
+        scrollbar-width: none; /* Ẩn thanh cuộn */
+    }
+
+    .opInfo > div {
+        width: 100%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+    }
+
+    .btn-select-DoiTuongNN > li {
+        width: 100%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+    }
+</style>
+<style>
+    .vodiapickerToChucXacNhan {
+        display: none;
+    }
+
+    #ListDataToChucXacNhan {
+        padding-left: 0px;
+    }
+
+        #ListDataToChucXacNhan img, .btn-select img {
+            width: 20px;
+        }
+
+        #ListDataToChucXacNhan li {
+            list-style: none;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+        }
+
+            #ListDataToChucXacNhan li:hover {
+                background-color: #F4F3F3;
+                cursor: pointer;
+            }
+
+            #ListDataToChucXacNhan li img {
+                margin: 5px;
+            }
+
+    /* item list */
+
+    .OptionToChucXacNhan {
+        display: none;
+        width: 100%;
+        max-width: calc(33% - 28px);
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: 5px;
+        position: absolute;
+        z-index: 1;
+        display: block;
+        background: white;
+    }
+
+    @@media (max-width: 1200px) and (min-width: 901px) {
+        .OptionToChucXacNhan {
+            max-width: calc(33% - 28px) !important;
+        }
+    }
+
+    @@media (max-width: 900px) and (min-width: 701px) {
+        .OptionToChucXacNhan {
+            max-width: calc(33% - 28px) !important;
+        }
+    }
+
+    @@media (max-width: 700px) {
+        .OptionToChucXacNhan {
+            max-width: calc(33% - 40px) !important;
+        }
+    }
+
+    .open {
+        display: show !important;
+    }
+
+    .btn-select-tochucXacNhan {
+        width: 100%;
+        height: auto;
+        min-height: 30px;
+        border-radius: 4px 0 0 4px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        text-align: left;
+    }
+
+        .btn-select-tochucXacNhan > li {
+            width: 100%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+        }
+        .btn-select-tochuc > li {
+            width: 100%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+        }
+
+        .btn-select-tochucXacNhan li {
+            list-style: none;
+            float: left;
+            padding-bottom: 0px;
+            width: 100%;
+        }
+
+        .btn-select-tochucXacNhan:hover li {
+            margin-left: 0px;
+        }
+
+        .btn-select-tochucXacNhan:hover {
+            background-color: #F4F3F3;
+            border: 1px solid transparent;
+            box-shadow: inset 0 0px 0px 1px #ccc;
+        }
+
+        .btn-select-tochucXacNhan:focus {
+            outline: none;
+        }
+
+    .text-inputdiadiemlamviec {
+        display: inline-block; /* Đảm bảo phần tử có thể xuống hàng */
+        max-width: 100%; /* Giới hạn chiều rộng tối đa */
+        word-wrap: break-word; /* Tự động xuống hàng khi cần */
+        white-space: normal; /* Cho phép nội dung xuống hàng */
+    }
+</style>
+<style>
+    .vodiapickerToChuc {
+        display: none;
+    }
+
+    #ListDataToChuc {
+        padding-left: 0px;
+    }
+
+        #ListDataToChuc img, .btn-select img {
+            width: 20px;
+        }
+
+        #ListDataToChuc li {
+            list-style: none;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+        }
+
+            #ListDataToChuc li:hover {
+                background-color: #F4F3F3;
+                cursor: pointer;
+            }
+
+            #ListDataToChuc li img {
+                margin: 5px;
+            }
+
+    /* item list */
+
+    .OptionToChuc {
+        display: none;
+        width: 100%;
+        max-width: calc(33% - 28px);
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: 5px;
+        position: absolute;
+        z-index: 1;
+        display: block;
+        background: white;
+    }
+
+    @@media (max-width: 1200px) and (min-width: 901px) {
+        .OptionToChuc {
+            max-width: calc(33% - 28px) !important;
+        }
+    }
+
+    @@media (max-width: 900px) and (min-width: 701px) {
+        .OptionToChuc {
+            max-width: calc(33% - 28px) !important;
+        }
+    }
+
+    @@media (max-width: 700px) {
+        .OptionToChuc {
+            max-width: calc(33% - 40px) !important;
+        }
+    }
+
+    .open {
+        display: show !important;
+    }
+
+    .btn-select-tochuc {
+        width: 100%;
+        height: auto;
+        min-height: 30px;
+        border-radius: 4px 0 0 4px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        text-align: left;
+    }
+
+        .btn-select-tochuc li {
+            list-style: none;
+            float: left;
+            padding-bottom: 0px;
+            width: 100%;
+        }
+
+        .btn-select-tochuc:hover li {
+            margin-left: 0px;
+        }
+
+        .btn-select-tochuc:hover {
+            background-color: #F4F3F3;
+            border: 1px solid transparent;
+            box-shadow: inset 0 0px 0px 1px #ccc;
+        }
+
+        .btn-select-tochuc:focus {
+            outline: none;
+        }
+
+    .text-inputdiadiemlamviec {
+        display: inline-block; /* Đảm bảo phần tử có thể xuống hàng */
+        max-width: 100%; /* Giới hạn chiều rộng tối đa */
+        word-wrap: break-word; /* Tự động xuống hàng khi cần */
+        white-space: normal; /* Cho phép nội dung xuống hàng */
+    }
+</style>
+<style>
+    .ace-file-multiple .ace-file-container.selected .ace-file-name .ace-icon {
+        margin-right: 12px !important;
+    }
+
+    .ace-file-name:not(.large) {
+        width: 100% !important;
+    }
+
+    .btn-del-item {
+        float: right;
+        background-color: red !important;
+        z-index: 1;
+        border-radius: 50%;
+    }
+
+    .ace-file-multiple .ace-file-container .ace-file-name.large:after {
+        background-color: #fff;
+        color: #000;
+    }
+
+    .ace-file-multiple .ace-file-container .ace-file-name.large {
+        border-bottom: 1px solid #ffffff;
+        border: 1px dashed #d2d0d0;
+    }
+
+    .ace-file-multiple .ace-file-container:before {
+        font-size: 14px;
+    }
+
+    .ace-file-multiple .ace-file-container .ace-file-name.large {
+        width: 24%;
+        float: left;
+        height: 119px;
+    }
+
+        .ace-file-multiple .ace-file-container .ace-file-name.large img {
+            width: 100% !important;
+            height: 90px !important;
+            background-size: contain;
+        }
+
+    /*#XemDinhKemChuKy_CauLD {
+        position: absolute;
+        right: 0;
+        top: 0;*/
+    /*display: none;*/
+    /*}
+
+    #imgHienThiKyTen:hover #XemDinhKemChuKy_CauLD {
+        display: block;
+        color: var(--tblr-btn-hover-bg);
+        cursor: pointer;
+    }
+
+    #imgHienThiKyTen:hover #XemDinhKemChuKy_CauLD > i {
+        color: var(--tblr-primary) !important;
+    }*/
+    .badge_Xemthem {
+        position: absolute;
+        bottom: 150px;
+        right: 72px;
+        font-size: 12px;
+        color: var(--tblr-primary) !important;
+    }
+
+        .badge_Xemthem:hover {
+            cursor: pointer;
+        }
+    #NoiDungHoSoDeNghi {
+        position: relative;
+        width: 100%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 12;
+        overflow: hidden;
+    }
+</style>
+<input type="hidden" id="GiayPhepLDID" />
+<input type="hidden" id="txtDinhKem_VanBan_US" />
+<input type="hidden" id="txtDinhKemThuHoi_VanBan_US" />
+<input type="hidden" id="txtDinhKemXacNhan_VanBan_US" />
+<div class="row">
+    <div class="col-md-4">
+        <div class="input-group">
+            <input style=" height: 32px !important;" class="form-control input-sm" type="text" id="timKiem" placeholder="Nội dung tìm kiếm" autocomplete="off" />
+            <span class="input-group-addon" style="margin: 0; padding: 0; border: none;">
+                <button class="btn btn-primary btn-sm" id="TimKiemNangCao" style="border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; width: 35px; height: 32px"><span class="fas fa-sliders-h" aria-hidden="true"></span></button>
+            </span>
+            <span class="input-icon-addon" style="margin-right: 40px;">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+            </span>
+        </div>
+        <div id="KhungTimKiem" style="width: 35%; z-index: 99; position: absolute; margin-top: 4px; background: #fff; padding: 12px 12px 8px 12px; border: 1px solid #e5e5e5; border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.20) 0px 5px 15px; display: none">
+            <div class="row" style=" margin-bottom: 4px">
+                <div class="col-md-6">
+                    <span style="font-size: 16px; color: var(--tblr-color-header);"><i class="fa fa-search"></i>Tìm kiếm nâng cao</span>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class=" col-md-6">
+                    <label for="TinhID_TimKiem_us" class="form-label">Tỉnh/Thành phố</label>
+                    <select class="form-control input-sm" id="TinhID_TimKiem_us"></select>
+                </div>
+                <div class=" col-md-6">
+                    <label for="HuyenID_TimKiem_us" class="form-label">Quận/Huyện</label>
+                    <select class="form-control input-sm" id="HuyenID_TimKiem_us"></select>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class=" col-md-6">
+                    <label for="XaID_TimKiem_us" class="form-label">Phường/Xã</label>
+                    <select class="form-control input-sm" id="XaID_TimKiem_us"></select>
+                </div>
+                <div class=" col-md-6">
+                    <label for="ThonID_TimKiem_us" class="form-label">Thôn/Xóm</label>
+                    <select class="form-control input-sm" id="ThonID_TimKiem_us"></select>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class=" col-md-6">
+                    <label for="XaID_TimKiem_us" class="form-label">Quốc tịch</label>
+                    <select class="form-control input-sm" id="QuocTichID_TimKiem_us"></select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label" for="lblKhongThuocCapGPLD_TimKiem_us">&nbsp;</label>
+                    <label class="form-check" style="margin-top: 0; margin-bottom: 0;">
+                        <input class="form-check-input" type="checkbox" id="lblKhongThuocCapGPLD_TimKiem_us">
+                        <span class="form-check-label" style="">Không thuộc diện cấp GPLD</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <div class=" col-md-6">
+                    <label class="form-label" for="TuNgay_TimKiem_US">Từ ngày</label>
+                    <input type="text" class="form-control date-picker" id="TuNgay_TimKiem_US" autocomplete="off">
+                </div>
+                <div class=" col-md-6">
+                    <label class="form-label" for="DenNgay_TimKiem_US">Đến ngày</label>
+                    <input type="text" class="form-control date-picker" id="DenNgay_TimKiem_US" autocomplete="off">
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class=" col-md-12">
+                    <label for="TrangThai_TimKiem_us" class="form-label">Trạng thái GPLD/GXN</label>
+                    <select class="form-control input-sm" id="TrangThai_TimKiem_us">
+                        <option value="" selected>(--Tất cả--)</option>
+                        <option value="41">Cấp mới</option>
+                        <option value="42">Cấp lại</option>
+                        <option value="43">Gia hạn</option>
+                        <option value="44">Thu hồi</option>
+                    </select>
+                </div>
+            </div>
+            <hr style="margin: 1rem 0;" />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group" style="text-align: right">
+                        <a href="#" class="btn btn-outline-danger" id="DongTimKiem"><i class="fa fa-close"></i> &ensp; Đóng</a>
+                        <button type="button" id="TimKiem" class="btn btn-success" style="background: var(--tblr-color-header);"><i class="fa fa-search"></i>&ensp;Tìm kiếm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col mb-2">
+        <div class="text-end">
+            <button type="button" class="btn btn-primary btn-nts-them" id="btnThemMoi"><i class="fa fa-plus"></i>&ensp;Thêm mới (F2)</button>
+            <div class="btn-group" style="">
+                <div class="dropdown d-inline">
+                    <button class="btn btn-primary dropdown-toggle-hide-arrow  height-button-icon" type="button" id="growthReportId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="blue fa fa-ellipsis-h"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-lg-end w-auto">
+                        <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnThietLapCot"><i style=" font-size: 17px;" class="text-warning fa-solid fa-gear iconsize-item"></i>&ensp; Tùy chỉnh cột</a>
+                        <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnPrint" style="display: none; font-size: 17px;"><i class="text-warning fa fa-print iconsize-item"></i>&ensp; In</a>
+                        <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnExport"><i style="font-size: 17px; color: #4299E1 !important;" class="text-primary fa-solid fa-download iconsize-item"></i>&ensp; Xuất danh sách giấy phép lao động</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="space-4"></div>
+<div class="row">
+    <div id="grid-layout">
+        <div class="col-md-12">
+            <div id="Grid1"></div>
+        </div>
+    </div>
+</div>
+
+@* Modal Thêm mới *@
+<div class="modal modal-blur" id="mdThemMoiGiayPhepLD_us" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="display:none;">
+                <h5 class="modal-title" id="tieuDeModal_ThemToChuc_us" style="font-weight: bold;"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="font-weight: bold;"> &times;</button>
+            </div>
+            <div class="modal-body" id="mdThemMoiGiayPheLD_body_us">
+                <fieldset class="KhungVien" style=" min-height: 364px;">
+                    <legend style="background: var(--tblr-primary);">Thông tin cấp giấy phép lao động/giấy xác nhận không thuộc diện cấp giấy phép lao động</legend>
+                    <div class="row" style="margin-bottom: 4px;">
+                        <div class="col-md-12" style="display:flex;">
+                            @* Start *@
+                            <div class="col-md-2">
+                                <div class="card-header">
+                                    <ul class="nav nav-tabs card-header-tabs list_tab" data-bs-toggle="tabs" role="tablist" style="display: flex; padding: 10px 5px; }">
+                                        <li class="nav-item" role="presentation">
+                                            <a href="#TabCapGiayhepLD" class="nav-link active" data-bs-toggle="tab" aria-selected="true" role="tab">
+                                                <div class="row btn_tabcapgiayphepLD">
+                                                    <div class="col-md-3" style="display:flex; align-items:center;justify-content:center;">
+                                                        <i class="fa-solid fa-book-atlas icon_book" style="font-size: 40px;"></i> &ensp;
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        Người lao động nước ngoài đủ điều kiện cấp giấy phép lao động
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item" role="presentation" style="margin-top:30px;">
+                                            <a href="#TabKhongCapGiayPhepLD" id="btnQuaTrinhThuThap_View" class="nav-link" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">
+                                                <div class="row btn_tabcapgiayphepLD">
+                                                    <div class="col-md-3" style="display:flex; align-items:center;justify-content:center;">
+                                                        <i class="fa-solid fa-book icon_book" style="font-size: 40px; "></i> &ensp;
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        Giấy xác nhận không thuộc diện cấp giấy phép lao động
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6 tab_noidung">
+                                <div class="thugon badge">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                                <div class="card-body">
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade active show" id="TabCapGiayhepLD" role="tabpanel">
+                                            <div class="row item_capgiaypheld" style="">
+                                                <div class="col-md-6">
+                                                    Cấp mới giấy phép lao động
+                                                </div>
+                                                <div class="col-md-3" style="color: #019017; text-align:end;">
+                                                    Hồ sơ đề nghị
+                                                </div>
+                                                <div class="col-md-3" style="text-align: end;">
+                                                    <button type="button" class="btn btn-primary btn-nts-them" id="btnThemMoiCapMoi"><i class="fa fa-plus"></i>&ensp;Thêm mới</button>
+                                                </div>
+                                            </div>
+                                            <div class="row item_capgiaypheld" style="">
+                                                <div class="col-md-6">
+                                                    Cấp lại giấy phép lao động
+                                                </div>
+                                                <div class="col-md-3" style="color: #019017; text-align: end; ">
+                                                    Hồ sơ đề nghị
+                                                </div>
+                                                <div class="col-md-3" style="text-align: end;">
+                                                    <button type="button" class="btn btn-primary btn-nts-them" id="btnThemMoiCapLai"><i class="fa fa-plus"></i>&ensp;Thêm mới</button>
+                                                </div>
+                                            </div>
+                                            <div class="row item_capgiaypheld" style="">
+                                                <div class="col-md-6">
+                                                    Gia hạn giấy phép lao động
+                                                </div>
+                                                <div class="col-md-3" style="color: #019017; text-align: end; ">
+                                                    Hồ sơ đề nghị
+                                                </div>
+                                                <div class="col-md-3" style="text-align: end;">
+                                                    <button type="button" class="btn btn-primary btn-nts-them" id="btnGiaHanGiayPhepLD"><i class="fa fa-plus"></i>&ensp;Thêm mới</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane fade" id="TabKhongCapGiayPhepLD" role="tabpanel" aria-labelledby="btnQuaTrinhThuThap_View">
+                                            <div class="row item_capgiaypheld" style="">
+                                                <div class="col-md-6">
+                                                    Xác nhận không thuộc diện cấp giấy phép lao động
+                                                </div>
+                                                <div class="col-md-3" style="color: #019017; text-align:end;">
+                                                    Hồ sơ đề nghị
+                                                </div>
+                                                <div class="col-md-3" style="text-align: end;">
+                                                    <button type="button" class="btn btn-primary btn-nts-them" id="btnThemMoiXacNhanKhongCapGiay"><i class="fa fa-plus"></i>&ensp;Thêm mới</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 info_hosodenghi" style=" padding: 20px;">
+
+                                <div class="row">
+                                    <div class="col-md-12" style=" padding-bottom: 10px; border-bottom: 1px solid;">
+                                        <span class="badge badge_HoSoDeNghi">Hồ sơ đề nghị</span>
+                                    </div>
+                                    <div class="col-md-12" id="NoiDungHoSoDeNghi">
+                                        <p>
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <span class=" badge_Xemthem">Xem thêm</span>
+                            </div>
+                            @* End *@
+                        </div>
+                    </div>
+                    </legend>
+                </fieldset>
+                <div class="modal-footer">
+                    <div style="display: flex; align-items: center; justify-content: space-between">
+                        <div class="col-md-6" style="display: flex; align-items: center">
+                            <label style="margin-bottom: unset" class="form-check form-switch">
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <div style="float:right;text-align: right">
+                                <a href="#" class="btn " data-bs-dismiss="modal" id="btndongmodalThemmoi">
+                                    <i class="fa fa-close"></i>&nbsp;Đóng
+                                </a>
+                                <a href="#" id="btnLuuVaDongmodal_us" class="btn btn-success btn-luuvadong ms-auto" style="display:none">
+                                    <i class="fa fa-save"></i>&ensp;Lưu và đóng (F9)
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* Modal thêm mới cấp mới giấy phép lao động *@
+<div class="modal modal-blur" id="mdCapMoiGiayPhepLD" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #fff !important;">
+                <h5 class="modal-title" id="tieuDeModal_ThemToChuc_us" style="font-weight: bold; background:#fff !important; color:#000000 !important;">
+                    Cấp giấy phép lao động cho người lao động nước ngoài làm việc tại Việt Nam
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="font-weight: bold; color: #000000 !important;"> &times;</button>
+            </div>
+            <div class="modal-body" id="mdCapMoiGiayPhepLD_body_us">
+                <div class="row" style="margin: 5px;">
+                    <div class="col-md-4 box-shadow-primary" style="padding: 10px; margin: 0 -7px 0 7px; border-radius: 4px;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="line-modal">
+                                    <div class="text-line-modal"><div class="text-line">Thông tin chung</div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="SoGPLD">Số</label>
+                                    <input type="text" class="form-control" id="SoGPLD" required maxlength="250">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="CanCu">No</label>
+                                    <input type="text" class="form-control" id="CanCu" required maxlength="250">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="NgayCap">Ngày cấp</label>
+                                    <input type="text" class="form-control date-picker" id="NgayCap" autocomplete="off" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="NguoiKy_us">Người ký</label>
+                                    <input type="text" class="form-control" id="NguoiKy_us" maxlength="250">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-0">
+                                    <label class="form-label" for="CoQuanCap_US">Cơ quan cấp</label>
+                                    <input type="text" class="form-control" id="CoQuanCap_US" maxlength="250">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-bottom:4px;">
+                            <div class="col-lg-12">
+                                <div id="n"></div>
+                                <label class="form-label" for="DoiTuongNNID_ChuHo" id="lbDoiTuongNNID_ChuHo">
+                                    Họ và tên
+                                    <i style="color: blue;cursor:pointer; display:none" class="fa fa-info-circle" aria-hidden="true" id="LichSuDangKy"></i>
+                                </label>
+                                <select class="vodiapickerDT" id="DoiTuongNNID_ChuHo">
+                                </select>
+                                <div class="lang-select">
+                                    <button class="btn-select btn-select-DoiTuongNN" value="" id="SelectDoiTuongNN_US"></button>
+                                    <span class="input-group-text cursor-pointer" style="border-radius: 0 4px 4px 0px;" id="HienThiTatCaDoiTuongNN"><i class="fa-solid fa-ellipsis" style="color:var(--tbl-btn-luuvadong)"></i></span>
+                                    <div class="OptionDoiTuongNN" style=" z-index: 10070; margin-top: 30px; display: none">
+                                        <ul id="ListDataDoiTuongNN" class="listOption" style=" background-color: white;margin-bottom: 4px; "></ul>
+                                        <span id="btnThemNhanhDoiTuongNN" style="display: none; width: fit-content; margin: auto; margin-bottom: 4px; cursor: pointer;" class="badge bg-green"> <i class="fa fa-plus"></i>&nbsp;Thêm mới</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="line-modal">
+                                    <div class="text-line-modal"><div class="text-line" style="width: 377px;">Thông tin tổ chức nơi làm việc</div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div id="n"></div>
+                                <label class="form-label" for="ToChucID_ChuHo" id="lbToChucID_ChuHo">
+                                    Tổ chức (Nơi làm việc)
+                                    <i style="color: blue;cursor:pointer; display:none" class="fa fa-info-circle" aria-hidden="true" id="LichSuDangKyTC"></i>
+                                </label>
+                                <select class="vodiapickerToChuc" id="ToChucID_ChuHo" required>
+                                </select>
+                                <div class="lang-select">
+                                    <button class="btn-select btn-select-tochuc" value="" id="SelectToChuc_US"></button>
+                                    <span class="input-group-text cursor-pointer" style="border-radius: 0 4px 4px 0px;" id="HienThiTatCaToChuc"><i class="fa-solid fa-ellipsis" style="color:var(--tbl-btn-luuvadong)"></i></span>
+                                    <div class="OptionToChuc" style=" z-index: 10060; margin-top: 30px;">
+                                        <ul id="ListDataToChuc" class="listOption" style=" background-color: white;margin-bottom: 4px;"></ul>
+                                        <span id="btnThemNhanhToChuc" style="display: none; width: fit-content; margin: auto; margin-bottom: 4px; cursor: pointer;" class="badge bg-green"> <i class="fa fa-plus"></i>&nbsp;Thêm mới</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-0">
+                                    <label class="form-label" for="DiaChiNoiLV_us">Địa điểm nơi làm việc</label>
+                                    <input type="text" class="form-control" id="DiaChiNoiLV_us" maxlength="250">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="selViTriCongViec_us" id="lbViTriCongViec_us">Vị trí công việc</label>
+                                    <select class="form-control" id="selViTriCongViec_us" tabindex="0" data-dropdown-parent="#mdCapMoiGiayPhepLD">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="selHinhThucLV_us" id="lblHinhThucLV_us">Hình thức làm việc</label>
+                                    <select class="form-control" id="selHinhThucLV_us" tabindex="0" data-dropdown-parent="#mdCapMoiGiayPhepLD">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="selChucDanhCV_us" id="lblChucDanhCV_us">Chức danh công việc</label>
+                                    <select class="form-control" id="selChucDanhCV_us" tabindex="0" data-dropdown-parent="#mdCapMoiGiayPhepLD">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="MucLuong_US">Mức lương</label>
+                                    <input type="text" class="form-control" id="MucLuong_US" maxlength="250" onkeyup="formatCurrency(this)" style="text-align:right;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-bottom: 4px;">
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="NgayLamViec_us_TC" id="lblNgayLamViec_us_TC">Thời gian làm việc từ ngày</label>
+                                    <input type="text" class="form-control date-picker" id="NgayLamViec_us_TC" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="NgayKetThuc_us_TC" id="lblNgayKetThuc_us_TC">Thời gian làm việc đến ngày</label>
+                                    <input type="text" class="form-control date-picker" id="NgayKetThuc_us_TC" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-0">
+                                    <label class="form-label" for="LyDo_us" id="lblLyDo_us"></label>
+                                    <input type="text" class="form-control" id="LyDo_us" maxlength="250">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="line-modal">
+                                    <div class="text-line-modal"><div class="text-line" style="width: 1500px;">Tài liệu đính kèm (*.DOC, *.PDF, *.PNG, *.JPG, *.JPEG)</div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="file" id="DinhKem_CapMoiGiayPhepLD_us" multiple accept=".pdf, .png, .jpg, .jpeg">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="line-modal">
+                                    <div class="text-line-modal"><div class="text-line" style="width: 580px;">Hình ảnh (*.PDF, *.PNG, *.JPG, *.JPEG)</div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div id="GiayPhep_Img_mau">
+                                    <input type="hidden" id="txtDuongDanFileHinhAnh" value="" />
+                                    @*<div id="XemDinhKemChuKy_CauLD" title="Xem đính kèm chữ ký">
+                                            <i class="fa-solid fa-eye" style="font-size:20px;display:block;" id="icon_XemDinhKemChuKy_CauLD"></i>
+                                        </div>*@
+                                    <span class="text-img">
+                                        Ảnh màu
+                                        <br />4 cm x 6 cm
+                                        <br /> Colour photo
+                                    </span>
+                                </div>
+                                <input type="file" id="fileHinhAnh" class="d-none" accept=".jpg,.jpeg,.png" />
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="col-md-8 box-shadow-primary" style="padding: 10px; margin: 0 -7px 0 7px; border-radius: 4px;">
+                        <div class="" style="padding: 10px 0 0 0;border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; height: 450px; ">
+                            <div class="row">
+                                <div class="col-md-12 quochieu-tieungu">
+                                    <h1> CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</h1>
+                                    <h2> Độc lập - Tự do - Hạnh phúc</h2>
+                                    <div style="display: flex; margin-bottom: -1px; flex-direction: column; align-items: center; justify-content: center;">
+                                        <p class="innghien">Socialist Republic of Vietnam</p>
+                                        <p class="innghien quochieu-tieungu-border">Independence - Freedom - Happiness</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12" style="text-align: center; display: flex; align-items: center; justify-content: center; margin:25px 0;">
+                                    <div class="quochuy">
+                                        <p style="margin-bottom:0px!important;">QUỐC <br />HUY</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12" style="text-align:center;">
+                                    <h1 style="font-size: 25px; font-weight: bold; line-height: 33px;">
+                                        GIẤY PHÉP LAO ĐỘNG <br /> WORK PERMIT
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5" style="margin-right: 25px;"></div>
+                                <div class="col-md-1" style="text-align:right; width:2.5%;">
+                                    <p style="min-width: 50px; text-align: left; font-weight:bold; margin-bottom:0px;">Số:</p>
+                                </div>
+                                <div class="col-md-6" style="text-align:left;">
+                                    <p class="GiayPhep_So" style="flex-grow: 1; text-align: left; font-weight: bold; margin-bottom: 0px;"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5" style="margin-right: 25px;"></div>
+                                <div class="col-md-1" style="text-align: right; width: 2.5%;">
+                                    <p style="min-width: 50px; text-align: left; font-weight: bold; margin-bottom: 0px;">No:</p>
+                                </div>
+                                <div class="col-md-6" style="text-align:left;">
+                                    <p class="GiayPhep_No" style="flex-grow: 1; text-align: left; font-weight: bold; margin-bottom: 0px;"></p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="" style="border: 1px solid #000000; min-height: 500px; ">
+                            <div class="row" style="height:100%;">
+                                <div class="col-md-6" style="border-right: 1px solid #000000; height: 100%; padding: 10px 15px 15px 15px;">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="GiayPhep_Img">
+                                                <span class="text-img">
+                                                    Ảnh màu
+                                                    <br />4 cm x 6 cm
+                                                    <br /> Colour photo
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <h2 style="font-size: 18px; font-weight: bold; margin-bottom: 0; margin-top: 10px; width:100%; text-align:center;">
+                                                GIẤY PHÉP LAO ĐỘNG <br /> WORK PERMIT
+                                            </h2>
+                                            <div class="row">
+                                                <div class="col-md-5"></div>
+                                                <div class="col-md-1" style="text-align:right; width:7%;">
+                                                    <p style="min-width: 50px; text-align: left; font-weight:bold; margin-bottom:0px;">Số:</p>
+                                                </div>
+                                                <div class="col-md-6" style="text-align:left;">
+                                                    <p class="GiayPhep_So" style="flex-grow: 1; text-align: left; font-weight: bold; margin-bottom: 0px;"></p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-5"></div>
+                                                <div class="col-md-1" style="text-align: right; width: 7%;">
+                                                    <p style="min-width: 50px; text-align: left; font-weight: bold; margin-bottom: 0px;">No:</p>
+                                                </div>
+                                                <div class="col-md-6" style="text-align:left;">
+                                                    <p class="GiayPhep_No" style="flex-grow: 1; text-align: left; font-weight: bold; margin-bottom: 0px;"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding: 10px;">
+                                        <div class="col-md-12">
+                                            <div class="GiayPhepLD_noidung">
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-12 full-line full-line-gender" style="padding-right:0px">
+                                                        1. Họ và tên<i>&ensp;(chữ in hoa)</i>:<span class="dots_gerder"></span><span class="text-inputHoVaTen text-input"></span><span class="dots_gerder"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-12" style="font-style: italic; font-weight: 500;">
+                                                        Full name (in capital letters)
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-4 full-line full-line-gender" style="padding-right:0px">
+                                                        2. Giới tính:
+                                                        Nam  <span class="dots_gerder"></span>
+                                                    </div>
+                                                    <div class="col-md-4 full-line full-line-gender" style="padding-left:0px">
+                                                        <span class="text-inputGTNam text-input"></span><span class="dots_gerder"></span>
+                                                    </div>
+                                                    <div class="col-md-4 full-line full-line-gender">
+                                                        Nữ <span class="dots_gerder"></span><span class="text-inputGTNu text-input"></span><span class="dots_gerder"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-2">
+                                                        <span class="gender innghien">Sex</span>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <span class="gender innghien">Male</span>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <span class="gender innghien">Female</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-12 full-line full-line-gender" style="padding-right:0px">
+                                                        3. Ngày, tháng, năm sinh:<span class="dots_gerder"></span><span class="text-inputNgaySinh text-input"></span><span class="dots_gerder"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-12" style="font-style: italic; font-weight: 500;">
+                                                        Date of birth (day/month/year)
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-3 full-line full-line-gender" style="padding-right:0px">
+                                                        4. Quốc tịch hiện nay:
+                                                    </div>
+                                                    <div class="col-md-4 full-line full-line-gender" style="padding-right:0px">
+                                                        <span class="dots_gerder"></span><span class="text-inputQuocTich text-input"></span><span class="dots_gerder"></span>
+                                                    </div>
+                                                    <div class="col-md-5 full-line full-line-gender">
+                                                        Số hộ chiếu<span class="dots_gerder"></span><span class="text-inputSohoChieu text-input"></span><span class="dots_gerder"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-5 full-line full-line-gender" style="padding-right:0px">
+                                                        5. Làm việc tại doanh nghiệp/tổ chức:
+                                                    </div>
+                                                    <div class="col-md-7 full-line full-line-gender" style="padding-right:0px">
+                                                        <span class="dots_gerder"></span><span class="text-inputTenToChuc text-input"></span><span class="dots_gerder"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-12" style="font-style: italic; font-weight: 500;">
+                                                        Working at enterprise/organization
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-3 full-line full-line-gender" style="padding-right:0px">
+                                                        6. Địa điểm làm việc:
+                                                    </div>
+                                                    <div class="col-md-9 full-line full-line-gender" style="padding-right:0px">
+                                                        <span class="dots_gerder"></span><span class="text-inputdiadiemlamviec text-input"></span><span class="dots_gerder"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-12" style="font-style:italic; font-weight:500;">
+                                                        Working place
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-4 full-line full-line-gender" style="padding-right:0px">
+                                                        7. Vị trí công việc:
+                                                    </div>
+                                                    <div class="col-md-4 full-line full-line-gender" style="padding-right:0px">
+                                                        Nhà quản lý &ensp;<span style="font-size: 14px;" class="text-nhaquanly">&#x2610;</span>
+                                                    </div>
+                                                    <div class="col-md-4 full-line full-line-gender" style="padding-right:0px">
+                                                        Giám đốc điều hành &ensp;<span style="font-size: 14px; " class="text-GDDH">&#x2610;</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-4" style="font-style: italic; font-weight: 500;">
+                                                        Job assignment
+                                                    </div>
+                                                    <div class="col-md-4" style="font-style: italic; font-weight: 500;">
+                                                        Manager
+                                                    </div>
+                                                    <div class="col-md-4" style="font-style: italic; font-weight: 500;">
+                                                        Excutive
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-4 full-line full-line-gender" style="padding-right:0px">
+
+                                                    </div>
+                                                    <div class="col-md-4 full-line full-line-gender" style="padding-right:0px">
+                                                        Chuyên gia &ensp;<span style="font-size: 14px;" class="text-ChuyenGia">&#x2610;</span>
+                                                    </div>
+                                                    <div class="col-md-4 full-line full-line-gender" style="padding-right:0px">
+                                                        Lao động kỹ thuật &ensp;<span style="font-size: 14px;" class="text-LDKT">&#x2610;</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-4" style="font-style:italic; font-weight:500;">
+                                                    </div>
+                                                    <div class="col-md-4" style="font-style: italic; font-weight: 500;">
+                                                        Expert
+                                                    </div>
+                                                    <div class="col-md-4" style="font-style: italic; font-weight: 500;">
+                                                        Technical worker
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-4 full-line full-line-gender" style="padding-right:0px">
+                                                        Trong đó, hình thức làm việc:
+                                                    </div>
+                                                    <div class="col-md-8 full-line full-line-gender" style="padding-right:0px">
+                                                        <span class="dots_gerder"></span><span class="text-input-hinhthuclv text-input"></span><span class="dots_gerder"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-12" style="font-style:italic; font-weight:500;">
+                                                        In which, working form
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="padding: 10px 22px 10px 18px; ">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="GiayPhepLD_noidung">
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-12 full-line full-line-gender">
+                                                        8. Chức danh công việc:<span class="dots_gerder"></span><span class="text-input text-inputchudanhcv"></span><span class="dots_gerder"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-12" style="font-style: italic; font-weight: 500;">
+                                                        Job title
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-12 full-line full-line-gender">
+                                                        9. Thời hạn làm việc từ ngày<span class="dots_gerder"></span><span class="text-input text-inputtungay"></span><span class="dots_gerder"></span>
+                                                        tháng<span class="dots_gerder"></span><span class="text-input text-inputtuthang"></span><span class="dots_gerder"></span>
+                                                        năm<span class="dots_gerder"></span><span class="text-input text-inputtunam"></span><span class="dots_gerder"></span>
+                                                        đến ngày<span class="dots_gerder"></span><span class="text-input text-inputdenngay"></span><span class="dots_gerder"></span>
+                                                        tháng<span class="dots_gerder"></span><span class="text-input text-inputdenthang"></span><span class="dots_gerder"></span>
+                                                        năm<span class="dots_gerder"></span><span class="text-input text-inputdennam"></span><span class="dots_gerder"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-7" style="font-style: italic; font-weight: 500;">
+                                                        Period of work from (day/month/year)
+                                                    </div>
+                                                    <div class="col-md-5" style="font-style: italic; font-weight: 500;">
+                                                        to (day/month/year)
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-12 full-line full-line-gender">
+                                                        10. Tình trạng giấy phép lao động:<span class="dots_gerder"></span><span class="text-input text-inputtinhtrangGiaypld"></span><span class="dots_gerder"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-12" style="font-style: italic; font-weight: 500;">
+                                                        Work permit status
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-4 full-line full-line-gender">
+                                                        Cấp mới &ensp;<span style="font-size: 14px;" class="text-capmoi">&#x2610;</span>
+                                                    </div>
+                                                    <div class="col-md-4 full-line full-line-gender">
+                                                        Cấp lại &ensp;<span style="font-size: 14px;" class="text-caplai">&#x2610;</span>
+                                                    </div>
+                                                    <div class="col-md-4 full-line full-line-gender">
+                                                        Gia hạn &ensp;<span style="font-size: 14px;" class="text-Giahan">&#x2610;</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-4" style="font-style: italic; font-weight: 500;">
+                                                        New issuance
+                                                    </div>
+                                                    <div class="col-md-4" style="font-style: italic; font-weight: 500;">
+                                                        Re-issuance
+                                                    </div>
+                                                    <div class="col-md-4" style="font-style: italic; font-weight: 500;">
+                                                        Ex-issuance
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-6 full-line full-line-gender">
+                                                    </div>
+                                                    <div class="col-md-5 full-line full-line-gender">
+                                                        Ngày<span class="dots_gerder"></span><span class="text-input text-inputngayhientai"></span><span class="dots_gerder"></span>
+                                                        tháng<span class="dots_gerder"></span><span class="text-input text-inputthanghientai"></span><span class="dots_gerder"></span>
+                                                        năm<span class="dots_gerder"></span><span class="text-input text-inputnamhientai"></span><span class="dots_gerder"></span>
+                                                    </div>
+                                                    <div class="col-md-1 full-line full-line-gender">
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-5" style="font-style: italic; font-weight: 500;">
+                                                    </div>
+                                                    <div class="col-md-7" style=" font-weight: 500;text-align:center;">
+                                                        GIÁM ĐỐC
+                                                        <br />SỞ LAO - ĐỘNG THƯƠNG BINH VÀ XÃ HỘI
+                                                        <br />DIRECTOR OF DEPARTMEN OF LABOUR, INVALIDS AND SOCIAL AFFAIRS
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-5" style="font-style: italic; font-weight: 500;">
+                                                    </div>
+                                                    <div class="col-md-7" style="font-style: italic; font-weight: 500;text-align:center;">
+                                                        (Ký và ghi rõ họ tên, đóng dấu)
+                                                    </div>
+                                                </div>
+                                                <div class="row text-GiayPhepLD">
+                                                    <div class="col-md-5" style="font-style: italic; font-weight: 500;">
+                                                    </div>
+                                                    <div class="col-md-7" style="font-style: italic; font-weight: 500; text-align:center;">
+                                                        (Signature and stamp)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div style="display: flex; align-items: center; justify-content: space-between">
+                    <div class="col-md-6" style="display: flex; align-items: center">
+                        <label style="margin-bottom: unset" class="form-check form-switch">
+
+                        </label>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="float:right;text-align: right">
+                            <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                <i class="fa fa-close"></i>&nbsp;Đóng (F4)
+                            </a>
+                            <a href="#" id="btnLuuVaDongCapMoiGiayPhepLD_us" class="btn btn-success btn-luuvadong ms-auto">
+                                <i class="fa fa-save"></i>&ensp;Lưu và đóng (F9)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+@* End *@
+@* Modal thêm mới Giấy xác nhận không thuộc diện cấp giấy phép lao động *@
+<div class="modal modal-blur" id="mdXacNhanKhongCapGiayPhepLD" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #fff !important;">
+                <h5 class="modal-title" id="tieuDeModal_ThemToChuc_us" style="font-weight: bold; background:#fff !important; color:#000000 !important;">
+                    Cấp giấy xác nhận không thuộc diện cấp giấy phép lao động cho người lao động nước ngoài làm việc tại Việt Nam
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="font-weight: bold; color: #000000 !important;"> &times;</button>
+            </div>
+            <div class="modal-body" id="mdXacNhanKhongCapGiayPhepLD_body_us">
+                <div class="row" style="margin: 5px;">
+                    <div class="col-md-4 box-shadow-primary" style="padding: 10px; margin: 0 -7px 0 7px; border-radius: 4px;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="line-modal">
+                                    <div class="text-line-modal"><div class="text-line">Thông tin chung</div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="SoGPLD_XN">Số</label>
+                                    <input type="text" class="form-control" id="SoGPLD_XN" required maxlength="250">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="CanCu_XN">No</label>
+                                    <input type="text" class="form-control" id="CanCu_XN" required maxlength="250">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="NgayCap_XN">Ngày cấp</label>
+                                    <input type="text" class="form-control date-picker" id="NgayCap_XN" autocomplete="off" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="NguoiKy_XN">Người ký</label>
+                                    <input type="text" class="form-control" id="NguoiKy_XN" maxlength="250">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-0">
+                                    <label class="form-label" for="CoQuanCap_XN">Cơ quan cấp</label>
+                                    <input type="text" class="form-control" id="CoQuanCap_XN" maxlength="250">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-bottom:4px;">
+                            <div class="col-lg-12">
+                                <div id="n"></div>
+                                <label class="form-label" for="DoiTuongNNID_ChuHo" id="lbDoiTuongNNID_ChuHo">
+                                    Họ và tên
+                                    <i style="color: blue;cursor:pointer; display:none" class="fa fa-info-circle" aria-hidden="true" id="LichSuDangKy"></i>
+                                </label>
+                                <select class="vodiapickerDTXacNhan" id="DoiTuongNNID_ChuHoXacNhan">
+                                </select>
+                                <div class="lang-select">
+                                    <button class="btn-select btn-select-DoiTuongNNXacNhan" value="" id="SelectDoiTuongNN_USXacNhan"></button>
+                                    <span class="input-group-text cursor-pointer" style="border-radius: 0 4px 4px 0px;" id="HienThiTatCaDoiTuongNN"><i class="fa-solid fa-ellipsis" style="color:var(--tbl-btn-luuvadong)"></i></span>
+                                    <div class="OptionDoiTuongNNXacNhan" style=" z-index: 10070; margin-top: 30px; display: none">
+                                        <ul id="ListDataDoiTuongNNXacNhan" class="listOptionXacNhan" style=" background-color: white;margin-bottom: 4px; "></ul>
+                                        <span id="btnThemNhanhDoiTuongNNXacNhan" style="display: none; width: fit-content; margin: auto; margin-bottom: 4px; cursor: pointer;" class="badge bg-green"> <i class="fa fa-plus"></i>&nbsp;Thêm mới</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="line-modal">
+                                    <div class="text-line-modal"><div class="text-line" style="width: 377px;">Thông tin tổ chức nơi làm việc</div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div id="n"></div>
+                                <label class="form-label" for="ToChucID_ChuHoXacNhan" id="lbToChucID_ChuHoXacNhan">
+                                    Tổ chức (Nơi làm việc)
+                                    <i style="color: blue;cursor:pointer; display:none" class="fa fa-info-circle" aria-hidden="true" id="LichSuDangKyTCXacNhan"></i>
+                                </label>
+                                <select class="vodiapickerToChucXacNhan" id="ToChucID_ChuHoXacNhan" required>
+                                </select>
+                                <div class="lang-select">
+                                    <button class="btn-select btn-select-tochucXacNhan" value="" id="SelectToChuc_USXacNhan"></button>
+                                    <span class="input-group-text cursor-pointer" style="border-radius: 0 4px 4px 0px;" id="HienThiTatCaToChuc"><i class="fa-solid fa-ellipsis" style="color:var(--tbl-btn-luuvadong)"></i></span>
+                                    <div class="OptionToChucXacNhan" style=" z-index: 10060; margin-top: 30px;">
+                                        <ul id="ListDataToChucXacNhan" class="listOptionXacNhan" style=" background-color: white;margin-bottom: 4px;"></ul>
+                                        <span id="btnThemNhanhToChucXacNhan" style="display: none; width: fit-content; margin: auto; margin-bottom: 4px; cursor: pointer;" class="badge bg-green"> <i class="fa fa-plus"></i>&nbsp;Thêm mới</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-0">
+                                    <label class="form-label" for="DiaChiNoiLV_XN">Địa điểm nơi làm việc</label>
+                                    <input type="text" class="form-control" id="DiaChiNoiLV_XN" maxlength="250">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="selViTriCongViec_XN" id="lblselViTriCongViec_us">Vị trí công việc</label>
+                                    <select class="form-control" id="selViTriCongViec_XN" tabindex="0" data-dropdown-parent="#mdXacNhanKhongCapGiayPhepLD">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="selHinhThucLV_XN" id="lblselHinhThucLV_us">Hình thức làm việc</label>
+                                    <select class="form-control" id="selHinhThucLV_XN" tabindex="0" data-dropdown-parent="#mdXacNhanKhongCapGiayPhepLD">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="selChucDanhCV_XN" id="lblselChucDanhCV_us">Chức danh công việc</label>
+                                    <select class="form-control" id="selChucDanhCV_XN" tabindex="0" data-dropdown-parent="#mdXacNhanKhongCapGiayPhepLD">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="MucLuong_XN">Mức lương</label>
+                                    <input type="text" class="form-control" id="MucLuong_XN" maxlength="250" onkeyup="formatCurrency(this)" style="text-align:right;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-bottom: 4px;">
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="NgayLamViec_XN" id="lblNgayLamViec_XN">Thời gian làm việc từ ngày</label>
+                                    <input type="text" class="form-control date-picker" id="NgayLamViec_XN" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="NgayKetThuc_XN" id="lblNgayKetThuc_XN">Thời gian làm việc đến ngày</label>
+                                    <input type="text" class="form-control date-picker" id="NgayKetThuc_XN" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                    <label class="form-label" for="LyDoKhongThuocDienCap">Lý do không thuộc diện cấp giấy phép lao động</label>
+                                    <input type="text" class="form-control" id="LyDoKhongThuocDienCap" maxlength="250">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="line-modal">
+                                    <div class="text-line-modal"><div class="text-line" style="width: 1500px;">Tài liệu đính kèm (*.DOC, *.PDF, *.PNG, *.JPG, *.JPEG)</div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="file" id="DinhKem_XNKhongCapGiayPhepLD_us" multiple accept=".pdf, .png, .jpg, .jpeg">
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-8 box-shadow-primary" style="padding:28px; margin: 0 -7px 0 7px; border-radius: 4px;">
+                        <div class="" style="padding: 10px 0 0 0;">
+                            <div class="row">
+                                <div class="col-md-12" style="text-align:right;">
+                                    <p style="font-size: 15px; font-weight: bold;">Mẫu số 10/PLI</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 quochieu-tieungu">
+                                    <div class="row">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-3">
+                                            <div class="XacNhan_SoHieu" style="text-align:center;">
+                                                <div class="row text-XacNhanLD">
+                                                    <div class="col-md-12 full-line full-line-gender" style="padding-right:0px">
+                                                        <span class="dots_gerder dots_gerder_xacnhan"></span><span class="text-input text-input_xacnhan">(1)</span><span class="dots_gerder dots_gerder_xacnhan"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="XacNhan_SoHieu-border"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <h1 style=" margin-bottom: 0px; font-size: 16px;"> CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</h1>
+                                            <h2 style=" margin-bottom: 0px; font-size: 13px;"> Độc lập - Tự do - Hạnh phúc</h2>
+                                            <div class="XacNhan_SoHieu" style="display: flex; margin-bottom: 0px; flex-direction: column; align-items: center; justify-content: center;">
+                                                <p class="innghien" style=" margin-bottom: 0px; font-size: 13px;">Socialist Republic of Vietnam</p>
+                                                <p class="innghien " style=" margin-bottom: 0px; font-size: 13px;">Independence - Freedom - Happiness</p>
+                                                <div class="XacNhan_SoHieu-border"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:50px;">
+                                <div class="col-md-12" style="text-align:center;">
+                                    <h1 style="font-size: 16px; font-weight: bold; line-height: 25px; margin-bottom: 0px; ">
+                                        GIẤY XÁC NHẬN
+                                    </h1>
+                                    <h1 style="font-size: 16px; font-weight: bold; line-height: 25px; margin-bottom: 0px; ">
+                                        KHÔNG THUỘC DIỆN CẤP GIẤY PHÉP LAO ĐỘNG
+                                    </h1>
+                                    <h1 style="font-size: 16px; line-height: 25px; margin-bottom: 0px; ">
+                                        CERTIFICATION OF EXEMPTION FROM WORK PERMIT
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12" style="text-align:center;">
+                                    <div class="row">
+                                        <div class="col-md-5"></div>
+                                        <div class="col-md-1" style="text-align:right;">
+                                            <p style="min-width: 50px; text-align: right; font-weight: bold; margin-bottom: 0px;">Số:</p>
+                                        </div>
+                                        <div class="col-md-6" style="text-align:left;">
+                                            <p class="GiayPhep_So" style="flex-grow: 1; text-align: left; font-weight: bold; margin-bottom: 0px;"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5"></div>
+                                        <div class="col-md-1" style="text-align: right;">
+                                            <p style="min-width: 50px; text-align: right; font-weight: bold; margin-bottom: 0px;">No:</p>
+                                        </div>
+                                        <div class="col-md-6" style="text-align:left;">
+                                            <p class="GiayPhep_No" style="flex-grow: 1; text-align: left; font-weight: bold; margin-bottom: 0px;"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top:4px;">
+                                <div class="col-md-12">
+                                    <div class="GiayPhepLD_noidung">
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-7 full-line full-line-gender" style="padding-right:0px">
+                                                1. Họ và tên (chữ in hoa):&ensp;<span class="dots_gerder-XacNhan"></span><span class="text-input text-inputHoVaTen"></span><span class="dots_gerder-XacNhan"></span>
+                                            </div>
+                                            <div class="col-md-1">2. Giới tính: </div>
+                                            <div class="col-md-2 full-line full-line-gender" style="padding-right:0px">
+                                                Nam<span class="dots_gerder-XacNhan"></span><span class="text-input text-inputGTNam"></span><span class="dots_gerder-XacNhan"></span>
+                                            </div>
+                                            <div class="col-md-2 full-line full-line-gender" style="padding-right:0px">
+                                                Nữ<span class="dots_gerder-XacNhan"></span><span class="text-input text-inputGTNu"></span><span class="dots_gerder-XacNhan"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-7">
+                                                Full name (in capital letters)
+                                            </div>
+                                            <div class="col-md-1">Sex</div>
+                                            <div class="col-md-2">Male</div>
+                                            <div class="col-md-2">Female</div>
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-12 full-line full-line-gender" style="padding-right:0px">
+                                                3. Ngày, tháng, năm sinh:&ensp;<span class="dots_gerder-XacNhan"></span><span class="text-input text-inputNgaySinh"></span><span class="dots_gerder-XacNhan"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-12">
+                                                Date of birth (day/month/year)
+                                            </div>
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-1 full-line full-line-gender" style="padding-right:0px">
+                                                4. Quốc tịch:
+                                            </div>
+                                            <div class="col-md-5 full-line full-line-gender" style="padding-right:0px">
+                                                <span class="dots_gerder-XacNhan"></span><span class="text-input text-inputQuocTich"></span><span class="dots_gerder-XacNhan"></span>
+                                            </div>
+                                            <div class="col-md-1 full-line full-line-gender" style="padding-right:0px">
+                                                Số hộ chiếu:
+                                            </div>
+                                            <div class="col-md-5 full-line full-line-gender" style="padding-right:0px">
+                                                <span class="dots_gerder-XacNhan"></span><span class="text-input text-inputSohoChieu"></span><span class="dots_gerder-XacNhan"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-6">
+                                                Nationality
+                                            </div>
+                                            <div class="col-md-6">Passport number</div>
+
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-3 full-line full-line-gender" style="padding-right:0px">
+                                                5. Làm việc tại doanh nghiệp/tổ chức:
+                                            </div>
+                                            <div class="col-md-9 full-line full-line-gender" style="padding-right:0px">
+                                                <span class="dots_gerder-XacNhan"></span><span class="text-input text-inputTenToChuc"></span><span class="dots_gerder-XacNhan"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-12">
+                                                Working at enterprise/organization
+                                            </div>
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-12 full-line full-line-gender" style="padding-right:0px">
+                                                6. Địa điểm làm việc: &ensp;<span class="dots_gerder-XacNhan"></span><span class="text-input text-inputdiadiemlamviec"></span><span class="dots_gerder-XacNhan"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-12">
+                                                Working place
+                                            </div>
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-12 full-line full-line-gender" style="padding-right:0px">
+                                                7. Vị trí công việc: &ensp;<span class="dots_gerder-XacNhan"></span><span class="text-input text-inputvitricv"></span><span class="dots_gerder-XacNhan"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-12">
+                                                Job assignment
+                                            </div>
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-12 full-line full-line-gender" style="padding-right:0px">
+                                                8. Chức danh công việc:  &ensp;<span class="dots_gerder-XacNhan"></span><span class="text-input text-inputchudanhcv"></span><span class="dots_gerder-XacNhan"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-12">
+                                                Job title
+                                            </div>
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-12 full-line full-line-gender" style="padding-right:0px">
+                                                9. Hình thức làm việc:  &ensp;<span class="dots_gerder-XacNhan"></span><span class="text-input text-input-hinhthuclv"></span><span class="dots_gerder-XacNhan"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-12">
+                                                Working form
+                                            </div>
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-2 full-line full-line-gender" style="padding-right:0px;width:14%">
+                                                10. Thời gian làm việc:
+                                            </div>
+                                            <div class="col-md-3 full-line full-line-gender">
+                                                từ ngày&ensp;<span class="dots_gerder-XacNhan"></span><span class="text-input text-inputtungay"></span><span class="dots_gerder-XacNhan"></span>
+                                                tháng&ensp;<span class="dots_gerder-XacNhan"></span><span class="text-input text-inputtuthanh"></span><span class="dots_gerder-XacNhan"></span>
+                                                năm&ensp;<span class="dots_gerder-XacNhan"></span><span class="text-input text-inputtunam"></span><span class="dots_gerder-XacNhan"></span>
+                                            </div>
+                                            <div class="col-md-3 full-line full-line-gender">
+                                                đến ngày&ensp;<span class="dots_gerder-XacNhan"></span><span class="text-input text-inputdenngay"></span><span class="dots_gerder-XacNhan"></span>
+                                                tháng&ensp;<span class="dots_gerder-XacNhan"></span><span class="text-input text-inputdenthang"></span><span class="dots_gerder-XacNhan"></span>
+                                                năm&ensp;<span class="dots_gerder-XacNhan"></span><span class="text-input text-inputdennam"></span><span class="dots_gerder-XacNhan"></span>
+                                            </div>
+                                            <div class="col-md-4 full-line full-line-gender" style="padding-right:0px">
+                                            </div>
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-2" style="padding-right:0px;width:14%">
+                                                Period of work
+                                            </div>
+                                            <div class="col-md-4">
+                                                from (day/month/year)
+                                            </div>
+                                            <div class="col-md-4">
+                                                to (day/month/year)
+                                            </div>
+                                            <div class="col-md-2">
+                                            </div>
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-12 full-line full-line-gender" style="padding-right:0px">
+                                                Xác nhận không thuộc diện cấp giấy phép lao động, lý do:   &ensp;<span class="dots_gerder-XacNhan"></span><span class="text-input text-inputlydokhongcapphep"></span><span class="dots_gerder-XacNhan"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-12">
+                                                Reasons for exempted work permit
+                                            </div>
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-8 full-line full-line-gender" style="padding-right:0px">
+                                            </div>
+                                            <div class="col-md-3 full-line full-line-gender">
+                                                <span class="text-input"></span><span class="dots_gerder-XacNhan"></span>
+                                                ,ngày&ensp;<span class="dots_gerder-XacNhan"></span><span class="text-input text-inputngayhientai"></span><span class="dots_gerder-XacNhan"></span>
+                                                tháng&ensp;<span class="dots_gerder-XacNhan"></span><span class="text-input text-inputthanghientai"></span><span class="dots_gerder-XacNhan"></span>
+                                                năm&ensp;<span class="dots_gerder-XacNhan"></span><span class="text-input text-inputnamhientai"></span><span class="dots_gerder-XacNhan"></span>
+                                            </div>
+                                            <div class="col-md-1 full-line full-line-gender" style="padding-right:0px">
+                                            </div>
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-8" style="padding-right:0px; font-weight:bold;font-style:italic;">
+                                                Nơi nhận:
+                                            </div>
+                                            <div class="col-md-3 full-line full-line-gender">
+                                                <span class="dots_gerder"></span><span class="text-input">(2)</span><span class="dots_gerder"></span>
+                                            </div>
+                                            <div class="col-md-1" style="padding-right:0px">
+                                            </div>
+                                        </div>
+
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-8" style="padding-right:0px;">
+                                                - Như trên;
+                                            </div>
+                                            <div class="col-md-3 full-line full-line-gender" style="padding-left:30px;">
+                                                (Ký và ghi rõ họ tên, đóng dấu)
+                                            </div>
+                                            <div class="col-md-1" style="padding-right:0px;">
+                                            </div>
+
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-8" style="padding-right:0px;">
+                                                - Lưu: VT
+                                            </div>
+                                            <div class="col-md-3 full-line full-line-gender">
+                                            </div>
+                                            <div class="col-md-1" style="padding-right:0px">
+                                            </div>
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-12" style="padding-right:0px;">
+                                                <p style="font-weight:bold;">Ghi chú:</p>
+                                            </div>
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-12" style="padding-right:0px;">
+                                                (1) Bộ Lao động - Thương binh và Xã hội (Cục Việc làm)/Sở Lao động - Thương binh và Xã hội tỉnh, thành phố…
+                                            </div>
+                                        </div>
+                                        <div class="row text-XacNhanLD">
+                                            <div class="col-md-12" style="padding-right:0px;">
+                                                (2) Cục trưởng Cục việc làm/Giám đốc Sở Lao động - Thương binh và Xã hội tỉnh, thành phố.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div style="display: flex; align-items: center; justify-content: space-between">
+                    <div class="col-md-6" style="display: flex; align-items: center">
+                        <label style="margin-bottom: unset" class="form-check form-switch">
+
+                        </label>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="float:right;text-align: right">
+                            <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                <i class="fa fa-close"></i>&nbsp;Đóng (F4)
+                            </a>
+                            <a href="#" id="btnLuuVaDongXacNhanGiayPhepLD_us" class="btn btn-success btn-luuvadong ms-auto">
+                                <i class="fa fa-save"></i>&ensp;Lưu và đóng (F9)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+@* End *@
+
+
+
+
+@Html.Partial("ChonDoiTuongNN")
+@Html.Partial("ModalPrint_Full")
+@Html.Partial("ChonToChuc")
+
+<style>
+    .frame-file {
+        width: 65px;
+        height: 65px;
+        border: 1px solid #d5d5d5;
+        border-radius: 4px;
+        float: left;
+        position: relative;
+    }
+
+    .frame-image {
+        width: 60px;
+        height: 60px;
+        float: left;
+        background-position: center;
+        background-size: cover;
+        border-radius: 4px;
+        position: relative;
+    }
+
+    .frame-file .fa-arrow-down {
+        position: absolute;
+        top: -8px;
+        right: 8px;
+        font-size: 15px;
+        color: #fff;
+        background-color: #4CAF50;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: none;
+        padding-top: 2px;
+        text-align: center;
+        z-index: 99;
+    }
+
+    .frame-file .fa-trash-o {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        font-size: 15px;
+        color: #fff;
+        background-color: red;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: none;
+        padding-top: 2px;
+        text-align: center;
+        z-index: 99;
+    }
+
+    .frame-top {
+        float: left;
+        width: 100%;
+        text-align: center;
+    }
+
+    .frame-file:hover > .fa-trash-o, .frame-file:hover > .fa-arrow-down {
+        display: block;
+    }
+
+    .box-title {
+        padding: 8px 5px;
+        border: 1px solid #d9d9d9;
+        border-radius: 4px;
+        border-left: 8px solid var(--plyr-color-main);
+        min-height: 65px;
+        margin-bottom: 20px;
+    }
+
+        .box-title > p {
+            margin-bottom: 0px !important;
+        }
+
+    #mdThuHoiGiayPhepLD .modal-footer {
+        background-color: transparent !important;
+        border-top: none !important;
+    }
+
+    .box_img {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end; /* Đẩy nội dung xuống dưới cùng */
+        width: 100%; /* Hoặc kích thước mong muốn */
+        min-height: 342px; /* Hoặc kích thước mong muốn */
+        background-image: url('/Images/img_ThuHoiGiayPhep.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        align-self: flex-end;
+    }
+</style>
+@* Modal xem thong tin *@
+<div id="mdXemThongTinNguoiLaoDongNuocNgoai" class="modal modal-blur fade" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document" style="height: 100vh;margin: 0;">
+        <div class="modal-content" style="height: 100vh; border-radius: unset; z-index:1000;">
+            <div class="modal-header nts-modal" style="background: unset;color: #000;border-bottom: unset;">
+                <h5 id="lblTieuDeThongTinCungLaoDong" class="modal-title text-bold" style="font-weight:bold;">Xem thông tin giấy phép lao động cho người lao động nước ngoài làm việc tại Việt Nam</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: #000 !important;font-weight: bold;"> &times;</button>
+            </div>
+            <div class="modal-body" style="background: white;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="box-shadow-primary" style="padding: 10px; border-radius: 4px; min-height: 630px;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line">Thông tin đối tượng</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-12 mb-1">
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Họ và tên:
+                                            <span id="lblHoVaTen_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style=" margin: 0 0 14px 0;" />
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Giới tính:
+                                            <span id="lblGioiTinh_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Ngày sinh:
+                                            <span id="lblNgaySinh_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style=" margin: 0 0 14px 0;" />
+
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Quốc tịch:
+                                            <span id="lblQuocTich_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Loại hộ chiếu:
+                                            <span id="lblLoaiHoChieu_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style=" margin: 0 0 14px 0;" />
+
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Mã số:
+                                            <span id="lblMaSo_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Số hộ chiếu:
+                                            <span id="lblSoHoChieu_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style=" margin: 0 0 14px 0;" />
+
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Ngày cấp:
+                                            <span id="lblNgayCap_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Có giá trị đến:
+                                            <span id="lblCoGiaTriDen_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style=" margin: 0 0 14px 0;" />
+
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-12 mb-1">
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Nội dung thu thập:
+                                            <span id="lblNoiDungTT_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style=" margin: 0 0 14px 0;" />
+
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line" style="width: 490px;">Hình ảnh (*.PDF, *.PNG, *.JPG, *.JPEG) </div></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-lg-12 mb-1">
+                                        <div class="form-group" style="margin-bottom:0px;">
+                                            <div class="col-md-12">
+                                                <div id="GiayPhep_Img_mau-xem">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="box-shadow-primary" style="padding: 10px; border-radius: 4px; min-height: 630px;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line">Thông tin giấy phép</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Số:
+                                            <span id="lblSo_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            No:
+                                            <span id="lblNo_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style=" margin: 0 0 14px 0;" />
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Ngày cấp:
+                                            <span id="lblNgayCap_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Người ký:
+                                            <span id="lblNguoiKy_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style=" margin: 0 0 14px 0;" />
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-12 mb-1">
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Cơ quan cấp:
+                                            <span id="lblCoQuanCap_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style=" margin: 0 0 14px 0;" />
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-12 mb-1">
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Tổ chức (nơi làm việc):
+                                            <span id="lblToChuc_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style=" margin: 0 0 14px 0;" />
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-12 mb-1">
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Địa điểm nơi làm việc:
+                                            <span id="lblDiaDiemNoiLV_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style=" margin: 0 0 14px 0;" />
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-12 mb-1">
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Vị trí công việc:
+                                            <span id="lblViTriCongViec_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style=" margin: 0 0 14px 0;" />
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-12 mb-1">
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Hình thức làm việc:
+                                            <span id=""></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style=" margin: 0 0 14px 0;" />
+                            @*--------------------*@
+                            <div class="row TTNoiLamViecTrongNuoc">
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Chức danh:
+                                            <span id="lblChucDanh_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-1">
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Mức lương:
+                                            <span id="lblMucLuong_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style=" margin: 0 0 14px 0;" />
+                            @*--------------------*@
+                            <div class="row TTNoiLamViecTrongNuoc">
+                                <div class="col-lg-12 mb-1">
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Thời gian làm việc:
+                                            <span id="lblThoiGianLV_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style=" margin: 0 0 14px 0;" />
+                            @*--------------------*@
+                            <div class="row TTNoiLamViecTrongNuoc">
+                                <div class="col-lg-12 mb-1">
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <div class="col-md-12 control-div no-padding-right TieuDeLabel ">
+                                            Tình trạng cấp GPLĐ:
+                                            <span id="lblTinhTrang_us"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style=" margin: 0 0 14px 0;" />
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="line-modal">
+                                        <div class="text-line-modal"><div class="text-line" style="width: 800px;">Tài liệu đính kèm (*.DOC, *.PDF, *.PNG, *.JPG, *.JPEG) </div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*--------------------*@
+                            <div class="row">
+                                <div class="col-lg-12 mb-1">
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <div class="col-12" id="file-dinh-kem-chu-ky">
+                                            <div class="frame-file me-2">
+                                                <div class="frame-top">
+                                                    <div class="frame-image"></div>
+                                                </div>
+                                                <i class="fa fa-arrow-down download-file-attachments" data-url-file=""></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <div style="display: flex; align-items: center; justify-content: space-between">
+                        <div class="col-md-6" style="display: flex; align-items: center">
+
+                        </div>
+                        <div class="col-md-6">
+                            <div style="float:right;text-align: right">
+                                <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                    <i class="fa fa-close"></i>&nbsp;Đóng (F4)
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* End *@
+@* Modal thu hồi giấy phép lao động *@
+<div class="modal modal-blur" id="mdThuHoiGiayPhepLD" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog" role="document" style="display: flex;align-items:center; justify-content: center; min-height: 100vh; margin: auto !important;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: var(--tblr-color-header) !important; height:15px !important;">
+            </div>
+            <div class="modal-body" id="mdThuHoiGiayPhepLD_body_us">
+                <div class="row">
+                    <div class="col-md-12" style="text-align: center; color:var(--tblr-color-header) !important;margin-top:10px; font-weight:bold;">
+                        <h1>Thu hồi giấy phép lao động người nước ngoài làm việc tại Việt Nam</h1>
+                    </div>
+                </div>
+                <div class="row" style=" padding: 16px;">
+                    <div class="col-md-6" style="display: flex; flex-direction: column; justify-content: flex-end;">
+                        <div class="box_img">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="box-title">
+                            <div class="row">
+                                <div class="col-md-1" style="display:flex;align-items:center;justify-content:center;"><span><i class="fa-solid fa-circle-info" style="font-size: 20px; color: var(--tblr-color-header) !important;"></i></span></div>
+                                <div class="col-md-11" style="display:flex;align-items:center;">
+                                    <p style="margin-bottom:0px;">
+                                        Nhập đầy đủ các thông tin bên dưới để thu hồi giấy phép lao động người nước ngoài làm việc tại Việt Nam,
+                                        sau khi thực hiện thao tác giấy phép lao động đang thao tác sẽ không còn hiệu lực.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="SoQuyetDinh">Số quyết định</label>
+                                    <input type="text" class="form-control" id="SoQuyetDinh_ThuHoi" required maxlength="250">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-bottom: 4px;">
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="NgayKyThuHoi_ThuHoi">Ngày ký</label>
+                                    <input type="text" class="form-control date-picker" required id="NgayKyThuHoi_ThuHoi" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-0">
+                                    <label class="form-label" for="NguoiKy_ThuHoi">Người ký</label>
+                                    <input type="text" class="form-control" id="NguoiKy_ThuHoi" maxlength="250">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-0">
+                                    <label class="form-label" for="CoQuanBanHanh_ThuHoi">Cơ quan ban hành</label>
+                                    <input type="text" class="form-control" id="CoQuanBanHanh_ThuHoi" required maxlength="250">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-0">
+                                    <label class="form-label" for="NoiDung_ThuHoi">Nội dung</label>
+                                    <textarea type="text" class="form-control" id="NoiDung_ThuHoi" rows="4"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-0">
+                                    <label class="form-label" for="DinhKem_ThuhoiCapGiayPhepLD_us">Đính kèm</label>
+                                    <input type="file" id="DinhKem_ThuhoiCapGiayPhepLD_us" multiple accept=".pdf, .png, .jpg, .jpeg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="padding: 16px;">
+                <div style="display: flex; align-items: center; justify-content: space-between">
+                    <div class="col-md-6" style="display: flex; align-items: center">
+                        <label style="margin-bottom: unset" class="form-check form-switch">
+
+                        </label>
+                    </div>
+                    <div class="col-md-6" style="margin-bottom:20px;">
+                        <div style="float:right;text-align: right">
+                            <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                <i class="fa fa-close"></i>&nbsp;Đóng (F4)
+                            </a>
+                            <a href="#" id="btnLuuVaDongThuHoiGiayPhepLD_us" class="btn btn-success btn-luuvadong ms-auto">
+                                <i class="fa fa-save"></i>&ensp;Lưu và đóng (F9)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* End *@
+@Html.Partial("ThietLapCot")
+@* Modal xem chi tiet nội dung thu thập *@
+<div id="mdXemThemHoSo" class="modal modal-blur fade" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-top" role="document" style="max-width: 800px !important;">
+        <div class="modal-content">
+            <div class="modal-header nts-modal">
+                <h5 id="tieuDeModalCT" class="modal-title text-bold">Xem thêm hồ sơ đề nghị</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <p id="NoiDungHS" class="MoTa_CTNoiDung"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Areas/QuanLy/Scripts/GiayPhepLD.js?v=@DateTime.Now.Ticks.ToString()"></script>

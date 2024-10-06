@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.183" y1="0.887" x2="0.841" y2="0.097" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#2f80ff"/>
+      <stop offset="1" stop-color="#3ccbff"/>
+    </linearGradient>
+    <clipPath id="clip-Icon-Zoom">
+      <rect width="24" height="24"/>
+    </clipPath>
+  </defs>
+  <g id="Icon-Zoom" clip-path="url(#clip-Icon-Zoom)">
+    <g id="Group_40658" data-name="Group 40658" transform="translate(-839 -2940)">
+      <circle id="Ellipse_1" data-name="Ellipse 1" cx="12" cy="12" r="12" transform="translate(839 2940)" fill="url(#linear-gradient)"/>
+      <g id="Group_24" data-name="Group 24" transform="translate(843.271 2947.729)">
+        <path id="Path_56" data-name="Path 56" d="M705.419,363.3,702,365.641V369.3l3.419,2.339a.285.285,0,0,0,.446-.235v-7.87A.285.285,0,0,0,705.419,363.3Z" transform="translate(-690.407 -363.201)" fill="#fff"/>
+        <path id="Path_57" data-name="Path 57" d="M653.746,363h-8.339a.407.407,0,0,0-.407.407V369.1a2.441,2.441,0,0,0,2.441,2.441h8.339a.407.407,0,0,0,.407-.407v-5.695A2.441,2.441,0,0,0,653.746,363Z" transform="translate(-645 -363)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

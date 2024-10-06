@@ -1,0 +1,341 @@
+﻿<style>
+    .bg-ln-header {
+        background: #3e8ed0;
+    }
+
+    .custom-btn-login {
+        margin-top: 5px;
+        margin-bottom: 3px !important;
+        border-radius: 5px !important;
+    }
+
+    img.custom-img-sld {
+        max-width: 100px;
+    }
+
+    .is-3 {
+        gap: 0.75rem;
+    }
+
+    .navbar-item {
+        color: #fff;
+        font-size: 14px;
+        font-family: "Roboto", sans-serif;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .nav-link {
+    }
+
+    .navbar-dropdown .navbar-item {
+        color: black;
+        font-weight: normal;
+        text-transform: uppercase !important;
+    }
+    .section {
+        padding: 1rem 3rem;
+    }
+
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    @@media (max-width: 500px) {
+        .img-news-banner {
+            height: 200px !important;
+        }
+        img.img-news-work {
+            height: 200px !important;
+        }
+        img.img-news-banner-child {
+            height: 200px !important;
+        }
+        .section {
+            padding: 1rem 1rem;
+        }
+    }
+
+    @@media (max-width: 1024px) {
+        .img-news-banner-child {
+            height: 300px !important;
+        }
+        .img-news-work {
+            height: 300px !important;
+        }
+        .tt-project, .btn-respone {
+            display: none;
+        }
+
+        .box-nav {
+            display: none;
+        }
+
+        .input-find {
+            padding-top:0px;
+            width: 100% !important;
+        }
+
+        .field {
+            padding: 10px;
+        }
+
+        .tt-project {
+            display: none
+        }
+        .columns.header-top{
+            display: none;
+        }
+    }
+
+    @@media (min-width: 1024px) {
+        .menu-mobile {
+            display: none;
+        }
+    }
+
+    @@media screen and (min-width: 769px), print {
+        .column.is-offset-1, .column.is-offset-1-tablet {
+            margin-left: 6.33333%;
+        }
+    }
+
+    .menu-mobile {
+        margin-top: 8px;
+        margin-bottom: -5px;
+        z-index: 10;
+    }
+
+    #menuMobile {
+        display: none;
+        position: fixed;
+        background: white;
+        margin-left: 10px;
+        padding: 10px;
+        border-radius: 0 4px 4px 4px;
+        z-index: 10;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+        width: 250px;
+    }
+
+    ul.menu-list.menu-list-data {
+        margin-left: 10px;
+        border-left: 3px solid #0275d8;
+    }    
+    .news-hot {
+        background: #0275d8 !important;
+    }
+    .navbar.is-info {
+        background-color: #ffffff;
+        color: #000;
+    }
+    #navbarBasicExample a.navbar-link {
+        color: white !important;
+    }
+    .navbar.is-info .navbar-item.has-dropdown.is-active .navbar-link, .navbar.is-info .navbar-item.has-dropdown:focus .navbar-link, .navbar.is-info .navbar-item.has-dropdown:hover .navbar-link {
+        background-color: #2fa6d8;
+    }
+    #navbarBasicExample .navbar-dropdown {
+        border-top: 2px solid #00c9c9;
+        padding: 0 !important;
+        background: #0275d8;
+    }
+    #navbarBasicExample .navbar-divider{
+        margin: 0
+    }
+    #navbarBasicExample .navbar-item {
+        height: 100%;
+        color: white !important;
+    }
+        #navbarBasicExample .navbar-item:hover {
+            background-color: #2fa6d8;
+        }
+    .columns.header-top {
+        height: 72px;
+    }
+    div#LoadTuKhoaTimKiem {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    .box-tu-khoa {
+        margin-left: 5px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        height: 28px;
+        line-height: 28px;
+        display: flex;
+        align-items: center;
+        color: #0091ce;
+        text-align: center;
+        border-radius: 20px;
+        border: 1px solid #0091ce;
+        padding: 0 15px;
+        cursor: pointer;
+    }
+    img.img-tim-kiem-tu-khoa {
+        width: 20px;
+    }
+    div#navbarBasicExample {
+        background: #0275d8;
+    }
+    .menu-list a {
+        background: white;
+    }
+</style>
+
+<div class="columns bg-ln-header" style="ALIGN-ITEMS: CENTER;z-index: 10;position: relative;">    
+    <div class="column menu-mobile" onclick="showMenuMobile()">
+        <span style="padding: 10px;" id="btn-menuMobile"><i class="fa-solid fa-bars" style="font-size: 20px;color: white;"></i></span>
+        <aside class="menu">
+            <ul class="menu-list" id="menuMobile">
+            </ul>
+        </aside>
+    </div>
+</div>
+<div class="columns header-top" style="align-items: center; margin-bottom: 0px; padding-top: 5px; background: #f6f6f6; ">
+    <div class="column is-2 is-offset-1 box-nav">
+        <div style="width: 48px; height: 48px; display: flex; align-items: center; padding: 4px; ">
+            <a class="container-login-mobile" href="/trang-chu.html">
+                <img class="logo-vn" id="logo-camnang-header" src="~/Images/logottldtv.png" alt="Tìm việc làm, đăng tin tuyển dụng, Hồ sơ ứng viên xin việc" style="border-radius: 4px; ">
+            </a>
+        </div>
+    </div>
+    <div class="column is-9 box-nav" id="LoadTuKhoaTimKiem">
+        <div> <img class="img-tim-kiem-tu-khoa" src="/Images/tim-kiem-tu-khoa.png" /> Từ khóa tìm kiếm: </div>
+    </div>
+</div>
+<div class="columns " style="align-items: center; margin-bottom: 0px; background: #0275d8; ">
+    <div class="column is-8 is-offset-1 box-nav" style="padding: 0;">
+        <nav class="navbar is-info" role="navigation" aria-label="main navigation">            
+            <div id="navbarBasicExample" class="navbar-menu">
+
+            </div>
+        </nav>
+    </div>
+    <div class="column is-2 input-find" style="padding: 5px;">
+        <div class="field">
+            <p class="control has-icons-left" style="margin-bottom: 0;">
+                <input class="input" type="text" placeholder="Tìm kiếm" style="height: 34px;" id="TimKiem">
+                <span class="icon is-small is-left">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+            </p>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        getMenu();
+        getLogoHeader();
+        getTuKhoaHeader();
+        //TimKiem();
+    });
+
+    function getMenu() {
+        var GetAll = NTS.getAjax_NoVerifi("/CamNangNgheNghiep/TongQuanCamNang/getMenu", {});
+        if (GetAll.length > 0) {
+            let textContent = '';
+            let soMenuCon = 0, soMenuConMobile = 0;
+            let MenuMobile = '';
+            for (var i = 0; i < GetAll.length; i++) {
+                let data = GetAll[i];
+                //neu co chuc nang con
+                if (data.CoChucNangCon == 0) {
+                    //neu dang la menu con
+                    if (soMenuCon > 0) {
+                        textContent += `<a href="${data.DuongDanUrl}" class="navbar-item">${data.TenChucNang}</a>`;
+                        //nếu là menu con cuối cùng thì kết  thúc bằng 2 thẻ div
+                        if (soMenuCon == 1) {
+                            textContent += '</div></div>';
+                        } else { // nêu chưa phải là menu con cuối cùng thì cho thẻ ngăn cách là hr
+                            textContent += `<hr class="navbar-divider">`;
+                        }
+                        //khi them 1 menu con thi tru di 1
+                        soMenuCon--;
+                    } else {
+                        textContent += `<a href="${data.DuongDanUrl}" class="navbar-item">${data.TenChucNang}</a>`;
+                    }
+                }
+                //neu khong co chuc nang con
+                else {
+                    soMenuCon = data.CoChucNangCon;
+                    textContent += `<div class="navbar-item has-dropdown is-hoverable">
+                        <a href="${data.DuongDanUrl}" class="navbar-link">${data.TenChucNang}</a>
+                        <div class="navbar-dropdown">`;
+                }
+
+            }
+            for (var i = 0; i < GetAll.length; i++) {
+                let data = GetAll[i];
+                let pathName = window.location.pathname;
+                if (data.CoChucNangCon == 0) {
+                    //neu dang la menu con
+                    if (soMenuConMobile > 0) {
+                        MenuMobile += `<li><a ${pathName == data.DuongDanUrl ? 'class="is-active"' : ''} href="${data.DuongDanUrl}">${data.TenChucNang}</a></li>`;
+                        //nếu là menu con cuối cùng thì kết  thúc bằng 2 thẻ div
+                        if (soMenuConMobile == 1) {
+                            MenuMobile += '</ul>';
+                        }
+                        //else { // nêu chưa phải là menu con cuối cùng thì cho thẻ ngăn cách là hr
+                        //    textContent += `<hr class="navbar-divider">`;
+                        //}
+                        //khi them 1 menu con thi tru di 1
+                        soMenuConMobile--;
+                    } else {
+                        MenuMobile += `<li><a ${pathName == data.DuongDanUrl ? 'class="is-active"' : ''}  href="${data.DuongDanUrl}">${data.TenChucNang}</a></li>`;
+                    }
+                }
+                //neu khong co chuc nang con
+                else {
+                    soMenuConMobile = data.CoChucNangCon;
+                    MenuMobile += `<li><a ${pathName == data.DuongDanUrl ? 'class="is-active"' : ''}  href="${data.DuongDanUrl}">${data.TenChucNang}</a></li>
+                                    <ul class="menu-list menu-list-data">`;
+                }
+            }
+            $("#menuMobile").append(MenuMobile);
+            $('#navbarBasicExample').append(`
+                <div class="navbar-start" style="background: #0275d8;">
+                    ${textContent}
+                </div>`);
+        }
+
+    }
+    //function TimKiem() {
+    //    $('#TimKiem').keypress(function (e) {
+    //        if (e.which == 13) { // Kiểm tra mã phím, 13 là mã phím cho phím Enter
+    //            window.open(
+    //                '/tim-kiem-tin-tuc.html?key=' + $('#TimKiem').value(), '_self'
+    //            );
+    //        }
+    //    });
+    //}
+    
+    function showMenuMobile() {
+        $("#menuMobile").toggle();
+    }
+
+    function getLogoHeader() {
+        var GetAll = NTS.getAjax("/CongThongTinViecLam/TrangChuCTT/getFooterDiaChi_CTy", {});
+        if (GetAll.length > 0) {
+            let data = GetAll[0];
+            var anhDefault = "/Images/logo-white.jpg";            
+            $('#logo-camnang-header').attr('src', data.Logo.replaceAll("~", "").replaceAll("*", "") == '' ? anhDefault : data.Logo.replaceAll("~", "").replaceAll("*", ""));            
+        }
+    }
+
+    function getTuKhoaHeader() {
+        var GetAll = NTS.getAjax("/CamNangNgheNghiep/TongQuanCamNang/getTuKhoaTimKiem", {});
+        if (GetAll.length > 0) {
+            for (var i = 0; i < GetAll.length; i++) {
+                $('#LoadTuKhoaTimKiem').append(`<div class="box-tu-khoa" onclick="location.href = '/tim-kiem-cam-nang-nghe-nghiep.html?tim-kiem=${GetAll[i].TuKhoa}&tu-khoa=${GetAll[i].TuKhoa}'">${GetAll[i].TuKhoa.length > 15 ? GetAll[i].TuKhoa.substring(0, 15) + '...' : GetAll[i].TuKhoa}</div>`)
+            }
+            //let data = GetAll[0];
+            //var anhDefault = "/Images/logo-white.jpg";
+            //$('#logo-camnang-header').attr('src', data.Logo.replaceAll("~", "").replaceAll("*", "") == '' ? anhDefault : data.Logo.replaceAll("~", "").replaceAll("*", ""));
+        }
+    }
+
+</script>

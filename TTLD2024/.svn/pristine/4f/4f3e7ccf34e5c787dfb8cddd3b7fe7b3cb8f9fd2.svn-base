@@ -1,0 +1,297 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+    .card-body {
+        padding: 0.5rem 0.5rem !important;
+    }
+
+    .sender:hover {
+        color: blue !important;
+    }
+
+    .message-item {
+        border: unset;
+    }
+
+        .message-item:not(:last-child) {
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .message-item .sender {
+            width: unset;
+        }
+
+    #mainBaoCao .panel-body {
+        padding: 0px;
+    }
+
+    #mainBaoCao .message-item .sender, .message-item .summary, .message-item .summary .text {
+        display: unset;
+        white-space: unset;
+        margin: 0px 4px 0px 4px !important;
+    }
+
+    #mainBaoCao .message-star {
+        vertical-align: unset;
+        margin: 0;
+        font-size: 14px;
+        cursor: unset;
+    }
+
+    .iconBaoCao {
+        opacity: 0;
+        width: 0;
+    }
+
+    .message-item:hover .iconBaoCao {
+        opacity: 1;
+        width: 5px;
+        margin-right: 10px;
+    }
+
+    #mainBaoCao .sender {
+        transition: all 0.2s ease;
+        margin: 0px;
+    }
+
+    #mainBaoCao .panel {
+        border: unset;
+    }
+
+    #mainBaoCao .panel-heading {
+        border-left: 3px solid #5b13ec;
+        background: #f5f5f5;
+        border-top-right-radius: unset;
+        border-top-left-radius: unset;
+        color: #3c334d;
+    }
+
+    #mainBaoCao .message-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    #mainBaoCao .message-item {
+        width: 100%;
+    }
+
+    #mainBaoCao .message-item1 {
+        width: 50%;
+        padding-left: 16px;
+    }
+
+    .panel {
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    }
+
+    .GridData .tabulator-tableHolder .tabulator-table .tabulator-row:hover > .tabulator-cell .showThaoTac {
+        display: block !important;
+    }
+    /**/
+    #list-baocao {
+        font-family: Tahoma !important;
+    }
+
+    .tab-content {
+        min-height: 530px;
+    }
+
+    .card.card-outline {
+        box-shadow: 0 0.125rem 0.25rem rgba(161, 172, 184, 0.4) !important;
+    }
+
+    .message-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .message-item:not(:last-child) {
+        border-bottom: 0px;
+    }
+
+    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+        background-color: transparent !important;
+    }
+
+    .card-header > ul.card-header-pills {
+        background-color: var(--tblr-nav-pills-link-active-bg) !important;
+    }
+
+    .card {
+        margin: 5px 0px 5px 0px;
+    }
+
+    .card-header:first-child {
+        border-radius: var(--tblr-card-border-radius) var(--tblr-card-border-radius) 0 0 !important;
+    }
+
+    .nav-tabs .nav-link.active {
+        border-bottom: 3px solid var(--tblr-primary) !important;
+    }
+</style>
+<div class="main-content" id="mainBaoCao">
+    <div class="main-content-inner">
+        <div class="page-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" style="padding: 15px 5px 0px 5px">
+                            <ul class="nav nav-tabs nav-fill d-flex" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button type="button" class="nav-link bc active" onclick="changeTab(1)" role="tab" data-bs-toggle="tab" data-bs-target="#Tab1" style="font-size:14px" aria-controls="navs-justified-home" aria-selected="true">
+                                        <i class="tf-icons bx bx-list-ul" style="flex-direction: column !important; color: #1963aa; font-size:20px "></i>
+                                        &nbsp;  Danh sách báo cáo
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button type="button" class="nav-link bc" onclick="changeTab(2)" role="tab" data-bs-toggle="tab" data-bs-target="#Tab2" style="font-size:14px" aria-controls="navs-justified-profile" aria-selected="false" tabindex="-1">
+                                        <i class="tf-icons bx bx-list-check" style="flex-direction: column !important; color: red; font-size: 20px "></i>
+                                        &nbsp;  Báo cáo đã lưu
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <div class="tab-content" id="custom-tabs-four-tabContent">
+                                <div class="tab-pane fade  show active" id="DSBaoCao" role="tabpanel" aria-labelledby="DSBaoCao-tab">
+                                    <div class="accordion mt-3" id="list-baocao">
+                                        @*<div class="card card accordion-item active">
+                                                <div class="card-status-top bg-blue"></div>
+                                                <div class="accordion-header card-header">
+                                                    <ul class="nav nav-pills card-header-pills" style="font-size:14px">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link active" href="#">
+                                                                <i class="fa fa-line-chart handle"></i>&nbsp; Thống kê tình hình cấp phát thẻ BHYT theo loại đối tượng
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item ms-auto">
+                                                            <a class="nav-link" href="#">
+                                                                <i class="fa fa-angle-double-up" data-bs-toggle="collapse" data-bs-target="#accordion1" aria-expanded="true" aria-controls=""></i>&nbsp;&nbsp;&nbsp;
+                                                                <i class="fa fa-cogs handle" id="TimKiemNangCao"></i>
+                                                            </a>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="card-body row accordion-collapse collapse show" id="accordion1">
+                                                    <div class="col-md-6" id="leftcolumn2">
+                                                        <div class="message-item message-unread" style="margin-top: 10px;color: #6a9cba;">
+                                                            <a href="/BaoCao/TT96_2021_QTND_MauSo01" class="sender" title="1. Báo cáo quyết toán vốn đầu tư công nguồn ngân sách nhà nước theo năm ngân sách: Mẫu số 01/QTNĐ" style="color: #6a9cba; font-size: 12px;">
+                                                                <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                                                                &nbsp;1. Báo cáo quyết toán vốn đầu tư công nguồn ngân sách nhà nước theo năm ngân sách: Mẫu số 01/QTNĐ
+                                                            </a>
+                                                        </div>
+                                                        <div class="message-item message-unread" style="margin-top: 10px; color: #6a9cba;">
+                                                            <a href="/BaoCao/TT96_2021_QTND_MauSo04" class="sender" title="2. Báo cáo quyết toán vốn đầu tư công nguồn ngân sách nhà nước theo năm ngân sách do địa phương quản lý: Mẫu số 04/QTNĐ" style="color: #6a9cba; font-size: 12px;">
+                                                                <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                                                                &nbsp;2. Báo cáo quyết toán vốn đầu tư công nguồn ngân sách nhà nước theo năm ngân sách do địa phương quản lý: Mẫu số 04/QTNĐ
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6" id="rightcolumn2">
+                                                        <div class="message-item message-unread" style="margin-top: 10px; color: #6a9cba;">
+                                                            <a href="/BaoCao/TT96_2021_QTND_MauSo08" class="sender" title="3. Báo cáo quyết toán vốn đầu tư công nguồn ngân sách nhà nước của các địa phương theo năm ngân sách: Mẫu số 08/QTNĐ" style="color: #6a9cba; font-size: 12px;">
+                                                                <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                                                                &nbsp;3. Báo cáo quyết toán vốn đầu tư công nguồn ngân sách nhà nước của các địa phương theo năm ngân sách: Mẫu số 08/QTNĐ
+                                                            </a>
+                                                        </div>
+                                                        <div class="message-item message-unread" style="margin-top: 10px; color: #6a9cba;">
+                                                            <a href="/BaoCao/TT96_2021_QTND_MauSo09" class="sender" title="4. Thông báo thẩm định quyết toán vốn đầu tư công nguồn ngân sách nhà nước theo năm ngân sách: Mẫu số 09/QTNĐ" style="color: #6a9cba; font-size: 12px;">
+                                                                <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                                                                &nbsp;4. Thông báo thẩm định quyết toán vốn đầu tư công nguồn ngân sách nhà nước theo năm ngân sách: Mẫu số 09/QTNĐ
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>*@
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="BCDaLuu" role="tabpanel" aria-labelledby="BCDaLuu-tab">
+                                    <div class="col-md-4">
+                                        <div class="input-icon mb-3">
+                                            <input type="text" value="" class="form-control" placeholder="Nội dung tìm kiếm ..." id="timKiem_GridBCDaLuu" autocomplete="off">
+                                            <span class="input-icon-addon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div id="GridBCDaLuu"></div>
+                                            <div style="display:none" id="Grid_BCDaLuu"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    @@media (min-width: 992px) {
+        #mdLuuTruBaoCao .modal-dialog {
+            width: 45%;
+        }
+    }
+</style>
+<div class="modal modal-blur fade" id="mdLuuTruBaoCao" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header nts-modal">
+                <h5 class="modal-title" id="">Lưu trữ báo cáo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="mb-3">
+                            <label class="form-label" for="TenBaoCaoLuuTru">Tên báo cáo</label>
+                            <input type="text" class="form-control" id="TenBaoCaoLuuTru" required>
+                        </div>
+                    </div>
+                    <style>
+                        #GhiChu_LuuBaoCao {
+                            height: unset !important;
+                            overflow-y: unset !important;
+                        }
+                    </style>
+                    <div class="col-lg-12">
+                        <div class="mb-3">
+                            <label class="form-label" for="GhiChu_LuuBaoCao">Ghi chú</label>
+                            <textarea class="form-control" id="GhiChu_LuuBaoCao" rows="5"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div style="display: flex; align-items: center; justify-content: space-between">
+                    <div class="col-md-12">
+                        <div style="float:right;text-align: right">
+                            <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                <i class="fa fa-close"></i>&nbsp;Đóng
+                            </a>
+                            <a href="#" onclick="LuuTruBaoCao()" class="btn btn-success ms-auto">
+                                <i class="fa fa-save"></i>&ensp;Lưu và đóng
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="BaoCaoDaLuuID" />
+
+@Html.Partial("ModalPrint_Full")
+@*<script src="/Content/AdminLTE/tabulator/dist/js/tabulator.min.js"></script>*@
+<script src="~/Areas/BaoCao/Scripts/DanhSachBaoCao.js?v=@DateTime.Now.Ticks.ToString();"></script>

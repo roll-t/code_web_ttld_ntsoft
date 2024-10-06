@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MasterPage_CTT_QuanTri_ViecLam.cshtml";
+}
+
+<script>
+    $(function () {
+        var result = NTS.getAjax_v1('/api/Logout', {});
+        //window.location = "/hethong/login";
+    });
+</script>

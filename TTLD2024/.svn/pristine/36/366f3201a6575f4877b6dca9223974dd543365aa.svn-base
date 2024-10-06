@@ -1,0 +1,211 @@
+﻿<style>
+    .footer-1 {
+        width: 100%;
+        float: left;
+        background: #0070bb;
+        padding: 30px 0 0;
+    }
+
+        .footer-1 .footer-1-link {
+            width: 100%;
+            float: left;
+        }
+
+            .footer-1 .footer-1-link .inner {
+                width: 100%;
+                float: left;
+            }
+
+                .footer-1 .footer-1-link .inner h4 {
+                    font-family: "Roboto", sans-serif;
+                    font-size: 15px;
+                    color: #FFF;
+                    line-height: 24px;
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    width: 100%;
+                    float: left;
+                }
+
+                .footer-1 .footer-1-link .inner .adr {
+                    margin-bottom: 10px;
+                    width: 100%;
+                    float: left;
+                }
+
+                    .footer-1 .footer-1-link .inner .adr span {
+                        width: 100%;
+                        float: left;
+                        font-family: "Roboto", sans-serif;
+                        font-size: 14px;
+                        color: #FFF;
+                        font-weight: 400;
+                    }
+
+        .footer-1 i {
+            margin-right: 5px;
+        }
+
+    .footer {
+        width: 100%;
+        float: left;
+        padding: 0;
+    }
+
+        .footer .bottom-footer {
+            width: 100%;
+            float: left;
+            background: #0070bb;
+            border-top: 1px solid #5c95ca;
+        }
+
+    .backtop {
+        position: fixed;
+        bottom: 100px;
+        z-index: 999;
+        top: auto !important;
+        width: 40px;
+        height: 40px;
+        border: solid 3px #fff4cc;
+        line-height: 44px;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: center;
+        display: inline-block;
+        color: #fff;
+        border-radius: 0;
+        background: #ff4c4c;
+        text-decoration: none;
+        transition: opacity 0.2s ease-out;
+        opacity: 0;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    .a-left {
+        text-align: left !important;
+    }
+
+    span.wsp {
+        font-size: 14px;
+    }
+
+    .bottom-footer {
+        padding: 10px;
+    }
+
+    .a-center {
+        text-align: center
+    }
+
+    .btn-scroll-up.display {
+        opacity: .7;
+        bottom: 2px;
+        visibility: visible;
+        background: blue !important;
+        padding: 5px 10px;
+    }
+</style>
+<section class="footer-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="footer-1-link">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="inner" id="LoadCauHinhCauHinhWebSite1" style="color: #FFF">
+                                
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="inner" id="LoadCauHinhCauHinhWebSite2" style="color: #FFF">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+    <div class="bottom-footer">
+        <div class="container">
+            <div class="row row_footer">
+                <div id="copy1" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                    <div class="row tablet">
+                        <div id="copyright" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fot_copyright a-center" style="color:#FFF">
+                            <span class="wsp"><span class="mobile">©2021 - Bản quyền thuộc về NTSOFT </span><span class="hidden-xs"> | </span><span class="mobile">Cung cấp bởi <a rel="nofollow" href="https://nhattamsoft.vn" title="Nhất tâm SOFT" target="_blank" style="color:red">NTSOFT</a></span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    $(document).ready(function () {
+        getFooterDiaChi();
+        getFooterDiaChiCTy();
+    });
+    function getFooterDiaChi() {
+        var GetAll = NTS.getAjax_NoVerifi("/CongThongTin/TrangChu/getFooterDiaChi", {});
+        if (GetAll.Result.length > 0) {
+            for (var i = 0; i < GetAll.Result.length; i++) {
+                let data = GetAll.Result[i];
+                $('#LoadCauHinhCauHinhWebSite1').append(
+                    `  <h4>${data.tenDonVi}</h4>
+                    <div class="adr">
+                        <span class="block_fonticon"><i class="fa fa-map-marker"></i>${data.diaChi}</span>
+                    </div>
+                    <div class="adr">
+                        <span><i class="fa fa-phone"></i>Điện thoại: ${data.soDT}</span>
+                    </div>
+                    <div class="adr">
+                        <span><i class="fa fa-envelope"></i>Email: ${data.Email}</span>
+                    </div>
+                    <div class="adr">
+                        <span><i class="fa-solid fa-fax"></i>Fax: ${data.Fax}</span>
+                    </div>
+                    <div class="adr">
+                        <span><i class="fa fa-globe"></i>Website: ${data.web}</span>
+                    </div>`);
+            }
+        }
+    }
+
+    function getFooterDiaChiCTy() {
+        var GetAll = NTS.getAjax_NoVerifi("/CongThongTin/TrangChu/getFooterDiaChi_CTy", {}).Result;
+        if (GetAll.length > 0) {
+            for (var i = 0; i < GetAll.length; i++) {
+                let data = GetAll[i];
+                $('#LoadCauHinhCauHinhWebSite2').append(
+                    `  <h4>${data.tenDonVi}</h4>
+                    <div class="adr">
+                        <span class="block_fonticon"><i class="fa fa-map-marker"></i>${data.diaChi}</span>
+                    </div>
+                    <div class="adr">
+                        <span><i class="fa fa-phone"></i>Điện thoại: ${data.soDT}</span>
+                    </div>
+                    <div class="adr">
+                        <span><i class="fa fa-envelope"></i>Email: ${data.Email}</span>
+                    </div>
+                    <div class="adr">
+                        <span><i class="fa-solid fa-fax"></i>Fax: ${data.Fax}</span>
+                    </div>
+                    <div class="adr">
+                        <span><i class="fa fa-globe"></i>Website: ${data.web}</span>
+                    </div>`);
+            }
+        }
+    }
+</script>

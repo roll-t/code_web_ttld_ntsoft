@@ -1,0 +1,368 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .modal {
+        --tblr-modal-width: 750px !important;
+    }
+
+
+    @@media (min-width: 992px) {
+        #mdThemMoi .modal-dialog {
+            width: 100% !important;
+        }
+    }
+
+    @@media (max-width: 993px) {
+        #mdThemMoi .modal-dialog {
+            width: 100% !important;
+        }
+    }
+
+    @@media (min-width: 1200px) {
+        .modal-xl {
+            --tblr-modal-width: 100%;
+        }
+    }
+
+    .modal-footer {
+        display: unset !important;
+    }
+
+    .btn-check:checked + .btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check) + .btn:active {
+        color: white;
+        background-color: #146654;
+        border-color: var(--tblr-btn-active-border-color);
+        box-shadow: var(--tblr-btn-active-shadow);
+    }
+
+        .btn-check:checked + .btn path {
+            fill: white !important;
+        }
+
+    .backdrop {
+        width: 100%;
+        height: 200px;
+        background-size: cover;
+        background-position: 50% 0;
+        background-repeat: no-repeat;
+        position: relative;
+    }
+
+    .info-container {
+        background-image: url('../../../../Images/_thumbs/Files/bg1.jpg');
+        color: #fff;
+    }
+
+    .info-container-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        padding-top: 15px;
+        position: relative;
+    }
+
+    .backdrop:before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        background-color: rgba(2,13,24,.75);
+    }
+
+    .info-container-header-left {
+        display: flex;
+        align-items: center;
+        gap: 0 10px;
+    }
+
+    .info-img-container {
+        width: 64px;
+        height: 64px;
+        object-fit: cover;
+        border-radius: 100%;
+        border: 2px solid #ccc;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        background: white;
+        color: var(--tblr-color-header) !important;
+        font-weight: bold;
+        font-size: 20px !important;
+    }
+
+    .info-img-list-container {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 100%;
+        border: 2px solid #ccc;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        background: white;
+        color: var(--tblr-color-header) !important;
+        font-weight: bold;
+        font-size: 14px !important;
+    }
+
+    .info-img {
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+    }
+
+    .info-body {
+        margin: 0 10px !important;
+        margin-top: -100px !important;
+    }
+
+    h5#lblHoTenChuHoMain_View {
+        font-size: 20px;
+    }
+
+    span#lblDiaChi_View {
+        font-size: 16px;
+    }
+
+    .TieuDeLabel_tab2 {
+        margin-top: 10px;
+    }
+
+    .TieuDeLabel span {
+        font-weight: bold;
+    }
+
+    #GridHoGiaDinh_List .tabulator-table {
+        width: 100%;
+    }
+
+    #GridHoGiaDinh_List .tabulator-row {
+        padding-left: 10px;
+    }
+
+        #GridHoGiaDinh_List .tabulator-row table {
+            vertical-align: middle;
+            border-collapse: collapse;
+        }
+
+            #GridHoGiaDinh_List .tabulator-row table tr td:first-of-type {
+                width: 60px;
+            }
+
+            #GridHoGiaDinh_List .tabulator-row table tr td {
+                border: none;
+            }
+
+            #GridHoGiaDinh_List .tabulator-row table img {
+                border: 2px solid #ccc;
+            }
+
+    #GridHoGiaDinh_List img {
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+        object-fit: cover;
+    }
+
+    #GridHoGiaDinh_List strong {
+        color: var(--tblr-color-header);
+        font-size: 14px;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    #hoverBox_CLD {
+        display: none;
+        position: absolute;
+        width: auto;
+        height: auto;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 5px 0;
+        top: 89px;
+        left: 215px;
+        border-radius: 4px;
+        background: white;
+    }
+
+    .btnInPhieuThuThap:hover ~ #hoverBox_CLD {
+        display: block;
+    }
+
+    #hoverBox_CLD:hover {
+        display: block;
+    }
+
+    .dropdown-item.active, .dropdown-item:hover {
+        color: var(--tblr-dropdown-link-active-color);
+        text-decoration: none;
+        background-color: var(--tblr-dropdown-link-active-bg);
+    }
+
+    .form-check.form-switch {
+        margin: 0;
+    }
+</style>
+<input type="hidden" id="NguoiNNLVVNID" />
+<input type="hidden" id="DoiTuongNNID" />
+<input type="hidden" id="ToChucID" />
+<input type="hidden" id="MaDoiTuongNN" />
+<input type="hidden" id="txtDinhKem_NguoiNNLVVN_US" />
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="input-group">
+            <input style=" height: 32px !important;" class="form-control input-sm" type="text" id="timKiem" placeholder="Nội dung tìm kiếm" autocomplete="off" />
+            <span class="input-group-addon" style="margin: 0; padding: 0; border: none;">
+                <button class="btn btn-primary btn-sm" id="TimKiemNangCao" style="border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; width: 35px; height: 32px"><span class="fas fa-sliders-h" aria-hidden="true"></span></button>
+            </span>
+            <span class="input-icon-addon" style="margin-right: 40px;">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+            </span>
+        </div>
+        <div id="KhungTimKiem" style="width: 35%; z-index: 99; position: absolute; margin-top: 4px; background: #fff; padding: 12px 12px 8px 12px; border: 1px solid #e5e5e5; border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.20) 0px 5px 15px; display: none">
+            <div class="row" style=" margin-bottom: 4px">
+                <div class="col-md-6">
+                    <span style="font-size: 16px; color: var(--tblr-color-header);"><i class="fa fa-search"></i>Tìm kiếm nâng cao</span>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class=" col-md-6">
+                    <label for="TinhID_TimKiem_us" class="form-label">Tỉnh/Thành phố</label>
+                    <select class="form-control input-sm" id="TinhID_TimKiem_us"></select>
+                </div>
+                <div class=" col-md-6">
+                    <label for="HuyenID_TimKiem_us" class="form-label">Quận/Huyện</label>
+                    <select class="form-control input-sm" id="HuyenID_TimKiem_us"></select>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class=" col-md-6">
+                    <label for="XaID_TimKiem_us" class="form-label">Phường/Xã</label>
+                    <select class="form-control input-sm" id="XaID_TimKiem_us"></select>
+                </div>
+                <div class=" col-md-6">
+                    <label for="ThonID_TimKiem_us" class="form-label">Thôn/Xóm</label>
+                    <select class="form-control input-sm" id="ThonID_TimKiem_us"></select>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class=" col-md-6">
+                    <label for="XaID_TimKiem_us" class="form-label">Quốc tịch</label>
+                    <select class="form-control input-sm" id="QuocTichID_TimKiem_us"></select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label" for="">&nbsp;</label>
+                    <label class="form-check" style="margin-top: 0; margin-bottom: 0;">
+                        <input class="form-check-input" type="checkbox" id="lblNamTrongKCN_TimKiem_us">
+                        <span class="form-check-label" style="">Nằm trong KCN/KKT</span>
+                    </label>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class=" col-md-6">
+                    <label class="form-label" for="TuNgay_TimKiem_US">Từ ngày</label>
+                    <input type="text" class="form-control date-picker" id="TuNgay_TimKiem_US" autocomplete="off">
+                </div>
+                <div class=" col-md-6">
+                    <label class="form-label" for="DenNgay_TimKiem_US">Đến ngày</label>
+                    <input type="text" class="form-control date-picker" id="DenNgay_TimKiem_US" autocomplete="off">
+                </div>
+            </div>
+            <hr style="margin: 1rem 0;" />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group" style="text-align: right">
+                        <a href="#" class="btn btn-outline-danger" id="DongTimKiem"><i class="fa fa-close"></i> &ensp; Đóng</a>
+                        <button type="button" id="TimKiem" class="btn btn-success" style="background: var(--tblr-color-header);"><i class="fa fa-search"></i>&ensp;Tìm kiếm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col mb-2">
+        <div class="text-end">
+            <button type="button" class="btn btn-primary btn-nts-them" id="btnThemMoi"><i class="fa fa-plus"></i>&ensp;Thêm mới (F2)</button>
+            <div class="btn-group" style="">
+                <div class="dropdown d-inline">
+                    <button class="btn btn-primary dropdown-toggle-hide-arrow  height-button-icon" type="button" id="growthReportId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="blue fa fa-ellipsis-h"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-lg-end w-auto">
+                        <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnThietLapCot"><i style=" font-size: 17px;" class="text-warning fa-solid fa-gear iconsize-item"></i>&ensp; Tùy chỉnh cột</a>
+                        <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnPrint" style="display: none; font-size: 17px;"><i class="text-warning fa fa-print iconsize-item"></i>&ensp; In</a>
+                        <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnExport"><i style="font-size: 17px; color: #4299E1 !important;" class="text-primary fa-solid fa-download iconsize-item"></i>&ensp; Xuất danh sách phiếu thu thập</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="space-4"></div>
+<div class="row">
+    <div id="grid-layout">
+        <div class="col-md-12">
+            <div id="Grid1"></div>
+        </div>
+    </div>
+</div>
+
+@* Modal xem chi tiet nội dung thu thập *@
+<div id="mdXemThemNoiDungTT" class="modal modal-blur fade" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-top" role="document" style="max-width: 800px !important;">
+        <div class="modal-content">
+            <div class="modal-header nts-modal">
+                <h5 id="tieuDeModalCT" class="modal-title text-bold">Thêm mới</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <p id="NoiDungThuThap_CT" class="MoTa_CTNoiDung"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Partial("ThietLapCot")
+@Html.Partial("XemThongTinNguoiNNLVVN")
+@Html.Partial("ModalPrint_Full")
+@Html.Partial("ThuThapNguoiNNLVVN")
+@* Modal xem chi tiet ghi chu *@
+<div id="mdXemDinhKemChuKy" class="modal modal-blur fade" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-top" role="document" style="max-width: 740px !important;">
+        <div class="modal-content">
+            <div class="modal-header nts-modal">
+                <h5 id="tieuDeModaXemChuKyCLD" class="modal-title text-bold">Đính kèm chữ ký</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group">
+
+                        <div class="col-md-12" id="DinhKemChuLy_CLD">
+                            <p class="MoTa_CT"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*@Html.Partial("DoiTuongNN")*@
+@Html.Partial("ChonDoiTuongNN")
+@*@Html.Partial("ToChuc")*@
+@Html.Partial("ChonToChuc")
+<script src="/Areas/QuanLy/Scripts/NguoiNNLVVN.js?v=@DateTime.Now.Ticks.ToString()"></script>
+

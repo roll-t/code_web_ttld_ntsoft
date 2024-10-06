@@ -1,0 +1,384 @@
+﻿<style>
+    .frame-file {
+        width: 65px;
+        height: 65px;
+        border: 1px solid #d5d5d5;
+        border-radius: 4px;
+        float: left;
+        position: relative;
+    }
+
+    .frame-image {
+        width: 60px;
+        height: 60px;
+        float: left;
+        background-position: center;
+        background-size: cover;
+        border-radius: 4px;
+        position: relative;
+    }
+
+    .frame-file .fa-arrow-down {
+        position: absolute;
+        top: -8px;
+        right: 8px;
+        font-size: 15px;
+        color: #fff;
+        background-color: #4CAF50;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: none;
+        padding-top: 2px;
+        text-align: center;
+        z-index: 99;
+    }
+
+    .frame-file .fa-trash-o {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        font-size: 15px;
+        color: #fff;
+        background-color: red;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: none;
+        padding-top: 2px;
+        text-align: center;
+        z-index: 99;
+    }
+
+    .frame-top {
+        float: left;
+        width: 100%;
+        text-align: center;
+    }
+
+    .frame-file:hover > .fa-trash-o, .frame-file:hover > .fa-arrow-down {
+        display: block;
+    }
+</style>
+@* Modal dinh kem tai liẹu *@
+<div class="modal modal-blur fade" id="mdThemMoi_TL" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tieuDeModal_TL"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="hdfTaiLieuLuuGiuID_us" value="" />
+
+                <div class="row mb-2">
+                    <div class="col-12 col-sm-4">
+                        <label class="form-label" for="SoVanBan_us">Số văn bản</label>
+                        <input class="form-control input-sm" type="text" id="SoVanBan_us" maxlength="250" />
+                    </div>
+                    <div class="col-12 col-sm-4 mt-mb-5">
+                        <label class="form-label" for="NgayKy_TL">Ngày ký</label>
+                        <input class="form-control input-sm date-picker" type="text" id="NgayKy_TL" data-date-format="dd/mm/yyyy" placeholder="dd/mm/yyyy" autocomplete="off" required />
+                    </div>
+                    <div class="col-12 col-sm-4 mt-mb-5" style="display:none">
+                        <label class="form-label">Cơ chế lưu trữ</label>
+                        <div class="col-md">
+                            <div class="form-check form-control-sm form-check-inline">
+                                <input class="form-check-input" type="radio" name="CoCheLuuGiuTaiLieu_us" id="radCongKhaiTaiLieu_us" checked value="1">
+                                <label class="form-check-label" for="radCongKhaiTaiLieu_us">Công khai</label>
+                            </div>
+                            <div class="form-check form-control-sm form-check-inline">
+                                <input class="form-check-input" type="radio" name="CoCheLuuGiuTaiLieu_us" id="radRiengTuTaiLieu_us" value="2">
+                                <label class="form-check-label" for="radRiengTuTaiLieu_us">Riêng tư</label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-12">
+                        <label class="form-label" for="TrichYeu_TL">Trích yếu</label>
+                        <textarea class="form-control input-sm" id="TrichYeu_TL" rows="3"></textarea>
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-12 col-sm-4">
+                        <label class="form-label" for="CoQuanBanHanh_TL">Cơ quan ban hành</label>
+                        <input class="form-control input-sm" type="text" id="CoQuanBanHanh_TL" maxlength="500" />
+                    </div>
+                    <div class="col-12 col-sm-4 mt-mb-5">
+                        <label class="form-label" for="NguoiKy_TL">Người ký</label>
+                        <input class="form-control input-sm" type="text" id="NguoiKy_TL" maxlength="100" />
+                    </div>
+                    <div class="col-12 col-sm-4 mt-mb-5">
+                        <label class="form-label" for="ChucDanh_us">Chức danh</label>
+                        <input class="form-control input-sm" type="text" id="ChucDanh_us" maxlength="500" />
+                    </div>
+
+                </div>
+                <div class="row mb-2">
+                    <div class="col-12">
+                        <label class="form-label" for="selLoaiTaiLieu_us">Loại tài liệu</label>
+                        <select class="form-control input-sm" id="selLoaiTaiLieu_us" required data-dropdown-parent="#mdThemMoi_TL"></select>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <fieldset class="KhungVien">
+                            <legend>Đính kèm</legend>
+                            <div style="display: flex; grid-gap: 0 8px; padding-bottom: 7px;">
+                                <div id="divButtonUpload_us">
+                                    <button id="btnChonTepVB_tailieu" type="button" style="background: transparent !important; border: 1px dotted #888888; height: 65px; width: 65px;" class="btn btn-sm">
+                                        <i class="fa fa-upload" style="color: #448fdc;font-size:30px"></i>
+                                    </button>
+                                </div>
+                                <div id="list-file-tai-lieu"></div>
+                                <input type="hidden" id="txtDuongDanFileVB_tailieu" value="" />
+                            </div>
+                            <input type="file" id="fileVB_tailieu" class="d-none" accept=".jpg,.jpeg,.png,.pdf,.doc*,.rar,.zip" multiple="multiple" />
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class=" text-end">
+                            @* Code moi *@
+                            <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                <i class="fa fa-close"></i>&nbsp;Đóng (F4)
+                            </a>
+                            <a href="#" id="btnLuuVaDong_TL" class="btn btn-success ms-auto" onclick="return false;">
+                                <i class="fa fa-save"></i>&ensp;Lưu và đóng (F9)
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var tempthemVB = "them";
+
+    function ThemDuLieuTL() {
+        if (!QuyenThem()) {
+            return false;
+        }
+        $('#tieuDeModal_TL').text('Thêm mới tài liệu lưu giữ');
+        // xóa dữ liệu trên form
+        resetForm('#mdThemMoi_TL');
+        $('#radCongKhaiTaiLieu_us').prop('checked', true);
+        resetUploadFile_TaiLieu();
+        $("#NgayKy_TL").datepicker("setDate", new Date());
+        $('#mdThemMoi_TL').modal('show');
+        tempthemVB = "them";
+        tempthem = "them";
+    }
+
+    function resetUploadFile_TaiLieu() {
+        $('#list-file-tai-lieu').html('');
+        $('#fileVB_tailieu').value('');
+        $('#txtDuongDanFileVB_tailieu').value('');
+        $('#hdfTaiLieuLuuGiuID_us').value('')
+    }
+    //------------------------Dinh kem------------------------//
+    $(document).on('click', '#btnChonTepVB_tailieu', function () {
+        $('#fileVB_tailieu').click();
+    });
+    var doiTuongID = "";
+    var ChuoiPath = "";
+    $(document).on('change', '#fileVB_tailieu', function () {
+        UploadTaiLieu_us('DinhKem'); //hàm dùng chung ở us TaiLieu
+    });
+    function UploadTaiLieu_us(pathChiTiet) {
+        debugger
+        var data = NTS.upload({
+            name: '#fileVB_tailieu',///ID input type="file"
+            loaiVB: 'VB',///Nhận 1 trong 2 giá trị DL hoặc VB
+        });
+        if (data.length > 0) {
+            $('#txtDuongDanFileVB_tailieu').value(data);
+            if (tempthemVB != "them") {
+                let result = NTS.getAjax('/DanhMuc/DungChung/LuuVanBan_DinhKem', { PathTemp: data, ID: $('#TaiLieuLuuGiuID').value(), PathChiTiet: pathChiTiet, bangDk: 'TaiLieuLuuGiu', cotDk: 'TaiLieuLuuGiuID', cotDinhKem: 'DinhKem' });
+                if (!result.Err) {
+                    let LuuFile = result.Result;
+                    let arrFile = LuuFile.split('*');
+                    for (let p = 0; p < arrFile.length - 1; p++) {
+                        if (arrFile[p].lastIndexOf('.') != -1) {
+                            // file có đuôi .*
+                            if (arrFile[p].substring(arrFile[p].lastIndexOf('.'), arrFile[p].length).toLocaleLowerCase() == ".png" ||
+                                arrFile[p].substring(arrFile[p].lastIndexOf('.'), arrFile[p].length).toLocaleLowerCase() == ".jpeg" ||
+                                arrFile[p].substring(arrFile[p].lastIndexOf('.'), arrFile[p].length).toLocaleLowerCase() == ".svg" ||
+                                arrFile[p].substring(arrFile[p].lastIndexOf('.'), arrFile[p].length).toLocaleLowerCase() == ".gif" ||
+                                arrFile[p].substring(arrFile[p].lastIndexOf('.'), arrFile[p].length).toLocaleLowerCase() == ".jpg"
+                                //arrFile[p].substring(arrFile[p].lastIndexOf('.'), arrFile[p].length).toLocaleLowerCase() == ".docx" ||
+                                //arrFile[p].substring(arrFile[p].lastIndexOf('.'), arrFile[p].length).toLocaleLowerCase() == ".PDF" ||
+                                //arrFile[p].substring(arrFile[p].lastIndexOf('.'), arrFile[p].length).toLocaleLowerCase() == ".rar" ||
+                                //arrFile[p].substring(arrFile[p].lastIndexOf('.'), arrFile[p].length).toLocaleLowerCase() == ".zip"
+                            ) {
+                                $('#list-file-tai-lieu').append(`<div class="frame-file me-2">
+                                                    <div class="frame-top">
+                                                        <div class="frame-image" title="${arrFile[p].substring(arrFile[p].lastIndexOf('/') + 1, arrFile[p].length)}" style="background-image:url('${arrFile[p].replace('~', '')}')"></div>
+                                                    </div>
+                                                    <i class="fa fa-arrow-down download-file-attachments" data-url-file="${arrFile[p].replace('~', '')}"></i>
+                                                    <i class="fa fa-trash-o delete-file-attachments" data-url-file="${arrFile[p]}"></i>
+                                                </div>`);
+                            } else {
+                                $('#list-file-tai-lieu').append(`<div class="frame-file me-2">
+                                                    <div class="frame-top">
+                                                        <div class="frame-image" title="${arrFile[p].substring(arrFile[p].lastIndexOf('/') + 1, arrFile[p].length)}" style="background-image:url('/images/file.png')"></div>
+                                                    </div>
+                                                    <i class="fa fa-arrow-down download-file-attachments" data-url-file="${arrFile[p].replace('~', '')}"></i>
+                                                    <i class="fa fa-trash-o delete-file-attachments" data-url-file="${arrFile[p]}"></i>
+                                                </div>`);
+                            }
+                        } else {
+                            // file không đuôi
+                            $('#list-file-tai-lieu').append(`<div class="frame-file me-2">
+                                                    <div class="frame-top">
+                                                        <div class="frame-image" title="${arrFile[p].substring(arrFile[p].lastIndexOf('/') + 1, arrFile[p].length)}" style="background-image:url('/images/file.png')"></div>
+                                                    </div>
+                                                    <i class="fa fa-arrow-down download-file-attachments" data-url-file="${arrFile[p].replace('~', '')}"></i>
+                                                    <i class="fa fa-trash-o delete-file-attachments" data-url-file="${arrFile[p]}"></i>
+                                                </div>`);
+                        }
+                    }
+                }
+            } else {
+                //Trường hợp thêm mới thì đưa vào tạm
+                let result = NTS.getAjax('/DanhMuc/DungChung/LuuVanBan_DinhKem', { PathTemp: data, ID: $('#TaiLieuLuuGiuID').value(), PathChiTiet: pathChiTiet, bangDk: 'TaiLieuLuuGiu', cotDk: 'TaiLieuLuuGiuID', cotDinhKem: 'DinhKem' });
+                if (!result.Err) {
+                    let LuuFile = result.Result;
+                    let arrFile = LuuFile.split('*');
+                    for (let p = 0; p < arrFile.length - 1; p++) {
+                        ChuoiPath += arrFile[p] + "*";
+                        if (arrFile[p].lastIndexOf('.') != -1) {
+                            // file có đuôi .*
+                            if (arrFile[p].substring(arrFile[p].lastIndexOf('.'), arrFile[p].length).toLocaleLowerCase() == ".png" ||
+                                arrFile[p].substring(arrFile[p].lastIndexOf('.'), arrFile[p].length).toLocaleLowerCase() == ".jpeg" ||
+                                arrFile[p].substring(arrFile[p].lastIndexOf('.'), arrFile[p].length).toLocaleLowerCase() == ".svg" ||
+                                arrFile[p].substring(arrFile[p].lastIndexOf('.'), arrFile[p].length).toLocaleLowerCase() == ".gif" ||
+                                arrFile[p].substring(arrFile[p].lastIndexOf('.'), arrFile[p].length).toLocaleLowerCase() == ".jpg"
+                                //arrFile[p].substring(arrFile[p].lastIndexOf('.'), arrFile[p].length).toLocaleLowerCase() == ".docx" ||
+                                //arrFile[p].substring(arrFile[p].lastIndexOf('.'), arrFile[p].length).toLocaleLowerCase() == ".PDF"
+                            ) {
+                                $('#list-file-tai-lieu').append(`<div class="frame-file me-2">
+                                                    <div class="frame-top">
+                                                        <div class="frame-image" title="${arrFile[p].substring(arrFile[p].lastIndexOf('/') + 1, arrFile[p].length)}" style="background-image:url('${arrFile[p].replace('~', '')}')"></div>
+                                                    </div>
+                                                    <i class="fa fa-arrow-down download-file-attachments" data-url-file="${arrFile[p].replace('~', '')}"></i>
+                                                    <i class="fa fa-trash-o delete-file-attachments" data-url-file="${arrFile[p]}"></i>
+                                                </div>`);
+                            } else {
+                                $('#list-file-tai-lieu').append(`<div class="frame-file me-2">
+                                                    <div class="frame-top">
+                                                        <div class="frame-image" title="${arrFile[p].substring(arrFile[p].lastIndexOf('/') + 1, arrFile[p].length)}" style="background-image:url('/images/file.png')"></div>
+                                                    </div>
+                                                    <i class="fa fa-arrow-down download-file-attachments" data-url-file="${arrFile[p].replace('~', '')}"></i>
+                                                    <i class="fa fa-trash-o delete-file-attachments" data-url-file="${arrFile[p]}"></i>
+                                                </div>`);
+                            }
+                        } else {
+                            // file không đuôi
+                            $('#list-file-tai-lieu').append(`<div class="frame-file me-2">
+                                                    <div class="frame-top">
+                                                        <div class="frame-image" title="${arrFile[p].substring(arrFile[p].lastIndexOf('/') + 1, arrFile[p].length)}" style="background-image:url('/images/file.png')"></div>
+                                                    </div>
+                                                    <i class="fa fa-arrow-down download-file-attachments" data-url-file="${arrFile[p].replace('~', '')}"></i>
+                                                    <i class="fa fa-trash-o delete-file-attachments" data-url-file="${arrFile[p]}"></i>
+                                                </div>`);
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            NTS.loi('Tải file không thành công!')
+        }
+    }
+
+    $(document).on('click', '.download-file-attachments', function () {
+        window.open($(this).attr('data-url-file'));
+        return false;
+    });
+
+    $(document).on('click', '.delete-file-attachments', function () {
+        let duongDan = $(this);
+        let id = "";
+        let bang = "";
+        let cot = "";
+
+        //xác định đang ở form nào
+        if ($('#mdThemMoi_TL').hasClass('show')) {
+            id = $('#TaiLieuLuuGiuID').value();
+            bang = "TaiLieuLuuGiu";
+            cot = "TaiLieuLuuGiuID";
+        }
+        CanhBaoXoaDinhKem(() => {
+            let result = NTS.getAjax('/DanhMuc/DungChung/XoaDinhKem', { ID: id, duongDan: duongDan.attr('data-url-file'), bangDk: bang, cotDk: cot, loai: '' });
+            if (!result.Err) {
+                duongDan.parent('div').remove();
+                NTS.thanhcong(result.Msg);
+            }
+            else {
+                NTS.loi(result.Msg);
+            }
+        });
+        return false;
+    });
+
+    function LuuDinhKemTL_us(ID) {
+        const validate = new NTSValidate('#mdThemMoi_TL');
+        if (!validate.trim().check()) {
+            return false;
+        }
+        if (!validate.trim().checkSpecial()) {
+            return false;
+        }
+        debugger
+        var duongDan = '';
+        $('#list-file-tai-lieu .frame-file .download-file-attachments').each(function (e, v) {
+
+            if (duongDan != '') {
+                duongDan += '*' + $(v).attr('data-url-file');
+            } else {
+                duongDan += $(v).attr('data-url-file');
+            }
+        });
+        if (duongDan != '') {
+            duongDan += '*';
+        }
+        var saveData = new Array();
+        saveData[0] = tempthem;
+        saveData[1] = $('#TaiLieuLuuGiuID').value();
+        saveData[2] = $('#SoVanBan_us').value();
+        saveData[3] = $('#NgayKy_TL').value();
+        saveData[4] = $('#TrichYeu_TL').value();
+        saveData[5] = $('#CoQuanBanHanh_TL').value();
+        saveData[6] = $('#NguoiKy_TL').value();
+        saveData[7] = $('#ChucDanh_us').value();
+        saveData[8] = $('#selLoaiTaiLieu_us').value();
+        saveData[9] = ID;
+        saveData[10] = duongDan;
+
+        var result = NTS.getAjax('/DanhMuc/DungChung/LuuThongTin_TL', { data: saveData });
+        if (!result.Err) {
+            if (result.Result == "1") {
+                NTS.canhbao(result.Msg);
+                return false;
+            } else {                
+                NTS.thanhcong(result.Msg);
+                $('#mdThemMoi_TL').modal('hide');
+                return false;
+            }
+        } else {
+            result.CanhBao ? NTS.canhbao(result.Msg) : NTS.loi(result.Msg);
+        }
+        return false;
+    }
+</script>

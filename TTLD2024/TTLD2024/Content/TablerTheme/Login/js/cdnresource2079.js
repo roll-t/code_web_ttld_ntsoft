@@ -1,0 +1,1 @@
+Ext.define('MISA.Control.MISAToolbar',{extend:'Ext.Toolbar',xtype:'misatoolbar',alias:'widget.misatoolbar',inactiveChildTabIndex:0,privates:{activateFocusableContainer:function(activate){},}});

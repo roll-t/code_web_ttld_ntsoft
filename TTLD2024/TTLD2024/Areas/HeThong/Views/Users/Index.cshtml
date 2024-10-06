@@ -1,0 +1,884 @@
+﻿@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*<link href="/Content/AdminLTE/tabulator/dist/css/tabulator.min.css" rel="stylesheet" />
+    <link href="/Content/AdminLTE/tabulator/dist/css/tabulator_custom.min.css" rel="stylesheet" />*@
+<style type="text/css">
+
+    @@media (min-width: 992px) {
+        #mdThemMoi .modal-dialog {
+            width: 85% !important;
+            margin-top: 0.5% !important;
+            max-width: 100% !important;
+        }
+
+        #mdChucNang_us .modal-dialog {
+            max-width: 65% !important;
+        }
+
+        #mdNhapExcel .modal-dialog {
+            width: 85% !important;
+            margin-top: 0.5% !important;
+            max-width: 100% !important;
+        }
+
+        #mdThemMoi2 .modal-dialog {
+            width: 27% !important;
+        }
+
+        .modal-footer {
+            display: block
+        }
+    }
+
+    .check-inline {
+        display: inline-block !important;
+    }
+
+    .dropdown-toggle-split::after, .dropright .dropdown-toggle-split::after, .dropup .dropdown-toggle-split::after {
+        margin-left: 0;
+        display: inline-block;
+        margin-left: .255em;
+        vertical-align: .255em;
+        content: "";
+        border-top: .3em solid;
+        border-right: .3em solid transparent;
+        border-bottom: 0;
+        border-left: .3em solid transparent;
+    }
+
+    .dropdown-item#btnKiemTraGhiDe {
+        display: block;
+        width: 100%;
+        padding: .25rem 1.5rem;
+        clear: both;
+        font-weight: 400;
+        color: #212529;
+        text-align: inherit;
+        white-space: nowrap;
+        background-color: transparent;
+        border: 0;
+        color: white;
+    }
+
+        .dropdown-item#btnKiemTraGhiDe:hover {
+            color: white !important;
+        }
+
+    .dropdown-menu#DivKiemTraGhiDe:hover {
+        background-color: #E59729 !important;
+        color: white;
+    }
+
+   
+
+    #danhSachQuyen .form-check-input {
+        vertical-align: middle !important;
+        margin-bottom: 4px;
+    }
+
+    .input-double {
+        padding: 0.3rem 0.6rem;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.53;
+        color: #697a8d;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #d9dee3;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    #mdChonDonVi_us .modal-dialog {
+        width: 70% !important;
+        max-width: 100% !important;
+    }
+
+    .KhungVien {
+        padding: 5px 10px 10px 10px !important;
+    }
+</style>
+<div class="row flex-row-reverse">
+    @*<div class="col mb-2">
+            <div class="text-end">
+                <button type="button" class="btn btn-primary btn-nts-them" id="btnThemMoi"><i class="fa fa-plus"></i>&ensp;Thêm mới (F2)</button>
+                <button type="button" class="btn btn-primary btn-nts-nhapExcel" id="btnNhapExcel"><i class="fa fa-plus"></i>&ensp;Nhập excel</button>
+            </div>
+        </div>*@
+    <div class="col mb-2">
+        <div class="text-end">
+            @*<button type="button" class="btn btn-primary btn-nts-them" id="btnThemMoi"><i class="fa fa-plus"></i>&ensp;Thêm mới (F2)</button>
+        <div class="btn-group">
+            <div class="dropdown d-inline">
+                <button class="btn btn-primary dropdown-toggle-hide-arrow  height-button-icon btn-nts-them" type="button" id="growthReportId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="blue fa fa-ellipsis-h"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-lg-end w-auto">
+                    <a class="dropdown-item textsize-item cursor-pointer"  id="btnNhapExcel"><i class="text-success fa fa-file-excel-o iconsize-item"></i>&ensp; Nhập Excel</a>
+                </div>
+            </div>
+        </div>*@
+            <div class="btn-group">
+                <div class="dropdown d-inline">
+                    <button class="btn btn-primary btn-nts-them" type="button" id="growthReportId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="ace-icon fa fa-angle-down icon-on-right"></i>&ensp;Thêm mới
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-lg-end w-auto">
+                        <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnThemMoi"><i class="fa fa-plus"></i>&ensp; Thêm trực tiếp</a>
+                        <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnNhapExcel" style="color: #16a085"><i class="fa fa-file-excel-o"></i>&ensp; Nhập Excel</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 col-xs-12">
+        <div class="input-icon mb-3">
+            <input type="text" value="" class="form-control" placeholder="Nội dung tìm kiếm ..." id="timKiem" autocomplete="off">
+            <span class="input-icon-addon">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div  id="Grid1"></div>
+    </div>
+    @*<div id="mdThemMoi" class="modal" data-backdrop="static">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-bold" id="tieuDeModal"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>*@
+    <div class="modal modal-blur fade" id="mdThemMoi" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header nts-modal">
+                    <h5 class="modal-title" id="tieuDeModal"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="UserID" />
+                    @*<div class="row">
+                            <div class="col-md-12">
+                                <span class="badge badge-primary badge-heading">1. Thông tin người dùng</span>
+                                <hr class="hr-heading">
+                            </div>
+                        </div>*@
+                    <fieldset class="KhungVien">
+                        <legend><span>1. Thông tin người dùng</span></legend>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="TenDangNhap">Tên đăng nhập</label>
+                                    <input class="form-control input-sm" id="TenDangNhap" type="text" required />
+                                </div>
+
+                            </div>
+                            <div class="col-md-6 div-MatKhau">
+                                <div class="form-group">
+                                    <label class="form-label" for="MatKhau">Mật khẩu</label>
+                                    <div class="input-group mb-3" style="margin-bottom: unset !important">
+                                        <input class="form-control input-sm" id="MatKhau" type="password" style="height: 30px;" required />
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" title="Mật khẩu mặc định &#64;Abc@123" data-bs-toggle="tooltip" style="top: 3px; font-size: 20px !important; color: #00c6cb; border: unset; background: transparent;" data-rel="popover" data-trigger="hover" data-placement="bottom"><i class="fas fa-info-circle"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="row" style="display:none">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="MaXacNhan">Mã xác nhận</label>
+                                    <div class="input-group mb-3" style="margin-bottom: unset !important">
+                                        <input class="form-control input-sm" id="MaXacNhan" type="password" style="height: 30px;" />
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" style="top: 3px; font-size: 20px !important; color: #00c6cb; border: unset; background: transparent;" title='Mã xác nhận mặc định 654321' data-bs-toggle="tooltip" data-rel="popover" data-trigger="hover" data-placement="bottom"><i class="fas fa-info-circle"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Email">Email</label>
+                                    <input class="form-control input-sm" id="Email" type="text" />
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="NhomNguoiDung">Nhóm người dùng</label>
+                                    <select class="form-control input-sm" id="NhomNguoiDung" tabindex="0" data-dropdown-parent="#mdThemMoi" required></select>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DonVi_noicongtac">Đơn vị</label>
+                                    <select class="form-control input-sm" id="DonVi_noicongtac" tabindex="0" data-dropdown-parent="#mdThemMoi" required></select>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="TrangChu">Trang chủ</label>
+                                    <select class="form-control input-sm" id="TrangChu" tabindex="0" data-dropdown-parent="#mdThemMoi" required></select>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:7px">
+                            <div class="col-md-12" id="danhSachQuyen">
+
+                                <label class="form-check form-check-inline">
+                                    <input class="form-check-input quyen" type="checkbox" id="TatCa">
+                                    <span class="form-check-label">Chọn/Bỏ tất cả</span>
+                                </label>
+                                <label class="form-check form-check-inline">
+                                    <input class="form-check-input quyen" type="checkbox" id="Xem" value="Xem">
+                                    <span class="form-check-label">Xem</span>
+                                </label>
+                                <label class="form-check form-check-inline">
+                                    <input class="form-check-input quyen" type="checkbox" id="Them" value="Thêm">
+                                    <span class="form-check-label">Thêm</span>
+                                </label>
+                                <label class="form-check form-check-inline">
+                                    <input class="form-check-input quyen" type="checkbox" id="Xoa" value="Xóa">
+                                    <span class="form-check-label">Xóa</span>
+                                </label>
+                                <label class="form-check form-check-inline">
+                                    <input class="form-check-input quyen" type="checkbox" id="Sua" value="Sửa">
+                                    <span class="form-check-label">Sửa</span>
+                                </label>
+                                <label class="form-check form-check-inline">
+                                    <input class="form-check-input quyen" type="checkbox" id="Nap" value="Nạp">
+                                    <span class="form-check-label">Nạp</span>
+                                </label>
+                                <label class="form-check form-check-inline">
+                                    <input class="form-check-input quyen" type="checkbox" id="In" value="In">
+                                    <span class="form-check-label">In</span>
+                                </label>
+                                <label class="form-check form-check-inline">
+                                    <input class="form-check-input quyen" type="checkbox" id="P1" value="P1">
+                                    <span class="form-check-label">P1</span>
+                                </label>
+                                <label class="form-check form-check-inline">
+                                    <input class="form-check-input quyen" type="checkbox" id="P2" value="P2">
+                                    <span class="form-check-label">P2</span>
+                                </label>
+                                <label class="form-check form-check-inline">
+                                    <input class="form-check-input quyen" type="checkbox" id="P3" value="P3">
+                                    <span class="form-check-label">P3</span>
+                                </label>
+                                <label class="form-check form-check-inline">
+                                    <input class="form-check-input quyen" type="checkbox" id="GanTatCa">
+                                    <span class="form-check-label">Gán quyền tất cả</span>
+                                </label>
+
+                                <button class="btn btn-primary btnGanQuyen  check-inline" title="" id="btnGanQuyen"><i class="fa fa-times"></i>&ensp;Gán quyền</button>
+                            </div>
+                        </div>
+                    </fieldset>
+
+
+                    <div class="col-md-12">
+                        @*<div class="row">
+                                <div class="col-md-12">
+                                    <span class="badge badge-primary badge-heading">2. Danh sách Quyền của nhóm</span>
+                                    <hr class="hr-heading">
+                                </div>
+                            </div>*@
+                        <fieldset class="KhungVien">
+                            <legend><span>2. Danh sách Quyền của nhóm</span></legend>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="input-icon mb-3">
+                                        <input type="text" value="" class="form-control" placeholder="Nội dung tìm kiếm ..." id="timKiem2" autocomplete="off">
+                                        <span class="input-icon-addon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-12">
+                                    <div id="Grid2" class="GridData"></div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-6" style="display: flex; align-items: center">
+                            <label style="margin-bottom: unset" class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="DangSD">
+                                <label class="form-check-label" for="DangSD">Đang sử dụng</label>
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <div style="float:right;text-align: right">
+                                <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                    <i class="fa fa-close"></i>&nbsp;Đóng (F4)
+                                </a>
+                                <a href="#" id="btnLuuVaDong" class="btn btn-success ms-auto">
+                                    <i class="fa fa-save"></i>&ensp;Lưu (F9)
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@*<div class="main-content">
+        <div class="main-content-inner">
+            <div class="page-content">
+                <fieldset class="khungvien">
+                    <legend><b class="badge bg-primary text-wrap lh-base py-0">Danh sách người dùng</b></legend>
+                    <div class="row flex-row-reverse">
+                        <div class="col mb-2">
+                            <div class="text-end">
+                                <button class="btn btn-sm btn-primary" id="btnThemMoi"><i class="fa fa-plus"></i>&ensp;Thêm mới</button>
+                                <div class="dropdown d-inline">
+                                    <button class="btn btn-sm btn-primary dropdown-toggle-hide-arrow" type="button" id="growthReportId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="blue fa fa-ellipsis-h"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end w-auto">
+                                        <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnPrint"><i class="text-warning fa fa-print iconsize-item"></i>&ensp; In</a>
+                                        <a class="dropdown-item textsize-item" href="javascript:void(0);" id="btnExport"><i class="text-success fa fa-file-excel-o iconsize-item"></i>&ensp; Xuất Excel</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                            <div class="input-group input-group-merge">
+                                <span class="input-group-text"><i class="bx bx-search"></i></span>
+                                <input type="text" id="timKiem" class="form-control" placeholder="Nội dung tìm kiếm..." aria-label="Nội dung tìm kiếm...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="Grid1" class="GridData"></div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>*@
+<!--<div class="modal fade" id="mdThemMoi" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tieuDeModal"></h5>
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-9">
+                        <a href="#" id="btnLuuVaDong" class="btn btn-sm btn-success" onclick="return false;">
+                            <i class="ace-icon fa fa-floppy-o bigger-110"></i>&nbsp;Lưu
+                        </a> &nbsp;
+                        <a href="#" class="btn btn-sm btn-danger"
+                           data-bs-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Đóng</a>
+                    </div>
+                </div>
+                <fieldset class="khungvien">
+                    <legend><b class="badge bg-primary text-wrap lh-base py-0">Thông tin người dùng</b></legend>
+                    <div class="form-group">
+                        <div class="row">
+                            <label class="col-md-2 form-label no-padding-right validation" for="TenDangNhap">Tên đăng nhập</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-sm" id="TenDangNhap" type="text" required />
+                            </div>
+                            <div class="col-md-2" style="margin-top:8px">
+                                <input class="form-check-input input-group-lg" type="checkbox" id="NgungTD">
+                                <label class="form-check-label" for="NgungTD">
+                                    &nbsp;Ngưng theo dõi
+                                </label>
+                            </div>
+                            <div class="col-md-4" style="margin-top:8px">
+                                <input class="form-check-input input-group-lg" type="checkbox" id="NgungSD">
+                                <label class="form-check-label" for="NgungSD">
+                                    &nbsp;Được phần quyền chi tiết
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <label class="col-md-2 form-label no-padding-right validation" for="MatKhau">Mật khẩu</label>
+                            <div class="col-md-4">
+                                <input class="col-sm-11 input-sm input-double" id="MatKhau" type="password" required />
+                                <span class="badge badge-center rounded-pill bg-label-success" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="left" data-bs-html="true" title="" data-bs-original-title="Mật khẩu mặc định @@abc@123"><i class='bx bx-info-circle'></i></span>
+                            </div>
+                            <label class="col-md-2 control-label no-padding-right  validation" for="MaXacNhan">Mã xác nhận</label>
+                            <div class="col-md-4">
+                                <input class="col-sm-11 input-sm input-double" id="MaXacNhan" type="password" required />
+                                <span class="badge badge-center rounded-pill bg-label-success" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="left" data-bs-html="true" title="" data-bs-original-title="Mã xác nhận mặc định @@abc@123"><i class='bx bx-info-circle'></i></span>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <label class="col-md-2 control-label no-padding-right">Email</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-sm" id="Email" type="text" />
+                            </div>
+                            <label class="col-md-2 control-label no-padding-right validation">Nhóm người dùng</label>
+                            <div class="col-md-4">
+                                <select class="form-control input-sm" id="NhomNguoiDung" data-dropdown-parent="#mdThemMoi"></select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-2 control-label no-padding-right validation" for="DonVi_noicongtac">Đơn vị</label>
+                            <div class="col-md-3">
+                                <div class="input-group">
+
+                                    <input class="form-control input-sm" disabled="disabled" id="DonViCode_noicongtac" type="text" />
+                                    <input id="DonVi_noicongtac" type="hidden" />
+                                    <span class="input-group-addon" style="margin: 0; padding: 0; border: none;">
+                                        <button class="btn btn-primary btn-sm" id="btnChonDonVi_noicongtac" style="border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important">Chọn</button>
+                                    </span>
+
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <input class="form-control input-sm" disabled="disabled" id="TenDonVi_noicongtac" type="text" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-2 control-label no-padding-right">Hồ sơ CBCCVC</label>
+                            <div class="col-md-10">
+                                <select class="form-control input-sm" id="HoSoCBCCVCID" data-dropdown-parent="#mdThemMoi"></select>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <br />
+                <div class="row">
+                    <div class="col-md-12" id="danhSachQuyen">
+                        <input class="form-check-input" type="checkbox" id="TatCa">
+                        <label class="form-check-label" for="TatCa">
+                            &nbsp;Tất cả
+                        </label>
+
+                        <input class="form-check-input quyen" type="checkbox" value="Xem" name="quyen" id="Xem">
+                        <label class="form-check-label" for="Xem">
+                            &nbsp;Xem
+                        </label>
+
+
+                        <input class="form-check-input quyen" type="checkbox" value="Thêm" name="quyen" id="Them">
+                        <label class="form-check-label" for="Them">
+                            &nbsp;Thêm
+                        </label>
+
+                        <input class="form-check-input quyen" type="checkbox" value="Xóa" name="quyen" id="Xoa">
+                        <label class="form-check-label" for="Xoa">
+                            &nbsp;Xóa
+                        </label>
+
+
+                        <input class="form-check-input quyen" type="checkbox" value="Sửa" name="quyen" id="Sua">
+                        <label class="form-check-label" for="Sua">
+                            &nbsp;Sửa
+                        </label>
+
+                        <input class="form-check-input quyen" type="checkbox" value="Nạp" name="quyen" id="Nap">
+                        <label class="form-check-label" for="Nap">
+                            &nbsp;Nạp
+                        </label>
+
+
+                        <input class="form-check-input quyen" type="checkbox" value="In" name="quyen" id="In">
+                        <label class="form-check-label" for="In">
+                            &nbsp;In ấn
+                        </label>
+
+
+                        <input class="form-check-input quyen" type="checkbox" value="Quyền 1" name="quyen" id="P1">
+                        <label class="form-check-label" for="P1">
+                            &nbsp;Quyền 1
+                        </label>
+
+
+                        <input class="form-check-input quyen" type="checkbox" value="Quyền 2" name="quyen" id="P2">
+                        <label class="form-check-label" for="P2">
+                            &nbsp;Quyền 2
+                        </label>
+
+
+                        <input class="form-check-input quyen" type="checkbox" value="Quyền 3" name="quyen" id="P3">
+                        <label class="form-check-label" for="P3">
+                            &nbsp;Quyền 3
+                        </label>
+
+
+                        <input class="form-check-input quyen" type="checkbox" value="P3" name="quyen" id="GanTatCa">
+                        <label class="form-check-label" for="GanTatCa">
+                            &nbsp;Gán quyền tất cả
+                        </label>-->
+@*<input class="ace" type="checkbox" id="TatCa" />
+    <span class="lbl">&nbsp;Tất cả</span>
+
+    <input class="ace" type="checkbox" id="Xem" name="quyen" value="Xem" />
+    <span class="lbl">&nbsp;Xem</span>
+
+    <input class="ace" type="checkbox" id="Them" name="quyen" value="Thêm" />
+    <span class="lbl">&nbsp;Thêm</span>
+
+    <input class="ace" type="checkbox" id="Xoa" name="quyen" value="Xóa" />
+    <span class="lbl">&nbsp;Xóa</span>
+
+    <input class="ace" type="checkbox" id="Sua" name="quyen" value="Sửa" />
+    <span class="lbl">&nbsp;Sửa</span>
+
+    <input class="ace" type="checkbox" id="Nap" name="quyen" value="Nạp" />
+    <span class="lbl">&nbsp;Nạp</span>
+
+    <input class="ace" type="checkbox" id="In" name="quyen" value="In ấn" />
+    <span class="lbl">&nbsp;In ấn</span>
+
+    <input class="ace" type="checkbox" id="P1" name="quyen" value="Quyền 1" />
+    <span class="lbl">&nbsp;Quyền 1</span>
+
+    <input class="ace" type="checkbox" id="P2" name="quyen" value="Quyền 2" />
+    <span class="lbl">&nbsp;Quyền 2</span>
+
+    <input class="ace" type="checkbox" id="P3" name="quyen" value="Quyền 3" />
+    <span class="lbl">&nbsp;Quyền 3</span>
+
+    <input class="ace" type="checkbox" id="GanTatCa" />
+    <span class="lbl">&nbsp;Gán quyền tất cả</span>*@
+
+<!--<button class="btn btn-sm btn-primary btnGanQuyen" title="" id="btnGanQuyen"><i class="fa fa-close"></i>&ensp;Gán quyền</button>
+                    </div>
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <fieldset class="khungvien">
+                            <legend><b class="badge bg-primary text-wrap lh-base py-0">Chi tiết người dùng</b></legend>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="input-group input-group-merge">
+                                        <span class="input-group-text"><i class="bx bx-search"></i></span>
+                                        <input type="text" id="timKiem2" class="form-control" placeholder="Nội dung tìm kiếm ..." aria-label="Nội dung tìm kiếm ...">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <button class="btn btn-sm btn-primary" style="float:right" title="Thêm mới" id="btnThemMoiQuyen"><i class="fa fa-plus"></i>&ensp;Thêm mới</button>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:4px">
+                                <div class="col-md-12">
+                                    <div id="Grid2" class="GridData"></div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+@*<div id="mdChucNang_us" class="modal" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-bold" id="tieuDeChonDoiTuong_us">Chọn chức năng</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>*@
+<div class="modal modal-blur fade" id="mdChucNang_us" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header nts-modal">
+                <h5 class="modal-title">Chọn chức năng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6" style="">
+                                <div class="input-icon mb-3">
+                                    <input type="text" value="" class="form-control" placeholder="Nội dung tìm kiếm ..." id="timKiemChucNang" autocomplete="off">
+                                    <span class="input-icon-addon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div id="Grid3" class="GridData"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-6" style="display: flex; align-items: center"></div>
+                    <div class="col-md-6">
+                        <div style="float:right;text-align: right">
+                            <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                <i class="fa fa-close"></i>&nbsp;Đóng
+                            </a>
+                            <a href="#" id="btnChonDoiTuongVaDong_us" class="btn btn-success ms-auto">
+                                <i class="fa fa-check"></i>&ensp;Chọn và đóng
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@*Excel*@
+
+<div class="modal modal-blur fade" id="mdNhapExcel" tabindex="-1" aria-modal="true" role="dialog" data-bs-backdrop="static">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header nts-modal">
+                <h5 class="modal-title" id="tieuDeModalN_Excel">Nhận Excel thông tin cá nhân</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> &times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="row" style="padding-bottom: 2px">
+                            <div class="col-md-12">
+                                <fieldset class="KhungVien" style="min-height:570px">
+                                    <legend><b>1. Hướng dẫn</b></legend>
+                                    <div id="noiDungTroGiup" style="line-height: 190%;">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        &ensp;  <span><i class="fa fa-download" style="color:#38B8E6"></i>&ensp;<label class="control-label no-padding-right"><b>Bước 1: Tải file excel mẫu <a href="#" onclick="TaiFileMau();" style="text-decoration: none;">tại đây</a></b></label></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        &ensp;  <span><i class="fa fa-file-excel-o" style="color:#38B8E6"></i>&ensp;<label class="control-label no-padding-right"><b>Bước 2: Chuẩn bị file đính kèm </b></label></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        &ensp;&ensp;&ensp;- Nhập số liệu vào file excle mẫu vừa tải về ở bước 1
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="display:none">
+                                                    <div class="col-md-12">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        &ensp;  <span><i class="fa fa-chain" style="color:#38B8E6"></i>&ensp;<label class="control-label no-padding-right"><b>Bước 3: Đính kèm </b></label></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        &ensp;&ensp;&ensp;- Bạn chọn file vừa nhập dữ liệu ở bước 2 để đính kèm vào phần mềm
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        &ensp;  <span><i class="fa fa-bolt" style="color:#38B8E6"></i>&ensp;<label class="control-label no-padding-right"><b>Bước 4: Kiểm tra file </b></label></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        &ensp;&ensp;&ensp;- Sau khi nạp file phần mềm sẽ tự động kiểm tra tình trạng dữ liệu lỗi hay hợp lệ.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        &ensp;  <span><i class="fa fa-clipboard" style="color:#38B8E6;"></i>&ensp;<label class="control-label no-padding-right"><b>Bước 5: Nạp file </b></label></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        &ensp;&ensp;&ensp;- Bạn chọn các dòng dữ liệu cần nạp vào phần mềm và nhấn vào nạp dữ liệu.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <fieldset class="KhungVien">
+                            <legend><b>1. Chọn File</b></legend>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <button id="btnChonTepVB_us" type="button" class="btn btn-sm btn-primary"><i class="fa fa-paperclip"></i>&ensp;Chọn tệp đính kèm <span style="font-style: italic">(*.xlsx, *.xls)</span></button>
+                                        <button id="btnXoaHetTepVB_us" type="button" class="btn btn-sm btn-danger" style="display: none"><i class="fa fa-trash-o"></i>Xóa tất cả đính kèm</button>
+                                        <span id="lblTenFile_us" style="font-size:12px;line-height:35px"><span><b>Tên file:</b> Không có tệp nào đươc chọn</span></span>
+                                        <input type="hidden" id="txtDuongDanFileVB_us" value="" />
+                                    </div>
+                                    <input type="file" id="fileVB_us" style="display: none !important" accept=".xlsx,.xls" />
+                                </div>
+                            </div>
+                            <div class="row" style="display:none">
+                                <div class="form-group">
+                                    <span class="col-md-1 no-padding-right">Tiến độ</span>
+
+                                    <div class="col-md-11">
+                                        <div class="progress" style="width:100%">
+                                            <div class="progress-bar bg-info" role="progressbar" style="width: 0%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" id="PhanTramNhapExcel">0%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="KhungVien">
+                            <legend><b>2. Chọn thông tin nhận excel</b></legend>
+                            <div class="form-group">
+                                <div class="row d-flex align-items-center">
+                                    <label class="col-md-2 control-label no-padding-right">Chọn sheet</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control input-sm" id="TenSheet"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="KhungVien">
+                            <legend><b>3. Tình trạng file</b></legend>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-warning" id="btnKiemTraFile"><i class="fa fa-bug" aria-hidden="true"></i>&ensp;Kiểm tra file</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10 d-flex justify-content-between align-items-center">
+                                        <span class="col-md-4"><i class="fa fa-upload" style="color:#38B8E6"></i>&ensp;<label class="control-label no-padding-right" id="SoDongNhan">Số dòng nhận từ file: 0</label></span>
+                                        <span class="col-md-3"><i class="fa fa-check-square" style="color:#5cb85c"></i>&ensp;<label class=" control-label no-padding-right" id="SoDongHopLe">Số dòng hợp lệ: 0</label></span>
+                                        <span class="col-md-3"><i class="fa fa-minus-square" style="color:red"></i>&ensp;<label class=" control-label no-padding-right" id="SoDongLoi">Số dòng lỗi: 0</label></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="KhungVien" id="DuLieu">
+                            <legend><b>4. Tình trạng dữ liệu</b></legend>
+                            <div class="col-md-12 d-flex">
+                                <div class="col-md-9">
+                                    <button class="btn btn-success btn-sm" id="btnTaiFileKiemTra"><i class="fa fa-download"></i>&ensp;Tải về file đã kiểm tra</button>
+                                </div>
+                                <div style="width:25% !important" class="input-icon col-md-3">
+                                    <input type="text" value="" class="form-control" placeholder="Nội dung tìm kiếm ..." id="timKiemNhapExcel" autocomplete="off">
+                                    <span class="input-icon-addon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:4px">
+                                <div class="col-md-12">
+                                    <div id="GridExcel" class="GridData"></div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div style="float: left;  text-align: left;margin-top:6px">
+                            <label class="form-check">
+                                <input class="form-check-input" id="chkGhiDe" type="checkbox">
+                                <label for="chkGhiDe" class="form-check-label">Ghi đè</label>
+                            </label>
+                        </div>
+                        <div style="float:right;text-align: right">
+                            <a href="#" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                <i class="fa fa-close"></i>&nbsp;Đóng (F4)
+                            </a>
+                            <a href="#" id="btnLuuVaDongExcel" class="btn btn-success ms-auto">
+                                <i class="ace-icon fa fa-floppy-o bigger-110"></i>&nbsp;Nhận dữ liệu
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*End Excel*@
+
+
+
+
+
+
+
+
+<script>
+    $(function () {
+        $('[data-rel=tooltip]').tooltip({ container: 'body' });
+        $('[data-rel=popover]').popover({ container: 'body' });
+    });
+</script>
+@*@Html.Partial("ChonDonVi")*@
+@*<script src="/Content/AdminLTE/tabulator/dist/js/tabulator.min.js"></script>*@
+<script src="~/Areas/HeThong/Scripts/Users.js?v=@DateTime.Now.Ticks.ToString()" defer="defer"></script>
+
+
+

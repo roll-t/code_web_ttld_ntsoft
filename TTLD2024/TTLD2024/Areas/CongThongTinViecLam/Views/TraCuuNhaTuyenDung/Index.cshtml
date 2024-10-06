@@ -1,0 +1,1100 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/CongThongtinViecLam.cshtml";
+}
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+    @@media (min-width: 992px) {
+        #mdThemMoi .modal-dialog {
+            width: 75% !important;
+        }
+
+        #mdNhapExcel .modal-dialog {
+            width: 70% !important;
+        }
+    }
+
+    .dropdown-toggle-split::after, .dropright .dropdown-toggle-split::after, .dropup .dropdown-toggle-split::after {
+        margin-left: 0;
+        display: inline-block;
+        margin-left: .255em;
+        vertical-align: .255em;
+        content: "";
+        border-top: .3em solid;
+        border-right: .3em solid transparent;
+        border-bottom: 0;
+        border-left: .3em solid transparent;
+    }
+
+    .dropdown-item#btnKiemTraGhiDe {
+        display: block;
+        width: 100%;
+        padding: .25rem 1.5rem;
+        clear: both;
+        font-weight: 400;
+        color: #212529;
+        text-align: inherit;
+        white-space: nowrap;
+        background-color: transparent;
+        border: 0;
+        color: white;
+    }
+
+        .dropdown-item#btnKiemTraGhiDe:hover {
+            color: white !important;
+        }
+
+    .dropdown-menu#DivKiemTraGhiDe:hover {
+        background-color: #E59729 !important;
+        color: white;
+    }
+    .list-tuyendung {
+        display: flex;
+        flex-direction: column;
+        gap: 5px 0;
+        max-height:300px;
+        overflow:auto;
+    }
+    </style>
+    <script src="/ckeditor/ckeditor.js"></script>
+    <script src="/ckeditor/adapters/jquery.js"></script>
+    <script src="~/ckfinder/ckfinder.js"></script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <style type="text/css">
+        .GridData {
+            background-color: #f2f2f2;
+            border: 1px solid #dbdbe1;
+            font-size: 12px !important;
+            font-family: arial,sans-serif,Verdana;
+        }
+            /*Allow column header names to wrap lines*/
+            .GridData .tabulator-header .tabulator-col,
+            .GridData .tabulator-header .tabulator-col-row-handle {
+                white-space: normal;
+                background-color: #F3F4F5;
+                color: #000000;
+            }
+
+        @@media (min-width: 992px) {
+            #mdThemMoi .modal-dialog {
+                width: 60% !important;
+            }
+
+            #mdNhapExcel .modal-dialog {
+                width: 70% !important;
+            }
+        }
+
+        .dropdown-toggle-split::after, .dropright .dropdown-toggle-split::after, .dropup .dropdown-toggle-split::after {
+            margin-left: 0;
+            display: inline-block;
+            margin-left: .255em;
+            vertical-align: .255em;
+            content: "";
+            border-top: .3em solid;
+            border-right: .3em solid transparent;
+            border-bottom: 0;
+            border-left: .3em solid transparent;
+        }
+
+        .dropdown-item#btnKiemTraGhiDe {
+            display: block;
+            width: 100%;
+            padding: .25rem 1.5rem;
+            clear: both;
+            font-weight: 400;
+            color: #212529;
+            text-align: inherit;
+            white-space: nowrap;
+            background-color: transparent;
+            border: 0;
+            color: white;
+        }
+
+            .dropdown-item#btnKiemTraGhiDe:hover {
+                color: white !important;
+            }
+
+        .dropdown-menu#DivKiemTraGhiDe:hover {
+            background-color: #E59729 !important;
+            color: white;
+        }
+
+        .ntd-item {
+            border-radius: 8px;
+            border-color: #ddd;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            padding: 15px;
+            margin-bottom: 40px;
+            position: relative;
+            transition: 0.2s linear;
+            min-height: 210px;
+            height: 220px;
+        }
+
+            .ntd-item:hover {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            }
+
+        .ntd-header {
+            display: flex;
+            gap: 0 10px;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .ntd-item .ntd-img {
+            border-radius: 100%;
+            box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            margin-top: -40px;
+        }
+
+        .ntd-title {
+            font-weight: bold;
+            font-size: 15px;
+            margin-top: -10px;
+            color: black;
+            transition: 0.1s linear;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+            .ntd-title:hover {
+                color: var(--primary-color);
+            }
+
+        .ntd-subtile span {
+            color: #999;
+        }
+
+        .ntd-content {
+            margin-bottom: 5px;
+        }
+
+        .ntd-footer p {
+            font-style: italic;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: break-word;
+            color: #868686;
+        }
+
+        #list-nhatuyendung {
+            /*margin-top: 35px;*/
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .ntd-icon-like {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 17px;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        #vanban-empty {
+            width: 200px;
+            height: 150px;
+        }
+
+
+        .tooltip-custom {
+            display: inline-block;
+            position: relative;
+        }
+
+            .tooltip-custom .tooltip-container {
+                min-width: 600px;
+                top: 50%;
+                margin-left: 10px;
+                color: #444444;
+                background-color: #fff;
+                font-weight: normal;
+                font-size: 13px;
+                border-radius: 4px;
+                position: absolute;
+                z-index: 99999999;
+                box-sizing: border-box;
+                box-shadow: 0 1px 8px rgba(0,0,0,0.5);
+                display: none;
+                transform: translate(0, -30%);
+            }
+
+            .tooltip-custom .right {
+                left: 80%;
+            }
+
+            .tooltip-custom .left {
+                right: 80%;
+            }
+
+            .tooltip-custom:hover .tooltip-container {
+                display: block;
+            }
+
+        .container-view-bg {
+            width: 100%;
+            height: 100px;
+        }
+
+            .container-view-bg img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        .view-container {
+            padding: 15px;
+        }
+
+        .view-content {
+            display: flex;
+            gap: 0 15px;
+            position: relative;
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--primary-color);
+            background: #fff;
+            margin-top: -50px;
+            padding: 10px;
+        }
+
+        .view-logo {
+            width: 150px;
+            height: 70px;
+        }
+
+            .view-logo img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        .view-tencongty {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .view-sltuyendung {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            color: var(--primary-color);
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .view-body h5 {
+            font-size: 17px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .view-body .view-gioithieu {
+            font-style: italic;
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: break-word;
+        }
+
+        #list-congviec {
+            display: flex;
+            flex-direction: column;
+            gap: 10px 0;
+            margin-top: 20px;
+        }
+
+        .congviec-item {
+            display: flex;
+            gap: 0 20px;
+            padding: 10px;
+            border-radius: 4px;
+            background: #f7fbff;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        }
+
+        .congviec-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .congviec-content {
+            width: 100%;
+        }
+
+        .congviec-header a:hover {
+            color: var(--primary-color);
+        }
+
+        .congviec-header .congviec-title {
+            font-size: 17px;
+            transition: 0.2s linear;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        .congviec-info-label {
+            padding: 5px 8px;
+            background: #eee;
+            border-radius: 4px;
+        }
+
+        .TenCongTy {
+            color: #84899c;
+        }
+
+        .congviec-info {
+            display: flex;
+            justify-content: space-between;
+            gap: 0 10px;
+            align-items: center;
+        }
+
+        .congviec-item .avatar {
+            width: 120px;
+            height: 100px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        }
+
+            .congviec-item .avatar img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0 12px;
+        }
+
+        .contact-desc {
+            color: #a1a1a1;
+            font-style: italic;
+        }
+
+        .btn-like {
+            cursor: pointer;
+        }
+
+        @@media(max-width:1023px) {
+            .footer-1 {
+                padding: 14px !important;
+            }
+        }
+    </style>
+    <style>
+        #box_search-tranhchu {
+            margin: 30px 0;
+        }
+
+        .box_search-row {
+            display: flex;
+        }
+
+        .search-wrapper {
+            position: relative;
+        }
+
+            .search-wrapper .search-icon {
+                position: absolute;
+                left: 10px; /* Adjust as needed */
+                top: 50%;
+                transform: translateY(-50%);
+                color: gray;
+                font-size: 16px;
+            }
+
+            .search-wrapper input {
+                padding-left: 35px !important; /* Adjust based on the icon size */
+            }
+
+        #DiaDiem_usBanner + .select2-container--default {
+            margin-top: 0 !important;
+        }
+
+            #DiaDiem_usBanner + .select2-container--default .select2-selection--single {
+                height: 34px !important;
+                line-height: 34px !important;
+            }
+
+            #DiaDiem_usBanner + .select2-container--default .select2-selection--multiple {
+                min-height: 34px !important;
+            }
+
+            #DiaDiem_usBanner + .select2-container--default .select2-selection__rendered {
+                line-height: 34px !important;
+                padding-left: 30px;
+            }
+
+            #DiaDiem_usBanner + .select2-container--default .select2-dropdown {
+                max-height: 200px !important;
+                overflow-y: auto !important;
+            }
+
+
+        #box_search-tranhchu {
+            padding: 25px;
+            background: var(--primary-color);
+            border-radius: 8px;
+        }
+
+        .breadcrumb-container {
+            background: none
+        }
+
+        .container-header {
+            background: #f5f5f5;
+        }
+
+            .container-header .breadcrumb {
+                padding-left: 20px !important;
+            }
+
+        #btn-search-submit {
+            background: #024bd2 !important;
+            width: 100%;
+        }
+
+        .menu-main-vo li.nav-item a.nav-link .minu {
+            color: #fff !important;
+        }
+
+        @@media(min-width:1024px) and (max-width:1200px) {
+            .container-contant-tracuuungvien {
+                padding: 14px !important;
+            }
+
+            #box_search-tranhchu {
+                margin: 44px 20px 20px 20px;
+            }
+
+            .footer-1 {
+                padding: 30px !important;
+            }
+        }
+
+        @@media(min-width:992px) and (max-width:1023px) {
+            #ViecLam_Loc_us {
+                font-size: 13px;
+                height: 34px;
+            }
+
+            #box_search-tranhchu {
+                margin: 50px 20px 30px 20px;
+            }
+
+            section.footer-1 {
+                padding: 32px !important;
+            }
+
+            #logo-ctt-header {
+                margin-top: 12px !important;
+                border-radius: 5px;
+            }
+
+            .container-contant-tracuuungvien {
+                padding: 14px !important;
+            }
+
+            #btn-search-submit {
+                width: 100%;
+            }
+
+            .container-contant-tracuuungvien {
+                padding: 25px !important;
+            }
+        }
+
+        @@media(min-width:786px) and (max-width:991px) {
+            #ViecLam_Loc_us {
+                font-size: 13px;
+                height: 34px;
+            }
+
+            #box_search-tranhchu {
+                margin: 50px 20px 20px 20px;
+            }
+
+            section.footer-1 {
+                padding: 32px !important;
+            }
+
+            #logo-ctt-header {
+                margin-top: 12px !important;
+                border-radius: 5px;
+            }
+
+            .breadcrumb-container.breadcrumb-tracuuvieclam-list {
+                padding-right: 20px !important;
+            }
+
+            #btn-search-submit {
+                width: 100%;
+            }
+
+            .container-contant-tracuuungvien {
+                padding: 25px !important;
+            }
+
+            .employ-box-avatar {
+                top: -13px;
+            }
+
+            #content-find {
+                font-size: 12px;
+                height: 32px;
+            }
+
+            #TenCongTy_loc {
+                font-size: 15px;
+                height: 40px;
+            }
+        }
+
+        @@media(min-width:668px) and (max-width:785px) {
+            #ViecLam_Loc_us {
+                font-size: 13px;
+                height: 34px;
+            }
+
+            #box_search-tranhchu {
+                margin: 50px 20px 20px 20px;
+            }
+
+            section.footer-1 {
+                padding: 32px !important;
+            }
+
+            #logo-ctt-header {
+                margin-top: 12px !important;
+                border-radius: 5px;
+            }
+
+            .breadcrumb-container.breadcrumb-tracuuvieclam-list {
+                padding-right: 20px !important;
+            }
+
+            .col-md-6.col-xm-6.col-sm-6.footer-2-box2 {
+                border-top: 1px solid #f3f3f3;
+            }
+
+            .footer-2-box1 {
+                border-right: 1px solid #e0d2d2;
+                padding-bottom: 30px;
+            }
+
+            .container-contant-tracuuungvien {
+                padding: 25px !important;
+            }
+
+            .employ-box-avatar {
+                position: absolute;
+                border-radius: 10px;
+                padding: 5px;
+                background: white;
+                width: 75px;
+                height: 75px;
+                top: -14px;
+            }
+
+            .employ-avatar {
+                width: 75px;
+                height: 75px;
+                object-fit: cover;
+                border-radius: 4px;
+            }
+
+            #TenCongTy_loc {
+                font-size: 15px;
+                height: 40px;
+            }
+        }
+
+        @@media(min-width:448px) and (max-width:667px) {
+            #ViecLam_Loc_us {
+                font-size: 13px;
+                height: 34px;
+            }
+
+            #box_search-tranhchu {
+                margin: 50px 20px 20px 20px;
+            }
+
+            section.footer-1 {
+                padding: 32px !important;
+            }
+
+            #logo-ctt-header {
+                margin-top: 12px !important;
+                border-radius: 5px;
+            }
+
+            .breadcrumb-container.breadcrumb-tracuuvieclam-list {
+                padding-right: 20px !important;
+            }
+
+            .col-md-6.col-xm-6.col-sm-6.footer-2-box2 {
+                border-top: 1px solid #f3f3f3;
+            }
+
+            .footer-2-box1 {
+                border-right: 1px solid #e0d2d2;
+                padding-bottom: 30px;
+            }
+
+            .container-contant-tracuuungvien {
+                padding: 25px !important;
+            }
+
+            .employ-box-avatar {
+                position: absolute;
+                border-radius: 10px;
+                padding: 5px;
+                background: white;
+                width: 75px;
+                height: 75px;
+                top: -14px;
+            }
+
+            .employ-avatar {
+                width: 75px;
+                height: 75px;
+                object-fit: cover;
+                border-radius: 4px;
+            }
+
+            #TenCongTy_loc {
+                font-size: 15px;
+                height: 40px;
+            }
+
+            .container-contant-tracuuungvien {
+                padding: 15px !important;
+            }
+        }
+
+        @@media(max-width:447px) {
+            #ViecLam_Loc_us {
+                font-size: 13px;
+                height: 34px;
+            }
+
+            #box_search-tranhchu {
+                margin: 50px 20px 20px 20px;
+            }
+
+            section.footer-1 {
+                padding: 32px !important;
+            }
+
+            #logo-ctt-header {
+                margin-top: 12px !important;
+                border-radius: 5px;
+            }
+
+            .breadcrumb-container.breadcrumb-tracuuvieclam-list {
+                padding-right: 20px !important;
+            }
+
+            .col-md-6.col-xm-6.col-sm-6.footer-2-box2 {
+                border-top: 1px solid #f3f3f3;
+            }
+
+            .footer-2-box1 {
+                border-right: 1px solid #e0d2d2;
+                padding-bottom: 30px;
+            }
+
+            .container-contant-tracuuungvien {
+                padding: 25px !important;
+            }
+
+            .employ-box-avatar {
+                position: absolute;
+                border-radius: 10px;
+                padding: 5px;
+                background: white;
+                width: 75px;
+                height: 75px;
+                top: -14px;
+            }
+
+            .employ-avatar {
+                width: 75px;
+                height: 75px;
+                object-fit: cover;
+                border-radius: 4px;
+            }
+
+            #TenCongTy_loc {
+                font-size: 15px;
+                height: 40px;
+            }
+
+            .container-contant-tracuuungvien {
+                padding: 15px !important;
+            }
+        }
+    </style>
+
+    <style>
+        :root {
+            --blue-color: #02528E;
+            --blue-hover: #01365d;
+            --blue-new: #02528E;
+            --blue-nav: rgba(46, 140, 203, 0.07);
+            --orange-color: #f89d20;
+            --orange-hover: #dc872e;
+            --red-color: #E02831;
+            --red-background: #c7242c;
+            --bgbody: #EFF3F6;
+            --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+            --gray: #6c757d;
+        }
+        .row.row-all-5 {
+            margin-left: -5px;
+            margin-right: -5px;
+            margin-top: -5px;
+        }
+        .card-company {
+            -webkit-box-shadow: 2px 2px 10px 1px rgb(0 0 0 / 15%);
+            box-shadow: 2px 2px 10px 1px rgb(0 0 0 / 8%);
+            height: 100%;
+        }
+        .bg-white {
+            background-color: #fff !important;
+        }
+        .card {
+            position: relative;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+            border: 1px solid rgba(0,0,0,.125);
+            border-radius: .25rem;
+        }
+        .card-header:first-child {
+            border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+        }
+        .p-2 {
+            padding: .5rem !important;
+        }
+        .rounded-0 {
+            border-radius: 0 !important;
+        }
+        .bg-transparent {
+            background-color: transparent !important;
+        }
+        .card-header {
+            padding: .75rem 1.25rem;
+            margin-bottom: 0;
+            background-color: rgba(0,0,0,.03);
+        }
+        .card-header {
+            background-color: transparent;
+            align-items: stretch;
+            box-shadow: unset;
+            display: flex;
+        }
+        .card-company .card-header .card-image {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.25rem;
+        }
+        .d-block {
+            display: block !important;
+        }
+        .card-company .card-header .card-image:before {
+            padding-top: 35%;
+            display: block;
+            content: "";
+        }
+        .card-company .card-header .card-image > img {
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+        }
+        .card-company .card-body {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+        }
+        .pl-3, .px-3 {
+            padding-left: 1rem !important;
+        }
+        .card-company .card-body .card-top {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            position: relative;
+        }
+        .card-company .card-body .card-avatar {
+            position: absolute;
+            background: var(--white);
+            border-radius: .25rem;
+            filter: drop-shadow(rgba(0,0,0,0.1) 0px 1px 2px);
+            padding: 10px;
+            width: 80px;
+            height: 80px;
+            top: calc(-40px - .25rem);
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card-company .card-body .card-follow {
+            color: var(--gray);
+            font-size: .85em;
+        }
+        .card-company .card-body .card-title {
+            padding-top: calc(30px - .25rem);
+            overflow: hidden;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 2;
+            display: -webkit-box !important;
+            -webkit-box-orient: vertical;
+            color: var(--dark);
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+            .card-company .card-body .card-title > a {
+                color: inherit;
+                -webkit-transition: .3s all ease;
+                -o-transition: .3s all ease;
+                transition: .3s all ease;
+                height: 43px;
+                display: block;
+            }
+        .card-company .card-body .card-text .card-text_item {
+            color: var(--gray);
+            font-size: 1em;
+        }
+        .fw-400 {
+            font-weight: 400 !important;
+        }
+        .card-company .card-body .card-text .card-text_item > i {
+            width: 16px;
+            display: inline;
+            margin-right: 6px;
+        }
+        .card-company .card-body .card-text .card-text_item + .card-text_item {
+            margin-top: 2px;
+        }
+
+        .card-company .card-body .card-button {
+            margin-top: auto;
+            padding-top: 15px;
+        }
+        .button-theme.btn-sm {
+            padding: 7px 10px;
+            font-size: .8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        .button-theme i {
+            margin-right: .15rem;
+        }
+        .button-orange {
+            border-color: var(--orange-color) !important;
+            background: var(--orange-color) !important;
+            color: #fff !important;
+        }
+        .button-theme {
+            border: 1px solid #c4c4c4;
+            color: #1f2d3d;
+            -webkit-transition: .1s all ease-in;
+            -o-transition: .1s all ease-in;
+            transition: .1s all ease-in;
+            text-decoration: none !important;
+            outline: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            padding: 10px 15px;
+            font-size: .9rem;
+        }
+        .w-100 {
+            width: 100% !important;
+        }
+        .size-09rem {
+            font-size: .9rem !important;
+        }
+        .row.row-all-5 > [class*=col-] {
+            padding: 5px;
+        }
+        .p-2 {
+            padding: .5rem !important;
+        }
+        .text-1-row {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+        }
+        #NganhNghe_usBanner + .select2-container--default {
+            margin-top: 0 !important;
+        }
+
+            #NganhNghe_usBanner + .select2-container--default .select2-selection--single {
+                height: 34px !important;
+                line-height: 34px !important;
+            }
+
+            #NganhNghe_usBanner + .select2-container--default .select2-selection--multiple {
+                min-height: 34px !important;
+            }
+
+            #NganhNghe_usBanner + .select2-container--default .select2-selection__rendered {
+                line-height: 34px !important;
+                padding-left: 30px;
+            }
+
+            #NganhNghe_usBanner + .select2-container--default .select2-dropdown {
+                max-height: 200px !important;
+                overflow-y: auto !important;
+            }
+
+        .search-icon-select {
+            position: absolute;
+            left: 15px;
+            z-index: 9;
+            color: #808080;
+            font-size: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    </style>
+    <uc1:BannerCongThongTin runat="server" ID="BannerCongThongTin" />
+    @* @Html.Partial("BannerCongThongTin");*@
+    <div class="container container-content-timkiem ">
+        <div class="row" style="" id="box_search-tranhchu">
+            <div class="col-md-12" id="search-main">
+                <div id="box_search">
+                    <div class="row box_search-row">
+                        <div class="col-xs-2 col-md-7 col-input-timkiem">
+                            <div class="search-wrapper" style="width: 100%;">
+                                <i class="fa-solid fa-briefcase search-icon"></i>
+                                <input type="text" id="ViecLam_Loc_us" class="form-control" placeholder="Vị trí ứng viên cần tìm..." style="" />
+                            </div>
+                        </div>
+                        <div class="col-xs-3 col-md-3 selNganhNgheTimKiem">
+                            <i class="fa-solid fa-graduation-cap search-icon-select"></i>
+                            <select class="form-control input-sm" id="NganhNghe_usBanner"></select>
+                        </div>
+                        <div class="col-xs-4 col-md-3 selDiaDiemTimKiem">
+                            <i class="fa-solid fa-location-dot search-icon-select"></i>
+                            <select class="form-control input-sm" id="DiaDiem_usBanner"></select>
+                        </div>
+                        <div class="col-btn-search col-xs-3 col-md-2">
+                            <button id="btn-search-submit" type="button" class="btn btn-primary" style="">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                                <span class="hidden_mb" style="">Tìm việc</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="breadcrumb-container">
+        <div class="container container-header">
+            <nav class="breadcrumb is-small" aria-label="breadcrumbs">
+                <ul>
+                    <li><a href="/trang-chu.html">Trang chủ</a></li>
+                    <li class="is-active"><a href="/tra-cuu-nha-tuyen-dung.html" aria-current="page">Danh sách nhà tuyển dụng</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <section class="" style="background: #fcfcfc">
+
+        <div class="container container-contant-tracuuungvien">
+            <div class="row" style="margin-bottom: 10px;">
+
+                <div class="col-md-5">
+                    <label class="form-label">Tên công ty</label>
+                    <input type="text" class="form-control" placeholder="Nhập tên công ty..." id="TenCongTy_loc">
+                </div>
+                <div class="col-md-5">
+                    <label class="form-label">Tra cứu theo tỉnh thành</label>
+                    <select class="form-control" id="TinhID_loc" @*multiple="multiple"*@>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <button id="btnTraCuu" type="button" class="btn btn-primary d-flex justify-content-center align-items-center" style="width:100px;text-align:center;height:35px!important;margin-top: 33px;">
+                        <i class="fa fa-search"></i>&nbsp; Tra cứu
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 section-title">
+                    <i class="fa fa-building-o"></i>
+                    <span>Danh sách công ty</span>
+                    <span id="SoLuong_CongTy"></span>
+                </div>
+            </div>
+            <div class="row row-all-5" id="list-nhatuyendung">
+
+            </div>
+            <div class="row">
+                <div id="content_pagination"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="~/Areas/CongThongTinViecLam/Scripts/TraCuuNhaTuyenDung.js?v=@DateTime.Now.Ticks.ToString()"></script>
+    <script>
+        $(document).ready(function () {
+            $(".basic-usage").stringToSlug();
+        });</script>
+
+
+    <script>
+
+        var _stringToSlug_API = function (e, t) { "use strict"; var r, s = { setEvents: "keyup keydown blur", getPut: "#DinhDanh", space: "-", prefix: "", suffix: "", replace: "", AND: "and", options: {}, callback: !1 }; jQuery.extend(s, t), s.options.hasOwnProperty("separator") || (s.options.separator = s.space), s.options.hasOwnProperty("custom") || (s.options.custom = { "&": s.AND }), e = e.replace(s.replace, ""); try { e = getSlug(e, s.options) } catch (n) { console.warn("Make sure you insert speakingurl.min.js before jquery.stringtoslug.min.js") } return r = s.prefix + e + s.suffix }; jQuery.fn.stringToSlug = function (e) { "use strict"; var t = { setEvents: "keyup keydown blur", getPut: "#DinhDanh", space: "-", prefix: "", suffix: "", replace: "", AND: "and", callback: !1 }; return jQuery.extend(t, e), jQuery(this).bind(t.setEvents, function () { var r = jQuery(this).val(), s = _stringToSlug_API(r, e); return jQuery(t.getPut).val(s), jQuery(t.getPut).html(s), !1 !== t.callback && t.callback(s), this }), this };
+    </script>
+
+</asp:Content>
